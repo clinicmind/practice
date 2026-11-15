@@ -12,3 +12,11 @@
 | intervention | en | 1.0.0 | 2026-11-15 |
 | rupture | en | 1.0.0 | 2026-11-15 |
 | termination | en | 1.0.0 | 2026-11-15 |
+| intake | zh-Hant | 1.0.0 | 2026-11-15 |
+| alliance | zh-Hant | 1.0.0 | 2026-11-15 |
+| assessment | zh-Hant | 1.0.0 | 2026-11-15 |
+| formulation | zh-Hant | 1.0.0 | 2026-11-15 |
+| planning | zh-Hant | 1.0.0 | 2026-11-15 |
+| intervention | zh-Hant | 1.0.0 | 2026-11-15 |
+| rupture | zh-Hant | 1.0.0 | 2026-11-15 |
+| termination | zh-Hant | 1.0.0 | 2026-11-15 |
