@@ -1,0 +1,65 @@
+# Each case: the rule must find exactly these matches, in order, in the text.
+- { rule: hkid, text: "ID A123456(3) on file", expect: ["A123456(3)"] }
+- { rule: hkid, text: "id a123456(3)", expect: ["a123456(3)"] }
+- { rule: hkid, text: "holder AB987654(3).", expect: ["AB987654(3)"] }
+- { rule: hkid, text: "A 123456 (3)", expect: ["A 123456 (3)"] }
+- { rule: hkid, text: "身分證Ａ１２３４５６（３）", expect: ["Ａ１２３４５６（３）"] }
+- { rule: hkid, text: "no brackets A1234563 here", expect: ["A1234563"] }
+- { rule: mo-bir, text: "BIR 1234567(8)", expect: ["1234567(8)"] }
+- { rule: mo-bir, text: "5 234 567 (8)", expect: ["5 234 567 (8)"] }
+- { rule: mo-bir, text: "澳門身份證７６５４３２１（０）", expect: ["７６５４３２１（０）"] }
+- { rule: mo-bir, text: "card 8123456(2).", expect: ["8123456(2)"] }
+- { rule: phone, text: "call 91234567 after six", expect: ["91234567"] }
+- { rule: phone, text: "mobile 9123 4567", expect: ["9123 4567"] }
+- { rule: phone, text: "+852 9123-4567", expect: ["+852 9123-4567"] }
+- { rule: phone, text: "澳門 6612 3456", expect: ["6612 3456"] }
+- { rule: phone, text: "+853 2833 3333", expect: ["+853 2833 3333"] }
+- { rule: phone, text: "tel:９１２３４５６７", expect: ["９１２３４５６７"] }
+- { rule: email, text: "write to a.b@example.com today", expect: ["a.b@example.com"] }
+- { rule: email, text: "A_B+c@mail.example.org.", expect: ["A_B+c@mail.example.org"] }
+- { rule: email, text: "聯絡 test@example.com.mo", expect: ["test@example.com.mo"] }
+- { rule: email, text: "x@y.co", expect: ["x@y.co"] }
+- { rule: url, text: "see https://example.org/x?y=1 now", expect: ["https://example.org/x?y=1"] }
+- { rule: url, text: "at www.example.org", expect: ["www.example.org"] }
+- { rule: url, text: "http://example.com", expect: ["http://example.com"] }
+- { rule: url, text: "profile www.example.com/user/abc.", expect: ["www.example.com/user/abc"] }
+- { rule: full-date, text: "seen on 12/03/2026.", expect: ["12/03/2026"] }
+- { rule: full-date, text: "date 2026-03-12", expect: ["2026-03-12"] }
+- { rule: full-date, text: "on 12 March 2026 she", expect: ["12 March 2026"] }
+- { rule: full-date, text: "March 12, 2026", expect: ["March 12, 2026"] }
+- { rule: full-date, text: "於2026年3月12日入院", expect: ["2026年3月12日"] }
+- { rule: full-date, text: "3rd Sept 2025", expect: ["3rd Sept 2025"] }
+- { rule: dob, text: "DOB 1998", expect: ["DOB 1998"] }
+- { rule: dob, text: "she was born in 1998 in", expect: ["born in 1998"] }
+- { rule: dob, text: "個案生於1998年", expect: ["生於1998年"] }
+- { rule: dob, text: "出生日期：1998", expect: ["出生日期：1998"] }
+- { rule: age-90, text: "a woman aged 93", expect: ["aged 93"] }
+- { rule: age-90, text: "a 93-year-old man", expect: ["93-year-old"] }
+- { rule: age-90, text: "現年93歲", expect: ["93歲"] }
+- { rule: age-90, text: "he is 101 years old", expect: ["101 years old"] }
+- { rule: address, text: "lives at Flat 3B, Block 2", expect: ["Flat 3B", "Block 2"] }
+- { rule: address, text: "office at 12 Nathan Road", expect: ["12 Nathan Road"] }
+- { rule: address, text: "彩虹邨", expect: ["彩虹邨"] }
+- { rule: address, text: "住3樓B室", expect: ["3樓B室"] }
+- { rule: address, text: "荷蘭園大馬路95號", expect: ["荷蘭園大馬路95號"] }
+- { rule: institution, text: "admitted to Queen Mary Hospital twice", expect: ["Queen Mary Hospital"] }
+- { rule: institution, text: "轉介至鏡湖醫院", expect: ["鏡湖醫院"] }
+- { rule: institution, text: "聖保羅中學", expect: ["聖保羅中學"] }
+- { rule: institution, text: "studied at St Paul's College", expect: ["St Paul's College"] }
+- { rule: institution, text: "referred from QMH", expect: ["QMH"] }
+- { rule: title-name, text: "saw Mr Chan today", expect: ["Mr Chan"] }
+- { rule: title-name, text: "Dr. Wong Siu Ming said", expect: ["Dr. Wong Siu Ming"] }
+- { rule: title-name, text: "陳先生表示", expect: ["陳先生"] }
+- { rule: title-name, text: "由黃姑娘跟進", expect: ["黃姑娘"] }
+- { rule: cjk-name, text: "個案陳大文表示", expect: ["陳大文"] }
+- { rule: cjk-name, text: "黃小明", expect: ["黃小明"] }
+- { rule: cjk-name, text: "與李美玲同住", expect: ["李美玲"] }
+- { rule: cjk-name, text: "同學張偉", expect: ["張偉"] }
+- { rule: cap-name, text: "seen by Chan Tai Man today", expect: ["Chan Tai Man"] }
+- { rule: cap-name, text: "her friend Mary Wong called", expect: ["Mary Wong"] }
+- { rule: cap-name, text: "With Sam I was always the one", expect: ["Sam"] }
+- { rule: cap-name, text: "client, Wong Siu Ming, reported", expect: ["Wong Siu Ming"] }
+- { rule: id-like, text: "MRN 20231234", expect: ["MRN 20231234"] }
+- { rule: id-like, text: "case HN1234567", expect: ["HN1234567"] }
+- { rule: id-like, text: "ref 884422", expect: ["884422"] }
+- { rule: id-like, text: "檔案編號 A12345", expect: ["A12345"] }
