@@ -1,0 +1,120 @@
+alliance-e01:
+  model_response: "You felt really proud. It stayed with you all the way home."
+  why: "'Proud' matches a smile that would not stop. The second sentence uses the client's own detail."
+  avoid: "'That's great, well done!' That is your pleasure. A reflection gives back theirs."
+alliance-e02:
+  model_response: "You miss her so much that reaching for the phone still happens by itself."
+  why: "It names the missing and ties it to the client's own image."
+  avoid: "'She's still with you in spirit.' Comfort offered this early can tell the client that the grief should be smaller."
+alliance-e03:
+  model_response: "You're very anxious about Friday, and your body has been telling you so all week."
+  why: "'Very anxious' fits a week of knots. 'A bit nervous' would be too weak."
+  avoid: "Interview tips. The client told you about a feeling."
+alliance-e04:
+  model_response: "That sounds annoying. And not being told seems to make it worse."
+  why: "It names the irritation at the right strength and notices which part bothered the client most."
+  avoid: "'Have you talked to them about it?' It is a reasonable step, and it skips the feeling."
+alliance-e05:
+  model_response: "It sounds like a relief. You'd braced for something harder."
+  why: "It names relief and the worry that came before it."
+  avoid: "'See, it's never as bad as we think.' It turns the client's moment into a lesson."
+alliance-e06:
+  model_response: "With that little sleep, it makes sense that your patience runs out quickly."
+  why: "It links the reaction to its cause. That link is what validation is."
+  avoid: "'All new parents go through this.' It may be true, but it moves away from this parent."
+alliance-e07:
+  model_response: "It makes sense to be nervous. Last week you told a near-stranger things that matter to you, and today you came back to do it again."
+  why: "It gives the specific reason why the nervousness is understandable today."
+  avoid: "'There's nothing to be nervous about.' It tells the client that the feeling is mistaken."
+alliance-e08:
+  model_response: "Of course you still miss her. She was the person you shared your days with, and a year doesn't replace that."
+  why: "It answers the hidden self-doubt in 'even though it's been a year' by explaining why the feeling has lasted."
+  avoid: "'You'll make new friends.' The client did not say they lacked friends."
+alliance-e09:
+  model_response: "After putting yourself through it twice, wanting to hide makes sense. It mattered to you."
+  why: "It validates the urge to hide by linking it to effort and to what the client cares about."
+  avoid: "'Lots of people fail more than twice.' A comparison does not validate anything."
+alliance-e10:
+  model_response: "Your body learned in that accident that a car can be dangerous. It makes sense that it stays on guard when you're not the one driving."
+  why: "It explains the tension as a reasonable result of what happened."
+  avoid: "'But you know you're safe now.' The 'but' cancels what came before it."
+alliance-m01:
+  model_response: "You're happy for him. And there may be something else there too, something heavier."
+  why: "It keeps the stated feeling and points gently to the unstated one without naming it for the client."
+  avoid: "'You sound jealous.' It may be accurate. It is also a verdict."
+alliance-m02:
+  model_response: "You understand that people are busy, and it still stung to be forgotten."
+  why: "Both the understanding and the hurt are reflected and joined with 'and'."
+  avoid: "'That's very understanding of you.' It rewards the cover and misses what is under it."
+alliance-m03:
+  model_response: "You're laughing, and I imagine it was a real blow."
+  why: "It names the mismatch between the smile and the event, tentatively, without telling the client to stop smiling."
+  avoid: "Laughing along. The client would learn that you only see the surface too."
+alliance-m04:
+  model_response: "It's hard to know what you feel. Maybe the cleaning is the one thing that feels manageable while you're so worried about him."
+  why: "It first reflects the not-knowing, which is what the client actually said, and then offers one possible feeling."
+  avoid: "'You're obviously anxious.' The client has just told you they do not know."
+alliance-m05:
+  model_response: "Everyone else is celebrating, and what you feel is closer to dread."
+  why: "It sets the expected feeling beside the real one and names the real one."
+  avoid: "'You deserve it, you know.' That answers a doubt the client has not voiced."
+alliance-m06:
+  model_response: "It's still weighing on you hours later. Being gentle with him clearly matters a lot to you."
+  why: "It validates the distress and names the value behind it. It neither agrees that she is a bad mother nor argues that she is a good one."
+  avoid: "'You're a great mum, everyone shouts sometimes.' That is reassurance, and she will not believe it."
+alliance-m07:
+  model_response: "If it still hurts after ten years, it must have gone deep."
+  why: "It treats the fact that the hurt has lasted as information about how much it mattered. The client had treated it as evidence against themselves."
+  avoid: "'It's not ridiculous.' You would be arguing with the self-criticism, and the feeling would stay unaddressed."
+alliance-m08:
+  model_response: "You can see what you have, and something is still missing. Both are true at once."
+  why: "It validates the gratitude and the lack together, without ranking the client's pain against other people's."
+  avoid: "'At least you can see the positives.' An 'at least' always makes the feeling smaller."
+alliance-m09:
+  model_response: "You wanted to go, and something stopped you. It's bothering you because those friends matter."
+  why: "It validates the wish and the regret and leaves the label 'flake' alone."
+  avoid: "'You're not a flake.' The client will defend the label."
+alliance-m10:
+  model_response: "Relief makes sense when something long and hard has ended. And it can sit beside everything else you feel about him."
+  why: "It validates the relief by naming what would produce it. It gives no ruling on whether the feeling is awful."
+  avoid: "'That's completely normal.' It is quick, and it closes a subject the client took a risk to open."
+alliance-h01:
+  model_response: "You're frustrated with this, and with my questions."
+  why: "It reflects the feeling aimed at you, in six plain words, and stops."
+  avoid: "'I ask because feelings are important in therapy.' That is an explanation, and it proves the client's point."
+alliance-h02:
+  model_response: "You're saying it's fine. I get the sense that my being late did bother you."
+  why: "It reflects the feeling the jaw shows without insisting on it, and it names your lateness as the cause."
+  avoid: "Accepting 'it's fine' and starting. Also avoid a long apology, which makes the client look after you."
+alliance-h03:
+  model_response: "It felt like pity, and you hate that."
+  why: "It reflects exactly what the client objected to, at full strength."
+  avoid: "'I wasn't pitying you.' It may be true, and it tells the client that their reading of you is wrong."
+alliance-h04:
+  model_response: "You took a real risk in telling me, and it felt as if I didn't even notice. That hurt."
+  why: "It reflects the hurt and what was at stake, without yet explaining what you did."
+  avoid: "'I did hear it, I was planning to come back to it.' That is a defence, and the client is alone again."
+alliance-h05:
+  model_response: "Something made it feel too risky to say just then."
+  why: "It reflects the pulling back itself, without pushing for the content and without agreeing that it does not matter."
+  avoid: "'Are you sure? You can tell me anything.' It adds pressure. 'Okay' is no better, because it agrees that it does not matter."
+alliance-h06:
+  model_response: "Three sessions is real time and real money. It makes sense to want to see something for it."
+  why: "It finds what is reasonable, cost set against results, and says only that."
+  avoid: "'Change takes time.' It is true, it is a defence, and it suggests the client is being impatient."
+alliance-h07:
+  model_response: "You're right, I haven't lived it. It makes sense to doubt that someone outside it could really get it."
+  why: "It concedes what is true and validates the doubt, without claiming to understand and without giving up."
+  avoid: "'I've worked with many people in your situation.' You would be showing your credentials when the client needed to be heard."
+alliance-h08:
+  model_response: "A whole week of being angry with me. I'm glad you're telling me, and it makes sense that it stayed with you if it landed badly."
+  why: "It welcomes the anger and validates it before you know what you said. The content can come next."
+  avoid: "'What did I say?' in a worried voice. The client then has to manage your alarm."
+alliance-h09:
+  model_response: "You came for help and found you'd been given someone still in training. Of course you want to know whether you're getting less."
+  why: "It names the reasonable worry underneath, being short-changed, without defending the service or yourself."
+  avoid: "'I'm closely supervised.' That is useful information for later. Said first, it is a defence."
+alliance-h10:
+  model_response: "Coming here stirs things up, and then you go home alone with them. That's a hard way to end each week, and it makes sense that you're questioning it."
+  why: "It validates the experience and the questioning, and it makes no promise that the client will feel better."
+  avoid: "'It often gets worse before it gets better.' It is a slogan, and it asks the client to bear the cost on trust."
