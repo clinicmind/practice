@@ -1,0 +1,103 @@
+sessions:
+  - id: formulation-s6
+    title: "Session 6: drawing the loop"
+    turns:
+      - id: formulation-s6-t01
+        speaker: client
+        text: "I brought the record. (hands over a neat, colour-coded page) Sorry. I know you said rough. I couldn't leave it messy. It's probably too much."
+      - id: formulation-s6-d1
+        type: choice
+        prompt: "M has made a careful record and apologised for it. How do you receive it?"
+        options:
+          - id: a
+            text: "This is excellent. You've done a really thorough job."
+            fit: weak
+            note: "You have given her a mark. M works hard for marks, and a week from now the record will be about earning another one."
+          - id: b
+            text: "Thank you. I can see the care in it. Before we look at it together, what stood out to you while you were keeping it?"
+            fit: strong
+            note: "It receives the work warmly without grading it, and moves at once to what M observed. The record is a tool for her understanding. It was not made for your approval."
+          - id: c
+            text: "I did say rough was fine. Was it hard to leave it rough?"
+            fit: workable
+            note: "It is a real question about a real pattern. Asked first, before any interest in what she found, it turns the task into evidence of a fault."
+        actual: "Thank you. I can see the care in it. Before we look at it together, what stood out to you while you were keeping it?"
+        rationale: "How you receive between-session work teaches the client what the work is for. Note the perfectionism and the apology for later. They belong in the formulation, and they will fit better there than as the first comment of the hour."
+      - id: formulation-s6-t02
+        speaker: client
+        text: "The evenings are the worst, which I knew. But it's worse after the days when I've been 'on' at work. Smiling, sorting out everyone's problems. Those nights I can't even draw the curtains. And there was one evening that was fine. My friend K rang out of nowhere and we talked for an hour. I felt almost normal."
+      - id: formulation-s6-t03
+        speaker: therapist
+        text: "So the more you hold yourself together for other people in the day, the less there is of you at night. And one evening when someone reached you, it lifted."
+      - id: formulation-s6-t04
+        speaker: client
+        text: "Yes. But I'd never have rung her. I never ring anyone when I'm like that."
+      - id: formulation-s6-d2
+        type: free
+        prompt: "Offer a tentative interpretation that links what M learned at fourteen with what she does now. Use only things she has told you. Make it easy for her to disagree."
+        actual: "I have an idea, and tell me if it doesn't fit. At fourteen, the one time you showed how bad things were, it came back as your fault. So going quiet may have been the safest thing you could do. I wonder whether it has stayed with you as a kind of rule: when I'm struggling, I keep it to myself."
+        rationale: "An interpretation adds a link the client has not made. This one is built entirely from M's own material. It is announced as an idea and opens with an invitation to reject it. It describes going quiet as something that made sense, which is accurate, and which matters for a client who hears most things as criticism."
+      - id: formulation-s6-t05
+        speaker: client
+        text: "(long pause) Yes. It isn't even a decision. It's just what I do."
+      - id: formulation-s6-t06
+        speaker: therapist
+        text: "Can we draw it? I'd like us both to be able to see it. Something hurts. Then what goes through your mind?"
+      - id: formulation-s6-t07
+        speaker: client
+        text: "That nobody wants to hear it. That it'll be too much for them. So I act fine. I'm helpful. And then... nobody knows. And then I'm by myself with it and it gets heavier. And then I think, well, of course. Nobody stays."
+      - id: formulation-s6-t08
+        speaker: therapist
+        text: "(drawing) Hurt. 'It will be too much for them.' Act fine, be helpful. Nobody knows. Alone with it, heavier. 'Nobody stays.' And that last one leads back to the top, doesn't it. The next time something hurts, you're even more sure that it would be too much."
+      - id: formulation-s6-t09
+        speaker: client
+        text: "(looking at the page) So it's been the same thing the whole time. (pause, voice smaller) So it is my fault, then. That they leave. He said he never knew what I was thinking."
+      - id: formulation-s6-d3
+        type: choice
+        prompt: "The formulation has turned into self-blame within a minute. What do you say?"
+        options:
+          - id: a
+            text: "No, of course it's not your fault."
+            fit: weak
+            note: "It is quick and kind, and M will not believe it. Reassurance asks her to take your word against her own conviction. It also ends a moment that is showing you the pattern at work."
+          - id: b
+            text: "Notice what just happened. We drew something that explains how you came to do this, and within a minute it became a case against you. That's the fourteen-year-old's lesson again: when something goes wrong, look at what you did. I see it differently. Going quiet protected you then. It costs you now. Neither of those is the same as fault."
+            fit: strong
+            note: "It uses the formulation to answer the self-blame. It points to the pattern happening in the room, gives your own view plainly, and offers a distinction she can keep: protected then, costs now."
+          - id: c
+            text: "What makes you say it's your fault?"
+            fit: workable
+            note: "Exploring is reasonable, and she can answer the question. But she will answer by building the case against herself in more detail, and you will be listening to it with her."
+        actual: "Notice what just happened. We drew something that explains how you came to do this, and within a minute it became a case against you. That's the fourteen-year-old's lesson again: when something goes wrong, look at what you did. I see it differently. Going quiet protected you then. It costs you now. Neither of those is the same as fault."
+        rationale: "Expect this turn with any client who is self-critical. A formulation explains a behaviour, and a self-critical client hears an explanation as an accusation. An explanation also covers the reasons for the behaviour. Say so, and say that responsibility for changing a pattern is different from blame for having it."
+      - id: formulation-s6-t10
+        speaker: client
+        text: "(tears) Protected me then. Costs me now. (pause) Okay. (wipes eyes) But K is different. I do tell K things."
+      - id: formulation-s6-d4
+        type: choice
+        prompt: "In session four, M said that she told K about the breakup two months late, and as a joke. Now she says she does tell K things. What do you do?"
+        options:
+          - id: a
+            text: "That's not quite true, though, is it? You told me you waited two months."
+            fit: weak
+            note: "The facts are right and the tone is a cross-examination. M will feel caught, apologise, and learn to be more careful about what she tells you."
+          - id: b
+            text: "You are closer to K than to anyone. And I remember you saying that it took two months to tell her about the breakup, and that it came out as a joke. How do those two fit together for you?"
+            fit: strong
+            note: "It affirms the true part first, states the other part exactly as she told it, joins them with 'and', and asks her to make sense of the two. This is a challenge. It names a mismatch and does not judge."
+          - id: c
+            text: "I'm glad you have K."
+            fit: workable
+            note: "K is a real protective factor and deserves recognition. But you have let pass a difference between what M believes about herself and what she has described, and that difference is useful."
+        actual: "You are closer to K than to anyone. And I remember you saying that it took two months to tell her about the breakup, and that it came out as a joke. How do those two fit together for you?"
+        rationale: "A challenge points to two things the client has said or done that do not fit, and leaves the client to work out the meaning. The aim is not to prove M wrong about K. With her safest person, she still checks first. That tells you both where the first small experiment could be."
+      - id: formulation-s6-t11
+        speaker: client
+        text: "(small laugh) I suppose even with K, I check first. I wait until it's old enough to be funny."
+      - id: formulation-s6-t12
+        speaker: therapist
+        text: "Until it's old enough to be funny. I'd like to add that to the drawing, if that's all right. This page is yours. It will change as we learn more."
+    notes:
+      goals: "Build a shared formulation. Respond to self-blame using the formulation itself. Identify where change might start."
+      alliance: "Strong enough to carry an interpretation and a challenge. M disagreed with the therapist once ('But K is different') without apologising. That is new."
+      formulation_update: "Shared loop, in M's words: something hurts; 'it will be too much for them'; act fine and be helpful; nobody knows; alone with it and heavier; 'nobody stays'; and back to the start with more certainty. Origin: at fourteen, telling her mother came back as her fault. Protective exception: K, and even with K she waits 'until it's old enough to be funny'. Prediction for the therapy: M will hide bad weeks, and will read any distance from the therapist as proof that she was too much."

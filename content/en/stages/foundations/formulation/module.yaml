@@ -1,0 +1,21 @@
+slug: formulation
+version: 1.0.0
+title: "Case formulation with the client"
+intro: >-
+  A formulation written alone and handed to the client is a report. A
+  formulation built with the client is the start of change, because the client
+  sees how the parts of the problem act on each other. This is also where
+  trainees are most tempted to be clever. In this module you and Client M draw
+  the loop that keeps her low mood going, and you see what to do when
+  understanding turns at once into self-blame. You practise two skills that
+  add something the client has not yet said: interpretation and challenge.
+skills:
+  - interpretation
+  - challenge
+reflection_prompts:
+  - id: formulation-r1
+    text: "When M asked 'So is it my fault?', what did you want to say first? Compare it with what the therapist said. What does reassurance do at that moment, and what does the formulation do?"
+  - id: formulation-r2
+    text: "Think of an interpretation you have offered a client that was correct and did not help. What would you change: the timing, the wording, or whether to say it at all?"
+  - id: formulation-r3
+    text: "A challenge names two things that do not fit. Which do you find harder: naming the mismatch at all, or naming it without sounding as if you have caught the client out?"

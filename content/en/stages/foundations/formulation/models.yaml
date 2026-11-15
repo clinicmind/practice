@@ -1,0 +1,120 @@
+formulation-e01:
+  model_response: "I wonder if those two are connected. Keeping your head down was how you stayed safe around your dad, and perhaps your body does the same when your boss comes near."
+  why: "It joins the two things the client set side by side, tentatively, and describes freezing as something that once worked."
+  avoid: "'You have unresolved issues with authority.' It is jargon, and it is a verdict."
+formulation-e02:
+  model_response: "It sounds as though you learned early that asking for help added to someone's load. I wonder if that's still the rule at work."
+  why: "It turns the family fact into something learned and links it to the present, as a question."
+  avoid: "'You should ask for help more.' The client knows. The reason they do not ask is what needs attention."
+formulation-e03:
+  model_response: "Here's a thought, and tell me if it's off. At nine, something good ended with no warning. Maybe ending things yourself is a way of never being surprised like that again."
+  why: "It offers a reason for the pattern that makes it protective, and invites correction first."
+  avoid: "'You're sabotaging your relationships.' It describes the effect as if it were the purpose."
+formulation-e04:
+  model_response: "Perhaps cleaning is what anger looked like in your house, so it's what yours looks like too."
+  why: "It is one short sentence that links the mother's habit with the client's, and it names the feeling the client had not named."
+  avoid: "A long explanation of how children learn from parents. The client supplied the evidence. The link is all that was missing."
+formulation-e05:
+  model_response: "So for a moment, you weren't an employee with a manager. You were back at school, about to be told off. Does that fit?"
+  why: "The client had nearly made the link. This completes it and checks."
+  avoid: "'That's an irrational reaction.' It made sense when the client was at school. That is the point."
+formulation-e06:
+  model_response: "You really want to get fit, and you haven't been since January. What do you make of that?"
+  why: "Both halves are stated in the client's words, joined with 'and', and handed back."
+  avoid: "'So you don't really want it.' That decides which half is true."
+formulation-e07:
+  model_response: "You're telling me you're not angry, and I notice your hands are clenched. I'm curious what's happening."
+  why: "It sets the words beside the body, as an observation, and asks."
+  avoid: "'You're obviously angry.' The client has just said they are not, and now you are arguing."
+formulation-e08:
+  model_response: "Your family matters most to you, and for months work has had your evenings. How do those sit together for you?"
+  why: "It states the value and the facts without suggesting hypocrisy, and asks about the client's experience of the gap."
+  avoid: "'If they were really your priority, you'd be home.' That is a judgement, not a challenge."
+formulation-e09:
+  model_response: "You don't care what people think, and choosing the outfit took three hours. Help me understand how those go together."
+  why: "It is light, accurate and curious, and the client is asked to explain."
+  avoid: "A raised eyebrow and 'Really?' Sarcasm makes the client defend the first statement."
+formulation-e10:
+  model_response: "You feel you're over him, and you look at his profile most days. What do you think the looking is for?"
+  why: "It accepts the feeling as the client's, names the behaviour, and asks about its purpose."
+  avoid: "'That doesn't sound like being over him.' It is the obvious point, and it leaves the client nothing to discover."
+formulation-m01:
+  model_response: "I wonder if looking after everyone is also how you make sure there's a place for you. If you stopped, part of you may not be certain you'd still be wanted."
+  why: "It goes one step past the tiredness, to what the caring secures, and frames it as a way of belonging."
+  avoid: "'You need to set boundaries.' That is advice, and it treats the pattern as a simple mistake."
+formulation-m02:
+  model_response: "You said you don't know why twelve would matter, and then you told me what happened when you were twelve. I wonder if watching her at that age brings back how it was to be that age yourself."
+  why: "It uses the client's own two sentences and offers the link as a possibility."
+  avoid: "'Clearly this is about your mother's illness.' The word 'clearly' leaves the client no room."
+formulation-m03:
+  model_response: "Never late for anything else, only here. I wonder if a part of you is in two minds about coming. That would make sense. We talk about hard things."
+  why: "It takes the client's own puzzle seriously, offers ambivalence as understandable, and does not scold."
+  avoid: "'Lateness is a form of resistance.' It is a textbook line, and it puts the client in the wrong."
+formulation-m04:
+  model_response: "Where you grew up, toughness kept you safe and kindness wasn't on offer. Maybe when he's kind, it reaches a part of you that had to be put away, and irritation pushes it back."
+  why: "It links the home the client described with the reaction they cannot explain, and treats the irritation as protection."
+  avoid: "'You don't feel you deserve kindness.' It may be true, and it is a larger claim than the evidence supports yet."
+formulation-m05:
+  model_response: "Three promotions, three illnesses. That may be bad luck. I also wonder whether being moved up brings a kind of pressure that your body registers before you do."
+  why: "It leaves the client's explanation standing and adds one alternative, based on a pattern the client reported."
+  avoid: "'You're afraid of success.' It is a slogan, and nothing the client said supports it."
+formulation-m06:
+  model_response: "You sound very sure about leaving. And the two of you are choosing holiday dates for August. How do those fit together?"
+  why: "It takes the decision seriously first, then names the other fact, without hinting which one will win."
+  avoid: "'So you're not really leaving.' The client may be. People plan holidays in the middle of leaving."
+formulation-m07:
+  model_response: "You've told me it doesn't bother you, and I believe you want that to be true. I've also noticed the house has come up three times today. What do you make of that?"
+  why: "It allows the wish behind the denial and then names the repetition as an observation."
+  avoid: "'It obviously does bother you.' The client will say no a fourth time."
+formulation-m08:
+  model_response: "It means a lot that you trust me. And there are things you'd never tell anyone, which would include me. I'm curious how both are true."
+  why: "It receives the trust, then points to its limit without asking for the secrets."
+  avoid: "'You can tell me anything.' It answers the mismatch with pressure."
+formulation-m09:
+  model_response: "You want to drink less, and I can hear that. And the drink you'd keep is the one that gets you to sleep, which sounds like most nights. Where does that leave the cutting down?"
+  why: "It validates the wish and the sleep problem, then lets the client do the sum."
+  avoid: "'Alcohol actually makes sleep worse.' It may be accurate, and it is a lecture where the client needed a question."
+formulation-m10:
+  model_response: "You feel like a terrible parent right now. And earlier you told me you sat up all night with him when he was ill. How do those two go together?"
+  why: "A challenge can point at a strength. It sets the client's verdict beside the client's own evidence."
+  avoid: "'You're not a terrible parent.' That is reassurance. The client's own story is stronger than your opinion."
+formulation-h01:
+  model_response: "Fair enough. I went somewhere you hadn't asked to go. Let's stay with strategies. Tell me what you've already tried, and what happened."
+  why: "The client refused the idea, so it is not repeated. Following the client's request without sulking is the non-defensive move here."
+  avoid: "'Understanding the cause is a strategy.' It argues, and it repeats the rejected idea in other words."
+formulation-h02:
+  model_response: "It can sound like one. I don't think it's all anything. I'm more interested in something you said today: that you can't relax until everyone else is happy. I wonder where a person learns that."
+  why: "It concedes the cliché, drops the general claim, and offers a narrower idea built on the client's own words from the session."
+  avoid: "Defending the role of childhood in general. You would win the argument and lose the client."
+formulation-h03:
+  model_response: "I'm glad you're here. I've noticed something, and I may be wrong. The weeks you've missed have each come after a session where you cried. I wonder if coming back after that is hard."
+  why: "It is built on observable facts from the therapy, stated carefully, with a clear way out."
+  avoid: "Accepting 'work thing' for the third time, or saying 'You cancel when it gets emotional.' The first colludes. The second accuses."
+formulation-h04:
+  model_response: "My silence just then felt like his. I can see how it would. I wonder if, when someone goes quiet, you're left the way you were with him, not knowing what they think of you."
+  why: "It accepts the comparison without protest and uses the moment to offer a link between then and now."
+  avoid: "'I was giving you space.' It is true, and it is a defence."
+formulation-h05:
+  model_response: "You saw it coming and it annoyed you. I wonder if being asked about feelings has usually gone badly for you, so it makes sense to head it off."
+  why: "It starts from what just happened between you and offers a tentative reason that respects the eye-roll."
+  avoid: "Reflecting the sadness again. The client has just told you what they think of that."
+formulation-h06:
+  model_response: "It feels like a waste of time. And you've been here every week for eight weeks, on time. I'm curious what brings you back."
+  why: "It takes the complaint at face value, names the attendance without triumph, and asks a real question."
+  avoid: "'If it were a waste of time, you wouldn't keep coming.' It is the same facts, used to win."
+formulation-h07:
+  model_response: "You've said you're fine with it, and I take you at your word. I've also noticed it has come up four times today. I wonder if there's more to say about my being away."
+  why: "It does not call the client a liar. It names the repetition and opens the subject."
+  avoid: "'You're clearly not fine.' Also avoid dropping it with relief."
+formulation-h08:
+  model_response: "It feels as though I give you nothing to work with. And I remember offering two ideas last week that didn't seem right to you. Help me understand what kind of advice would feel useful."
+  why: "It accepts the feeling, states the fact without point-scoring, and asks the client to describe what they want."
+  avoid: "'That's not true, I gave you two suggestions last week.' It is correct, and it is a rebuttal."
+formulation-h09:
+  model_response: "I can hear that you mean it. And this is the third week you've made that promise. I don't think the answer is to promise harder. What gets in the way once you're home?"
+  why: "It believes the intention, names the pattern plainly, and moves from the promise to the obstacle."
+  avoid: "'That's what you said last time.' It shames. 'Great, see you next week' is no better, because it colludes."
+formulation-h10:
+  model_response: "It's just a job to me, you're saying. And a moment ago, when I remembered what you'd told me in the spring, something moved in you. I wonder what happens when it starts to feel as if I might care."
+  why: "It does not protest that you care. It sets the client's claim beside what the client just showed, and asks about the moment."
+  avoid: "'Of course I care about you.' The client's whole point is that such words cost nothing."
