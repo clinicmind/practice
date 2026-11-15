@@ -1,0 +1,203 @@
+- id: intervention-e01
+  level: easy
+  skill: information-giving
+  context: "The client's doctor has examined them and found their heart healthy."
+  client: "When I panic, my heart goes so fast that I think I'm having a heart attack."
+  criteria: &ig_easy
+    - "It asks permission first, or first finds out what the client already knows."
+    - "It gives one to three plain sentences of accurate information, tied to the client's own example."
+    - "It ends by asking how that fits with the client's experience."
+- id: intervention-e02
+  level: easy
+  skill: information-giving
+  context: "Seventh session."
+  client: "Is it normal to feel worse for a day or two after a session?"
+  criteria: *ig_easy
+- id: intervention-e03
+  level: easy
+  skill: information-giving
+  context: "The client has felt low for months and has stopped most activities."
+  client: "Why am I so tired all the time when I'm not even doing anything?"
+  criteria: *ig_easy
+- id: intervention-e04
+  level: easy
+  skill: information-giving
+  context: "Seventh session."
+  client: "I keep going over the argument in my head, again and again. Is that what people mean by rumination?"
+  criteria: *ig_easy
+- id: intervention-e05
+  level: easy
+  skill: information-giving
+  context: "Seventh session."
+  client: "You said 'automatic thought' last week. What actually is that?"
+  criteria: *ig_easy
+
+- id: intervention-e06
+  level: easy
+  skill: process-direction
+  context: "The client has just described a difficult moment."
+  client: "It was just a horrible feeling. I can't describe it."
+  criteria: &pd_easy
+    - "It tells the client clearly one thing to do now, in the session."
+    - "It asks for the client's willingness or gives a brief reason."
+    - "It is unhurried, and the client could say no."
+- id: intervention-e07
+  level: easy
+  skill: process-direction
+  context: "Start of a session."
+  client: "I had a row with my mum on Sunday, a row with my boss on Monday, and then on Tuesday the car broke down."
+  criteria: *pd_easy
+- id: intervention-e08
+  level: easy
+  skill: process-direction
+  context: "The client has spoken quickly for ten minutes without a pause."
+  client: "...and anyway, that's everything that happened this week."
+  criteria: *pd_easy
+- id: intervention-e09
+  level: easy
+  skill: process-direction
+  context: "The client has brought a page of written thoughts, as agreed."
+  client: "I wrote down my thoughts like you said. Do you want me to just read them all out?"
+  criteria: *pd_easy
+- id: intervention-e10
+  level: easy
+  skill: process-direction
+  context: "Seventh session."
+  client: "I've been thinking about what I'd say to my dad if I ever got the chance."
+  criteria: *pd_easy
+
+- id: intervention-m01
+  level: medium
+  skill: information-giving
+  context: "Seventh session."
+  client: "If I let myself feel sad, I'll start crying and never stop."
+  criteria: &ig_medium
+    - "It takes the client's belief seriously and does not make them feel foolish for holding it."
+    - "It gives accurate information in plain words and is honest about what is uncertain or varies between people."
+    - "It ends by asking what the client makes of it. It does not insist."
+- id: intervention-m02
+  level: medium
+  skill: information-giving
+  context: "Seventh session."
+  client: "Avoiding things is what keeps me safe. Why on earth would I stop?"
+  criteria: *ig_medium
+- id: intervention-m03
+  level: medium
+  skill: information-giving
+  context: "Seventh session."
+  client: "I don't think my thoughts are 'just thoughts'. I think them because they're true."
+  criteria: *ig_medium
+- id: intervention-m04
+  level: medium
+  skill: information-giving
+  context: "Seventh session."
+  client: "I read that depression is just a chemical imbalance. So I don't see how talking could change anything."
+  criteria: *ig_medium
+- id: intervention-m05
+  level: medium
+  skill: information-giving
+  context: "Seventh session."
+  client: "It's been six months since she died. I should be over it by now."
+  criteria: *ig_medium
+
+- id: intervention-m06
+  level: medium
+  skill: process-direction
+  context: "The client is explaining their difficulties in theoretical terms."
+  client: "I think it's probably an attachment thing. I read a book about it. Anxious-avoidant, something like that."
+  criteria: &pd_medium
+    - "It acknowledges what the client is doing or saying, without criticism."
+    - "It redirects, gently and clearly, to what the client is experiencing right now or to one specific moment."
+    - "It asks. It does not insist, and it stays unhurried."
+- id: intervention-m07
+  level: medium
+  skill: process-direction
+  context: "The client's eyes filled, and then they changed the subject."
+  client: "Anyway, it's fine. Did I tell you we're going away at the weekend?"
+  criteria: *pd_medium
+- id: intervention-m08
+  level: medium
+  skill: process-direction
+  context: "The client has talked about a colleague's behaviour for most of the session."
+  client: "...and then she had the nerve to copy in the whole team. Can you believe that? She does it to everyone."
+  criteria: *pd_medium
+- id: intervention-m09
+  level: medium
+  skill: process-direction
+  context: "The client's voice has just broken."
+  client: "(laughing) God, look at me. Getting emotional about a cat."
+  criteria: *pd_medium
+- id: intervention-m10
+  level: medium
+  skill: process-direction
+  context: "The client is describing a painful period in a flat, quick voice."
+  client: "And then he left, and then we moved, and Mum got ill, and that was that, really."
+  criteria: *pd_medium
+
+- id: intervention-h01
+  level: hard
+  skill: information-giving
+  context: "You are a trainee. You are not in a position to give a diagnosis."
+  client: "Just tell me what's wrong with me. What's my diagnosis?"
+  criteria: &ig_hard
+    - "It stays inside what you know and what your role allows. It gives no diagnosis, no advice about medication, and no guarantee."
+    - "It gives the client something true and useful all the same. It does not only refuse."
+    - "It is not defensive, and it says where the client can get what you cannot give."
+- id: intervention-h02
+  level: hard
+  skill: information-giving
+  context: "You do not prescribe."
+  client: "Should I come off my tablets? They're not doing anything."
+  criteria: *ig_hard
+- id: intervention-h03
+  level: hard
+  skill: information-giving
+  context: "Near the end of therapy."
+  client: "Can you guarantee this won't come back?"
+  criteria: *ig_hard
+- id: intervention-h04
+  level: hard
+  skill: information-giving
+  context: "The client's doctor has found them physically well. You have explained the body's alarm response."
+  client: "That's not what I read online. It said a panic attack can kill you."
+  criteria: *ig_hard
+- id: intervention-h05
+  level: hard
+  skill: information-giving
+  context: "You have just explained how avoidance keeps fear going."
+  client: "You're a trainee. How would you even know?"
+  criteria: *ig_hard
+
+- id: intervention-h06
+  level: hard
+  skill: process-direction
+  context: "You have invited the client to say aloud what they would say to their manager."
+  client: "I'm not doing a role-play. That's ridiculous."
+  criteria: &pd_hard
+    - "It respects a refusal. It does not push, plead or persuade."
+    - "It does not drop the purpose. It names what is happening, or offers a smaller step toward the same aim."
+    - "It is calm and brief, with no defence of the method."
+- id: intervention-h07
+  level: hard
+  skill: process-direction
+  context: "Each time you slow the session down, the client makes a joke."
+  client: "Careful. You'll make me cry, and then you'll have to do paperwork."
+  criteria: *pd_hard
+- id: intervention-h08
+  level: hard
+  skill: process-direction
+  context: "Last week's session was emotional."
+  client: "Can we not do the feelings thing today? I just want to sort out the practical stuff."
+  criteria: *pd_hard
+- id: intervention-h09
+  level: hard
+  skill: process-direction
+  context: "You have asked twice what the client notices in their body."
+  client: "Stop asking me that. I don't feel anything in my body."
+  criteria: *pd_hard
+- id: intervention-h10
+  level: hard
+  skill: process-direction
+  context: "The client has told a long story for twenty minutes. You have tried twice to pause it."
+  client: "Why do you keep interrupting? Let me finish."
+  criteria: *pd_hard

@@ -1,0 +1,112 @@
+sessions:
+  - id: intervention-s9
+    title: "Session 9: the week the task didn't happen"
+    turns:
+      - id: intervention-s9-t01
+        speaker: therapist
+        text: "Last week you told me how the first text went. You wrote 'today was rubbish', and K answered in four minutes and asked you to ring her. Your prediction had been hours, a short reply, and K annoyed. This week the plan was to tell her one thing that was a bit bigger. How did it go?"
+      - id: intervention-s9-t02
+        speaker: client
+        text: "I didn't do it. I'm sorry. I know we agreed. I had it planned for Wednesday, and I just didn't. I'm really sorry. I've wasted your time. You gave me one thing to do."
+      - id: intervention-s9-d1
+        type: choice
+        prompt: "M has not done the task and is apologising repeatedly. What do you say?"
+        options:
+          - id: a
+            text: "That's okay. Don't worry about it."
+            fit: weak
+            note: "It is meant kindly, and it closes the subject. M learns that the task was not important, or that you are hiding your disappointment. The most useful material of the week goes unexamined."
+          - id: b
+            text: "I'm not disappointed. I'm interested. Something got in the way on Wednesday, and that is exactly what we need to understand. Can we go through that evening slowly?"
+            fit: strong
+            note: "It answers the fear behind the apologies in two short sentences, and then directs the session to one specific evening. A task that did not happen is information about the loop."
+          - id: c
+            text: "Let's set it again for this week, then."
+            fit: workable
+            note: "It keeps the plan alive. But you have not learned why it failed, so it will probably fail again in the same way, and M will have two failures to apologise for."
+        actual: "I'm not disappointed. I'm interested. Something got in the way on Wednesday, and that is exactly what we need to understand. Can we go through that evening slowly?"
+        rationale: "Directing the process means choosing what the session attends to and at what pace. Here you choose one evening and a slow pace. You also say plainly what you feel, because M is watching for it and will otherwise assume the worst."
+      - id: intervention-s9-t03
+        speaker: client
+        text: "(breath) Okay. Wednesday. I'd had a bad day. I was on the sofa with my phone in my hand, and I'd typed, 'I miss him and I hate that I miss him.' And then I thought, she was so nice last time. She's got her own problems. If I keep doing this, I'll use her up. So I deleted it and put the phone down."
+      - id: intervention-s9-t04
+        speaker: therapist
+        text: "And when you put the phone down?"
+      - id: intervention-s9-t05
+        speaker: client
+        text: "Relief. For about a minute. Then I felt worse than before. I watched something and went to bed."
+      - id: intervention-s9-d2
+        type: free
+        prompt: "Give M a short piece of information about avoidance and relief. Ask first. Tie it to what happened on Wednesday. End by asking whether it fits."
+        actual: "Can I tell you something about how this tends to work? When we step back from something we fear, there's relief straight away, and the relief is real. The cost is that the fear never gets tested, so the next time it is just as strong. On Wednesday you put the phone down and felt better for a minute, and the thought 'I'll use her up' is still exactly where it was. Does that match what it was like?"
+        rationale: "Information is useful when it is asked for or agreed to, when it is short, and when it is tied at once to the client's own example. Then you check. If you skip the check, you have given a lecture. Note the wording 'tends to work'. This is a common pattern. It is not a law."
+      - id: intervention-s9-t06
+        speaker: client
+        text: "Yes. Relief, then worse. Like I'd proved it. That she couldn't have coped."
+      - id: intervention-s9-t07
+        speaker: therapist
+        text: "Like you'd proved it. And K never got the chance to show you either way. I'd like to try something here, if you're willing. The message you deleted. Could you say it now, to me, as if I were K?"
+      - id: intervention-s9-t08
+        speaker: client
+        text: "Now? Here?"
+      - id: intervention-s9-d3
+        type: choice
+        prompt: "M hesitates at your invitation to say the deleted message aloud. How do you direct this moment?"
+        options:
+          - id: a
+            text: "Just have a go. It's only practice, it doesn't count."
+            fit: weak
+            note: "If it does not count, there is no reason to do it. M's hesitation shows that it counts a great deal. Playing it down tells her that you have not noticed how much you are asking."
+          - id: b
+            text: "Now, if you're willing. Take a moment first. Use the words you typed. I'll listen, and afterwards we'll look at what it was like. And you can say no."
+            fit: strong
+            note: "It is a clear direction with each step named: when, how, what you will do, and what comes after. The permission to refuse is real, and that makes agreeing to it meaningful."
+          - id: c
+            text: "Or we could talk about what you might have said, if that's easier."
+            fit: workable
+            note: "It is safer, and with some clients, on some days, it is the right step. But talking about saying something is different from saying it, and M has just explained what backing away costs her."
+        actual: "Now, if you're willing. Take a moment first. Use the words you typed. I'll listen, and afterwards we'll look at what it was like. And you can say no."
+        rationale: "When you ask a client to do something in the session, be specific and unhurried, and make refusal possible. If your own unease makes you vague, the direction turns into pressure, and the client is left to guess what you want."
+      - id: intervention-s9-t09
+        speaker: client
+        text: "(long pause, looking at her hands) 'I had a bad week. I miss him, and I hate that I miss him. I didn't want to tell you because you were so nice last time.' (crying)"
+      - id: intervention-s9-t10
+        speaker: therapist
+        text: "(after a moment) You said it. What is it like, having said it?"
+      - id: intervention-s9-t11
+        speaker: client
+        text: "Terrifying. And then... lighter. (looks up) You're still here."
+      - id: intervention-s9-t12
+        speaker: therapist
+        text: "I'm still here. It wasn't too much."
+      - id: intervention-s9-t13
+        speaker: client
+        text: "(wipes eyes, half laughs) Sorry. I've used the whole session on something I was supposed to have done at home."
+      - id: intervention-s9-d4
+        type: choice
+        prompt: "M apologises for having used the session this way. What do you say?"
+        options:
+          - id: a
+            text: "You don't need to apologise."
+            fit: workable
+            note: "It is true and gentle. It answers the apology and misses the chance to say what actually happened in the hour."
+          - id: b
+            text: "I'd put it differently. Today you told someone a true thing while it was still true, which is the task. You did it here before doing it at home. And I notice that the apology came straight after."
+            fit: strong
+            note: "It reframes the session accurately, links it to her goal, and names the apology without scolding. She leaves knowing what she did."
+          - id: c
+            text: "How many apologies is that today? We were going to count."
+            fit: weak
+            note: "The count was agreed, and with some clients the lightness would be welcome. Straight after tears and a real risk, it can feel as though she is being caught out."
+        actual: "I'd put it differently. Today you told someone a true thing while it was still true, which is the task. You did it here before doing it at home. And I notice that the apology came straight after."
+        rationale: "Close an intervention by naming what the client did, in terms of her own goals. Clients who are hard on themselves often cannot see their own step unless someone describes it."
+      - id: intervention-s9-t14
+        speaker: client
+        text: "(quiet) I might send it tonight. The same words."
+      - id: intervention-s9-t15
+        speaker: therapist
+        text: "That's yours to decide. If you do, write down what you predict first."
+    notes:
+      goals: "Understand why the task did not happen. Give information about avoidance and relief. Do the task in session. Leave the next step with M."
+      alliance: "Tested and held. M expected disappointment and met interest. She took a risk in the room and noticed 'You're still here.' The plan was not dropped and was not forced."
+      formulation_update: "A new belief, in M's words: 'If I keep doing this, I'll use her up.' Kindness received is treated as a debt, so K's warm reply made the second message harder. Avoidance on Wednesday: relief for a minute, then worse, 'like I'd proved it'. First disconfirmation inside the therapy: she said it, and the therapist was still there."
