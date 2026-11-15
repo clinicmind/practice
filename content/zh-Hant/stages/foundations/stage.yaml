@@ -1,0 +1,11 @@
+stage: foundations
+title: 基礎
+modules:
+  - intake
+  - alliance
+  - assessment
+  - formulation
+  - planning
+  - intervention
+  - rupture
+  - termination
