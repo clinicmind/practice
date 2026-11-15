@@ -1,0 +1,100 @@
+sessions:
+  - id: planning-s7
+    title: "Session 7: from the loop to a plan"
+    turns:
+      - id: planning-s7-t01
+        speaker: therapist
+        text: "Last week we drew the loop. I've brought it. Today I'd like us to work out what you want to be different, and where to begin. In session two you said you'd like to stop feeling that you have to be fine all the time. Is that still it?"
+      - id: planning-s7-t02
+        speaker: client
+        text: "Yes. But it's a bit vague, isn't it. I don't know how you'd measure it."
+      - id: planning-s7-d1
+        type: choice
+        prompt: "M's goal is real and vague. How do you help make it concrete?"
+        options:
+          - id: a
+            text: "I think your first goal should be to tell K how you really are."
+            fit: weak
+            note: "It is a good goal and it follows from the loop. It is also yours. M will accept it at once, and you will not know whether she has agreed or obeyed."
+          - id: b
+            text: "If you were a little closer to not having to be fine all the time, what would I see you doing that you don't do now?"
+            fit: strong
+            note: "It keeps her goal, in her words, and asks her to picture it as behaviour. 'A little closer' keeps the answer small. Whatever she says will be something that can be noticed."
+          - id: c
+            text: "Let's make it specific, measurable and time-limited. What number would you give it now, out of ten?"
+            fit: workable
+            note: "Structure helps, and a rating can be useful later. Opening with the method puts the method in charge of the conversation. A number out of ten for 'having to be fine' also tells neither of you what to do next."
+        actual: "If you were a little closer to not having to be fine all the time, what would I see you doing that you don't do now?"
+        rationale: "A concrete goal describes something the client would be doing. Ask for the picture, and let the client draw it. The goal that results is hers, and it can be checked."
+      - id: planning-s7-t03
+        speaker: client
+        text: "(thinking) I'd tell K something while it was still happening. Not two months later. And I'd be drawing again. And maybe I wouldn't apologise so much. I counted on the way here. I'd said sorry to four people before nine o'clock."
+      - id: planning-s7-t04
+        speaker: therapist
+        text: "Three things, then. Telling K while it's still happening. Drawing again. Apologising less. Where would you start?"
+      - id: planning-s7-t05
+        speaker: client
+        text: "The drawing, probably. That's the easiest. (pause) Which is probably why I'm choosing it. Where would you start?"
+      - id: planning-s7-d2
+        type: free
+        prompt: "M has asked where you would start. You would start with telling K. Give your reason. Link it to a step in her loop, and leave the choice with her."
+        actual: "I'll tell you what I think, and then it's your decision. In your loop, the step that keeps the rest going is 'nobody knows'. Telling K one small true thing, while it's still happening, breaks the loop at that step. And K is the safest person to try it with. The drawing matters too, and it could run alongside. Does that make sense to you, or would you put them in a different order?"
+        rationale: "A rationale says why this, why now, in terms of the client's own formulation. It is what makes a task something the client chooses. Because M asked for your view, giving it is honest. Giving it with the reason and handing the decision back keeps the plan shared."
+      - id: planning-s7-t06
+        speaker: client
+        text: "It makes sense. (pause) It also makes me feel a bit sick."
+      - id: planning-s7-d3
+        type: choice
+        prompt: "M agrees with the reasoning and feels sick at the thought. What do you say?"
+        options:
+          - id: a
+            text: "You'll be fine. K is your friend, she'll want to know."
+            fit: weak
+            note: "You are predicting K's reaction, which you cannot know, and telling M that her fear is unnecessary. If it goes badly, you were wrong. If she cannot do it, she has failed at something you said would be fine."
+          - id: b
+            text: "That tells me the step is the right kind, and maybe the wrong size. How could we make it small enough to be uncomfortable but possible?"
+            fit: strong
+            note: "It treats the sick feeling as information about the size of the step and invites M to resize it. She stays in charge of the difficulty."
+          - id: c
+            text: "We could start with the drawing instead, if that feels easier."
+            fit: workable
+            note: "It respects her limit, and starting where the client can start is sound. But she has just told you she chose drawing because it avoids the hard part. If you offer it back, you join the avoidance."
+        actual: "That tells me the step is the right kind, and maybe the wrong size. How could we make it small enough to be uncomfortable but possible?"
+        rationale: "When a client is anxious about a task, there is a third option besides reassuring and retreating: make the task smaller. A step that produces no discomfort probably does not touch the loop, and a step that produces dread will not happen. Let the client set the size."
+      - id: planning-s7-t07
+        speaker: client
+        text: "A text. Not a call. Something like, 'Today was rubbish.' Not the whole story. Just one true thing on the day it's true."
+      - id: planning-s7-t08
+        speaker: therapist
+        text: "One true thing, on the day it's true. By text. That's clear, and it's yours."
+      - id: planning-s7-t09
+        speaker: client
+        text: "And if she doesn't reply?"
+      - id: planning-s7-d4
+        type: choice
+        prompt: "M asks what happens if K does not reply. How do you respond?"
+        options:
+          - id: a
+            text: "I'm sure she will."
+            fit: weak
+            note: "You are not sure, and neither is M. The question is the loop speaking: 'it will be too much for her.' Reassurance answers the question and leaves the belief untested."
+          - id: b
+            text: "That's the thought from your loop: 'it will be too much for her.' Let's write down what you predict will happen. Next week we'll look at what did. Whatever happens, we'll have learned something."
+            fit: strong
+            note: "It links the worry to the formulation and turns the task into an experiment with a written prediction. No outcome counts as failure, which matters a great deal for M."
+          - id: c
+            text: "What would it mean to you if she didn't?"
+            fit: workable
+            note: "The meaning matters and is worth knowing. Explored at length before she has tried anything, it can become ten minutes of rehearsing the worst case."
+        actual: "That's the thought from your loop: 'it will be too much for her.' Let's write down what you predict will happen. Next week we'll look at what did. Whatever happens, we'll have learned something."
+        rationale: "A plan should include how you will both know what happened. A prediction written before the task, and compared afterwards, turns a frightening step into a way of finding out."
+      - id: planning-s7-t10
+        speaker: client
+        text: "(writes) 'She won't reply for hours, and when she does it'll be short, and I'll know I've annoyed her.' (looks up) It looks a bit harsh, written down."
+      - id: planning-s7-t11
+        speaker: therapist
+        text: "It does. We'll see what the week says."
+    notes:
+      goals: "Three goals, in M's words. One: text K one true thing on the day it is true. Two: draw for twenty minutes twice this week. Three: count apologies, without trying to stop them yet. The first acts on 'nobody knows'. The second restores something that was hers. The third makes the 'act fine' step visible."
+      alliance: "Goals and tasks are now agreed, with reasons M can repeat. She caught her own avoidance aloud ('which is probably why I'm choosing it') and asked for the therapist's view without handing over the decision."
+      formulation_update: "M's written prediction gives the belief in testable form: 'She won't reply for hours, it'll be short, and I'll know I've annoyed her.' Apologies: four before nine in the morning, by her own count."

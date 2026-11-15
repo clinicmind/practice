@@ -1,0 +1,120 @@
+planning-e01:
+  model_response: "Less anxious. If the anxiety were a bit lower, what would you be doing that you're not doing now?"
+  why: "It keeps the client's words and asks for the goal as behaviour."
+  avoid: "'Let's aim to reduce your anxiety score by half.' It is measurable, and it is not the client's own."
+planning-e02:
+  model_response: "More confident at work. In which situation would you most like to notice it first?"
+  why: "It narrows a broad goal to one situation, and the client chooses which."
+  avoid: "'So we'll work on assertiveness.' That names a method before there is a goal."
+planning-e03:
+  model_response: "Better with your daughter. What would 'better' look like on an ordinary evening?"
+  why: "It asks for a picture of the goal at a scale the client can describe."
+  avoid: "'Have you tried spending more time together?' That is a solution to a goal nobody has defined yet."
+planning-e04:
+  model_response: "Sleep is the main thing. What would a good-enough night look like for you?"
+  why: "It confirms the priority and asks the client to define success, with 'good enough' keeping it realistic."
+  avoid: "Going straight to a sleep routine. You do not yet know what the client is aiming for."
+planning-e05:
+  model_response: "You want the anger to stop running things. When it's a bit less, what will be different in your day?"
+  why: "It restates the wish and asks what change would be visible."
+  avoid: "'Anger is a normal emotion.' It is true, and it corrects a goal the client has only just voiced."
+planning-e06:
+  model_response: "You told me you're not sure how much you sleep. A few notes each morning give us the real picture, where memory alone would be a guess, and then we know what to work on. Would you try it for a week?"
+  why: "It uses the client's own uncertainty as the reason, in plain words, and asks."
+  avoid: "'It's a standard part of the treatment.' That names a procedure and gives no reason."
+planning-e07:
+  model_response: "You said things slip when you're left alone with them. Meeting weekly keeps a thread going, so we build on last week and don't start again each time. We can review it after a month. How does that sound?"
+  why: "It ties the frequency to something the client said and offers a review."
+  avoid: "'That's how therapy works.' It answers the question by closing it."
+planning-e08:
+  model_response: "It's a fair thought. The trouble is that the calm tends not to come while the bus is being avoided, because avoiding keeps telling your body that the bus is dangerous. One stop gives your body a chance to learn otherwise. Would you be willing to try one?"
+  why: "It respects the logic, explains the mechanism in one sentence, and keeps the step small and optional."
+  avoid: "'You have to face your fears.' It is a slogan, and it tells the client nothing about why."
+planning-e09:
+  model_response: "Maybe nothing. I ask because you mentioned that your father criticised every school report, and presentations are also a moment of being judged. If there's a link, it could tell us what the panic is expecting. What do you think?"
+  why: "It concedes that the link is uncertain, uses the client's own detail, and asks."
+  avoid: "'Our early experiences shape who we are.' It is general, and it would be true of anyone."
+planning-e10:
+  model_response: "You're right that a coffee won't fix it. Here's the idea. Since you've felt low, you've stopped seeing people, and having less contact tends to keep mood low. One coffee is a small test of whether a bit more contact shifts anything. Shall we find out?"
+  why: "It agrees with the fair part, explains the link with the client's own withdrawal, and frames the task as a test."
+  avoid: "'Trust me, it helps.' It asks for faith where a reason was wanted."
+planning-m01:
+  model_response: "Of course you want that. Living beside his drinking sounds hard. While he's still drinking, what would you want to be different for you?"
+  why: "It honours the wish and then asks about the client's own life, without a speech about control."
+  avoid: "'We can't change other people, only ourselves.' The client will hear that their goal has been ruled out."
+planning-m02:
+  model_response: "Normal. If you woke up tomorrow feeling normal, what's the first thing you'd notice?"
+  why: "It accepts the client's word and asks for its content."
+  avoid: "'What is normal, anyway?' It is a philosophical question, and it dodges what the client means."
+planning-m03:
+  model_response: "I do have thoughts, and I'll share them. You're the expert on your own life, though. If this went well, what's one thing you'd want to be different?"
+  why: "It does not refuse the client and does not take over. It asks for one thing, which is easier than asking for goals."
+  avoid: "Listing three goals for the client to approve. They will approve them."
+planning-m04:
+  model_response: "I can see why you'd want that, after what it's put you through. I can't offer never. If anxiety still showed up sometimes but no longer ran your life, what would you be free to do?"
+  why: "It validates the wish, is honest about the limit in one sentence, and asks about the life behind the goal."
+  avoid: "A short lecture on why anxiety is useful. It is accurate, and it is badly timed."
+planning-m05:
+  model_response: "That's a goal I can work with. What would need to be different for you to feel you didn't need to come?"
+  why: "It takes the statement as a legitimate goal and asks for the criteria that would end therapy."
+  avoid: "Sounding hurt, or asking 'Why don't you want to be here?' Either one makes the client look after you."
+planning-m06:
+  model_response: "That's worth knowing, and I won't pretend it's a cure. It won't stop a panic. What it can sometimes do is take the edge off the first minute so that you can stay where you are. If it did nothing for you before, we can leave it. Would you try it once here, with me, before you decide?"
+  why: "It accepts the client's experience, states a modest and honest aim, and leaves the choice open."
+  avoid: "'You probably weren't doing it properly.' It blames the client for the method failing."
+planning-m07:
+  model_response: "I can't give you a date, and I'd be making it up if I did. What I can suggest is that we check every four sessions whether anything is shifting, and change course if it isn't. Would that work for you?"
+  why: "It refuses to promise a time and offers a concrete way of keeping track."
+  avoid: "'Most people feel better in six to eight sessions.' It will be heard as a promise about this client."
+planning-m08:
+  model_response: "It does feel worse at the time, and I won't pretend otherwise. The idea is that a memory you keep pushing away stays as raw as the day it happened, and going through it slowly, with someone, can make it less so. It doesn't suit everyone. We'd go at your pace, and you can stop at any point. What do you think?"
+  why: "It concedes the cost, gives the reason plainly, names the limit, and hands over control of the pace."
+  avoid: "'It gets worse before it gets better.' That is a phrase, and it explains nothing."
+planning-m09:
+  model_response: "Advice can be a real help, and I'll give you my view when I have one. I ask questions because you know things about your life that I don't, and a plan built on those tends to fit better. If you'd like more direct suggestions from me, say so. Would you?"
+  why: "It does not put down the friend's therapist, explains the reason for questions, and offers to adjust."
+  avoid: "'Good therapy isn't about advice.' It criticises another therapist and dismisses the client's request."
+planning-m10:
+  model_response: "Put like that, it does sound backwards. The reason is that every time you avoid the lift, the fear gets its proof that the lift was dangerous. Standing in one with the doors open is a small way to gather different evidence. It may be too big a step, and if so, we shrink it. You decide."
+  why: "It agrees that it sounds strange, gives the mechanism, and makes the size of the step the client's decision."
+  avoid: "'It's the only thing that works.' That is an overstatement, and it removes the choice."
+planning-h01:
+  model_response: "So you're here because she wants you to be. If these sessions could do one thing that you'd actually want, even something small, what might it be?"
+  why: "It accepts the position without argument and looks for any wish that belongs to the client."
+  avoid: "'What are her goals for you?' Now the wife is running the session."
+planning-h02:
+  model_response: "Getting back to work matters to you, and I understand that. I can't write that letter now, and I won't pretend that I can. What I can do is work with you on whatever stands between you and being ready. What would that be?"
+  why: "It names the wish underneath, is direct about the limit, and offers a goal that serves the same end."
+  avoid: "Vagueness about the letter. An unclear answer now becomes a broken promise later."
+planning-h03:
+  model_response: "No form. You've been asked this too many times. Forget the word. Is there anything at all you'd like to be different by the time we finish?"
+  why: "It drops the term that set the client off and asks the same question in ordinary language."
+  avoid: "'Goals are important so that we know where we're going.' It defends the form."
+planning-h04:
+  model_response: "I'll tell you what I've noticed so far, and you can tell me where I'm wrong. You've said twice that you're tired of being the one who holds everything together. Is that somewhere to start?"
+  why: "It does not get into a contest over who should speak. It offers the client's own words back as a possible starting point, open to correction."
+  avoid: "'It's not my place to set your goals.' It is right in principle, and here it reads as withholding."
+planning-h05:
+  model_response: "Four times, and nothing changed. I wouldn't sign up for a fifth list either. What went wrong with the goals before?"
+  why: "It accepts the refusal and asks about the failure, which is the most useful information available."
+  avoid: "'This time will be different.' Four other people probably said the same."
+planning-h06:
+  model_response: "A lot of it is common sense, you're right. What a magazine can't do is fit it to your week and look at it with you when it doesn't go to plan. Whether that's worth your time is your call."
+  why: "It concedes the point, states the one honest difference, and does not ask to be valued."
+  avoid: "'It's actually an evidence-based intervention.' It appeals to authority and it is defensive."
+planning-h07:
+  model_response: "I am a trainee, and I'm supervised. This approach has helped many people with difficulties like yours, and I can't promise it will help you. We'd find out together, and review as we go. If you'd prefer to see someone qualified, I can ask about that for you."
+  why: "It answers both halves truthfully, promises nothing, and offers a real alternative."
+  avoid: "Reassuring the client about your competence. The honest answer is the one that can earn trust."
+planning-h08:
+  model_response: "It's true that it doesn't help everyone. I can't tell you in advance which group you'll be in. What I can do is check with you regularly whether it's helping, and say so honestly if it isn't."
+  why: "It agrees with what is true in the client's point without quoting figures, and offers monitoring in place of a promise."
+  avoid: "Quoting statistics back from memory. You would be starting a debate you cannot referee."
+planning-h09:
+  model_response: "It's fair to expect something for your money. An hour a week with me is a small part of your week, and the change has to happen in the rest of it, where I'm not there. That's the only reason for a task. If this one doesn't seem useful, tell me, and we'll find one that does or leave it."
+  why: "It accepts the client's premise, gives the single real reason, and makes the task negotiable."
+  avoid: "'Therapy only works if you do the work.' It sounds like a warning."
+planning-h10:
+  model_response: "Then explaining it a fourth time won't help. You've heard the reason and it doesn't convince you. Let's drop this task. What would seem worth doing, if anything?"
+  why: "It stops selling, respects the refusal, and asks the client for an alternative."
+  avoid: "A fourth, slower explanation. The client understood the first one."

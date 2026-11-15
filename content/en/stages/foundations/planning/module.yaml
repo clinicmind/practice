@@ -1,0 +1,21 @@
+slug: planning
+version: 1.0.0
+title: "Treatment planning"
+intro: >-
+  A plan is the formulation turned into action. Each goal should come from a
+  link in the loop you drew together, and the client should be able to say why
+  it is there. Two things go wrong most often. The therapist writes sensible
+  goals that the client only accepts, or the goals are so large that nobody
+  could tell whether they had been met. In this module Client M turns her loop
+  into three small goals. You practise working out goals together, and giving a
+  reason for what you propose.
+skills:
+  - collaboration-on-goals
+  - rationale-giving
+reflection_prompts:
+  - id: planning-r1
+    text: "M said the first step made her 'feel a bit sick'. What did the therapist do with that? What do you usually do when a client is anxious about a task: reassure, make it smaller, or drop it?"
+  - id: planning-r2
+    text: "Take one goal from your own caseload. Which link in the client's formulation does it act on? If you cannot say, what does that tell you about the goal or the formulation?"
+  - id: planning-r3
+    text: "Look at your hard-level rationale attempts. Did you promise more than you can know? Rewrite one so that it is honest about what might not work."
