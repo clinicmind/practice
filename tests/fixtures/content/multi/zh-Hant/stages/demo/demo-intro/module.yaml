@@ -1,0 +1,12 @@
+slug: demo-intro
+title: Demo intro（測試）
+version: 1.0.0
+intro: demo-intro 模組的簡介。
+skills:
+  - demo-skill-a
+  - demo-skill-b
+reflection_prompts:
+  - id: r1
+    text: 這個模組中，什麼讓你印象最深？
+  - id: r2
+    text: 你接下來會試什麼？

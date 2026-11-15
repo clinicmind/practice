@@ -1,0 +1,270 @@
+- id: intake-e01
+  level: easy
+  skill: restatement
+  context: 測試用情境（intake-e01）。
+  client: 測試用個案說的話（intake-e01）。
+  criteria:
+    - intake-e01 標準一
+    - intake-e01 標準二
+    - intake-e01 標準三
+- id: intake-e02
+  level: easy
+  skill: open-question
+  context: 測試用情境（intake-e02）。
+  client: 測試用個案說的話（intake-e02）。
+  criteria:
+    - intake-e02 標準一
+    - intake-e02 標準二
+    - intake-e02 標準三
+- id: intake-e03
+  level: easy
+  skill: restatement
+  context: 測試用情境（intake-e03）。
+  client: 測試用個案說的話（intake-e03）。
+  criteria:
+    - intake-e03 標準一
+    - intake-e03 標準二
+    - intake-e03 標準三
+- id: intake-e04
+  level: easy
+  skill: open-question
+  context: 測試用情境（intake-e04）。
+  client: 測試用個案說的話（intake-e04）。
+  criteria:
+    - intake-e04 標準一
+    - intake-e04 標準二
+    - intake-e04 標準三
+- id: intake-e05
+  level: easy
+  skill: restatement
+  context: 測試用情境（intake-e05）。
+  client: 測試用個案說的話（intake-e05）。
+  criteria:
+    - intake-e05 標準一
+    - intake-e05 標準二
+    - intake-e05 標準三
+- id: intake-e06
+  level: easy
+  skill: open-question
+  context: 測試用情境（intake-e06）。
+  client: 測試用個案說的話（intake-e06）。
+  criteria:
+    - intake-e06 標準一
+    - intake-e06 標準二
+    - intake-e06 標準三
+- id: intake-e07
+  level: easy
+  skill: restatement
+  context: 測試用情境（intake-e07）。
+  client: 測試用個案說的話（intake-e07）。
+  criteria:
+    - intake-e07 標準一
+    - intake-e07 標準二
+    - intake-e07 標準三
+- id: intake-e08
+  level: easy
+  skill: open-question
+  context: 測試用情境（intake-e08）。
+  client: 測試用個案說的話（intake-e08）。
+  criteria:
+    - intake-e08 標準一
+    - intake-e08 標準二
+    - intake-e08 標準三
+- id: intake-e09
+  level: easy
+  skill: restatement
+  context: 測試用情境（intake-e09）。
+  client: 測試用個案說的話（intake-e09）。
+  criteria:
+    - intake-e09 標準一
+    - intake-e09 標準二
+    - intake-e09 標準三
+- id: intake-e10
+  level: easy
+  skill: open-question
+  context: 測試用情境（intake-e10）。
+  client: 測試用個案說的話（intake-e10）。
+  criteria:
+    - intake-e10 標準一
+    - intake-e10 標準二
+    - intake-e10 標準三
+- id: intake-m01
+  level: medium
+  skill: restatement
+  context: 測試用情境（intake-m01）。
+  client: 測試用個案說的話（intake-m01）。
+  criteria:
+    - intake-m01 標準一
+    - intake-m01 標準二
+    - intake-m01 標準三
+- id: intake-m02
+  level: medium
+  skill: open-question
+  context: 測試用情境（intake-m02）。
+  client: 測試用個案說的話（intake-m02）。
+  criteria:
+    - intake-m02 標準一
+    - intake-m02 標準二
+    - intake-m02 標準三
+- id: intake-m03
+  level: medium
+  skill: restatement
+  context: 測試用情境（intake-m03）。
+  client: 測試用個案說的話（intake-m03）。
+  criteria:
+    - intake-m03 標準一
+    - intake-m03 標準二
+    - intake-m03 標準三
+- id: intake-m04
+  level: medium
+  skill: open-question
+  context: 測試用情境（intake-m04）。
+  client: 測試用個案說的話（intake-m04）。
+  criteria:
+    - intake-m04 標準一
+    - intake-m04 標準二
+    - intake-m04 標準三
+- id: intake-m05
+  level: medium
+  skill: restatement
+  context: 測試用情境（intake-m05）。
+  client: 測試用個案說的話（intake-m05）。
+  criteria:
+    - intake-m05 標準一
+    - intake-m05 標準二
+    - intake-m05 標準三
+- id: intake-m06
+  level: medium
+  skill: open-question
+  context: 測試用情境（intake-m06）。
+  client: 測試用個案說的話（intake-m06）。
+  criteria:
+    - intake-m06 標準一
+    - intake-m06 標準二
+    - intake-m06 標準三
+- id: intake-m07
+  level: medium
+  skill: restatement
+  context: 測試用情境（intake-m07）。
+  client: 測試用個案說的話（intake-m07）。
+  criteria:
+    - intake-m07 標準一
+    - intake-m07 標準二
+    - intake-m07 標準三
+- id: intake-m08
+  level: medium
+  skill: open-question
+  context: 測試用情境（intake-m08）。
+  client: 測試用個案說的話（intake-m08）。
+  criteria:
+    - intake-m08 標準一
+    - intake-m08 標準二
+    - intake-m08 標準三
+- id: intake-m09
+  level: medium
+  skill: restatement
+  context: 測試用情境（intake-m09）。
+  client: 測試用個案說的話（intake-m09）。
+  criteria:
+    - intake-m09 標準一
+    - intake-m09 標準二
+    - intake-m09 標準三
+- id: intake-m10
+  level: medium
+  skill: open-question
+  context: 測試用情境（intake-m10）。
+  client: 測試用個案說的話（intake-m10）。
+  criteria:
+    - intake-m10 標準一
+    - intake-m10 標準二
+    - intake-m10 標準三
+- id: intake-h01
+  level: hard
+  skill: restatement
+  context: 測試用情境（intake-h01）。
+  client: 測試用個案說的話（intake-h01）。
+  criteria:
+    - intake-h01 標準一
+    - intake-h01 標準二
+    - intake-h01 標準三
+- id: intake-h02
+  level: hard
+  skill: open-question
+  context: 測試用情境（intake-h02）。
+  client: 測試用個案說的話（intake-h02）。
+  criteria:
+    - intake-h02 標準一
+    - intake-h02 標準二
+    - intake-h02 標準三
+- id: intake-h03
+  level: hard
+  skill: restatement
+  context: 測試用情境（intake-h03）。
+  client: 測試用個案說的話（intake-h03）。
+  criteria:
+    - intake-h03 標準一
+    - intake-h03 標準二
+    - intake-h03 標準三
+- id: intake-h04
+  level: hard
+  skill: open-question
+  context: 測試用情境（intake-h04）。
+  client: 測試用個案說的話（intake-h04）。
+  criteria:
+    - intake-h04 標準一
+    - intake-h04 標準二
+    - intake-h04 標準三
+- id: intake-h05
+  level: hard
+  skill: restatement
+  context: 測試用情境（intake-h05）。
+  client: 測試用個案說的話（intake-h05）。
+  criteria:
+    - intake-h05 標準一
+    - intake-h05 標準二
+    - intake-h05 標準三
+- id: intake-h06
+  level: hard
+  skill: open-question
+  context: 測試用情境（intake-h06）。
+  client: 測試用個案說的話（intake-h06）。
+  criteria:
+    - intake-h06 標準一
+    - intake-h06 標準二
+    - intake-h06 標準三
+- id: intake-h07
+  level: hard
+  skill: restatement
+  context: 測試用情境（intake-h07）。
+  client: 測試用個案說的話（intake-h07）。
+  criteria:
+    - intake-h07 標準一
+    - intake-h07 標準二
+    - intake-h07 標準三
+- id: intake-h08
+  level: hard
+  skill: open-question
+  context: 測試用情境（intake-h08）。
+  client: 測試用個案說的話（intake-h08）。
+  criteria:
+    - intake-h08 標準一
+    - intake-h08 標準二
+    - intake-h08 標準三
+- id: intake-h09
+  level: hard
+  skill: restatement
+  context: 測試用情境（intake-h09）。
+  client: 測試用個案說的話（intake-h09）。
+  criteria:
+    - intake-h09 標準一
+    - intake-h09 標準二
+    - intake-h09 標準三
+- id: intake-h10
+  level: hard
+  skill: open-question
+  context: 測試用情境（intake-h10）。
+  client: 測試用個案說的話（intake-h10）。
+  criteria:
+    - intake-h10 標準一
+    - intake-h10 標準二
+    - intake-h10 標準三

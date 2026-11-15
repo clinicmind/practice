@@ -29,7 +29,8 @@ export interface BuildOptions {
   includeUnreviewed?: boolean;
 }
 
-const STAGE = 'foundations';
+/** The original stage: always open, and the only one whose module slugs need no prefix. */
+export const DEFAULT_STAGE = 'foundations';
 const DRILLS_PER_LEVEL = 10;
 const DRILLS_PER_SKILL_PER_LEVEL = 5;
 const LEVEL_CODE: Record<string, string> = { easy: 'e', medium: 'm', hard: 'h' };
@@ -187,18 +188,42 @@ function loadModuleFiles(dir: string, slug: string, tag: string, errors: string[
   return { meta, wt, drills, models };
 }
 
-export async function buildContent(opts: BuildOptions): Promise<void> {
-  const { contentDir, outDir, locale } = opts;
+/** Cross-stage state: slugs, skill codes and ids must be unique across the whole course, not just one stage. */
+interface Shared {
+  slugStage: Map<string, string>;
+  skillStage: Map<string, string>;
+  sessionIds: Set<string>;
+  drillIds: Set<string>;
+}
+
+interface StageResult {
+  index: StageIndex;
+  emit: { slug: string; bundle: ModuleBundle; models: unknown; reviewed: boolean }[];
+}
+
+/** Stage directories under content/<locale>/stages. */
+function stageDirs(contentDir: string, locale: Locale): string[] {
+  const root = join(contentDir, locale, 'stages');
+  if (!existsSync(root)) return [];
+  return readdirSync(root, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name);
+}
+
+/** Foundations first (it is always open), then the others by name. */
+function orderStages(stages: Iterable<string>): string[] {
+  const rest = [...new Set(stages)].filter((s) => s !== DEFAULT_STAGE).sort();
+  return [DEFAULT_STAGE, ...rest];
+}
+
+function buildStage(
+  opts: BuildOptions, stage: string, reviewed: Set<string>, shared: Shared, errors: string[],
+): StageResult {
+  const { contentDir, locale } = opts;
   const isEn = locale === 'en';
   const tag = isEn ? '' : `${locale} `;
-  const stageDir = join(contentDir, locale, 'stages', STAGE);
-  const enStageDir = join(contentDir, 'en', 'stages', STAGE);
-  const outStage = join(outDir, locale, STAGE);
-  const errors: string[] = [];
-
-  // Always start from a clean output so stale modules never linger.
-  rmSync(outStage, { recursive: true, force: true });
-  mkdirSync(outStage, { recursive: true });
+  const stageDir = join(contentDir, locale, 'stages', stage);
+  const enStageDir = join(contentDir, 'en', 'stages', stage);
+  // Errors of the original stage keep their wording; other stages are named so the author knows where to look.
+  const errs: string[] = [];
 
   // zh-Hant may be absent, partial or complete; English is the reference for structure.
   const stageFile = join(stageDir, 'stage.yaml');
@@ -207,25 +232,29 @@ export async function buildContent(opts: BuildOptions): Promise<void> {
     enStage = load(join(enStageDir, 'stage.yaml'), 'stage.yaml', StageFileSchema, []);
   }
 
-  let stageTitle = 'Foundations';
+  const stageLabel = stage === DEFAULT_STAGE ? 'stage.yaml' : `${stage}/stage.yaml`;
+  let stageTitle = stage === DEFAULT_STAGE ? 'Foundations' : stage;
   let slugs: string[] = [];
+  const checkStageName = (file: { stage: string } | undefined) => {
+    if (file && file.stage !== stage) errs.push(`${tag}${stageLabel}: stage "${file.stage}" does not match directory "${stage}"`);
+  };
   if (isEn) {
-    // No stage authored yet: valid, produces an empty module list.
-    if (!existsSync(stageFile)) {
-      const empty: StageIndex = { stage: STAGE, title: stageTitle, modules: [] };
-      writeFileSync(join(outStage, 'index.json'), JSON.stringify(empty, null, 2));
-      return;
+    // The original stage may be unauthored: valid, produces an empty module list. Any other stage needs its stage.yaml.
+    if (!existsSync(stageFile) && stage === DEFAULT_STAGE) {
+      return { index: { stage, title: stageTitle, modules: [] }, emit: [] };
     }
-    const stage = load(stageFile, 'stage.yaml', StageFileSchema, errors);
-    stageTitle = stage?.title ?? stageTitle;
-    slugs = stage?.modules ?? [];
-    if (new Set(slugs).size !== slugs.length) errors.push('stage.yaml: duplicate module slug');
+    const file = load(stageFile, stageLabel, StageFileSchema, errs);
+    checkStageName(file);
+    stageTitle = file?.title ?? stageTitle;
+    slugs = file?.modules ?? [];
+    if (new Set(slugs).size !== slugs.length) errs.push(`${stageLabel}: duplicate module slug`);
   } else {
     if (existsSync(stageFile)) {
-      const stage = load(stageFile, `${tag}stage.yaml`, StageFileSchema, errors);
-      stageTitle = stage?.title ?? stageTitle;
-      for (const m of stage?.modules ?? []) {
-        if (enStage && !enStage.modules.includes(m)) errors.push(`${tag}stage.yaml: module "${m}" does not exist in English`);
+      const file = load(stageFile, `${tag}${stageLabel}`, StageFileSchema, errs);
+      checkStageName(file);
+      stageTitle = file?.title ?? stageTitle;
+      for (const m of file?.modules ?? []) {
+        if (enStage && !enStage.modules.includes(m)) errs.push(`${tag}${stageLabel}: module "${m}" does not exist in English`);
       }
     } else if (enStage) {
       stageTitle = enStage.title;
@@ -236,54 +265,68 @@ export async function buildContent(opts: BuildOptions): Promise<void> {
     if (existsSync(stageDir)) {
       for (const e of readdirSync(stageDir, { withFileTypes: true })) {
         if (e.isDirectory() && !(enStage?.modules ?? []).includes(e.name)) {
-          errors.push(`${tag}module "${e.name}" has no English counterpart in stage.yaml`);
+          errs.push(`${tag}module "${e.name}" has no English counterpart in ${stageLabel}`);
         }
       }
     }
   }
 
-  const reviewed = readReviewed(contentDir);
-  const index: StageIndex = { stage: STAGE, title: stageTitle, modules: [] };
-  const emit: { slug: string; bundle: ModuleBundle; models: unknown; reviewed: boolean }[] = [];
-  const sessionIds = new Set<string>();
-  const drillIds = new Set<string>();
+  const index: StageIndex = { stage, title: stageTitle, modules: [] };
+  const emit: StageResult['emit'] = [];
 
   for (const slug of slugs) {
     const dir = join(stageDir, slug);
     if (!existsSync(dir) || !readdirSync(dir).length) {
-      errors.push(`stage.yaml: module "${slug}" listed but directory not found`);
+      errs.push(`${stageLabel}: module "${slug}" listed but directory not found`);
       continue;
     }
-    const files = loadModuleFiles(dir, slug, tag, errors);
+    // Slugs are global (they key progress and routes), so a new stage's slugs carry the stage name.
+    if (stage !== DEFAULT_STAGE && !slug.startsWith(`${stage}-`)) {
+      errs.push(`${tag}module "${slug}" in stage "${stage}" must start with "${stage}-"`);
+    }
+    if (isEn) {
+      const other = shared.slugStage.get(slug);
+      if (other !== undefined) errs.push(`module "${slug}" is used in more than one stage ("${other}" and "${stage}")`);
+      else shared.slugStage.set(slug, stage);
+    }
+    const files = loadModuleFiles(dir, slug, tag, errs);
     if (!files) continue;
     const { meta, wt, drills, models } = files;
 
     if (meta.slug !== slug) {
-      errors.push(`${tag}${slug}/module.yaml: slug "${meta.slug}" does not match directory "${slug}"`);
+      errs.push(`${tag}${slug}/module.yaml: slug "${meta.slug}" does not match directory "${slug}"`);
       continue;
     }
     const promptIds = meta.reflection_prompts.map((p) => p.id);
-    if (new Set(promptIds).size !== promptIds.length) errors.push(`${tag}${slug}: duplicate reflection prompt id`);
+    if (new Set(promptIds).size !== promptIds.length) errs.push(`${tag}${slug}: duplicate reflection prompt id`);
 
-    checkDrills(slug, meta.skills, drills, errors);
+    if (isEn) {
+      for (const skill of meta.skills) {
+        const other = shared.skillStage.get(skill);
+        if (other !== undefined && other !== stage) errs.push(`skill "${skill}" is used in stages "${stage}" and "${other}"; skill codes must be unique across stages`);
+        else shared.skillStage.set(skill, stage);
+      }
+    }
+
+    checkDrills(slug, meta.skills, drills, errs);
     for (const d of drills) {
-      if (drillIds.has(d.id)) errors.push(`duplicate id "${d.id}" (also used in another module)`);
-      drillIds.add(d.id);
+      if (shared.drillIds.has(`${locale}|${d.id}`)) errs.push(`duplicate id "${d.id}" (also used in another module)`);
+      shared.drillIds.add(`${locale}|${d.id}`);
     }
     // models.yaml must correspond 1:1 with drills.
     const ids = new Set(drills.map((d) => d.id));
     for (const id of ids) {
-      if (!(id in models)) errors.push(`${tag}${slug}/models.yaml: no entry for "${id}"`);
+      if (!(id in models)) errs.push(`${tag}${slug}/models.yaml: no entry for "${id}"`);
     }
     for (const id of Object.keys(models)) {
-      if (!ids.has(id)) errors.push(`${tag}${slug}/models.yaml: "${id}" has no drill`);
+      if (!ids.has(id)) errs.push(`${tag}${slug}/models.yaml: "${id}" has no drill`);
     }
     for (const s of wt.sessions) {
       if (!s.id.startsWith(`${slug}-`)) {
-        errors.push(`${tag}${slug}: session id "${s.id}" does not belong to module "${slug}"`);
+        errs.push(`${tag}${slug}: session id "${s.id}" does not belong to module "${slug}"`);
       }
-      if (sessionIds.has(s.id)) errors.push(`duplicate id "${s.id}" (session)`);
-      sessionIds.add(s.id);
+      if (shared.sessionIds.has(`${locale}|${s.id}`)) errs.push(`duplicate id "${s.id}" (session)`);
+      shared.sessionIds.add(`${locale}|${s.id}`);
       // schema already enforces decision shape; touch isDecision to keep the contract explicit
       void s.turns.filter(isDecision);
     }
@@ -291,30 +334,59 @@ export async function buildContent(opts: BuildOptions): Promise<void> {
     if (!isEn) {
       // Compare with the English module of the same slug; if English itself is broken, its own build reports that.
       const enFiles = loadModuleFiles(join(enStageDir, slug), slug, 'en ', []);
-      if (enFiles) compareToEnglish(slug, enFiles, files, errors);
+      if (enFiles) compareToEnglish(slug, enFiles, files, errs);
     }
 
     const isReviewed = reviewed.has(`${slug}|${locale}|${meta.version}`);
     index.modules.push({ slug, title: meta.title, reviewed: isReviewed });
-    emit.push({
-      slug,
-      bundle: { meta, sessions: wt.sessions, drills },
-      models,
-      reviewed: isReviewed,
-    });
+    emit.push({ slug, bundle: { meta, sessions: wt.sessions, drills }, models, reviewed: isReviewed });
+  }
+
+  for (const e of errs) errors.push(stage === DEFAULT_STAGE ? e : `[${stage}] ${e}`);
+  return { index, emit };
+}
+
+export async function buildContent(opts: BuildOptions): Promise<void> {
+  const { contentDir, outDir, locale } = opts;
+  const errors: string[] = [];
+
+  // Always start from a clean output so stale stages and modules never linger.
+  rmSync(join(outDir, locale), { recursive: true, force: true });
+  mkdirSync(join(outDir, locale), { recursive: true });
+
+  // English decides which stages exist. A stage that only zh-Hant has is an error.
+  const enStages = stageDirs(contentDir, 'en');
+  if (locale !== 'en') {
+    for (const s of stageDirs(contentDir, locale)) {
+      if (!enStages.includes(s)) errors.push(`${locale} stage "${s}" has no English counterpart`);
+    }
+  }
+  const stages = orderStages(enStages);
+
+  const reviewed = readReviewed(contentDir);
+  const shared: Shared = { slugStage: new Map(), skillStage: new Map(), sessionIds: new Set(), drillIds: new Set() };
+  const results = new Map<string, StageResult>();
+  for (const stage of stages) {
+    results.set(stage, buildStage(opts, stage, reviewed, shared, errors));
   }
 
   if (errors.length) {
     throw new Error(`Content validation failed:\n${errors.map((e) => `  - ${e}`).join('\n')}`);
   }
 
-  writeFileSync(join(outStage, 'index.json'), JSON.stringify(index, null, 2));
-  for (const m of emit) {
-    if (!m.reviewed && !opts.includeUnreviewed) continue;
-    const out = join(outStage, m.slug);
-    mkdirSync(out, { recursive: true });
-    writeFileSync(join(out, 'module.json'), JSON.stringify(m.bundle));
-    writeFileSync(join(out, 'models.json'), JSON.stringify(m.models));
+  const list = stages.map((stage) => ({ stage, title: results.get(stage)!.index.title }));
+  writeFileSync(join(outDir, locale, 'stages.json'), JSON.stringify(list, null, 2));
+  for (const [stage, { index, emit }] of results) {
+    const outStage = join(outDir, locale, stage);
+    mkdirSync(outStage, { recursive: true });
+    writeFileSync(join(outStage, 'index.json'), JSON.stringify(index, null, 2));
+    for (const m of emit) {
+      if (!m.reviewed && !opts.includeUnreviewed) continue;
+      const out = join(outStage, m.slug);
+      mkdirSync(out, { recursive: true });
+      writeFileSync(join(out, 'module.json'), JSON.stringify(m.bundle));
+      writeFileSync(join(out, 'models.json'), JSON.stringify(m.models));
+    }
   }
 }
 
