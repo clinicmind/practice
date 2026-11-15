@@ -1,0 +1,120 @@
+rupture-e01:
+  model_response: "I feel the weight of that. I'm glad you told me. What is it like, having said it here?"
+  why: "It says briefly how the moment affects you and asks how it is for the client."
+  avoid: "'That was very brave.' It gives a mark. A response between two people was what the moment needed."
+rupture-e02:
+  model_response: "I'm glad it's okay now you're here. I wonder what you were dreading about being with me today."
+  why: "It keeps the focus on the two of you and asks gently about the dread."
+  avoid: "'What were you dreading?' asked as if the answer were about something outside the room."
+rupture-e03:
+  model_response: "That's good to hear, and I notice I enjoy our time too. What is it about talking here that makes things lighter?"
+  why: "It gives a small, honest response of your own and asks about the client's experience of the relationship."
+  avoid: "Passing over the remark. The client has just said something about the two of you."
+rupture-e04:
+  model_response: "I noticed it, and it was lovely to hear. What is it like to laugh in here, with me?"
+  why: "It shares your reaction simply and asks about the moment."
+  avoid: "'That's great progress.' It turns a moment into a measurement."
+rupture-e05:
+  model_response: "I did remember. It sounds as if you half expected me not to. What would it have meant if I'd forgotten?"
+  why: "It stays with what just happened between you and asks about the expectation."
+  avoid: "'Of course I remember, it's my job.' It makes the remembering impersonal."
+rupture-e06:
+  model_response: "That's all right. I asked about your father, and then you were somewhere else for a moment. I may be wrong, but I wonder if the question had something to do with it. Where did you go?"
+  why: "It describes the sequence plainly, offers a tentative link, and asks."
+  avoid: "Simply repeating the question."
+rupture-e07:
+  model_response: "We keep starting at the same moment. I wonder if I'm coming in too fast today. Does it feel that way to you?"
+  why: "It names the small pattern lightly and looks first at your own part."
+  avoid: "'No, please, you go.' That is the same collision again."
+rupture-e08:
+  model_response: "About fifteen minutes. I've noticed you looking at the clock a few times, and I'm not sure what that's about. Is there something you want to get to, or something you'd like to be over?"
+  why: "It answers the question, describes what you saw, admits you do not know the meaning, and asks."
+  avoid: "'Am I boring you?' It makes the moment about you."
+rupture-e09:
+  model_response: "That sounded like a polite no. I may have suggested something that doesn't fit. What was your honest reaction?"
+  why: "It reads the lukewarm reply out loud, tentatively, and makes it easy to disagree with you."
+  avoid: "Taking 'maybe' as agreement and going on to plan the suggestion."
+rupture-e10:
+  model_response: "I'd asked about your father, and then it went quiet, and now we've lost the thread. I wonder if it was a hard question to be asked. What happened for you just then?"
+  why: "It retraces the steps and asks about the silence instead of filling it."
+  avoid: "Repeating the question as though the silence had not happened."
+rupture-m01:
+  model_response: "You've agreed with everything I've said today, and I find I'm not sure whether you agree or whether it's hard to say no to me. I'd honestly like to hear the parts that don't fit."
+  why: "It names the compliance kindly, includes your own uncertainty, and invites disagreement."
+  avoid: "'Do you really agree?' The client will say yes."
+rupture-m02:
+  model_response: "I'm not bored. I'm noticing that you're watching how I'm taking it, and I wonder what it's like to worry about that while you're talking."
+  why: "It answers honestly in three words and then turns to what is happening between you."
+  avoid: "Lengthy reassurance. It confirms that the client's job is to check on you."
+rupture-m03:
+  model_response: "It was fine, thank you. I notice you often turn things toward me, and I wonder whether an hour that is all yours feels uncomfortable."
+  why: "It gives a brief, polite answer and then names the pattern as a guess."
+  avoid: "A full account of your weekend. Also avoid a cold 'We're here to talk about you.'"
+rupture-m04:
+  model_response: "I'm glad you feel understood here. It also gives me a pang to hear 'the only one'. That sounds lonely, and it's a lot for one hour a week to carry. What is it like out there?"
+  why: "It accepts the warmth, shares a real reaction, and names the difficulty hidden inside the compliment."
+  avoid: "Enjoying the compliment and moving on."
+rupture-m05:
+  model_response: "Thank you. I'm glad this is useful to you. I also notice that I'm often told how good I am, and I wonder whether there's room in here for the times I get it wrong, or for the times you're fed up with me."
+  why: "It receives the praise, then gently names what the praise may be leaving out."
+  avoid: "'I'm only doing my job.' It deflects and closes the subject."
+rupture-m06:
+  model_response: "Can I pause us? I've noticed that when I say something about how you feel, you say 'I suppose' and we move on. I may be getting it wrong, or going there too quickly. What happens for you when I do that?"
+  why: "It describes the sequence, offers two ways you might be contributing, and asks."
+  avoid: "'You keep avoiding your feelings.' It blames the client and leaves you out of it."
+rupture-m07:
+  model_response: "I've just noticed something. I've been handing you advice for most of the hour, and you've become quieter. I think I took over. What has it been like sitting through that?"
+  why: "It catches the pattern, owns your part without drama, and asks."
+  avoid: "Carrying on with one more piece of advice."
+rupture-m08:
+  model_response: "I kept you waiting, and now we're both hurrying to make up for it. I'm sorry about the late start. Before we get on, how was it, sitting out there?"
+  why: "It names what is happening, owns the lateness in a sentence, and makes room for the client's reaction."
+  avoid: "Taking 'it's fine' gratefully and starting."
+rupture-m09:
+  model_response: "I think something changed after you asked whether I have children. I sidestepped the question, and since then you've seemed further away. I wonder if that felt like a door closing."
+  why: "It links the coolness to a specific moment and to what you did, tentatively."
+  avoid: "Accepting 'it's nothing'. Also avoid answering the personal question now as a peace offering."
+rupture-m10:
+  model_response: "I set out a plan at the start, and I don't think it's yours. I've been pulling us along it anyway. What would you have chosen to talk about today?"
+  why: "It names the mismatch, owns the pulling, and hands the choice back."
+  avoid: "'We do need to cover these things.' It puts the agenda above the client."
+rupture-h01:
+  model_response: "That's hard to hear, and I want to take it seriously. I have been sitting back today. Tell me what you needed from me that you didn't get."
+  why: "It is honest about the sting in a few words, grants what is true, and asks."
+  avoid: "'I'm sorry you feel that way.' It apologises for the client's feeling and concedes nothing."
+rupture-h02:
+  model_response: "I do talk about our work with my supervisor. Nobody laughs. I'm struck that you picture it that way. I wonder if part of you expects to be mocked when you're not in the room."
+  why: "It is truthful about supervision, plainly denies the laughing, and turns to what the fear says."
+  avoid: "A hurt protest about how seriously you take confidentiality."
+rupture-h03:
+  model_response: "I'm sorry it feels that way. I don't dislike you. I do notice I've been more careful with you today, and that may come across as cold. What have I done that gives you that sense?"
+  why: "It answers directly, admits something real about your own manner, and asks for the evidence."
+  avoid: "'Of course I like you!' Said brightly, it is not believable, and it ends the conversation."
+rupture-h04:
+  model_response: "You don't know much about my life, and you're right that I haven't lived yours. I feel a bit pushed away as you say it. I wonder if it seems that I'm watching from somewhere comfortable."
+  why: "It concedes the fact, says honestly how the remark lands, and names the gap the client may be feeling."
+  avoid: "Telling the client about your own hardships to prove them wrong."
+rupture-h05:
+  model_response: "You've turned away, and I think it was something I said. I don't want to crowd you. I'm here, and I'd like to know what happened when you're ready to tell me."
+  why: "It names the silence and your likely part in it, stays present, and applies no pressure."
+  avoid: "Filling the silence with questions, or sitting it out without acknowledging it."
+rupture-h06:
+  model_response: "You did tell me, and I forgot. That's my mistake. What was it like just now to hear me ask as though you'd never said it?"
+  why: "It owns the lapse in eight words and asks about the client's experience."
+  avoid: "'I see a lot of people.' It may be true, and it tells the client they are one of many."
+rupture-h07:
+  model_response: "I did. You were in the middle of something that mattered, and I ended it by the clock. I'm sorry. What was it like to leave like that? And can we agree how you'd like me to handle the ending when you're upset?"
+  why: "It owns the specific act, asks about the effect, and renegotiates how endings are handled."
+  avoid: "Explaining why sessions must end on time. That may be so, and it can wait."
+rupture-h08:
+  model_response: "You get louder and I get quieter, and I can see how that would feel like talking to a wall. I do go calm when I'm unsure what to do. What would you want from me in those moments?"
+  why: "It describes the pattern from both sides, admits something real about yourself, and asks what would help."
+  avoid: "Answering in the same calm voice, 'I hear that you're frustrated.'"
+rupture-h09:
+  model_response: "Thank you for coming to say it in person. I think I pushed that exercise when you weren't ready, and that's on me. Before you go, would you tell me what it was like? You don't owe me that, and I'd like to understand."
+  why: "It respects the decision, owns the specific error, and asks without trying to hold on to the client."
+  avoid: "Trying to talk the client into staying."
+rupture-h10:
+  model_response: "I've got it wrong twice today, and you're tired of explaining. I'd like to try once more, differently. Tell me in your words, and I'll only say back what I hear, with nothing added."
+  why: "It owns the misses, takes the client's frustration seriously, and offers a specific change in how you will listen."
+  avoid: "'Help me understand.' You have asked for that twice already."

@@ -1,0 +1,203 @@
+- id: rupture-e01
+  level: easy
+  skill: immediacy
+  context: "The client has just disclosed something painful."
+  client: "I've never told anyone that before."
+  criteria: &im_easy
+    - "It speaks about what is happening between you and the client right now, using 'I' and 'you'."
+    - "It states what you notice or feel simply, without praise that grades the client and without blame."
+    - "It invites the client to say how this moment is for them."
+- id: rupture-e02
+  level: easy
+  skill: immediacy
+  context: "Tenth session."
+  client: "I was dreading coming today. Now that I'm here, it's okay."
+  criteria: *im_easy
+- id: rupture-e03
+  level: easy
+  skill: immediacy
+  context: "Tenth session."
+  client: "I always feel a bit lighter after I've talked to you."
+  criteria: *im_easy
+- id: rupture-e04
+  level: easy
+  skill: immediacy
+  context: "The client has just laughed, for the first time in your sessions."
+  client: "I actually laughed this week. Properly. And just now, too."
+  criteria: *im_easy
+- id: rupture-e05
+  level: easy
+  skill: immediacy
+  context: "You have just referred to something the client said two weeks ago."
+  client: "Oh. I wasn't sure you'd remember that."
+  criteria: *im_easy
+
+- id: rupture-e06
+  level: easy
+  skill: metacommunication
+  context: "You asked a question. The client answered a different one, then stopped."
+  client: "Sorry, what did you ask? I went off somewhere."
+  criteria: &mc_easy
+    - "It describes what has just happened between you as a plain sequence of events."
+    - "It is tentative, and it does not present your reading as the fact."
+    - "It asks how the client saw or experienced it."
+- id: rupture-e07
+  level: easy
+  skill: metacommunication
+  context: "You and the client have started speaking at the same moment twice."
+  client: "Sorry. No, you go."
+  criteria: *mc_easy
+- id: rupture-e08
+  level: easy
+  skill: metacommunication
+  context: "The client has looked at the clock three times."
+  client: "Have we got long left?"
+  criteria: *mc_easy
+- id: rupture-e09
+  level: easy
+  skill: metacommunication
+  context: "You have just made a suggestion."
+  client: "Mm. Yeah. Maybe."
+  criteria: *mc_easy
+- id: rupture-e10
+  level: easy
+  skill: metacommunication
+  context: "You asked about the client's father. A silence followed."
+  client: "...Sorry, what were we talking about?"
+  criteria: *mc_easy
+
+- id: rupture-m01
+  level: medium
+  skill: immediacy
+  context: "The client has agreed with everything you have said today."
+  client: "Yes. Okay. You're right."
+  criteria: &im_medium
+    - "It names something uncomfortable in the relationship as it is right now, in a kind and specific way."
+    - "It includes your own experience or uncertainty. It does not only describe the client."
+    - "It is tentative, and it invites the client's view without demanding one."
+- id: rupture-m02
+  level: medium
+  skill: immediacy
+  context: "Tenth session."
+  client: "You must be so bored of hearing this."
+  criteria: *im_medium
+- id: rupture-m03
+  level: medium
+  skill: immediacy
+  context: "The client often turns the conversation toward you."
+  client: "Anyway, enough about me. How was your weekend?"
+  criteria: *im_medium
+- id: rupture-m04
+  level: medium
+  skill: immediacy
+  context: "Tenth session."
+  client: "You're the only person who really understands me."
+  criteria: *im_medium
+- id: rupture-m05
+  level: medium
+  skill: immediacy
+  context: "The client praises you in most sessions."
+  client: "I told my sister how brilliant you are. Honestly, I don't know what I'd do without you."
+  criteria: *im_medium
+
+- id: rupture-m06
+  level: medium
+  skill: metacommunication
+  context: "Each time you reflect a feeling, the client says 'I suppose' and moves on."
+  client: "I suppose. Anyway, the other thing was..."
+  criteria: &mc_medium
+    - "It describes a pattern or sequence between you, without blame."
+    - "It includes something you may be contributing to it."
+    - "It is tentative, and it asks the client how they see it."
+- id: rupture-m07
+  level: medium
+  skill: metacommunication
+  context: "You realise you have given advice for most of the session. The client has grown quieter."
+  client: "Right. Okay. I'll try that."
+  criteria: *mc_medium
+- id: rupture-m08
+  level: medium
+  skill: metacommunication
+  context: "The session started ten minutes late because of you. The client is speaking fast."
+  client: "It's fine. Let's just get on with it."
+  criteria: *mc_medium
+- id: rupture-m09
+  level: medium
+  skill: metacommunication
+  context: "Earlier, the client asked whether you have children, and you turned the question aside. The client has been cool since."
+  client: "No, it's nothing."
+  criteria: *mc_medium
+- id: rupture-m10
+  level: medium
+  skill: metacommunication
+  context: "You set an agenda at the start. The client has barely engaged with it."
+  client: "Whatever you want to cover."
+  criteria: *mc_medium
+
+- id: rupture-h01
+  level: hard
+  skill: immediacy
+  context: "Tenth session."
+  client: "You're useless. You just sit there."
+  criteria: &im_hard
+    - "It says honestly, and briefly, how it is to be on the receiving end, or what you notice between you."
+    - "It does not retaliate, defend or collapse into apology."
+    - "It stays with the client and invites them to say more about their experience of you."
+- id: rupture-h02
+  level: hard
+  skill: immediacy
+  context: "Tenth session. You are a trainee under supervision."
+  client: "I bet you talk about me with your supervisor and have a good laugh."
+  criteria: *im_hard
+- id: rupture-h03
+  level: hard
+  skill: immediacy
+  context: "The client's tone is cold."
+  client: "I don't think you like me very much."
+  criteria: *im_hard
+- id: rupture-h04
+  level: hard
+  skill: immediacy
+  context: "Tenth session."
+  client: "You, with your nice, tidy life. What would you know about it?"
+  criteria: *im_hard
+- id: rupture-h05
+  level: hard
+  skill: immediacy
+  context: "After you said something, the client turned toward the window. They have not spoken for several minutes."
+  client: "(silence)"
+  criteria: *im_hard
+
+- id: rupture-h06
+  level: hard
+  skill: metacommunication
+  context: "You have just asked about something the client had already told you, and you had forgotten."
+  client: "I told you that. Three weeks ago. You weren't listening."
+  criteria: &mc_hard
+    - "It owns your part specifically, in a sentence, without excuses and without a long apology."
+    - "It asks what the moment was like for the client."
+    - "It offers, or asks about, a way to go on from here."
+- id: rupture-h07
+  level: hard
+  skill: metacommunication
+  context: "Last week you ended the session on time while the client was crying."
+  client: "Last week you just cut me off in the middle. 'We're out of time.'"
+  criteria: *mc_hard
+- id: rupture-h08
+  level: hard
+  skill: metacommunication
+  context: "The client has raised their voice. You have answered quietly."
+  client: "Every time I get angry, you go all calm and therapist-like. It's infuriating."
+  criteria: *mc_hard
+- id: rupture-h09
+  level: hard
+  skill: metacommunication
+  context: "Two weeks ago you pressed the client to try an exercise. They missed the next session."
+  client: "I only came back to tell you I'm not coming back."
+  criteria: *mc_hard
+- id: rupture-h10
+  level: hard
+  skill: metacommunication
+  context: "You have twice misunderstood what the client meant."
+  client: "Forget it. You don't get it. Nobody does."
+  criteria: *mc_hard
