@@ -4,6 +4,9 @@ import { en } from '../i18n/en';
 import { importLocal } from '../progress/importLocal';
 import { STORAGE_KEY } from '../progress/localStore';
 import { createSupabaseStore } from '../progress/supabaseStore';
+import { createGrantReader, GrantsContext } from '../progress/unlocks';
+import { createSupervisorApi } from '../supervisor/api';
+import { SupervisorApiContext } from '../supervisor/SupervisorContext';
 import type { ProgressStore } from '../progress/types';
 import { NotFound } from '../routes/NotFound';
 import { StoreProvider } from '../StoreContext';
@@ -32,6 +35,11 @@ function CloudShell({ backend, profile, local, storage }: {
   backend: Backend; profile: Profile; local: ProgressStore; storage: Storage;
 }) {
   const remote = useMemo(() => createSupabaseStore(backend, profile.id), [backend, profile.id]);
+  const readGrants = useMemo(() => createGrantReader(backend, profile.id), [backend, profile.id]);
+  const supervisorApi = useMemo(
+    () => (profile.role === 'supervisor' ? createSupervisorApi(backend, profile.id) : null),
+    [backend, profile.id, profile.role],
+  );
   const hasLocal = useMemo(() => {
     try { return storage.getItem(STORAGE_KEY) !== null; } catch { return false; }
   }, [storage]);
@@ -57,7 +65,15 @@ function CloudShell({ backend, profile, local, storage }: {
       </div>
     );
   }
-  return <StoreProvider store={remote}><Outlet /></StoreProvider>;
+  return (
+    <StoreProvider store={remote}>
+      <GrantsContext.Provider value={readGrants}>
+        <SupervisorApiContext.Provider value={supervisorApi}>
+          <Outlet />
+        </SupervisorApiContext.Provider>
+      </GrantsContext.Provider>
+    </StoreProvider>
+  );
 }
 
 /**

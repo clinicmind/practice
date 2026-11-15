@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext';
 import { RequireAuth, RequireSupervisor } from './auth/AuthGate';
 import type { Backend } from './auth/supabase';
@@ -14,6 +14,7 @@ import { NotFound } from './routes/NotFound';
 import { ReflectPage } from './routes/ReflectPage';
 import { StagePage } from './routes/StagePage';
 import { CohortPage } from './routes/supervisor/CohortPage';
+import { StudentPage } from './routes/supervisor/StudentPage';
 import { WalkthroughPage } from './routes/WalkthroughPage';
 
 /**
@@ -38,7 +39,7 @@ export function App({ store, wasReset, backend = null, storage = globalThis.loca
             <Route path="/m/:slug/drills/:level" element={<ModuleGate><LevelGate><DrillsPage /></LevelGate></ModuleGate>} />
             <Route path="/m/:slug/reflect" element={<ModuleGate><ReflectPage /></ModuleGate>} />
             <Route path="/supervisor" element={<RequireSupervisor><CohortPage /></RequireSupervisor>} />
-            <Route path="/supervisor/*" element={<RequireSupervisor><Navigate to="/supervisor" replace /></RequireSupervisor>} />
+            <Route path="/supervisor/students/:id" element={<RequireSupervisor><StudentPage /></RequireSupervisor>} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

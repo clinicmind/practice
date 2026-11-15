@@ -113,3 +113,25 @@ describe('walkthrough and modules', () => {
   });
   test('empty module list', () => expect(unlockedModules([], [])).toEqual([]));
 });
+
+describe('unlockedLevels with granted levels', () => {
+  // Reuses nothing from above so this block stands alone.
+  const drills = (['easy', 'medium', 'hard'] as const).flatMap((level, li) =>
+    Array.from({ length: 10 }, (_, i) => ({
+      id: `m-${level[0]}${String(i + 1).padStart(2, '0')}`, level, skill: 's', context: 'c', client: 'c',
+      criteria: ['a', 'b', 'c'] as [string, string, string],
+    })).map((d) => ({ ...d, _li: li })),
+  );
+  test('a granted level is added to the natural result, in level order', async () => {
+    const { unlockedLevels } = await import('./rules');
+    expect(unlockedLevels([], drills)).toEqual(['easy']);
+    expect(unlockedLevels([], drills, ['hard'])).toEqual(['easy', 'hard']);
+    expect(unlockedLevels([], drills, ['medium'])).toEqual(['easy', 'medium']);
+    expect(unlockedLevels([], drills, ['hard', 'medium'])).toEqual(['easy', 'medium', 'hard']);
+  });
+  test('granting a level that is already open changes nothing; granting does not open the ones between', async () => {
+    const { unlockedLevels } = await import('./rules');
+    expect(unlockedLevels([], drills, ['easy', 'easy'])).toEqual(['easy']);
+    expect(unlockedLevels([], drills, ['hard'])).not.toContain('medium');
+  });
+});

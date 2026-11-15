@@ -1,5 +1,5 @@
 import { createContext, useContext, type ReactNode } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { en } from '../i18n/en';
 import { LEVELS, type Level, type ModuleBundle } from '../content/schema';
 import { unlockedLevels } from '../progress/rules';
@@ -19,6 +19,8 @@ interface GateValue {
   attempts: Attempt[];
   decisions: Decision[];
   levels: Level[];
+  /** True only for a supervisor looking at a module that has not been reviewed. */
+  unreviewed: boolean;
 }
 const GateContext = createContext<GateValue | null>(null);
 export function useGate(): GateValue {
@@ -49,9 +51,20 @@ export function ModuleGate({ children }: { children: ReactNode }) {
     return <Navigate to="/" replace state={{ notice: lockedModuleNotice(entry) }} />;
   }
   const bundle = data.bundles[slug];
-  const levels = unlockedLevels(data.attempts, bundle.drills);
+  if (!bundle) {
+    // A supervisor opened an unreviewed module whose content this build does not ship.
+    return (
+      <div>
+        <h1>{entry.title}</h1>
+        <p><span className="badge">{en.stage.unreviewed}</span></p>
+        <p>{en.stage.unreviewedNotShipped}</p>
+        <p><Link to="/">{en.notFound.home}</Link></p>
+      </div>
+    );
+  }
+  const levels = unlockedLevels(data.attempts, bundle.drills, data.grants[slug] ?? []);
   return (
-    <GateContext.Provider value={{ slug, bundle, attempts: data.attempts, decisions: data.decisions, levels }}>
+    <GateContext.Provider value={{ slug, bundle, attempts: data.attempts, decisions: data.decisions, levels, unreviewed: !!entry.unreviewed }}>
       {children}
     </GateContext.Provider>
   );

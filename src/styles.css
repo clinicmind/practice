@@ -63,3 +63,7 @@ blockquote { margin: 0.25rem 0 0.75rem; padding: 0.25rem 0.75rem; border-left: 4
 .attempt-list li { margin: 0.5rem 0; }
 .decision { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 0.75rem 1rem; }
 .prompt { font-weight: 600; }
+.table-scroll { overflow-x: auto; }
+.table-scroll table { border-collapse: collapse; min-width: 100%; }
+.table-scroll th, .table-scroll td { border-bottom: 1px solid var(--line); padding: 0.5rem; text-align: left; vertical-align: top; }
+.badge.flag { background: var(--notice-bg); }

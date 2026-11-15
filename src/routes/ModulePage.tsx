@@ -7,11 +7,12 @@ import { useGate } from './ModuleGate';
 const t = en.module;
 
 export function ModulePage() {
-  const { slug, bundle, attempts, decisions, levels } = useGate();
+  const { slug, bundle, attempts, decisions, levels, unreviewed } = useGate();
   const notice = (useLocation().state as { notice?: string } | null)?.notice;
   return (
     <div>
       <h1>{bundle.meta.title}</h1>
+      {unreviewed && <p><span className="badge">{en.stage.unreviewed}</span></p>}
       {notice && <p role="status" className="notice">{notice}</p>}
       <p>{bundle.meta.intro}</p>
 

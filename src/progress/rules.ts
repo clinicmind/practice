@@ -28,13 +28,14 @@ export function levelPassed(attempts: Attempt[], drills: Drill[], level: Level):
   return met >= PASS_THRESHOLD;
 }
 
-export function unlockedLevels(attempts: Attempt[], drills: Drill[]): Level[] {
-  const out: Level[] = [LEVELS[0]];
+/** `granted` are levels a supervisor opened by hand; they are added to what was earned. */
+export function unlockedLevels(attempts: Attempt[], drills: Drill[], granted: Level[] = []): Level[] {
+  const earned: Level[] = [LEVELS[0]];
   for (let i = 1; i < LEVELS.length; i++) {
     if (!levelPassed(attempts, drills, LEVELS[i - 1])) break;
-    out.push(LEVELS[i]);
+    earned.push(LEVELS[i]);
   }
-  return out;
+  return LEVELS.filter((lv) => earned.includes(lv) || granted.includes(lv));
 }
 
 export function walkthroughDone(decisions: Decision[], sessions: Session[]): boolean {

@@ -105,7 +105,7 @@ describe('SupabaseStore', () => {
   });
 
   test('other server errors are kind "other"', async () => {
-    const bad = { from: () => ({ select: () => ({ eq: () => ({ order: () => ({ order: () => Promise.resolve({ data: null, status: 500, error: { message: 'boom', code: 'XX000' } }) }) }) }) }) };
+    const bad = { from: () => ({ select: () => ({ eq: () => ({ order: () => ({ order: () => ({ range: () => Promise.resolve({ data: null, status: 500, error: { message: 'boom', code: 'XX000' } }) }) }) }) }) }) };
     const s = createSupabaseStore(bad as never, ME);
     await expect(s.listAttempts()).rejects.toMatchObject({ kind: 'other' });
   });

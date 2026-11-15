@@ -27,7 +27,10 @@ export function StagePage() {
                   <p className="muted">{lockedModuleNotice(m)}</p>
                 </div>
               ) : (
-                <Link to={`/m/${m.slug}`}>{m.title}</Link>
+                <>
+                  <Link to={`/m/${m.slug}`}>{m.title}</Link>
+                  {m.unreviewed && <>{' '}<span className="badge">{en.stage.unreviewed}</span></>}
+                </>
               )}
             </li>
           ))}

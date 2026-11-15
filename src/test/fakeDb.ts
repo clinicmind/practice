@@ -12,21 +12,27 @@ export interface FakeDb {
   client: { from(table: string): Query };
   tables: Record<string, Row[]>;
   networkDown: boolean;
+  /** Reads of these tables fail as network errors. */
+  failReads: Set<string>;
   authExpired: boolean;
   /** Let n more writes succeed, then fail every write as a network error until reset. */
   failWritesAfter(n: number): void;
   restore(): void;
   writes: number;
+  /** Every select that ran, for asserting what the app asked for. */
+  reads: { table: string; filters: [string, unknown][] }[];
 }
 
 export function createFakeDb(): FakeDb {
   let clock = Date.parse('2026-11-15T00:00:00.000Z');
   let allowed = Infinity;
   const db: FakeDb = {
-    tables: { attempts: [], decisions: [], reflections: [] },
+    tables: { profiles: [], cohorts: [], attempts: [], decisions: [], reflections: [], unlocks: [], audit_log: [] },
     networkDown: false,
+    failReads: new Set<string>(),
     authExpired: false,
     writes: 0,
+    reads: [],
     failWritesAfter(n) { allowed = n; },
     restore() { allowed = Infinity; db.networkDown = false; db.authExpired = false; },
     client: { from: (t) => new Query(db, t, () => (clock += 1), () => (allowed-- > 0)) },
@@ -42,7 +48,8 @@ class Query implements PromiseLike<Res> {
   private rows: Row[] = [];
   private opts: { onConflict?: string; ignoreDuplicates?: boolean } = {};
   private filters: [string, unknown][] = [];
-  private orders: string[] = [];
+  private orders: { col: string; asc: boolean }[] = [];
+  private window: [number, number] | null = null;
   private mode: 'many' | 'single' | 'maybe' = 'many';
 
   constructor(private db: FakeDb, private table: string, private tick: () => number, private mayWrite: () => boolean) {}
@@ -52,12 +59,25 @@ class Query implements PromiseLike<Res> {
     this.op = 'upsert'; this.rows = Array.isArray(rows) ? rows : [rows]; this.opts = opts; return this;
   }
   eq(col: string, val: unknown) { this.filters.push([col, val]); return this; }
-  order(col: string) { this.orders.push(col); return this; }
+  order(col: string, o: { ascending?: boolean } = {}) { this.orders.push({ col, asc: o.ascending !== false }); return this; }
+  range(from: number, to: number) { this.window = [from, to]; return this; }
   single() { this.mode = 'single'; return this; }
   maybeSingle() { this.mode = 'maybe'; return this; }
 
+  /** The student_activity view: latest created_at per user over the three progress tables. */
+  private activity(): Row[] {
+    const latest = new Map<string, string>();
+    for (const t of ['attempts', 'decisions', 'reflections']) {
+      for (const r of this.db.tables[t] ?? []) {
+        const u = String(r.user_id), c = String(r.created_at);
+        if (!latest.has(u) || c > latest.get(u)!) latest.set(u, c);
+      }
+    }
+    return [...latest].map(([user_id, last_active_at]) => ({ user_id, last_active_at }));
+  }
+
   private run(): Res {
-    if (this.db.networkDown) return NETWORK;
+    if (this.db.networkDown || (this.op === 'select' && this.db.failReads.has(this.table))) return NETWORK;
     if (this.db.authExpired) return EXPIRED;
     const table = (this.db.tables[this.table] ??= []);
     let out: Row[];
@@ -77,12 +97,16 @@ class Query implements PromiseLike<Res> {
         out.push(row);
       }
     } else {
-      out = table.filter((r) => this.filters.every(([c, v]) => r[c] === v));
+      const source = this.table === 'student_activity' ? this.activity() : table;
+      out = source.filter((r) => this.filters.every(([c, v]) => r[c] === v));
       for (const o of [...this.orders].reverse()) {
-        out = [...out].sort((a, b) => (String(a[o]) < String(b[o]) ? -1 : String(a[o]) > String(b[o]) ? 1 : 0));
+        const sign = o.asc ? 1 : -1;
+        out = [...out].sort((a, b) => (String(a[o.col]) < String(b[o.col]) ? -sign : String(a[o.col]) > String(b[o.col]) ? sign : 0));
       }
+      if (this.window) out = out.slice(this.window[0], this.window[1] + 1);
     }
     out = out.map((r) => ({ ...r }));
+    this.db.reads.push({ table: this.table, filters: [...this.filters] });
     if (this.mode === 'many') return { data: out, error: null, status: 200 };
     if (out.length === 1) return { data: out[0], error: null, status: 200 };
     if (this.mode === 'maybe' && out.length === 0) return { data: null, error: null, status: 200 };
