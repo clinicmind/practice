@@ -7,4 +7,5 @@ import { writeFixture } from './makeContent';
 const root = join(dirname(fileURLToPath(import.meta.url)), 'content');
 rmSync(root, { recursive: true, force: true });
 writeFixture(join(root, 'ok'), ['intake']); // alliance deliberately unreviewed
-writeFixture(join(root, 'ok-reviewed'), ['intake', 'alliance']); // used by e2e
+// Used by e2e and the app tests. zh-Hant: intake is reviewed; alliance is written but not yet reviewed.
+writeFixture(join(root, 'ok-reviewed'), ['intake', 'alliance'], { present: ['intake', 'alliance'], reviewed: ['intake'] });

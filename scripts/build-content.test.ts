@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { cpSync, mkdtempSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parse, stringify } from 'yaml';
@@ -113,5 +113,98 @@ describe('buildContent', () => {
   test('stage lists a module whose directory is missing → clear error', async () => {
     const dir = variant((h) => h.edit('stage.yaml', (d) => ({ ...d, modules: [...d.modules, 'ghost'] })));
     await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/module "ghost".*not found/);
+  });
+});
+
+describe('buildContent zh-Hant', () => {
+  const OKR = join(__dirname, '..', 'tests', 'fixtures', 'content', 'ok-reviewed');
+  const build = (dir: string, extra: object = {}) => buildContent({ contentDir: dir, outDir, locale: 'zh-Hant', ...extra });
+  const zhStage = (dir: string) => join(dir, 'zh-Hant', 'stages', 'foundations');
+  /** Copy ok-reviewed (en: both modules; zh-Hant: intake reviewed, alliance unreviewed) and edit it. */
+  function copy(edit: (dir: string, editZh: (rel: string, fn: (data: any) => any) => void) => void = () => {}): string {
+    const dir = mkdtempSync(join(tmpdir(), 'fxzh-'));
+    cpSync(OKR, dir, { recursive: true });
+    edit(dir, (rel, fn) => {
+      const f = join(zhStage(dir), rel);
+      const data = parse(readFileSync(f, 'utf8'));
+      writeFileSync(f, stringify(fn(data) ?? data));
+    });
+    return dir;
+  }
+
+  test('no zh-Hant directory at all: builds an empty index and does not fail', async () => {
+    await build(OK);
+    const idx = readJson('zh-Hant/foundations/index.json');
+    expect(idx.modules).toEqual([]);
+  });
+
+  test('only some modules: lists the ones present, reviewed flag comes from the zh-Hant rows', async () => {
+    await build(OKR);
+    const idx = readJson('zh-Hant/foundations/index.json');
+    expect(idx.modules.map((m: any) => [m.slug, m.reviewed])).toEqual([['intake', true], ['alliance', false]]);
+    expect(readJson('zh-Hant/foundations/intake/module.json').meta.title).toContain('測試');
+    expect(existsSync(join(outDir, 'zh-Hant/foundations/alliance/module.json'))).toBe(false);
+    expect(existsSync(join(outDir, 'zh-Hant/foundations/alliance/models.json'))).toBe(false);
+  });
+
+  test('a module directory that is missing is skipped, even if stage.yaml lists it', async () => {
+    const dir = copy((d, editZh) => {
+      rmSync(join(zhStage(d), 'alliance'), { recursive: true });
+      editZh('stage.yaml', (s) => s);
+    });
+    await build(dir);
+    expect(readJson('zh-Hant/foundations/index.json').modules.map((m: any) => m.slug)).toEqual(['intake']);
+  });
+
+  test('stage.yaml may be absent while module folders exist', async () => {
+    const dir = copy((d) => rmSync(join(zhStage(d), 'stage.yaml')));
+    await build(dir);
+    expect(readJson('zh-Hant/foundations/index.json').modules.map((m: any) => m.slug)).toEqual(['intake', 'alliance']);
+  });
+
+  test('all present and reviewed', async () => {
+    const dir = copy((d) => {
+      writeFileSync(join(d, 'REVIEW.md'), readFileSync(join(d, 'REVIEW.md'), 'utf8') + '| alliance | zh-Hant | 1.0.0 | 2026-01-01 |\n');
+    });
+    await build(dir);
+    expect(readJson('zh-Hant/foundations/index.json').modules.map((m: any) => m.reviewed)).toEqual([true, true]);
+    expect(existsSync(join(outDir, 'zh-Hant/foundations/alliance/models.json'))).toBe(true);
+  });
+
+  test('an English review row does not review the zh-Hant module, and versions are counted separately', async () => {
+    const dir = copy((d, editZh) => editZh('intake/module.yaml', (m) => ({ ...m, version: '1.0.1' })));
+    await build(dir);
+    expect(readJson('zh-Hant/foundations/index.json').modules[0].reviewed).toBe(false);
+    // building en from the same tree is unaffected by the zh version
+    await buildContent({ contentDir: dir, outDir, locale: 'en' });
+    expect(readJson('en/foundations/index.json').modules[0].reviewed).toBe(true);
+  });
+
+  const mismatches: [string, (editZh: (rel: string, fn: (d: any) => any) => void) => void, RegExp][] = [
+    ['drill id', (e) => e('intake/drills.yaml', (d) => { d[0].id = 'intake-e11'; }), /zh-Hant.*intake.*"intake-e11"|"intake-e01".*(not|missing)/s],
+    ['drill level', (e) => e('intake/drills.yaml', (d) => { const x = d.find((y: any) => y.id === 'intake-e01'); x.level = 'medium'; x.id = 'intake-m11'; }), /intake/],
+    ['skill', (e) => e('intake/drills.yaml', (d) => { for (const x of d) if (x.skill === 'open-question') x.skill = 'restatement'; }), /intake/],
+    ['module skills list', (e) => e('intake/module.yaml', (d) => { d.skills = ['restatement', 'open-question']; }), /zh-Hant intake.*skills/],
+    ['session id', (e) => e('intake/walkthrough.yaml', (d) => { d.sessions[0].id = 'intake-s2'; }), /zh-Hant intake.*session "intake-s1"/],
+    ['decision id', (e) => e('intake/walkthrough.yaml', (d) => { d.sessions[0].turns[2].id = 'dx'; }), /zh-Hant intake.*intake-s1.*"d1"/],
+    ['option id', (e) => e('intake/walkthrough.yaml', (d) => { d.sessions[0].turns[2].options[1].id = 'z'; }), /zh-Hant intake.*"d1".*option/],
+    ['fit', (e) => e('intake/walkthrough.yaml', (d) => { d.sessions[0].turns[2].options[1].fit = 'weak'; }), /zh-Hant intake.*"d1".*option "b".*fit.*"weak".*"workable"/],
+    ['decision type', (e) => e('intake/walkthrough.yaml', (d) => { const t = d.sessions[0].turns[4]; t.type = 'choice'; t.options = d.sessions[0].turns[2].options; }), /zh-Hant intake.*"d2"/],
+    ['reflection prompt id', (e) => e('intake/module.yaml', (d) => { d.reflection_prompts[0].id = 'rx'; }), /zh-Hant intake.*reflection/],
+  ];
+  test.each(mismatches)('structure differs from English (%s): build fails and names the module', async (_n, edit, re) => {
+    const dir = copy((_d, editZh) => edit(editZh));
+    await expect(build(dir)).rejects.toThrow(re);
+  });
+
+  test('a zh-Hant module with no English counterpart fails', async () => {
+    const dir = copy((d) => cpSync(join(zhStage(d), 'intake'), join(zhStage(d), 'ghost'), { recursive: true }));
+    await expect(build(dir)).rejects.toThrow(/zh-Hant.*"ghost".*English/);
+  });
+
+  test('English build is unaffected by a broken zh-Hant tree', async () => {
+    const dir = copy((_d, editZh) => editZh('intake/drills.yaml', (d) => { d[0].id = 'intake-e11'; }));
+    await buildContent({ contentDir: dir, outDir, locale: 'en' });
+    expect(readJson('en/foundations/index.json').modules).toHaveLength(2);
   });
 });

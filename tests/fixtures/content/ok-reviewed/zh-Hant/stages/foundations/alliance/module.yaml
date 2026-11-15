@@ -1,0 +1,12 @@
+slug: alliance
+title: Alliance（測試）
+version: 1.0.0
+intro: alliance 模組的簡介。
+skills:
+  - reflection-of-feeling
+  - validation
+reflection_prompts:
+  - id: r1
+    text: 這個模組中，什麼讓你印象最深？
+  - id: r2
+    text: 你接下來會試什麼？
