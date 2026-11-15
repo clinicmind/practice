@@ -28,7 +28,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--accent-fg); padding: 0.5rem 1rem; z-index: 10; }
 .skip:focus { left: 0; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.site-header { padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
+.site-header { padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between; }
+.account { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
 .brand { font-weight: 700; text-decoration: none; color: var(--fg); }
 .site-footer { border-top: 1px solid var(--line); padding: 1rem 0; color: var(--muted); font-size: 0.875rem; }
 .muted { color: var(--muted); }
