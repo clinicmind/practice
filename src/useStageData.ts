@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { loadModule, loadStage } from './content/client';
 import type { ModuleBundle, StageIndex } from './content/schema';
 import { unlockedModules } from './progress/rules';
@@ -35,6 +36,8 @@ export function useStageData(): StageState {
   const store = useStore();
   const [state, setState] = useState<StageState>({ status: 'loading' });
   const [tick, setTick] = useState(0);
+  // Gate components are reused across routes, so re-read progress on every navigation.
+  const locationKey = useLocation().key;
   const reload = useCallback(() => setTick((n) => n + 1), []);
 
   useEffect(() => {
@@ -68,7 +71,7 @@ export function useStageData(): StageState {
       if (live) setState({ status: 'ready', data: { stage, visible, bundles, unlocked, attempts, decisions } });
     })().catch(() => live && setState({ status: 'error', reload }));
     return () => { live = false; };
-  }, [store, tick, reload]);
+  }, [store, tick, reload, locationKey]);
 
   return state;
 }

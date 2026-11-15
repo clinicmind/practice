@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { DecisionPoint } from '../content/schema';
 import { en } from '../i18n/en';
 import type { Decision, NewDecision } from '../progress/types';
@@ -20,6 +20,13 @@ export function DecisionPointView({ sessionId, decision, answer, onAnswer }: Pro
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(false);
 
+  const answeredRef = useRef<HTMLElement>(null);
+  const wasAnswered = useRef(!!answer);
+  useEffect(() => {
+    if (answer && !wasAnswered.current) answeredRef.current?.focus();
+    wasAnswered.current = !!answer;
+  }, [answer]);
+
   async function submit(d: NewDecision) {
     if (saving) return;
     setSaving(true);
@@ -36,7 +43,7 @@ export function DecisionPointView({ sessionId, decision, answer, onAnswer }: Pro
   if (answer) {
     const chosen = decision.options?.find((o) => o.id === answer.optionId);
     return (
-      <section className="decision answered" aria-label={t.answered}>
+      <section ref={answeredRef} tabIndex={-1} className="decision answered" aria-label={t.answered}>
         <p className="prompt">{decision.prompt}</p>
         {decision.type === 'choice' && chosen && (
           <div>

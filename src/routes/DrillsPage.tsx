@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { DrillCard } from '../components/DrillCard';
 import { loadModels, loadModule } from '../content/client';
@@ -16,6 +16,13 @@ export function DrillsPage() {
   const [index, setIndex] = useState(0);
   const [error, setError] = useState(false);
   const [reload, setReload] = useState(0);
+
+  const questionRef = useRef<HTMLParagraphElement>(null);
+  const movedOn = useRef(false);
+  useEffect(() => {
+    if (movedOn.current) questionRef.current?.focus();
+    movedOn.current = index > 0;
+  }, [index]);
 
   useEffect(() => {
     let live = true;
@@ -59,7 +66,7 @@ export function DrillsPage() {
       <p aria-live="polite">{en.drillsPage.progress(met, drills.length)}</p>
       {drill ? (
         <>
-          <p className="muted">{en.drill.questionOf(index + 1, drills.length)}</p>
+          <p ref={questionRef} tabIndex={-1} className="muted">{en.drill.questionOf(index + 1, drills.length)}</p>
           <DrillCard
             key={drill.id}
             drill={drill}

@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { Drill, Model } from '../content/schema';
 import { en } from '../i18n/en';
 import { MIN_CRITERIA, MIN_RESPONSE } from '../progress/rules';
@@ -26,6 +26,18 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
   const [model, setModel] = useState<Model | null>(null);
   const [modelError, setModelError] = useState(false);
   const [saved, setSaved] = useState<{ response: string; met: boolean } | null>(null);
+
+  // Keyboard users lose focus when a button unmounts; move it to the new step.
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const ratingRef = useRef<HTMLFieldSetElement>(null);
+  const reviewRef = useRef<HTMLHeadingElement>(null);
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) { first.current = false; return; }
+    if (phase === 'writing') textRef.current?.focus();
+    else if (phase === 'rating') ratingRef.current?.focus();
+    else reviewRef.current?.focus();
+  }, [phase]);
 
   const blank = text.trim().length === 0;
   const ticked = ticks.filter(Boolean).length;
@@ -84,6 +96,7 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
           <p id={`${uid}-help`} className="muted">{t.responseHelp}</p>
           <textarea
             id={`${uid}-resp`}
+            ref={textRef}
             aria-describedby={`${uid}-help`}
             rows={4}
             value={text}
@@ -116,7 +129,7 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
 
       {phase === 'rating' && (
         <>
-          <fieldset>
+          <fieldset ref={ratingRef} tabIndex={-1}>
             <legend>{t.selfCheckLegend}</legend>
             {drill.criteria.map((c, i) => (
               <label key={i} className="check">
@@ -144,7 +157,7 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
 
       {phase === 'review' && saved && (
         <>
-          <h3>{t.yourResponse}</h3>
+          <h3 ref={reviewRef} tabIndex={-1}>{t.yourResponse}</h3>
           <blockquote>{saved.response}</blockquote>
           <p>{saved.met ? t.met : t.notMet}</p>
           {modelError && (

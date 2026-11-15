@@ -177,6 +177,21 @@ describe('route guards', () => {
   });
 });
 
+describe('fresh data after navigation', () => {
+  test('module page shows the new count after answering a drill and going back via the link', async () => {
+    const user = userEvent.setup();
+    renderAt('/m/intake/drills/easy');
+    await user.type(await screen.findByRole('textbox', { name: /your response/i }), LONG);
+    await user.click(screen.getByRole('button', { name: /submit response/i }));
+    await user.click(screen.getByRole('checkbox', { name: /criterion one/i }));
+    await user.click(screen.getByRole('checkbox', { name: /criterion two/i }));
+    await user.click(screen.getByRole('button', { name: /save self-check/i }));
+    await screen.findByText('Example response');
+    await user.click(screen.getByRole('link', { name: /back to module/i }));
+    expect(await screen.findByText('1 / 10 met')).toBeVisible();
+  });
+});
+
 describe('reflection', () => {
   test('saves text per prompt and lists earlier entries newest first', async () => {
     const user = userEvent.setup();
