@@ -4,6 +4,7 @@ import { useT } from '../i18n';
 import { importLocal } from '../progress/importLocal';
 import { STORAGE_KEY } from '../progress/localStore';
 import { createSupabaseStore } from '../progress/supabaseStore';
+import { createOpenStageReader, OpenStagesContext } from '../progress/stageAccess';
 import { createGrantReader, GrantsContext } from '../progress/unlocks';
 import { createSupervisorApi } from '../supervisor/api';
 import { SupervisorApiContext } from '../supervisor/SupervisorContext';
@@ -38,6 +39,10 @@ function CloudShell({ backend, profile, local, storage }: {
   const s = useT();
   const remote = useMemo(() => createSupabaseStore(backend, profile.id), [backend, profile.id]);
   const readGrants = useMemo(() => createGrantReader(backend, profile.id), [backend, profile.id]);
+  const readOpenStages = useMemo(
+    () => createOpenStageReader(backend, { role: profile.role, cohortId: profile.cohortId }),
+    [backend, profile.role, profile.cohortId],
+  );
   const supervisorApi = useMemo(
     () => (profile.role === 'supervisor' ? createSupervisorApi(backend, profile.id) : null),
     [backend, profile.id, profile.role],
@@ -70,9 +75,11 @@ function CloudShell({ backend, profile, local, storage }: {
   return (
     <StoreProvider store={remote}>
       <GrantsContext.Provider value={readGrants}>
-        <SupervisorApiContext.Provider value={supervisorApi}>
-          <Outlet />
-        </SupervisorApiContext.Provider>
+        <OpenStagesContext.Provider value={readOpenStages}>
+          <SupervisorApiContext.Provider value={supervisorApi}>
+            <Outlet />
+          </SupervisorApiContext.Provider>
+        </OpenStagesContext.Provider>
       </GrantsContext.Provider>
     </StoreProvider>
   );

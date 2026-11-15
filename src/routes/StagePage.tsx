@@ -1,6 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useT } from '../i18n';
-import { modulePath } from '../stages';
+import { DEFAULT_STAGE, modulePath } from '../stages';
 import { useStageData } from '../useStageData';
 import { NotFound } from './NotFound';
 import { ErrorBlock, lockedModuleNotice } from './ModuleGate';
@@ -12,6 +12,7 @@ export function StagePage() {
 
   if (state.status === 'loading') return <p>{s.common.loading}</p>;
   if (state.status === 'notfound') return <NotFound />;
+  if (state.status === 'locked') return <Navigate to="/" replace state={{ notice: s.stage.stageNotOpenNotice }} />;
   if (state.status === 'error') return <ErrorBlock message={s.stage.loadError} onRetry={state.reload} />;
   const { data } = state;
   // The furthest module the student can open is where they will most likely want to go.
@@ -19,7 +20,7 @@ export function StagePage() {
   return (
     <div>
       <h1>{data.stage.title}</h1>
-      <p className="lede">{s.stage.lede}</p>
+      {data.stage.stage === DEFAULT_STAGE && <p className="lede">{s.stage.lede}</p>}
       {notice && <p role="status" className="notice">{notice}</p>}
       {data.visible.length === 0 ? (
         <p>{s.stage.empty}</p>

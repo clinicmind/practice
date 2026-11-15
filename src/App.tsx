@@ -7,6 +7,7 @@ import { LocaleProvider } from './i18n';
 import type { ProgressStore } from './progress/types';
 import { AuthCallback } from './routes/AuthCallback';
 import { DrillsPage } from './routes/DrillsPage';
+import { HomePage } from './routes/HomePage';
 import { JoinPage } from './routes/JoinPage';
 import { LoginPage } from './routes/LoginPage';
 import { LevelGate, ModuleGate } from './routes/ModuleGate';
@@ -44,7 +45,7 @@ export function App({ store, wasReset, backend = null, storage = globalThis.loca
           <Route path="/join" element={<JoinPage />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route element={<RequireAuth store={store} backend={backend} storage={storage} />}>
-            <Route path="/" element={<StagePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/s/:stage" element={<StagePage />} />
             <Route path="/s/:stage/m/:slug" element={<ModuleGate><ModulePage /></ModuleGate>} />
             <Route path="/s/:stage/m/:slug/walkthrough/:sessionId" element={<ModuleGate><WalkthroughPage /></ModuleGate>} />

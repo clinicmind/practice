@@ -80,6 +80,10 @@ export const zhHant: Strings = {
     lede: '一位個案，十六次會談，八個階段。跟著個案 M 由第一次見面走到最後一次，逐一練習每個階段需要的技能。',
     nextUp: '接下來',
     stepLabel: (n: number) => `第 ${n} 階段`,
+    listHeading: '你的課程',
+    listLede: '選一個階段開始練習。',
+    stageNotOpen: '還未向你的班別開放',
+    stageNotOpenNotice: '這個階段還未向你的班別開放。請向督導查詢開放時間。',
   },
   module: {
     walkthrough: '療程走讀',

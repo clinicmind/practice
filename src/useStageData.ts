@@ -5,6 +5,7 @@ import { loadModule, loadStage, loadStages, type ContentLocale } from './content
 import { useLocale } from './i18n';
 import type { ModuleBundle, StageIndex } from './content/schema';
 import { unlockedModules } from './progress/rules';
+import { stageIsOpen, useOpenStageReader } from './progress/stageAccess';
 import { useGrantReader, type Grants } from './progress/unlocks';
 import type { Attempt, Decision } from './progress/types';
 import { useStageParam } from './stages';
@@ -38,6 +39,8 @@ export type StageState =
   | { status: 'loading' }
   /** The stage in the URL does not exist in this build. */
   | { status: 'notfound' }
+  /** The stage exists, but the student's cohort has not been given it. */
+  | { status: 'locked' }
   | { status: 'error'; reload: () => void }
   | { status: 'ready'; data: StageData };
 
@@ -49,6 +52,7 @@ export function useStageData(): StageState {
   const stageName = useStageParam();
   const store = useStore();
   const readGrants = useGrantReader();
+  const readOpenStages = useOpenStageReader();
   const isSupervisor = useAuth().status === 'supervisor';
   const { locale } = useLocale();
   const [state, setState] = useState<StageState>({ status: 'loading' });
@@ -70,6 +74,10 @@ export function useStageData(): StageState {
       const stages = await loadStages('en');
       if (!stages.some((s) => s.stage === stageName)) {
         if (live) setState({ status: 'notfound' });
+        return;
+      }
+      if (!stageIsOpen(await readOpenStages(), stageName)) {
+        if (live) setState({ status: 'locked' });
         return;
       }
       const stage = await loadStage('en', stageName);
@@ -138,7 +146,7 @@ export function useStageData(): StageState {
       if (live) setState({ status: 'ready', data: { stage: { ...stage, title: stageTitle }, visible, contentLocale, bundles, grants, unlocked, attempts, decisions } });
     })().catch(() => live && setState({ status: 'error', reload }));
     return () => { live = false; };
-  }, [stageName, store, readGrants, isSupervisor, tick, reload, locationKey, locale]);
+  }, [stageName, store, readGrants, readOpenStages, isSupervisor, tick, reload, locationKey, locale]);
 
   return state;
 }

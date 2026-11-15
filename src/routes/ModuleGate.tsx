@@ -64,6 +64,7 @@ export function ModuleGate({ children }: { children: ReactNode }) {
   const state = useStageData();
   if (state.status === 'loading') return <p>{s.common.loading}</p>;
   if (state.status === 'notfound') return <NotFound />;
+  if (state.status === 'locked') return <Navigate to="/" replace state={{ notice: s.stage.stageNotOpenNotice }} />;
   if (state.status === 'error') return <ErrorBlock message={s.stage.loadError} onRetry={state.reload} />;
   const { data } = state;
   const entry = data.visible.find((v) => v.slug === slug);

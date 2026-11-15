@@ -89,6 +89,10 @@ const enStrings = {
     lede: 'One client, sixteen sessions, eight stages. Follow Client M from her first meeting to her last, and practise the skills each stage asks of you.',
     nextUp: 'Next up',
     stepLabel: (n: number) => `Stage ${n}`,
+    listHeading: 'Your course',
+    listLede: 'Choose a stage to work on.',
+    stageNotOpen: 'Not open to your cohort yet',
+    stageNotOpenNotice: 'This stage is not open to your cohort yet. Ask your supervisor when it will open.',
   },
   module: {
     walkthrough: 'Walkthrough',
