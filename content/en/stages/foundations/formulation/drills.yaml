@@ -1,0 +1,203 @@
+- id: formulation-e01
+  level: easy
+  skill: interpretation
+  context: "Fifth session."
+  client: "My dad had a temper, so we all learned to keep our heads down. Anyway, a different thing: I've noticed I freeze whenever my boss walks past my desk."
+  criteria: &in_easy
+    - "It links two things the client has said that the client has not linked."
+    - "It is offered as an idea, with words such as 'I wonder', and the client could easily say no."
+    - "It is short and in everyday words. It contains no technical terms and no blame."
+- id: formulation-e02
+  level: easy
+  skill: interpretation
+  context: "Fifth session."
+  client: "I never ask for help at work. Growing up there were five of us, and Mum was always exhausted, so you just got on with things."
+  criteria: *in_easy
+- id: formulation-e03
+  level: easy
+  skill: interpretation
+  context: "Fifth session."
+  client: "Every time it's going well with someone I'm seeing, I find a reason to end it. My parents split up when I was nine. It came out of nowhere."
+  criteria: *in_easy
+- id: formulation-e04
+  level: easy
+  skill: interpretation
+  context: "Fifth session."
+  client: "When I'm upset, I clean. The whole flat. My mother was the same. You knew she was angry when the vacuum cleaner came out."
+  criteria: *in_easy
+- id: formulation-e05
+  level: easy
+  skill: interpretation
+  context: "Fifth session."
+  client: "My stomach dropped when my manager said, 'Can I have a quick word?' At school, 'a quick word' always meant I was in trouble."
+  criteria: *in_easy
+
+- id: formulation-e06
+  level: easy
+  skill: challenge
+  context: "Fifth session."
+  client: "I really want to get fit this year. I haven't actually been to the gym since I joined in January."
+  criteria: &ch_easy
+    - "It states both things that do not fit, accurately, in words close to the client's own."
+    - "It joins them with 'and', in a curious tone, with no accusation and no 'but'."
+    - "It ends by asking how the client makes sense of the two."
+- id: formulation-e07
+  level: easy
+  skill: challenge
+  context: "The client's fists are clenched and their voice is tight."
+  client: "I'm not angry with her at all."
+  criteria: *ch_easy
+- id: formulation-e08
+  level: easy
+  skill: challenge
+  context: "Fifth session."
+  client: "My family is the most important thing in my life. I've been at the office until nine every night for months."
+  criteria: *ch_easy
+- id: formulation-e09
+  level: easy
+  skill: challenge
+  context: "Fifth session."
+  client: "I don't care what people think of me. I spent three hours deciding what to wear to that party."
+  criteria: *ch_easy
+- id: formulation-e10
+  level: easy
+  skill: challenge
+  context: "Fifth session."
+  client: "I'm completely over my ex. I look at his profile most days, just to see."
+  criteria: *ch_easy
+
+- id: formulation-m01
+  level: medium
+  skill: interpretation
+  context: "Sixth session."
+  client: "I'm always the one who looks after everyone. At work, with friends. It's exhausting. But if I don't do it, who will?"
+  criteria: &in_medium
+    - "It goes one step beyond what the client said, and it is built from the client's own words or actions."
+    - "It is tentative, and it describes the behaviour as something that makes sense. It does not present it as a fault."
+    - "It is short and in everyday words, and it ends in a way that lets the client disagree."
+- id: formulation-m02
+  level: medium
+  skill: interpretation
+  context: "Sixth session."
+  client: "I was fine until my daughter turned twelve. No idea why that would matter. I was twelve when my mother got ill."
+  criteria: *in_medium
+- id: formulation-m03
+  level: medium
+  skill: interpretation
+  context: "The client has arrived ten minutes late for the fourth time."
+  client: "Sorry, sorry. I'm never late for anything else. I don't know what it is about Thursdays."
+  criteria: *in_medium
+- id: formulation-m04
+  level: medium
+  skill: interpretation
+  context: "Sixth session."
+  client: "When my partner is kind to me, I get irritable. I don't understand it. Nobody was very kind at home. You had to be tough."
+  criteria: *in_medium
+- id: formulation-m05
+  level: medium
+  skill: interpretation
+  context: "Sixth session."
+  client: "I've been promoted three times, and each time I've been ill within the month. Bad luck, I suppose."
+  criteria: *in_medium
+
+- id: formulation-m06
+  level: medium
+  skill: challenge
+  context: "Sixth session."
+  client: "I've decided. I'm leaving him, definitely. We're just looking at dates for the holiday in August."
+  criteria: &ch_medium
+    - "It first acknowledges what is true or understandable in one or both sides."
+    - "It states the two things that do not fit, accurately, joined with 'and'."
+    - "It asks the client to make sense of them and does not suggest which side is the real one."
+- id: formulation-m07
+  level: medium
+  skill: challenge
+  context: "The client has raised their brother's inheritance for the third time this session."
+  client: "It honestly doesn't bother me that my brother got the house."
+  criteria: *ch_medium
+- id: formulation-m08
+  level: medium
+  skill: challenge
+  context: "Sixth session."
+  client: "I trust you completely. There are just some things I would never tell anyone."
+  criteria: *ch_medium
+- id: formulation-m09
+  level: medium
+  skill: challenge
+  context: "Sixth session."
+  client: "I want to cut down my drinking. But it's the only thing that gets me to sleep, so I'm not stopping that."
+  criteria: *ch_medium
+- id: formulation-m10
+  level: medium
+  skill: challenge
+  context: "Earlier, the client described sitting up all night with their son when he was ill."
+  client: "I'm a terrible parent. I really am."
+  criteria: *ch_medium
+
+- id: formulation-h01
+  level: hard
+  skill: interpretation
+  context: "You have just linked the client's overwork to their father's expectations."
+  client: "Don't analyse me. I came here for strategies."
+  criteria: &in_hard
+    - "It is based on something the client has said or done in this session, which may include what just happened between you."
+    - "It is tentative, and the client has a real chance to refuse it. If the client has already refused an idea, it does not repeat that idea."
+    - "It contains no defence of yourself and no argument."
+- id: formulation-h02
+  level: hard
+  skill: interpretation
+  context: "Sixth session."
+  client: "So you think it's all because of my childhood. Bit of a cliché, isn't it?"
+  criteria: *in_hard
+- id: formulation-h03
+  level: hard
+  skill: interpretation
+  context: "The client has cancelled the session after each of the three sessions in which they cried."
+  client: "Sorry about last week. Work thing. Again."
+  criteria: *in_hard
+- id: formulation-h04
+  level: hard
+  skill: interpretation
+  context: "You have been silent for a few moments after the client spoke about their father's coldness."
+  client: "You're just like him. Sitting there saying nothing."
+  criteria: *in_hard
+- id: formulation-h05
+  level: hard
+  skill: interpretation
+  context: "You have just reflected sadness. The client rolls their eyes."
+  client: "I knew you'd say that. Therapists always make it about feelings."
+  criteria: *in_hard
+
+- id: formulation-h06
+  level: hard
+  skill: challenge
+  context: "The client has attended every session, on time, for eight weeks."
+  client: "This is a waste of time."
+  criteria: &ch_hard
+    - "It names two things that do not fit, at least one of which concerns you or the therapy, accurately and calmly."
+    - "It does not retaliate, score a point or defend yourself, and it does not back away from the mismatch."
+    - "It asks, with real curiosity, how the client makes sense of it."
+- id: formulation-h07
+  level: hard
+  skill: challenge
+  context: "The client has mentioned your coming holiday four times this session."
+  client: "I've told you, I'm fine with you going away."
+  criteria: *ch_hard
+- id: formulation-h08
+  level: hard
+  skill: challenge
+  context: "Last week you offered two suggestions. The client said neither would work."
+  client: "You never give me any advice."
+  criteria: *ch_hard
+- id: formulation-h09
+  level: hard
+  skill: challenge
+  context: "This is the third week the client has made the same promise."
+  client: "I'll do the exercise this week. I promise."
+  criteria: *ch_hard
+- id: formulation-h10
+  level: hard
+  skill: challenge
+  context: "A minute ago you remembered a detail from six weeks back, and the client's eyes filled."
+  client: "You don't care. It's just a job to you."
+  criteria: *ch_hard

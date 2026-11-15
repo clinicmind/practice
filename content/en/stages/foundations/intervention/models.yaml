@@ -1,0 +1,120 @@
+intervention-e01:
+  model_response: "Would it help if I said what's going on in the body then? In a panic, your body sets off its alarm, and a racing heart is part of the alarm. It feels dangerous. Your doctor has checked your heart and found it healthy. How does that sit with what it's like for you?"
+  why: "It asks first, explains in three plain sentences, rests on the medical check that was done, and checks back."
+  avoid: "'It's just anxiety.' The word 'just' tells the client that their terror is silly."
+intervention-e02:
+  model_response: "Many people find that, yes. We open things here that are usually kept shut, and they can stay stirred up for a while afterwards. What have the days after been like for you?"
+  why: "It is a short, honest answer that presents this as common, not universal, and then goes back to the client's experience."
+  avoid: "'That means it's working.' You do not know that."
+intervention-e03:
+  model_response: "It's a good question. Can I offer one piece of it? When mood is low and we do less, energy often drops further, so doing less can leave you more tired. Does that fit, or does your tiredness feel different from that?"
+  why: "It offers part of an answer, links it to the client having stopped activities, and leaves room for another cause."
+  avoid: "'You need to be more active.' It turns the information into an instruction."
+intervention-e04:
+  model_response: "Yes, that's the word for it. Going over something again and again without getting anywhere new. It often feels like problem-solving, which is part of why it's hard to stop. Does it feel like that to you?"
+  why: "It confirms the client's own term, adds one useful point, and asks."
+  avoid: "A full account of the research on rumination. The client asked whether they had the right word."
+intervention-e05:
+  model_response: "Sorry, I used the term without explaining it. An automatic thought is the first thing that goes through your mind in a situation, before you've had time to weigh it up. Last week yours was 'I've messed it up' when your manager frowned. Does that make sense?"
+  why: "It owns the jargon, defines it in one sentence, and uses the client's own example."
+  avoid: "Defining it with more jargon, such as 'a cognition arising from a schema'."
+intervention-e06:
+  model_response: "That's all right. Let's not look for words yet. Take a moment, and see whether you can notice where the feeling sits in your body right now."
+  why: "It removes the demand for words and gives one clear, unhurried thing to do."
+  avoid: "'Try to describe it anyway.' That repeats the thing the client has just said they cannot do."
+intervention-e07:
+  model_response: "That's three things in three days. I'd like us to take one and go through it slowly. Which one is still with you most?"
+  why: "It states what you want to do with the session and lets the client choose the content."
+  avoid: "Asking a little about each one. You would cover all three and understand none."
+intervention-e08:
+  model_response: "Thank you, that's a lot. Before we go on, let's both take a breath. Of everything you've told me, which part matters most to look at today?"
+  why: "It slows the pace in so many words, includes yourself in the pause, and asks the client to choose."
+  avoid: "Keeping up the client's pace with rapid questions of your own."
+intervention-e09:
+  model_response: "Read me only the first one, and then stop. We'll look at that one properly before going on."
+  why: "It is a specific instruction with the reason built in."
+  avoid: "'Sure, go ahead.' Ten thoughts read in a row leave no space to work on any of them."
+intervention-e10:
+  model_response: "Would you be willing to say some of it here? You could speak as if he were sitting in that chair. Take your time, and stop whenever you want."
+  why: "It turns talking about into doing, in clear steps, with permission to stop."
+  avoid: "'What would you say?' It invites a summary. The aim is for the client to say the words themselves."
+intervention-m01:
+  model_response: "That's a frightening thought, and a lot of people have it. Can I say what usually happens? Strong feelings tend to rise, reach a peak and ease, more like a wave than a flood. I can't promise how yours will go. What we can do is let in a little at a time and see. What do you make of that?"
+  why: "It treats the fear as common, gives the usual course without a guarantee, and proposes finding out gradually."
+  avoid: "'That won't happen.' You cannot know that, and the client's fear has not been heard."
+intervention-m02:
+  model_response: "It does keep you safe in the short run, and I'd take that seriously. The catch is that the fear doesn't get any smaller while you avoid, because it never finds out what would have happened. So the safe area tends to shrink. Has that happened for you at all?"
+  why: "It agrees with the true part, adds the cost, and asks the client to check it against their own life."
+  avoid: "'Avoidance is the problem.' It is put as a correction, and it wipes out what the client said."
+intervention-m03:
+  model_response: "Some of them probably are true. The idea isn't that thoughts are false. It's that a thought can feel like a fact whether or not it is one, so some are worth checking. Could we pick one and look at the evidence for it together?"
+  why: "It grants the client's point, restates the idea accurately, and offers a test."
+  avoid: "'Thoughts aren't facts.' That is the slogan the client has just rejected."
+intervention-m04:
+  model_response: "I can see why that would follow. As far as I understand it, 'chemical imbalance' is a simplified picture, and low mood seems to involve several things together: the body, what has happened to a person, and what they do day to day. Talking works on the last two. It doesn't rule out anything else. How does that sound to you?"
+  why: "It respects the reasoning, describes the claim as a simplification without overstating what is known, and makes no comment on medication."
+  avoid: "'That theory has been debunked.' It overstates the case and makes the client wrong for having read it."
+intervention-m05:
+  model_response: "Who told you six months? I don't know of any timetable for grief. People differ a great deal, and missing someone is not the same as failing to recover. What makes you feel you should be past it?"
+  why: "It questions the rule, gives the information briefly, and asks where the 'should' comes from."
+  avoid: "Describing stages of grief. That gives the client a new timetable to fall behind on."
+intervention-m06:
+  model_response: "You've clearly thought about this, and the book may well be right. I'm curious about something closer to now. As you tell me about it, what do you notice you're feeling?"
+  why: "It credits the thinking and then asks about present experience."
+  avoid: "Discussing attachment theory with the client. It is interesting, and it keeps both of you at a distance."
+intervention-m07:
+  model_response: "We can come to the weekend. A moment ago something came up, and your eyes filled. Could we stay there a little longer first?"
+  why: "It does not refuse the new topic. It names what it saw and asks to go back."
+  avoid: "Following the change of subject with relief."
+intervention-m08:
+  model_response: "She sounds very difficult to work beside. I'd like to turn from her to you for a moment. When she copied in the whole team, what happened inside you?"
+  why: "It takes the client's side in one sentence and then moves the focus to the client."
+  avoid: "Analysing the colleague. She is not the one in therapy."
+intervention-m09:
+  model_response: "You're laughing, and your voice broke just before that. I don't think it's only about a cat. Could we slow down and stay with what was there before the laugh?"
+  why: "It notices both the feeling and the laugh that covered it, without mockery, and asks to go back."
+  avoid: "Laughing along and moving on."
+intervention-m10:
+  model_response: "You got through all of that in one breath. I'd like to go back, if you're willing, and take only the first part. He left. What do you remember of that day?"
+  why: "It notes the speed without criticism and chooses one piece to slow down on."
+  avoid: "'That must have been so hard.' Sympathy for the whole list leaves it as flat as it was told."
+intervention-h01:
+  model_response: "You want a name for it, and that's reasonable. I'm a trainee, and giving a diagnosis isn't something I can do. What I can tell you is what I've understood so far about how your difficulties work, and you can tell me where it's wrong. If a formal diagnosis matters to you, I'll find out who here can assess for one."
+  why: "It respects the wish, states the limit, offers something real, and says where the rest can be had."
+  avoid: "'Labels aren't helpful.' The client has just told you that one would help."
+intervention-h02:
+  model_response: "That's a question for whoever prescribes them. It isn't one I can answer. Please talk to them before you change anything. What I can do is help you work out what you want to say to them. What have you noticed since you started taking them?"
+  why: "It gives no view on the medication, sends the client clearly to the prescriber, and offers help that is within role."
+  avoid: "Any opinion on whether the tablets are working, in either direction."
+intervention-h03:
+  model_response: "No, I can't, and I wouldn't trust anyone who said they could. Low mood can come back. What's different now is that you know your early signs and what helps. We can write those down together so that they're ready if you need them."
+  why: "It gives the honest answer first and then something concrete to hold in place of a guarantee."
+  avoid: "'You'll be fine.' It is the guarantee you have just said you cannot give."
+intervention-h04:
+  model_response: "That's a frightening thing to read. I can't judge the page you saw. What I can say is that your own doctor has examined you and found you physically well. If the worry stays, the best person to ask is that doctor, and I'd encourage you to. What did the page say that stayed with you?"
+  why: "It does not argue with the internet, stays within role, relies on the client's own medical check, and points to the right source."
+  avoid: "'That's nonsense.' Also avoid a confident medical statement that is not yours to make."
+intervention-h05:
+  model_response: "Fair question. I know it from training and from supervision, not from years of practice. You don't have to take it on my word. We could check it against your own experience. When you've avoided something, what has happened to the fear over time?"
+  why: "It answers honestly without bristling and moves the test from your authority to the client's evidence."
+  avoid: "Listing your qualifications, or going quiet."
+intervention-h06:
+  model_response: "Okay. We won't. Would it be different if you simply told me what you'd want him to know, in your own way, sitting as you are?"
+  why: "It accepts the refusal at once and offers a smaller step toward the same aim."
+  avoid: "'A lot of people find it helpful once they try.' That is persuasion after a clear no."
+intervention-h07:
+  model_response: "(smiling) I'll risk the paperwork. I've noticed the jokes arrive just when we slow down. I wonder what they're keeping away."
+  why: "It takes the joke in good humour and then names the pattern without pressing."
+  avoid: "Joking back and moving on. Also avoid 'You use humour as a defence.'"
+intervention-h08:
+  model_response: "Yes, we can do practical today. Last week was a lot. Can I ask one thing first? What was it like afterwards, after last session?"
+  why: "It agrees to the request, links it to last week, and asks a single question about what lies behind it."
+  avoid: "Insisting on feelings. Also avoid agreeing without ever asking why."
+intervention-h09:
+  model_response: "All right. I'll stop asking that. It's clearly not a useful question for you, at least for now. What would be a better way for me to ask how something affects you?"
+  why: "It stops, without taking offence, and asks the client to help find a way in."
+  avoid: "'Everyone feels something in their body.' It tells the client they are wrong about their own experience."
+intervention-h10:
+  model_response: "You're right, I have, and I'm sorry it felt like being cut off. Please finish. When you have, I'd like to ask which part of it matters most to you, because I want to be sure I don't miss it."
+  why: "It apologises for the effect, gives the floor back, and says in advance what you will ask and why."
+  avoid: "Explaining why you interrupted while the client is still annoyed."

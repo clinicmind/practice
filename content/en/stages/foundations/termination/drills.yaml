@@ -1,0 +1,203 @@
+- id: termination-e01
+  level: easy
+  skill: review
+  context: "Second-last session. Earlier in therapy the client avoided phone calls, and now makes them."
+  client: "I can't believe it's been twelve weeks. I do feel different."
+  criteria: &rv_easy
+    - "It names at least one specific change, with a concrete example from the work."
+    - "It places the change in what the client did."
+    - "It invites the client to add to it or correct it."
+- id: termination-e02
+  level: easy
+  skill: review
+  context: "Second-last session. The client has gone back to a weekly choir after months away."
+  client: "My sister said I seem more like my old self."
+  criteria: *rv_easy
+- id: termination-e03
+  level: easy
+  skill: review
+  context: "Second-last session. You and the client built up to this in small steps."
+  client: "I went to the supermarket by myself on Saturday. The first time in a year."
+  criteria: *rv_easy
+- id: termination-e04
+  level: easy
+  skill: review
+  context: "Second-last session. The client used to leave any place where panic began."
+  client: "I don't panic about the panic any more, if that makes sense."
+  criteria: *rv_easy
+- id: termination-e05
+  level: easy
+  skill: review
+  context: "Second-last session. At the start, the client could not say no to their manager. Last month they turned down extra shifts."
+  client: "What do you think has changed? I can't always tell."
+  criteria: *rv_easy
+
+- id: termination-e06
+  level: easy
+  skill: processing-ending
+  context: "Second-last session."
+  client: "So next week is our last one."
+  criteria: &pe_easy
+    - "It names the ending in plain words, without softening it into something else."
+    - "It invites the client's feelings about ending and allows for mixed ones."
+    - "It does not reassure, and it does not hurry on to the future."
+- id: termination-e07
+  level: easy
+  skill: processing-ending
+  context: "Second-last session."
+  client: "I'm going to miss coming here."
+  criteria: *pe_easy
+- id: termination-e08
+  level: easy
+  skill: processing-ending
+  context: "Second-last session."
+  client: "It feels strange to stop just when things are finally going well."
+  criteria: *pe_easy
+- id: termination-e09
+  level: easy
+  skill: processing-ending
+  context: "Second-last session."
+  client: "I've got mixed feelings about finishing."
+  criteria: *pe_easy
+- id: termination-e10
+  level: easy
+  skill: processing-ending
+  context: "Second-last session."
+  client: "How do people usually feel at the end?"
+  criteria: *pe_easy
+
+- id: termination-m01
+  level: medium
+  skill: review
+  context: "Second-last session."
+  client: "I'm sleeping better. The stuff with my dad is the same as ever, though."
+  criteria: &rv_medium
+    - "It states what has changed and what has not, both specifically."
+    - "It does not inflate the gains and does not explain away what remains."
+    - "It places the gains in the client's own actions, and it asks for the client's view."
+- id: termination-m02
+  level: medium
+  skill: review
+  context: "Second-last session. During therapy the client restarted two activities and spoke to their manager about workload."
+  client: "It was mostly the tablets, I think. Or just time passing."
+  criteria: *rv_medium
+- id: termination-m03
+  level: medium
+  skill: review
+  context: "Second-last session. The client often seeks your approval."
+  client: "I've done well, haven't I? Tell me I've done well."
+  criteria: *rv_medium
+- id: termination-m04
+  level: medium
+  skill: review
+  context: "Second-last session."
+  client: "I'm better. But I worry that it's only because I've had you."
+  criteria: *rv_medium
+- id: termination-m05
+  level: medium
+  skill: review
+  context: "Second-last session."
+  client: "Honestly, I thought I'd be further along by now."
+  criteria: *rv_medium
+
+- id: termination-m06
+  level: medium
+  skill: processing-ending
+  context: "The client has cancelled two of the last three sessions."
+  client: "Oh, it's fine. Endings don't bother me."
+  criteria: &pe_medium
+    - "It names the ending plainly and takes the client's statement seriously."
+    - "It offers, tentatively, an observation about how the client is handling the ending."
+    - "It invites the client's response and does not insist that they must have feelings about it."
+- id: termination-m07
+  level: medium
+  skill: processing-ending
+  context: "Session fifteen of sixteen."
+  client: "Actually, something new has come up. Something big. I don't think we can stop yet."
+  criteria: *pe_medium
+- id: termination-m08
+  level: medium
+  skill: processing-ending
+  context: "Two sessions remain."
+  client: "Shall we just make this the last one? It saves dragging it out."
+  criteria: *pe_medium
+- id: termination-m09
+  level: medium
+  skill: processing-ending
+  context: "Final session. The client holds out a small wrapped parcel."
+  client: "I brought you something. It's only small."
+  criteria: *pe_medium
+- id: termination-m10
+  level: medium
+  skill: processing-ending
+  context: "Second-last session. The client laughs as they speak."
+  client: "I expect you'll be glad to see the back of me."
+  criteria: *pe_medium
+
+- id: termination-h01
+  level: hard
+  skill: review
+  context: "Final session. The client's attendance, sleep and time at work have all improved on their own account."
+  client: "Nothing's changed. Sixteen weeks, and I'm exactly the same."
+  criteria: &rv_hard
+    - "It does not argue, cheer the client on, or defend the therapy."
+    - "It takes the disappointment seriously, and it states plainly any evidence that the client reported themselves."
+    - "It asks what the client hoped would be different, or how they see it."
+- id: termination-h02
+  level: hard
+  skill: review
+  context: "You have just named three changes."
+  client: "You're only listing things so you can feel good about your work."
+  criteria: *rv_hard
+- id: termination-h03
+  level: hard
+  skill: review
+  context: "Final session."
+  client: "Fine, I do more. I still hate myself. So what was the point?"
+  criteria: *rv_hard
+- id: termination-h04
+  level: hard
+  skill: review
+  context: "Final session."
+  client: "I was better off before I started. At least then I didn't think about any of it."
+  criteria: *rv_hard
+- id: termination-h05
+  level: hard
+  skill: review
+  context: "Final session. You have not yet said anything about progress."
+  client: "Don't give me the speech about how far I've come."
+  criteria: *rv_hard
+
+- id: termination-h06
+  level: hard
+  skill: processing-ending
+  context: "Second-last session."
+  client: "So that's it. You get me to open up, and then you drop me."
+  criteria: &pe_hard
+    - "It names the client's feeling about the ending at full strength."
+    - "It is honest about the limit or the real reason, makes no false promise, and does not defend."
+    - "It stays warm and invites more, and it does not give way on the boundary."
+- id: termination-h07
+  level: hard
+  skill: processing-ending
+  context: "Final session. Your placement does not allow contact with clients after therapy ends."
+  client: "Can I have your number? Just in case. I wouldn't use it."
+  criteria: *pe_hard
+- id: termination-h08
+  level: hard
+  skill: processing-ending
+  context: "Two sessions remain."
+  client: "If it's ending anyway, there's no point in coming to the last two."
+  criteria: *pe_hard
+- id: termination-h09
+  level: hard
+  skill: processing-ending
+  context: "Your placement is ending. The client's statement is accurate."
+  client: "You're only stopping because your placement has finished. It's got nothing to do with whether I'm ready."
+  criteria: *pe_hard
+- id: termination-h10
+  level: hard
+  skill: processing-ending
+  context: "Final session."
+  client: "Everyone leaves. You're no different."
+  criteria: *pe_hard

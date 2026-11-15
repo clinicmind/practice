@@ -1,0 +1,21 @@
+slug: intervention
+version: 1.0.0
+title: "Intervening while keeping the alliance"
+intro: >-
+  Sooner or later you ask the client to do something: to try a task, to hear
+  some information, to stay with a feeling a little longer. That is the moment
+  when the relationship is most easily strained, and when trainees tend either
+  to push or to back away. In this module Client M arrives without having done
+  her task and spends the first minutes apologising. You practise two skills
+  that carry an intervention: giving information so that it can be used, and
+  directing what happens in the session.
+skills:
+  - information-giving
+  - process-direction
+reflection_prompts:
+  - id: intervention-r1
+    text: "M did not do the task, and the therapist said, 'I'm interested.' What is your first reaction when a client has not done what you agreed? What does the client see of that reaction?"
+  - id: intervention-r2
+    text: "Think of the last time you explained something to a client. Did you find out what they already knew? Did you find out what they made of it afterwards?"
+  - id: intervention-r3
+    text: "Directing a session means interrupting, slowing down and asking a client to try something. Which of these is hardest for you, and what are you protecting when you avoid it?"

@@ -1,0 +1,149 @@
+sessions:
+  - id: rupture-s11
+    title: "Session 11: 'It's fine'"
+    turns:
+      - id: rupture-s11-t01
+        speaker: therapist
+        text: "Hello, M. Thank you for being flexible about last week. How have things been?"
+      - id: rupture-s11-t02
+        speaker: client
+        text: "Good, thank you. A good week. Work was fine. I did the drawing. (small smile) Everything's fine."
+      - id: rupture-s11-t03
+        speaker: therapist
+        text: "And the message to K?"
+      - id: rupture-s11-t04
+        speaker: client
+        text: "I didn't need to this week. It was fine. Thank you for asking."
+      - id: rupture-s11-d1
+        type: choice
+        prompt: "M is polite, brief and 'fine', much as she was in session one. Last week you moved her session by two days at short notice. What do you do?"
+        options:
+          - id: a
+            text: "Good. Shall we look at the drawing, and then plan this week's step?"
+            fit: weak
+            note: "You have accepted 'fine' and returned to the agenda. The session will be pleasant and empty. A withdrawal rupture is easy to miss precisely because the client is being cooperative."
+          - id: b
+            text: "Before we go on. Something feels different between us today. You're being very polite with me, a little like our first session. I wonder if it has to do with my moving our appointment last week."
+            fit: strong
+            note: "It names the change in the relationship, here and now, in a tentative way, and offers your own action as a possible cause. This is immediacy: speaking about what is happening between the two of you."
+          - id: c
+            text: "Are you all right? You seem a bit quiet today."
+            fit: workable
+            note: "You have noticed, and that counts. But the question locates the change in M, and she has a practised answer: 'I'm fine.' It does not mention the relationship or your part in it."
+        actual: "Before we go on. Something feels different between us today. You're being very polite with me, a little like our first session. I wonder if it has to do with my moving our appointment last week."
+        rationale: "The first step of repair is to notice, and the second is to name. With a client who withdraws, the signs are quiet ones: shorter answers, more thanks, a return of 'fine', a task that was 'not needed'. Naming your own action as a possible cause makes it safer for her to answer."
+      - id: rupture-s11-t05
+        speaker: client
+        text: "Oh. No, it's fine. Really. Things come up. You have other people to see."
+      - id: rupture-s11-t06
+        speaker: therapist
+        text: "It was unavoidable, I'm afraid. There was a clash that I couldn't move."
+      - id: rupture-s11-t07
+        speaker: client
+        text: "Of course. I completely understand."
+      - id: rupture-s11-d2
+        type: free
+        prompt: "The therapist has just explained and defended the rescheduling, and M has become more distant. Write what the therapist says next. Own what you just did, and ask about her experience."
+        actual: "I'd like to take that back. You told me it was fine, and I answered by explaining myself. That was for my benefit, not yours. What I actually want to know is what it was like for you when my message arrived."
+        rationale: "Therapists become defensive in ruptures. It is ordinary, and it can be repaired if you catch it. Metacommunication means stepping back and talking about the exchange itself: what you did, what you think it did, and what you would like to know. Notice that the correction is brief. A long apology would make M look after you."
+      - id: rupture-s11-t08
+        speaker: client
+        text: "(pause) I got it at work. I read it and I thought, okay. That's that, then. (pause) I thought you'd had enough. I cried so much the week before. I thought, I've done it. I've used her up as well."
+      - id: rupture-s11-d3
+        type: choice
+        prompt: "M has told you she read the rescheduling as proof that she was too much. What do you say?"
+        options:
+          - id: a
+            text: "That's your loop again, isn't it? 'It will be too much for them.'"
+            fit: weak
+            note: "The link is accurate, and this is the worst moment to make it. It turns a rupture you caused into a symptom of hers, and it lets you avoid owning your part."
+          - id: b
+            text: "So my message came a few days after you had shown me more than you ever had, and it read as: too much. That makes sense of today. I moved the session at short notice and gave you no reason. That part is mine, and I'm sorry. It had nothing to do with how much you cried. And I would much prefer to hear this from you than have you carry it alone."
+            fit: strong
+            note: "It first shows that her reading made sense given the timing. Then it owns the specific thing you did, without excuses, and corrects the meaning plainly. The last sentence invites more of this."
+          - id: c
+            text: "I would never think that about you."
+            fit: workable
+            note: "It is sincere and she needs to hear something like it. But said alone, it is reassurance. It does not acknowledge what you did, and it tells her that her fear was simply mistaken."
+        actual: "So my message came a few days after you had shown me more than you ever had, and it read as: too much. That makes sense of today. I moved the session at short notice and gave you no reason. That part is mine, and I'm sorry. It had nothing to do with how much you cried. And I would much prefer to hear this from you than have you carry it alone."
+        rationale: "Explore, then own your part. Own the specific action, in a sentence, and say what it did not mean. The link to her loop is real and can be made later, by her or with her, when the repair has held. Made now, it would be a way of not apologising."
+      - id: rupture-s11-t09
+        speaker: client
+        text: "(tears) I nearly didn't come today. I had the message typed, saying I was too busy."
+      - id: rupture-s11-t10
+        speaker: therapist
+        text: "I'm very glad you came. And you've just told me something true while it was still true. To me, about me."
+      - id: rupture-s11-t11
+        speaker: client
+        text: "(shaky laugh) I suppose I did. (pause) It wasn't a good week, actually."
+    notes:
+      goals: "Notice and name a withdrawal rupture. Recover from the therapist's own defensive reply. Explore M's experience and own the therapist's part."
+      alliance: "Ruptured by a rescheduled session and at first made worse by the therapist's explanation. Repaired. M said what she had thought, said she nearly did not come, and then corrected her own report of the week."
+      formulation_update: "The loop ran inside the therapy, as predicted in session six. A change of appointment a few days after heavy crying was read as 'I've used her up as well.' M's response was to act fine, drop the task and prepare to leave. What interrupted it was the therapist naming the change and owning her part. For M this is a new experience: distance from someone that turned out not to be about her being too much, and that could be talked about."
+  - id: rupture-s12
+    title: "Session 12: 'You always bring it back to my mother'"
+    turns:
+      - id: rupture-s12-t01
+        speaker: client
+        text: "I'm so tired this week. There's the big event on Saturday, and I've been at work until ten most nights. I just want to sleep for a month."
+      - id: rupture-s12-t02
+        speaker: therapist
+        text: "That sounds exhausting. I'm wondering, when you're holding everything together like that, whether it connects with what we've said about your mother, and having to be the one who copes."
+      - id: rupture-s12-t03
+        speaker: client
+        text: "(sharply) You always bring it back to my mother. Not everything is about her. Sometimes I'm just tired."
+      - id: rupture-s12-d1
+        type: choice
+        prompt: "M is openly annoyed with you. For her, this is new. How do you respond?"
+        options:
+          - id: a
+            text: "I bring her up because that's where the pattern started. We agreed on that together."
+            fit: weak
+            note: "You are defending your formulation against your client. You may be right about the origin and still be wrong about today. She will hear that her objection has been overruled."
+          - id: b
+            text: "You're annoyed with me, and I think you have a point. I've gone to your mother several times, and today you hadn't. Tell me more about what it's like when I do that."
+            fit: strong
+            note: "It names her feeling without flinching, grants what is true, and invites more. For a client who has never been able to object, having the objection welcomed matters more than any interpretation."
+          - id: c
+            text: "You're right, I'm sorry. We'll leave your mother out of it."
+            fit: workable
+            note: "It is not defensive, and that is good. But it ends the matter quickly, and it may teach M that her anger makes people back away. You also learn nothing about what she felt."
+        actual: "You're annoyed with me, and I think you have a point. I've gone to your mother several times, and today you hadn't. Tell me more about what it's like when I do that."
+        rationale: "In a confrontation rupture the pull is to defend or to give in. The third way is to stay: name the anger, grant what is valid, and ask for more. Remember who this is. M has spent eleven sessions agreeing with you. Her sharpness is progress."
+      - id: rupture-s12-t04
+        speaker: client
+        text: "(still sharp, then slower) It feels like you've decided what the answer is. Like she did. 'Think about what you've done.' You've got your theory and I'm supposed to fit into it."
+      - id: rupture-s12-d2
+        type: choice
+        prompt: "M has compared you to her mother. How do you respond, and how do you go on from here?"
+        options:
+          - id: a
+            text: "I understand why it feels that way. But remember that we built the loop together. It isn't only my theory."
+            fit: weak
+            note: "The first sentence sounds like understanding, and the 'but' cancels it. You are correcting her account of events while she is telling you how the relationship feels."
+          - id: b
+            text: "That lands. If I hold on to the theory more tightly than I hold on to you, I'm doing a version of what she did, and I don't want that. Could we try this? When I'm about to link something to the past, I'll ask first, and you tell me if it isn't where you are. And one more thing. You've just told me I was wrong, to my face, and you didn't apologise."
+            fit: strong
+            note: "It accepts the comparison as fair, owns the specific risk, and proposes a concrete change to how you work together. Then it marks what she just did, which is the thing she came to therapy unable to do."
+          - id: c
+            text: "Thank you for telling me. Shall we go back to what you wanted to talk about?"
+            fit: workable
+            note: "It receives the complaint gracefully and returns the session to her. Nothing is renegotiated, though, so the same thing is likely to happen again."
+        actual: "That lands. If I hold on to the theory more tightly than I hold on to you, I'm doing a version of what she did, and I don't want that. Could we try this? When I'm about to link something to the past, I'll ask first, and you tell me if it isn't where you are. And one more thing. You've just told me I was wrong, to my face, and you didn't apologise."
+        rationale: "The last step of repair is to renegotiate: change something about the task or the way you work, in a way the client agrees to. A repaired rupture often does more than the intervention it interrupted. Here M has objected to someone important and the relationship has survived, which goes directly against 'nobody stays'."
+      - id: rupture-s12-t05
+        speaker: client
+        text: "(surprised laugh) I didn't apologise. (pause) I didn't even think of it."
+      - id: rupture-s12-t06
+        speaker: therapist
+        text: "No. And I'm still here, and I'm not tired of you."
+      - id: rupture-s12-t07
+        speaker: client
+        text: "(quiet) Okay. (breath) I want to talk about being tired. Just tired."
+      - id: rupture-s12-t08
+        speaker: therapist
+        text: "Then let's talk about being tired."
+    notes:
+      goals: "Stay with a confrontation rupture without defending or giving in. Renegotiate how links to the past are offered."
+      alliance: "Stronger after the rupture than before it. M was angry with the therapist, said so, did not apologise, and the session continued. New agreement: the therapist asks before linking to the past."
+      formulation_update: "The therapist's readiness to return to the mother repeated, in a small way, the mother's own stance: an answer already decided, into which M had to fit. M could feel this and say it. Evidence against 'nobody stays' and against 'my feelings are a burden' now exists inside the therapy relationship. Carry forward: ending therapy will raise the same theme, since the therapist will be the one who goes."

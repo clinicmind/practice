@@ -1,0 +1,112 @@
+sessions:
+  - id: termination-s16
+    title: "Session 16: saying goodbye"
+    turns:
+      - id: termination-s16-t01
+        speaker: therapist
+        text: "This is our last session, M. I've been thinking about it this week. How are you, coming in today?"
+      - id: termination-s16-t02
+        speaker: client
+        text: "I've been dreading it. (pause) I was wondering whether I could keep coming for a while. Not every week. Just now and then. In case."
+      - id: termination-s16-d1
+        type: choice
+        prompt: "M asks to keep coming now and then, 'in case'. Your placement ends this month, and the ending was agreed four sessions ago. What do you say?"
+        options:
+          - id: a
+            text: "We did agree on sixteen sessions, and you've made excellent progress. I think you're ready."
+            fit: workable
+            note: "It holds the frame, and holding it is right. But it answers a feeling with a contract and a compliment. M hears that the matter is closed and goes quiet, which is the thing she came here to stop doing."
+          - id: b
+            text: "Part of you would like to leave the door open, so that this isn't quite an ending. I understand that. I can't offer it, because my time here finishes this month. What I can do is stay with the ending today. What is it that you're dreading?"
+            fit: strong
+            note: "It names the wish with warmth, says the limit honestly in one sentence, and then turns toward the dread. The boundary and the care are in the same reply."
+          - id: c
+            text: "Let me see whether we could arrange a few extra sessions."
+            fit: weak
+            note: "It comes from kindness and from your own discomfort with her distress. It promises what you probably cannot deliver, and it tells M that an ending is something to be escaped."
+        actual: "Part of you would like to leave the door open, so that this isn't quite an ending. I understand that. I can't offer it, because my time here finishes this month. What I can do is stay with the ending today. What is it that you're dreading?"
+        rationale: "Requests to extend, new problems in the last session, and sudden cheerfulness are all common ways of not ending. Hold the frame, say the true reason, and move toward the feeling. Clarity about the limit is a form of respect."
+      - id: termination-s16-t03
+        speaker: client
+        text: "(quiet) It's the thing we found. Someone goes, and I go quiet. (pause) This time it's you who goes."
+      - id: termination-s16-t04
+        speaker: therapist
+        text: "Yes. This time it's me. And you've just said it aloud, to me, before I've gone."
+      - id: termination-s16-t05
+        speaker: client
+        text: "(small laugh, tears) I suppose that's different."
+      - id: termination-s16-d2
+        type: free
+        prompt: "Review the work with M. Name specific changes, with examples from these sixteen sessions. Make clear that she did them. End by asking what she would add or take out."
+        actual: "Let me say what I've seen, and correct me where I'm wrong. In our first session you apologised for arriving early and told me it was probably nothing. Since then you've texted K on the day things were hard. You told your brother about being seventeen. You've drawn most weeks. And four weeks ago you told me I was wrong, and you didn't say sorry. None of that happened to you. You did it. What would you add, or take out?"
+        rationale: "A review should be specific enough that the client recognises each item, and it should place the change in what she did. General praise is forgotten quickly. A list of her own actions is something she can take with her. The closing question matters, because the review has to become hers."
+      - id: termination-s16-t06
+        speaker: client
+        text: "I'd add one. I didn't tell my mother. I thought about it a lot. I decided not to, for now. (pause) And it felt like deciding. Not like hiding."
+      - id: termination-s16-t07
+        speaker: therapist
+        text: "That's an important one. Choosing who to tell is different from being unable to tell anyone. What hasn't changed, or hasn't changed enough?"
+      - id: termination-s16-t08
+        speaker: client
+        text: "With her, not much. She still says, 'You're so sensitive.' And I still have evenings when I sit there and can't move. Fewer. But they come."
+      - id: termination-s16-d3
+        type: choice
+        prompt: "M says the flat evenings still come. How do you talk about the future?"
+        options:
+          - id: a
+            text: "If you keep doing what you've been doing, they should fade away."
+            fit: weak
+            note: "It is a promise you cannot keep, given three episodes since she was fourteen. If a hard patch comes, M will conclude that she failed to keep doing it right."
+          - id: b
+            text: "With your history, I'd expect harder patches to come again at some point. The aim isn't never. It's that you notice sooner and go quiet for a shorter time. Shall we write down your early signs, what you'd do, and who you'd tell?"
+            fit: strong
+            note: "It is honest about the likelihood, resets the goal to something reachable, and turns straight to a concrete plan in her own terms. A hard patch is then something expected, with a page to turn to."
+          - id: c
+            text: "If it does come back, you can always come back to therapy."
+            fit: workable
+            note: "It is true and worth saying once. Said alone, it places the solution outside her and passes over what she can now do herself."
+        actual: "With your history, I'd expect harder patches to come again at some point. The aim isn't never. It's that you notice sooner and go quiet for a shorter time. Shall we write down your early signs, what you'd do, and who you'd tell?"
+        rationale: "Prepare the client for setbacks honestly. A written plan in the client's own words, covering early signs, first steps and a named person, is more use than encouragement. For risk, the plan also says: follow the service's guidance and seek help promptly."
+      - id: termination-s16-t09
+        speaker: client
+        text: "(writing) Early signs. Saying 'fine' a lot. Cancelling on K. Not drawing. More sorries. What I'd do: one true thing, to one person, the same day. Who: K. My brother. (pause) Maybe a therapist again, if it's more than a few weeks."
+      - id: termination-s16-t10
+        speaker: therapist
+        text: "That's a plan you could use on a bad day. Keep it somewhere you'll find it."
+      - id: termination-s16-t11
+        speaker: client
+        text: "(folds the page, then, lightly) You'll have forgotten me by next month. There'll be someone else in this chair."
+      - id: termination-s16-d4
+        type: choice
+        prompt: "M says, lightly, that you will have forgotten her by next month. What do you say?"
+        options:
+          - id: a
+            text: "That's the old belief, isn't it. 'Nobody stays.'"
+            fit: weak
+            note: "It is the right belief and the wrong response. She has made a bid to know whether she mattered to you, and you have answered with an interpretation. In the last minutes of a therapy, be a person first."
+          - id: b
+            text: "There will be someone else in the chair. And I won't have forgotten you. Both are true. I'll remember the cat waiting by her bowl, and the day you didn't apologise. I'm sad that this is ending, as well as glad about where you've got to. What is it like to hear that?"
+            fit: strong
+            note: "It does not deny the fact she named. It answers the question beneath it with specific memories that only she will recognise, and it shares a real feeling in one sentence. Then it asks, so that the moment stays hers."
+          - id: c
+            text: "I won't forget you."
+            fit: workable
+            note: "It is true and she needs it. It is also what anyone would say. Without something specific, it is hard for M to believe."
+        actual: "There will be someone else in the chair. And I won't have forgotten you. Both are true. I'll remember the cat waiting by her bowl, and the day you didn't apologise. I'm sad that this is ending, as well as glad about where you've got to. What is it like to hear that?"
+        rationale: "Saying goodbye well includes letting the client know, briefly and truthfully, that the relationship was real to you too. Keep it short and specific, and return the focus to her. For M, a relationship in which someone leaves, says so, and is sad about it is the experience that 'nobody stays' has never allowed for."
+      - id: termination-s16-t12
+        speaker: client
+        text: "(crying openly) I think it's the first time someone has left and I've actually said goodbye. Properly. Instead of just... disappearing first."
+      - id: termination-s16-t13
+        speaker: therapist
+        text: "You're here to the end. You didn't go quiet."
+      - id: termination-s16-t14
+        speaker: client
+        text: "(wipes her eyes, stands) Thank you. For all of it. (at the door) I'm not going to say sorry for crying."
+      - id: termination-s16-t15
+        speaker: therapist
+        text: "Good. Goodbye, M. Look after yourself."
+    notes:
+      goals: "Hold the agreed ending. Review the work in specific terms that M owns. Make a written plan for harder patches. Say goodbye."
+      alliance: "Intact to the last minute. M asked for more, was told no with a reason, and stayed. She said what she feared, and heard that she would be remembered. She ended without apologising."
+      formulation_update: "Outcome: partial improvement. Mood better, flat evenings fewer but still present. M now tells K and her brother on the same day, draws most weeks, and has disagreed with the therapist without apology. Relationship with her mother little changed. Not telling her mother is now a choice. The ending repeated the core theme, someone goes, and this time M did not go quiet. Remaining vulnerability: future losses. She has a written plan with early signs, a first step and named people."

@@ -1,0 +1,203 @@
+- id: planning-e01
+  level: easy
+  skill: collaboration-on-goals
+  context: "You asked what the client wants from therapy."
+  client: "I just want to feel less anxious."
+  criteria: &cg_easy
+    - "It keeps the client's own words for what they want."
+    - "It asks a question that moves the goal toward something the client would be doing or noticing."
+    - "It leaves the content of the goal to the client. It does not supply a goal."
+- id: planning-e02
+  level: easy
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I'd like to be more confident at work."
+  criteria: *cg_easy
+- id: planning-e03
+  level: easy
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I want things to be better with my daughter."
+  criteria: *cg_easy
+- id: planning-e04
+  level: easy
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I suppose I want to sleep. That's the main thing."
+  criteria: *cg_easy
+- id: planning-e05
+  level: easy
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I want to stop feeling so angry all the time."
+  criteria: *cg_easy
+
+- id: planning-e06
+  level: easy
+  skill: rationale-giving
+  context: "You have suggested a sleep diary. The client told you earlier they are not sure how much they sleep."
+  client: "Why do I need to write it down? I can just tell you."
+  criteria: &rg_easy
+    - "It gives the reason in one to three plain sentences, with no technical terms."
+    - "It links the reason to something this client has told you."
+    - "It ends by asking what the client thinks, or whether they are willing."
+- id: planning-e07
+  level: easy
+  skill: rationale-giving
+  context: "You have proposed weekly sessions. The client said earlier that things slip when they are left alone with them."
+  client: "Why weekly? Couldn't I just come when I need to?"
+  criteria: *rg_easy
+- id: planning-e08
+  level: easy
+  skill: rationale-giving
+  context: "The client has avoided buses since a panic attack. You have suggested starting with one stop."
+  client: "Wouldn't it make more sense to wait until I feel calmer before I try the bus?"
+  criteria: *rg_easy
+- id: planning-e09
+  level: easy
+  skill: rationale-giving
+  context: "The client panics before presentations. Earlier they mentioned a father who criticised every school report."
+  client: "What has my childhood got to do with panicking at work?"
+  criteria: *rg_easy
+- id: planning-e10
+  level: easy
+  skill: rationale-giving
+  context: "The client has stopped seeing friends since feeling low. You have suggested planning one coffee this week."
+  client: "I don't see how going for a coffee is going to fix depression."
+  criteria: *rg_easy
+
+- id: planning-m01
+  level: medium
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I want my husband to stop drinking."
+  criteria: &cg_medium
+    - "It takes the client's wish seriously and does not dismiss or correct it."
+    - "It turns toward something within the client's own influence, by asking a question."
+    - "It does not supply the goal, and it does not lecture about what can and cannot be controlled."
+- id: planning-m02
+  level: medium
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I don't really have goals. I just want to be normal."
+  criteria: *cg_medium
+- id: planning-m03
+  level: medium
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "Whatever you think is best. You're the expert."
+  criteria: *cg_medium
+- id: planning-m04
+  level: medium
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I want to never feel anxious again."
+  criteria: *cg_medium
+- id: planning-m05
+  level: medium
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "Honestly? My goal is to stop coming here as soon as possible."
+  criteria: *cg_medium
+
+- id: planning-m06
+  level: medium
+  skill: rationale-giving
+  context: "You have suggested slow breathing for the first minutes of a panic."
+  client: "I've tried breathing exercises before. They don't work."
+  criteria: &rg_medium
+    - "It takes the doubt seriously and says what is fair in it."
+    - "It gives the reason honestly, including what the task may not do. It promises no result."
+    - "It is brief, and it ends by leaving the decision with the client."
+- id: planning-m07
+  level: medium
+  skill: rationale-giving
+  context: "Planning session."
+  client: "How long until this starts working?"
+  criteria: *rg_medium
+- id: planning-m08
+  level: medium
+  skill: rationale-giving
+  context: "You have suggested talking through a memory the client avoids."
+  client: "Talking about it just makes me feel worse. Why would I do that on purpose?"
+  criteria: *rg_medium
+- id: planning-m09
+  level: medium
+  skill: rationale-giving
+  context: "Planning session."
+  client: "My friend's therapist just gives her advice, and she feels great. Why do you keep asking me questions?"
+  criteria: *rg_medium
+- id: planning-m10
+  level: medium
+  skill: rationale-giving
+  context: "You have proposed that the client, who fears lifts, stand in one with the doors open."
+  client: "You want me to do the thing I'm scared of. That sounds like the opposite of help."
+  criteria: *rg_medium
+
+- id: planning-h01
+  level: hard
+  skill: collaboration-on-goals
+  context: "Planning session. The client came at their wife's insistence."
+  client: "I don't have goals. My wife has goals for me."
+  criteria: &cg_hard
+    - "It does not supply a goal, argue, or persuade the client that they need one."
+    - "It looks for something the client does want, even if that is small or is only to be left alone."
+    - "It is short and plain, and it treats the client's position as legitimate."
+- id: planning-h02
+  level: hard
+  skill: collaboration-on-goals
+  context: "Planning session. You cannot write such a letter at this point."
+  client: "My goal is for you to write the letter saying I'm fit for work."
+  criteria: *cg_hard
+- id: planning-h03
+  level: hard
+  skill: collaboration-on-goals
+  context: "You have just said the word 'goals'."
+  client: "Goals. Great. Another person who wants me to fill in a form about my feelings."
+  criteria: *cg_hard
+- id: planning-h04
+  level: hard
+  skill: collaboration-on-goals
+  context: "Planning session. The client's arms are folded."
+  client: "You tell me. You're the one with the training."
+  criteria: *cg_hard
+- id: planning-h05
+  level: hard
+  skill: collaboration-on-goals
+  context: "Planning session."
+  client: "I've set goals with four therapists. Nothing changed. So, no."
+  criteria: *cg_hard
+
+- id: planning-h06
+  level: hard
+  skill: rationale-giving
+  context: "You have explained a plan to schedule activities."
+  client: "This is just common sense dressed up. I could get it from a magazine."
+  criteria: &rg_hard
+    - "It does not defend, oversell, or appeal to your training."
+    - "It gives an honest reason, and it says plainly what you cannot promise."
+    - "It leaves the client a real choice, including the choice to say no."
+- id: planning-h07
+  level: hard
+  skill: rationale-giving
+  context: "You are a trainee. You have just proposed a first task."
+  client: "Does this even work, or are you practising on me?"
+  criteria: *rg_hard
+- id: planning-h08
+  level: hard
+  skill: rationale-giving
+  context: "Planning session."
+  client: "I looked it up. Therapy doesn't work for a lot of people."
+  criteria: *rg_hard
+- id: planning-h09
+  level: hard
+  skill: rationale-giving
+  context: "You have suggested a task between sessions."
+  client: "Why should I do homework? I'm paying you to fix this."
+  criteria: *rg_hard
+- id: planning-h10
+  level: hard
+  skill: rationale-giving
+  context: "You have explained the reason for a task twice already."
+  client: "You've explained this three times. I still think it's pointless."
+  criteria: *rg_hard

@@ -1,0 +1,23 @@
+slug: rupture
+version: 1.0.0
+title: "Rupture and repair"
+intro: >-
+  Every therapy has moments when the relationship is strained. The client
+  pulls away, or pushes back. These moments are often called ruptures. Research
+  on the alliance suggests that ruptures which are noticed and repaired are
+  linked with good outcomes, and that the ones which do harm are those that go
+  unaddressed. Repair has steps: notice, name what is happening, explore the
+  client's experience, own your part, and renegotiate. In this module Client M
+  withdraws after you move a session, and later tells you sharply that you
+  always bring things back to her mother. You practise immediacy and
+  metacommunication.
+skills:
+  - immediacy
+  - metacommunication
+reflection_prompts:
+  - id: rupture-r1
+    text: "In session eleven the therapist defended the rescheduling and made things worse, then took it back. What do you do in the first second after a client says 'it's fine' in a flat voice? What would help you notice your own defence sooner?"
+  - id: rupture-r2
+    text: "Which is harder for you to stay with: a client who goes quiet and polite, or a client who is openly angry with you? What do you tend to do in each case?"
+  - id: rupture-r3
+    text: "M said, 'It feels like you've decided what the answer is.' When have you held a formulation more tightly than you held the client? How would you know?"
