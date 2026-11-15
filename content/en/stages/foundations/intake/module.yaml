@@ -1,0 +1,20 @@
+slug: intake
+version: 1.0.0
+title: "Intake and the therapy frame"
+intro: >-
+  The first session does two jobs at once. You set the frame: what therapy is,
+  what stays private and what cannot, how long you will meet. And you begin to
+  listen. Trainees often do the first job like a form and the second like an
+  interview. In this module you follow Client M through her first session, then
+  practise the two skills that carry most of an intake: asking open questions
+  and restating what you heard.
+skills:
+  - open-question
+  - restatement
+reflection_prompts:
+  - id: intake-r1
+    text: "Which part of setting the frame do you find hardest to say aloud: confidentiality and its limits, fees and time, or what therapy can and cannot offer? What makes it hard?"
+  - id: intake-r2
+    text: "Client M described her difficulties lightly. When a client plays things down, what do you tend to do: reassure, push for more, or move on? What might each of these tell the client?"
+  - id: intake-r3
+    text: "Look at your hard-level attempts. When a client doubted you or pushed back, what happened in you before you answered? How did that show up in your wording?"

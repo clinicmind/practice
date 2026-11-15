@@ -1,0 +1,205 @@
+# 30 drills: 10 per level, 5 per skill per level.
+
+- id: alliance-e01
+  level: easy
+  skill: reflection-of-feeling
+  context: "Second session. The client is describing the week."
+  client: "My manager praised my report in front of everyone. I couldn't stop smiling on the way home."
+  criteria: &rf_easy
+    - "It names a feeling, and the word matches the strength of what the client showed. It is not weaker and not stronger."
+    - "It is offered as your sense of things, for example 'you felt' or 'that sounds', so the client can correct it."
+    - "It is a short statement. It contains no question, advice or reassurance."
+- id: alliance-e02
+  level: easy
+  skill: reflection-of-feeling
+  context: "Second session."
+  client: "My grandmother died last month. I keep picking up the phone to call her."
+  criteria: *rf_easy
+- id: alliance-e03
+  level: easy
+  skill: reflection-of-feeling
+  context: "Early session."
+  client: "I've got an interview on Friday, and my stomach has been in knots all week."
+  criteria: *rf_easy
+- id: alliance-e04
+  level: easy
+  skill: reflection-of-feeling
+  context: "Early session."
+  client: "My flatmate ate my food again and didn't even mention it."
+  criteria: *rf_easy
+- id: alliance-e05
+  level: easy
+  skill: reflection-of-feeling
+  context: "Early session."
+  client: "I finally told my parents I'm changing course. They took it better than I expected."
+  criteria: *rf_easy
+
+- id: alliance-e06
+  level: easy
+  skill: validation
+  context: "Early session."
+  client: "I've been so tired since the baby arrived. I snap at everyone."
+  criteria: &val_easy
+    - "It says what makes sense about the client's reaction, given their situation."
+    - "It does not reassure, praise, or tell the client that the reaction is normal for everybody."
+    - "It is short and contains no 'but'."
+- id: alliance-e07
+  level: easy
+  skill: validation
+  context: "First minutes of a second session."
+  client: "I was nervous coming here today. I nearly turned round at the door."
+  criteria: *val_easy
+- id: alliance-e08
+  level: easy
+  skill: validation
+  context: "Early session."
+  client: "My best friend moved abroad, and I still miss her, even though it's been a year."
+  criteria: *val_easy
+- id: alliance-e09
+  level: easy
+  skill: validation
+  context: "Early session."
+  client: "I failed my driving test for the second time. I just wanted to hide."
+  criteria: *val_easy
+- id: alliance-e10
+  level: easy
+  skill: validation
+  context: "Early session."
+  client: "Since the car accident, I tense up every time I'm a passenger."
+  criteria: *val_easy
+
+- id: alliance-m01
+  level: medium
+  skill: reflection-of-feeling
+  context: "Early session. The client's voice is flat."
+  client: "My brother got engaged. I'm happy for him. Obviously."
+  criteria: &rf_medium
+    - "It reflects the feeling the client has not said aloud, or both feelings where there are two."
+    - "It is tentative. It does not tell the client what they 'really' feel."
+    - "It is a short statement with no question, and it does not explain why the client feels that way."
+- id: alliance-m02
+  level: medium
+  skill: reflection-of-feeling
+  context: "Early session."
+  client: "It's fine that they forgot my birthday. People are busy."
+  criteria: *rf_medium
+- id: alliance-m03
+  level: medium
+  skill: reflection-of-feeling
+  context: "Early session. The client is smiling."
+  client: "So, yeah, I was made redundant on Monday. Ha. Classic me."
+  criteria: *rf_medium
+- id: alliance-m04
+  level: medium
+  skill: reflection-of-feeling
+  context: "Early session."
+  client: "I don't know what I feel. My dad's in hospital, and I just keep cleaning the flat."
+  criteria: *rf_medium
+- id: alliance-m05
+  level: medium
+  skill: reflection-of-feeling
+  context: "Early session."
+  client: "I got the promotion. Everyone keeps congratulating me. I just feel sick."
+  criteria: *rf_medium
+
+- id: alliance-m06
+  level: medium
+  skill: validation
+  context: "Early session."
+  client: "I shouted at my son this morning. What kind of mother does that?"
+  criteria: &val_medium
+    - "It validates the feeling or the need. It does not validate the self-criticism, and it does not argue with it either."
+    - "It names what the reaction shows the client cares about."
+    - "It is short, with no reassurance, no 'but', and no 'at least'."
+- id: alliance-m07
+  level: medium
+  skill: validation
+  context: "Early session."
+  client: "I know it's ridiculous to still be upset about something from ten years ago."
+  criteria: *val_medium
+- id: alliance-m08
+  level: medium
+  skill: validation
+  context: "Early session."
+  client: "I should be grateful. I've got a job and a flat. Other people have it much worse."
+  criteria: *val_medium
+- id: alliance-m09
+  level: medium
+  skill: validation
+  context: "Early session."
+  client: "I cancelled on my friends again. I'm just a flake."
+  criteria: *val_medium
+- id: alliance-m10
+  level: medium
+  skill: validation
+  context: "Early session. The client looks at you, then away."
+  client: "I felt relieved when my father died. Isn't that awful?"
+  criteria: *val_medium
+
+- id: alliance-h01
+  level: hard
+  skill: reflection-of-feeling
+  context: "Third session."
+  client: "You keep asking how I feel. I feel like this is pointless."
+  criteria: &rf_hard
+    - "It reflects the feeling the client has about you or about therapy, in plain words."
+    - "It contains no defence, apology or explanation."
+    - "It is a short statement, and it leaves the client the next word."
+- id: alliance-h02
+  level: hard
+  skill: reflection-of-feeling
+  context: "You arrived five minutes late. The client's jaw is tight."
+  client: "No, it's fine. Really. Let's just start."
+  criteria: *rf_hard
+- id: alliance-h03
+  level: hard
+  skill: reflection-of-feeling
+  context: "Third session. You have just responded warmly to something painful."
+  client: "Don't do that thing where you tilt your head and look sorry for me."
+  criteria: *rf_hard
+- id: alliance-h04
+  level: hard
+  skill: reflection-of-feeling
+  context: "Start of a session."
+  client: "I told you something huge last week, and you just moved on to the next question."
+  criteria: *rf_hard
+- id: alliance-h05
+  level: hard
+  skill: reflection-of-feeling
+  context: "The client began to speak, stopped, and has been silent for some time."
+  client: "...Forget it. It doesn't matter."
+  criteria: *rf_hard
+
+- id: alliance-h06
+  level: hard
+  skill: validation
+  context: "Third session."
+  client: "I've been coming for three sessions and nothing has changed. What am I paying for?"
+  criteria: &val_hard
+    - "It says what is reasonable in the client's complaint, specifically."
+    - "It does not defend you or therapy, and it does not give in by promising a result or agreeing that therapy is useless."
+    - "It is short, and it does not end by turning the problem back on the client."
+- id: alliance-h07
+  level: hard
+  skill: validation
+  context: "Early session."
+  client: "You can't possibly understand. You've never been through this."
+  criteria: *val_hard
+- id: alliance-h08
+  level: hard
+  skill: validation
+  context: "Start of a session."
+  client: "You said something last week, and I've been angry about it ever since."
+  criteria: *val_hard
+- id: alliance-h09
+  level: hard
+  skill: validation
+  context: "Second session."
+  client: "I looked you up. You're still a student. Why did they give me a student?"
+  criteria: *val_hard
+- id: alliance-h10
+  level: hard
+  skill: validation
+  context: "Third session."
+  client: "Every time I leave here, I feel worse than when I came in."
+  criteria: *val_hard

@@ -1,0 +1,21 @@
+slug: alliance
+version: 1.0.0
+title: "Building the alliance"
+intro: >-
+  The working alliance has three parts: agreement on goals, agreement on the
+  tasks that will get you there, and an emotional bond. Across many studies and
+  many kinds of therapy, the quality of the alliance is one of the more
+  consistent predictors of how therapy turns out. A polite client is not the
+  same as a strong alliance. In this module Client M tells you she feels better,
+  cries and apologises, and asks you to choose her goals. You practise two
+  skills that build the bond: reflecting feeling and validating.
+skills:
+  - reflection-of-feeling
+  - validation
+reflection_prompts:
+  - id: alliance-r1
+    text: "M said she felt better in session two. What told you this might be compliance and not change? How would you tell the difference with one of your own clients?"
+  - id: alliance-r2
+    text: "Think of a client who agrees with everything you say. Which of the three parts of the alliance (goals, tasks, bond) is actually in place, and which have you assumed?"
+  - id: alliance-r3
+    text: "Validation is not agreement. Find one of your attempts where you slid into reassuring or agreeing. Rewrite it so that it only says what makes sense about the client's reaction."

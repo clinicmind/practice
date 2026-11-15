@@ -1,0 +1,109 @@
+sessions:
+  - id: alliance-s2
+    title: "Session 2: 'I'm feeling better'"
+    turns:
+      - id: alliance-s2-t01
+        speaker: therapist
+        text: "Good to see you, M. How has the week been?"
+      - id: alliance-s2-t02
+        speaker: client
+        text: "Good! Better, actually. I think just talking last week really helped. I slept a bit more. So, thank you."
+      - id: alliance-s2-d1
+        type: choice
+        prompt: "After one session, M reports that she is better and thanks you. What do you say?"
+        options:
+          - id: a
+            text: "That's wonderful. I'm so glad last week helped."
+            fit: weak
+            note: "You have accepted the gift. If M's report is partly for your benefit, she now knows that good news pleases you, and bad weeks will be harder to bring."
+          - id: b
+            text: "I'm glad there was some more sleep. Tell me about the week, the better parts and the parts that weren't."
+            fit: strong
+            note: "It receives the good news without making much of it, and it says plainly that the other parts are welcome too. You have not accused her of anything. You have widened what she may report."
+          - id: c
+            text: "People often feel a lift after a first session. It doesn't always last."
+            fit: workable
+            note: "It is true, and it is fair to say so at some point. Said here, it corrects her before you have heard anything about the week, and it may sound like doubt."
+        actual: "I'm glad there was some more sleep. Tell me about the week, the better parts and the parts that weren't."
+        rationale: "You cannot know yet whether this is improvement, relief at having spoken, or M looking after you. You do not need to know. Your task is to make it safe to bring either kind of week. Notice that she thanked you. Hold that alongside last week's apologies."
+      - id: alliance-s2-t03
+        speaker: client
+        text: "Well. Monday and Tuesday were okay. Wednesday I had to present to the new team and I stayed up until two preparing, and then Thursday I called in sick. (pause) I just lay there. I didn't even feed the cat until the afternoon. (voice catches) She was sitting by her bowl, just waiting, not even complaining..."
+      - id: alliance-s2-t04
+        speaker: client
+        text: "(crying) Sorry. Sorry, this is stupid. It's a cat."
+      - id: alliance-s2-d2
+        type: free
+        prompt: "M is crying and has apologised twice. Write a reflection of feeling. Do not reassure her and do not ask a question."
+        actual: "She waited for you without complaining, and something about that really hurts."
+        rationale: "The reflection goes to the feeling under the story and uses M's own image. It does not tell her that she has no need to apologise. That would answer the apology and leave the feeling. It does not ask 'what are the tears about?', which would send her into thinking. Notice the image she chose: someone who waits, in need, and does not complain. It may be about more than the cat. You do not say so yet."
+      - id: alliance-s2-t05
+        speaker: client
+        text: "(nods, crying harder for a moment, then slower) I should have got up. She needed me and I just lay there. I felt so guilty. I still do."
+      - id: alliance-s2-t06
+        speaker: therapist
+        text: "Guilty, and still carrying it now. You care a great deal about not letting her down, so of course Thursday is hard to forgive."
+      - id: alliance-s2-t07
+        speaker: client
+        text: "(quiet) Yes. (long breath) I don't usually cry in front of people."
+      - id: alliance-s2-t08
+        speaker: therapist
+        text: "I noticed that you apologised when you did. What is it like, to have cried here?"
+      - id: alliance-s2-t09
+        speaker: client
+        text: "Strange. Embarrassing. But also... you didn't look uncomfortable. I kept waiting for you to look uncomfortable."
+      - id: alliance-s2-d3
+        type: choice
+        prompt: "M says she was waiting for you to look uncomfortable. How do you respond?"
+        options:
+          - id: a
+            text: "I wasn't uncomfortable at all. You can cry here whenever you need to."
+            fit: workable
+            note: "It is kind and probably true. But it answers for yourself and closes the subject. The interesting part is that she was watching your face while she cried."
+          - id: b
+            text: "Even while you were crying, part of you was watching to see how I was taking it. That sounds like something you've had to do before."
+            fit: strong
+            note: "It reflects what she has just shown you about how she is with other people, in the moment it happened, and it does so gently. It links to her past without claiming to know what that past was."
+          - id: c
+            text: "Who in your life looks uncomfortable when you're upset?"
+            fit: workable
+            note: "It is a good question, and you will get to it. Asked now, it moves her out of the room and into a history lesson at the moment when something new has happened between the two of you."
+        actual: "Even while you were crying, part of you was watching to see how I was taking it. That sounds like something you've had to do before."
+        rationale: "The bond is built in moments like this one. M expected her distress to be a burden and found that it was not. Naming the watching makes that experience something you can both see. This is the first clear sign of the pattern you wondered about after session one."
+      - id: alliance-s2-t10
+        speaker: client
+        text: "(small laugh) My mother. If I was upset she'd say, 'When you're like this, I get so tired.' So I learned to check first."
+      - id: alliance-s2-t11
+        speaker: therapist
+        text: "So you learned to check whether there was room for it before you let anything show. That makes sense of a lot. I'd like us to keep hold of that. Before we stop today, I want to ask what you'd like from our time together. If these sessions went well, what would be different?"
+      - id: alliance-s2-t12
+        speaker: client
+        text: "I don't know. What do you think I should work on? You're the one who knows about this."
+      - id: alliance-s2-d4
+        type: choice
+        prompt: "M asks you to choose her goals. What do you do?"
+        options:
+          - id: a
+            text: "From what you've told me, I'd suggest we work on your sleep and on getting back to activities like drawing."
+            fit: weak
+            note: "They are sensible targets. They are also yours. M will agree to them, as she agrees to most things, and you will have a plan with only one person in it. Agreement on goals is one of the three parts of the alliance. Compliance is not agreement."
+          - id: b
+            text: "I do have some thoughts, and I'll share them. First I'm curious about something. You handed that question straight back to me. What happens when you try to answer it yourself?"
+            fit: strong
+            note: "It does not refuse her and does not pretend you have no view. It looks at what just happened, with curiosity. Asking for what she wants is exactly the thing M finds hard, so the difficulty in setting goals is part of the work."
+          - id: c
+            text: "It's important that the goals come from you. Take your time."
+            fit: workable
+            note: "The principle is right. But it leaves her alone with a task she has just shown she cannot do yet, and it can sound like a rule she is failing to follow."
+        actual: "I do have some thoughts, and I'll share them. First I'm curious about something. You handed that question straight back to me. What happens when you try to answer it yourself?"
+        rationale: "Goals that are agreed and not merely accepted take longer. With M, the first goal may turn out to be: to be able to say what I want. You could not have chosen that for her."
+      - id: alliance-s2-t13
+        speaker: client
+        text: "(pause) My mind goes blank. And then I think, whatever I say will be the wrong thing to want. (pause) I suppose... I'd like to stop feeling that I have to be fine all the time. Is that a goal?"
+      - id: alliance-s2-t14
+        speaker: therapist
+        text: "It's a goal. And it's yours. Let's start there."
+    notes:
+      goals: "First goal, in M's words: to stop feeling that she has to be fine all the time. Not yet turned into anything specific. Tasks not yet discussed."
+      alliance: "Bond: one real step. She cried, watched for discomfort, did not find it, and said so. Goals: one goal that is hers. Tasks: nothing agreed yet. Keep watching for agreement that comes too quickly."
+      formulation_update: "A first link. When M was upset, her mother said, 'When you're like this, I get so tired.' M learned to check whether there was room for her feelings before showing them. In session this appears as apologising, reporting improvement, watching the therapist's face and handing decisions back. Working idea, to be tested: M expects her feelings and wants to be a burden, so she hides them, and then no one knows what she needs."

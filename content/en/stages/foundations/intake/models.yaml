@@ -1,0 +1,120 @@
+intake-e01:
+  model_response: "What's been on your mind the most lately?"
+  why: "It is open and gives the client a place to begin without choosing the topic for them."
+  avoid: "'Just start anywhere' sounds kind, but it hands back the same problem the client has just named."
+intake-e02:
+  model_response: "What made you think it might help you too?"
+  why: "It follows the client's own reason for coming and moves from the sister's experience to the client's."
+  avoid: "Asking about the sister. She is not the client."
+intake-e03:
+  model_response: "What is the stress like for you?"
+  why: "It stays with the client's word, 'stress', and asks for their experience of it."
+  avoid: "'Which exams?' collects a fact and closes the conversation down."
+intake-e04:
+  model_response: "Now the time is yours. What would you like me to understand about why you're here?"
+  why: "It answers the question the client asked, then opens the session with one open invitation."
+  avoid: "Describing the whole intake procedure. The client asked what happens now, not what happens in every session."
+intake-e05:
+  model_response: "How has it been for you since the move?"
+  why: "It is open and uses the client's own time frame, so they can speak about work, the place or the low mood."
+  avoid: "'Do you miss home?' is a guess phrased as a question, and it can be answered with one word."
+intake-e06:
+  model_response: "A new job and a move, both at the same time."
+  why: "Eight words carry the content of the client's two sentences, with nothing added."
+  avoid: "'That sounds really stressful.' It may be true, but it is your label. The client said 'a lot'."
+intake-e07:
+  model_response: "The day holds together at work, and the weight arrives once you're home."
+  why: "It keeps the contrast the client drew between work and home, in new words."
+  avoid: "Asking 'why do you think that is?' The client has not been heard yet."
+intake-e08:
+  model_response: "Her calls come from care, and they leave you drained."
+  why: "Both parts are kept and joined with 'and', so the mother's care and the client's tiredness can both be true."
+  avoid: "Suggesting the client call less often. Nobody asked for a solution."
+intake-e09:
+  model_response: "Hiking used to be a regular part of your week. It has stopped, and you can't quite say what happened."
+  why: "It gives back the fact and the client's puzzlement, without offering an explanation for them."
+  avoid: "'Loss of interest is common when people feel low.' That explains before you understand."
+intake-e10:
+  model_response: "You're hoping to get back to feeling like you."
+  why: "It is brief, it is in your own words, and it treats the hope as enough for now."
+  avoid: "Asking the client at once to turn the hope into a measurable goal. Goal-setting comes later."
+intake-m01:
+  model_response: "What did your partner notice that made them suggest it?"
+  why: "It does not argue with 'things are fine'. It goes to the one piece of information the client gave and asks about it openly."
+  avoid: "'So you don't think you need to be here?' It can be answered yes or no, and it invites the client to leave."
+intake-m02:
+  model_response: "What's the part of the story you'd start with?"
+  why: "It takes up the story and passes over 'boring' without contradicting it, which shows interest more convincingly than saying you are interested."
+  avoid: "'I'm sure it's not boring!' Reassurance asks the client to believe you. A question lets them find out."
+intake-m03:
+  model_response: "What's been happening that you'd call dramatic?"
+  why: "It uses the client's own word and asks what is behind it. The client can describe events without having to defend their reaction."
+  avoid: "'Why do you say that?' A 'why' question asks for a justification, and the laugh suggests the client is already judging themselves."
+intake-m04:
+  model_response: "What are the nights like when you sleep badly?"
+  why: "The client listed three things quickly. This picks the one that sounded like a difficulty and asks for a description."
+  avoid: "Going through the list in order with three closed questions. You would get three more short answers."
+intake-m05:
+  model_response: "What was it like, seeing that counsellor?"
+  why: "The pause before 'okay' is the passed-over part. An open question about the experience lets the client decide how much to say."
+  avoid: "'Was it not helpful?' It is closed and it supplies the answer."
+intake-m06:
+  model_response: "You love the work, and from Saturday afternoon the dread of Monday has already begun."
+  why: "Both sides are stated at equal weight and joined with 'and'."
+  avoid: "'So you don't really love your job.' That resolves the contradiction for the client, and probably wrongly."
+intake-m07:
+  model_response: "Everything still gets done, and very little of it holds your interest."
+  why: "It keeps the functioning and the flatness together, and it respects the client's point that this is not sadness."
+  avoid: "Calling it depression or burnout. Naming a condition is not a restatement."
+intake-m08:
+  model_response: "Your dad was often away, and you see that as how things were for everyone."
+  why: "It gives back the fact and the client's view of it. It neither agrees that it was 'no big deal' nor disputes it."
+  avoid: "'That must have been lonely.' The client has just told you it was normal. You may be right later, and it is too early now."
+intake-m09:
+  model_response: "You told her it was fine, and then two weeks went by without a message."
+  why: "It sets the two facts side by side and stops. The client can see the gap without being told what it means."
+  avoid: "'So you were actually angry with her.' That is an interpretation, and the client has just said they were fine."
+intake-m10:
+  model_response: "Part of you wants to be here, and part of you thinks you ought to manage alone."
+  why: "It names both parts as belonging to the client and does not take a side."
+  avoid: "'Everyone needs help sometimes.' It sides with one part and tells the other part it is wrong."
+intake-h01:
+  model_response: "What did your doctor hope would be different for you?"
+  why: "It makes no defence of therapy. It asks about the referral openly, which is the one thing the client and you already share."
+  avoid: "Explaining how therapy works. The client has not asked, and it turns the first minute into a debate."
+intake-h02:
+  model_response: "I'm a trainee, and I work under supervision. What worries you about working with someone younger?"
+  why: "A direct question about your status gets one honest sentence. Then the open question takes the client's concern seriously as a concern."
+  avoid: "Listing your qualifications, or asking 'is my age a problem?' The first is a defence. The second is closed and sounds hurt."
+intake-h03:
+  model_response: "There's nothing you have to say. What is it like for you, sitting here right now?"
+  why: "It removes the demand the client feels and asks about the present moment, which is the only thing they have shown you."
+  avoid: "Filling the silence with several questions in a row. Each one adds to the sense that there is a right answer."
+intake-h04:
+  model_response: "Telling it three times already is a lot. What would you want to be different this time?"
+  why: "One short acknowledgement, no apology for the system, then an open question that gives the client some say over how the session goes."
+  avoid: "'I'm afraid I do need the full history.' It may be the procedure, and it answers the client's weariness with a rule."
+intake-h05:
+  model_response: "These are my own notes, and they stay within this service. What are you concerned might happen to them?"
+  why: "A factual question gets a factual answer first. The open question then goes to the worry underneath it."
+  avoid: "'Don't worry, it's all confidential.' It dismisses the concern and promises more than you can."
+intake-h06:
+  model_response: "Six weeks, and you got nods and nothing else. You paid for that."
+  why: "It gives the complaint back at full strength, including the money, and adds nothing."
+  avoid: "'I work differently.' It is a promise you have not earned yet, and it invites the client to test it."
+intake-h07:
+  model_response: "You've been told to open up so many times that you expect it from me before I've said anything."
+  why: "It restates both the history and the prediction about you, without denying the prediction."
+  avoid: "'I won't say that.' The client's point is that they have stopped believing what people say they will do."
+intake-h08:
+  model_response: "You're here, you'll answer, and you'd rather not be doing this."
+  why: "It puts into plain words what 'fine, whatever' carries, without scolding and without pleading."
+  avoid: "Going straight to your first question as if nothing had been said. That confirms that you only want your questions answered."
+intake-h09:
+  model_response: "Time is tight, and you want this to be practical."
+  why: "It takes the request seriously as a request. Restating it does not mean you have agreed to avoid feelings for ever."
+  avoid: "Explaining why feelings matter in therapy. The client has forty minutes and has just said how they want to use them."
+intake-h10:
+  model_response: "Being paid makes it hard to believe the listening is real."
+  why: "It states the doubt accurately and lets it stand. A doubt that has been heard is easier to work with than one that has been answered."
+  avoid: "'I do genuinely care about my clients.' It is a defence, and it is exactly what a paid listener would say."
