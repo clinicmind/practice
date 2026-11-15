@@ -1,6 +1,7 @@
 import { createContext, useContext, type ReactNode } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { useT } from '../i18n';
+import type { ContentLocale } from '../content/client';
+import { useLocale, useT } from '../i18n';
 import type { Strings } from '../i18n/en';
 import { LEVELS, type Level, type ModuleBundle } from '../content/schema';
 import { unlockedLevels } from '../progress/rules';
@@ -17,6 +18,8 @@ export function lockedModuleNotice(entry: StageEntry, s: Strings): string {
 interface GateValue {
   slug: string;
   bundle: ModuleBundle;
+  /** The language the module content is actually in (English when the Chinese version is not ready). */
+  contentLocale: ContentLocale;
   attempts: Attempt[];
   decisions: Decision[];
   levels: Level[];
@@ -24,10 +27,21 @@ interface GateValue {
   unreviewed: boolean;
 }
 const GateContext = createContext<GateValue | null>(null);
+/** Like useGate, but null outside a ModuleGate (pages are also rendered on their own in tests). */
+export const useGateOptional = (): GateValue | null => useContext(GateContext);
 export function useGate(): GateValue {
   const v = useContext(GateContext);
   if (!v) throw new Error('useGate outside ModuleGate');
   return v;
+}
+
+/** One line shown when the interface is Chinese but this module is only available in English. */
+export function FallbackNotice() {
+  const s = useT();
+  const { locale } = useLocale();
+  const contentLocale = useGateOptional()?.contentLocale;
+  if (locale !== 'zh-Hant' || contentLocale !== 'en') return null;
+  return <p role="status" className="notice">{s.contentFallback}</p>;
 }
 
 export function ErrorBlock({ message, onRetry }: { message: string; onRetry: () => void }) {
@@ -67,7 +81,7 @@ export function ModuleGate({ children }: { children: ReactNode }) {
   }
   const levels = unlockedLevels(data.attempts, bundle.drills, data.grants[slug] ?? []);
   return (
-    <GateContext.Provider value={{ slug, bundle, attempts: data.attempts, decisions: data.decisions, levels, unreviewed: !!entry.unreviewed }}>
+    <GateContext.Provider value={{ slug, bundle, contentLocale: data.contentLocale[slug] ?? 'en', attempts: data.attempts, decisions: data.decisions, levels, unreviewed: !!entry.unreviewed }}>
       {children}
     </GateContext.Provider>
   );

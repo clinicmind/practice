@@ -25,7 +25,9 @@ const FIXTURES = join(__dirname, '..', '..', 'tests', 'fixtures', 'content');
 /** Build a fixture course the way `npm run content` would. */
 export async function buildFixture(name: 'ok' | 'ok-reviewed', opts: { includeUnreviewed?: boolean } = {}): Promise<string> {
   const out = mkdtempSync(join(tmpdir(), `fx-${name}-`));
-  await buildContent({ contentDir: join(FIXTURES, name), outDir: out, locale: 'en', includeUnreviewed: opts.includeUnreviewed });
+  for (const locale of ['en', 'zh-Hant'] as const) {
+    await buildContent({ contentDir: join(FIXTURES, name), outDir: out, locale, includeUnreviewed: opts.includeUnreviewed });
+  }
   return out;
 }
 

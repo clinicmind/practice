@@ -10,11 +10,13 @@ import { loadDraft } from '../progress/drafts';
 import { itemMet } from '../progress/rules';
 import type { Attempt, NewAttempt } from '../progress/types';
 import { useStore } from '../StoreContext';
+import { FallbackNotice, useGateOptional } from './ModuleGate';
 
 export function DrillsPage() {
   const s = useT();
   const { slug = '', level = '' } = useParams();
   const store = useStore();
+  const contentLocale = useGateOptional()?.contentLocale ?? 'en';
   const { signOut } = useAuth();
   const navigate = useNavigate();
   const here = useLocation();
@@ -35,7 +37,7 @@ export function DrillsPage() {
   useEffect(() => {
     let live = true;
     setError(false);
-    Promise.all([loadModule(slug), store.listAttempts()])
+    Promise.all([loadModule(slug, contentLocale), store.listAttempts()])
       .then(([b, a]) => {
         if (!live) return;
         setBundle(b);
@@ -50,7 +52,7 @@ export function DrillsPage() {
       })
       .catch(() => live && setError(true));
     return () => { live = false; };
-  }, [slug, level, store, reload]);
+  }, [slug, level, store, reload, contentLocale]);
 
   const submit = useCallback(
     async (a: NewAttempt) => {
@@ -84,6 +86,7 @@ export function DrillsPage() {
   return (
     <div>
       <h1>{s.drillsPage.heading(s.levels[lv] ?? level)}</h1>
+      <FallbackNotice />
       <p aria-live="polite">{s.drillsPage.progress(met, drills.length)}</p>
       {drill ? (
         <>
@@ -91,10 +94,11 @@ export function DrillsPage() {
           <DrillCard
             key={drill.id}
             drill={drill}
+            contentKey={contentLocale}
             attempts={attempts.filter((a) => a.itemId === drill.id)}
             onSubmit={submit}
             getModel={async () => {
-              const models = await loadModels(slug);
+              const models = await loadModels(slug, contentLocale);
               const m = models[drill.id];
               if (!m) throw new Error('missing model');
               return m;

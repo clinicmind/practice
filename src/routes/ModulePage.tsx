@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { LEVELS, isDecision } from '../content/schema';
 import { useT } from '../i18n';
 import { itemMet, levelPassed } from '../progress/rules';
-import { useGate } from './ModuleGate';
+import { FallbackNotice, useGate } from './ModuleGate';
 
 export function ModulePage() {
   const s = useT();
@@ -13,6 +13,7 @@ export function ModulePage() {
     <div>
       <h1>{bundle.meta.title}</h1>
       {unreviewed && <p><span className="badge">{s.stage.unreviewed}</span></p>}
+      <FallbackNotice />
       {notice && <p role="status" className="notice">{notice}</p>}
       <p>{bundle.meta.intro}</p>
 

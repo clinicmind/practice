@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useT } from '../i18n';
 import type { Reflection } from '../progress/types';
 import { useStore } from '../StoreContext';
-import { useGate } from './ModuleGate';
+import { FallbackNotice, useGate } from './ModuleGate';
 
 function PromptForm({ promptId, text, entries, onSave }: {
   promptId: string; text: string; entries: Reflection[]; onSave: (promptId: string, value: string) => Promise<void>;
@@ -80,6 +80,7 @@ export function ReflectPage() {
   return (
     <div>
       <h1>{t.heading(bundle.meta.title)}</h1>
+      <FallbackNotice />
       {bundle.meta.reflection_prompts.map((p) => (
         <PromptForm key={p.id} promptId={p.id} text={p.text} entries={entries.filter((e) => e.promptId === p.id)} onSave={save} />
       ))}

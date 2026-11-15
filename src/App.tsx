@@ -3,6 +3,7 @@ import { AuthProvider } from './auth/AuthContext';
 import { RequireAuth, RequireSupervisor } from './auth/AuthGate';
 import type { Backend } from './auth/supabase';
 import { Layout } from './components/Layout';
+import { LocaleProvider } from './i18n';
 import type { ProgressStore } from './progress/types';
 import { AuthCallback } from './routes/AuthCallback';
 import { DrillsPage } from './routes/DrillsPage';
@@ -26,6 +27,7 @@ export function App({ store, wasReset, backend = null, storage = globalThis.loca
   store: ProgressStore; wasReset?: boolean; backend?: Backend | null; storage?: Storage;
 }) {
   return (
+    <LocaleProvider>
     <AuthProvider backend={backend}>
       <Layout wasReset={wasReset}>
         <Routes>
@@ -45,5 +47,6 @@ export function App({ store, wasReset, backend = null, storage = globalThis.loca
         </Routes>
       </Layout>
     </AuthProvider>
+    </LocaleProvider>
   );
 }

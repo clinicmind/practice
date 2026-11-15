@@ -8,6 +8,8 @@ import type { Attempt, NewAttempt } from '../progress/types';
 type Phase = 'writing' | 'rating' | 'review';
 interface Props {
   drill: Drill;
+  /** Changes when the example responses would be in another language, so a shown one is fetched again. */
+  contentKey?: string;
   attempts: Attempt[];
   onSubmit: (a: NewAttempt) => Promise<void>;
   /** Called only after an attempt has been saved (spec §3.1). */
@@ -17,7 +19,7 @@ interface Props {
   onReauth?: () => void;
 }
 
-export function DrillCard({ drill, attempts, onSubmit, getModel, onNext, onReauth }: Props) {
+export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onNext, onReauth }: Props) {
   const s = useT();
   const t = s.drill;
   const uid = useId();
@@ -49,6 +51,15 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext, onReaut
     if (text.length === 0) clearDraft(drill.id);
     else saveDraft(drill.id, { response: text, ticks });
   }, [phase, text, ticks, drill.id]);
+
+  // The example response follows the language of the module; refetch it if the language changes after it was shown.
+  const shownKey = useRef(contentKey);
+  useEffect(() => {
+    if (shownKey.current === contentKey) return;
+    shownKey.current = contentKey;
+    if (phase === 'review') void fetchModel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contentKey]);
 
   const blank = text.trim().length === 0;
   const ticked = ticks.filter(Boolean).length;

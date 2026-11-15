@@ -6,6 +6,7 @@ import { isDecision, type ModuleBundle } from '../content/schema';
 import { useT } from '../i18n';
 import type { Decision, NewDecision } from '../progress/types';
 import { useStore } from '../StoreContext';
+import { FallbackNotice, useGateOptional } from './ModuleGate';
 import { NotFound } from './NotFound';
 
 export function WalkthroughPage() {
@@ -13,6 +14,7 @@ export function WalkthroughPage() {
   const t = s.walkthrough;
   const { slug = '', sessionId = '' } = useParams();
   const store = useStore();
+  const contentLocale = useGateOptional()?.contentLocale ?? 'en';
   const [bundle, setBundle] = useState<ModuleBundle | null>(null);
   const [decisions, setDecisions] = useState<Decision[] | null>(null);
   const [error, setError] = useState(false);
@@ -21,7 +23,7 @@ export function WalkthroughPage() {
   useEffect(() => {
     let live = true;
     setError(false);
-    Promise.all([loadModule(slug), store.listDecisions(sessionId)])
+    Promise.all([loadModule(slug, contentLocale), store.listDecisions(sessionId)])
       .then(([b, d]) => {
         if (!live) return;
         setBundle(b);
@@ -29,7 +31,7 @@ export function WalkthroughPage() {
       })
       .catch(() => live && setError(true));
     return () => { live = false; };
-  }, [slug, sessionId, store, reload]);
+  }, [slug, sessionId, store, reload, contentLocale]);
 
   const answer = useCallback(
     async (d: NewDecision) => {
@@ -61,6 +63,7 @@ export function WalkthroughPage() {
   return (
     <div>
       <h1>{t.heading(session.title)}</h1>
+      <FallbackNotice />
       <ol className="turns">
         {visible.map((turn) => (
           <li key={turn.id}>
