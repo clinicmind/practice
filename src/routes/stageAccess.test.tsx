@@ -118,6 +118,23 @@ describe('the home page', () => {
     expect(spy.path).toBe('/');
   });
 
+  test('one stage: the home page and the foundations page never read cohort_stages', async () => {
+    serve(single);
+    const fake = cloud(STUDENT);
+    fake.db.failReads.add('cohort_stages');
+    renderCloud('/', fake);
+    expect(await screen.findByRole('heading', { level: 1, name: 'Foundations (fixture)' })).toBeVisible();
+    expect(fake.db.reads.some((r) => r.table === 'cohort_stages')).toBe(false);
+  });
+
+  test('foundations opens even when the cohort_stages table cannot be read', async () => {
+    serve(multi);
+    const fake = cloud(STUDENT);
+    fake.db.failReads.add('cohort_stages');
+    renderCloud('/s/foundations', fake);
+    expect(await screen.findByRole('link', { name: /Intake \(fixture\)/ })).toBeVisible();
+  });
+
   test('one stage in local mode looks the same', async () => {
     serve(single);
     const storage = new Mem();

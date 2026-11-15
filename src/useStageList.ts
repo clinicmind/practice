@@ -34,7 +34,9 @@ export function useStageList(): StageListState {
   useEffect(() => {
     let live = true;
     (async () => {
-      const [stages, open] = await Promise.all([loadStages('en'), readOpenStages()]);
+      const stages = await loadStages('en');
+      // With one stage there is nothing to unlock, so do not depend on the cohort_stages table.
+      const open = stages.length > 1 ? await readOpenStages() : 'all';
       const zhTitles = new Map<string, string>();
       if (locale === 'zh-Hant') {
         try { for (const s of await loadStages('zh-Hant')) zhTitles.set(s.stage, s.title); } catch { /* English titles */ }

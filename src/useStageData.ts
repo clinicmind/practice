@@ -8,7 +8,7 @@ import { unlockedModules } from './progress/rules';
 import { stageIsOpen, useOpenStageReader } from './progress/stageAccess';
 import { useGrantReader, type Grants } from './progress/unlocks';
 import type { Attempt, Decision } from './progress/types';
-import { useStageParam } from './stages';
+import { DEFAULT_STAGE, useStageParam } from './stages';
 import { useStore } from './StoreContext';
 
 export interface StageEntry {
@@ -76,7 +76,8 @@ export function useStageData(): StageState {
         if (live) setState({ status: 'notfound' });
         return;
       }
-      if (!stageIsOpen(await readOpenStages(), stageName)) {
+      // foundations is always open, so it never waits on (or fails because of) the cohort_stages table.
+      if (stageName !== DEFAULT_STAGE && !stageIsOpen(await readOpenStages(), stageName)) {
         if (live) setState({ status: 'locked' });
         return;
       }
