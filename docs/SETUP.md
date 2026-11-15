@@ -53,7 +53,7 @@ VITE_SUPABASE_URL=... VITE_SUPABASE_ANON_KEY=... npm run e2e
 未審核的模組學生看不到，督導看得到並標示 `Unreviewed`。
 審核後，在 `content/REVIEW.md` 加一列（slug、locale、version 要和該模組的 `module.yaml` 一致），然後重新部署。
 
-目前狀態：基礎階段 8 個模組全部已審核（2026-11-15）。
+目前狀態：英文版 8 個模組全部已審核（2026-11-15）。繁中版 8 個模組待審核：審核後在 `content/REVIEW.md` 加入 `locale` 為 `zh-Hant` 的列。繁中模組未登記前，選了繁中的學生會看到該模組的英文版和一行提示。
 
 ## 指令
 
