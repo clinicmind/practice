@@ -1,9 +1,17 @@
-export type NewAttempt = { itemId: string; response: string; criteriaMet: boolean[] }; // length 3
-export type Attempt = NewAttempt & { id: string; createdAt: string };
-export type NewDecision = { sessionId: string; decisionId: string; optionId?: string; response?: string };
-export type Decision = NewDecision & { id: string; createdAt: string };
-export type NewReflection = { moduleSlug: string; promptId: string; text: string };
-export type Reflection = NewReflection & { id: string; createdAt: string };
+/**
+ * `clientId` and `createdAt` are optional and only used when importing local
+ * records into the cloud store: the same clientId saved twice is one record.
+ */
+export type ImportFields = { clientId?: string; createdAt?: string };
+type AttemptBase = { itemId: string; response: string; criteriaMet: boolean[] }; // length 3
+type DecisionBase = { sessionId: string; decisionId: string; optionId?: string; response?: string };
+type ReflectionBase = { moduleSlug: string; promptId: string; text: string };
+export type NewAttempt = AttemptBase & ImportFields;
+export type Attempt = AttemptBase & { id: string; createdAt: string };
+export type NewDecision = DecisionBase & ImportFields;
+export type Decision = DecisionBase & { id: string; createdAt: string };
+export type NewReflection = ReflectionBase & ImportFields;
+export type Reflection = ReflectionBase & { id: string; createdAt: string };
 
 export interface ProgressStore {
   saveAttempt(a: NewAttempt): Promise<Attempt>;

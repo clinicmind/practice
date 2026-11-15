@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
+import { rememberReturnTo } from '../auth/returnTo';
 import { DrillCard } from '../components/DrillCard';
 import { loadModels, loadModule } from '../content/client';
 import { LEVELS, type Level, type ModuleBundle } from '../content/schema';
 import { en } from '../i18n/en';
+import { loadDraft } from '../progress/drafts';
 import { itemMet } from '../progress/rules';
 import type { Attempt, NewAttempt } from '../progress/types';
 import { useStore } from '../StoreContext';
@@ -11,6 +14,10 @@ import { useStore } from '../StoreContext';
 export function DrillsPage() {
   const { slug = '', level = '' } = useParams();
   const store = useStore();
+  const { signOut } = useAuth();
+  const navigate = useNavigate();
+  const here = useLocation();
+  const restored = useRef(false);
   const [bundle, setBundle] = useState<ModuleBundle | null>(null);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
   const [index, setIndex] = useState(0);
@@ -32,10 +39,17 @@ export function DrillsPage() {
         if (!live) return;
         setBundle(b);
         setAttempts(a);
+        if (!restored.current) {
+          // Coming back after signing in again: reopen the question that has an unsaved answer.
+          restored.current = true;
+          const ds = b.drills.filter((d) => d.level === level);
+          const i = ds.findIndex((d) => loadDraft(d.id));
+          if (i > 0) setIndex(i);
+        }
       })
       .catch(() => live && setError(true));
     return () => { live = false; };
-  }, [slug, store, reload]);
+  }, [slug, level, store, reload]);
 
   const submit = useCallback(
     async (a: NewAttempt) => {
@@ -44,6 +58,12 @@ export function DrillsPage() {
     },
     [store],
   );
+
+  async function reauth() {
+    rememberReturnTo(here.pathname + here.search);
+    await signOut().catch(() => {});
+    navigate('/login', { replace: true, state: { from: here.pathname + here.search } });
+  }
 
   if (error) {
     return (
@@ -79,6 +99,7 @@ export function DrillsPage() {
               return m;
             }}
             onNext={() => setIndex((i) => i + 1)}
+            onReauth={() => void reauth()}
           />
         </>
       ) : (

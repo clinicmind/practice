@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { Drill, Model } from '../content/schema';
 import { en } from '../i18n/en';
+import { clearDraft, loadDraft, saveDraft } from '../progress/drafts';
 import { MIN_CRITERIA, MIN_RESPONSE } from '../progress/rules';
 import type { Attempt, NewAttempt } from '../progress/types';
 
@@ -14,15 +15,18 @@ interface Props {
   /** Called only after an attempt has been saved (spec §3.1). */
   getModel: () => Promise<Model>;
   onNext?: () => void;
+  /** Called by "Sign in again" when the cloud session has expired. */
+  onReauth?: () => void;
 }
 
-export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props) {
+export function DrillCard({ drill, attempts, onSubmit, getModel, onNext, onReauth }: Props) {
   const uid = useId();
   const [phase, setPhase] = useState<Phase>('writing');
-  const [text, setText] = useState('');
-  const [ticks, setTicks] = useState<boolean[]>([false, false, false]);
+  const [draft] = useState(() => loadDraft(drill.id));
+  const [text, setText] = useState(draft?.response ?? '');
+  const [ticks, setTicks] = useState<boolean[]>(draft?.ticks ?? [false, false, false]);
   const [saving, setSaving] = useState(false);
-  const [saveError, setSaveError] = useState(false);
+  const [saveError, setSaveError] = useState<null | 'auth' | 'other'>(null);
   const [model, setModel] = useState<Model | null>(null);
   const [modelError, setModelError] = useState(false);
   const [saved, setSaved] = useState<{ response: string; met: boolean } | null>(null);
@@ -38,6 +42,13 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
     else if (phase === 'rating') ratingRef.current?.focus();
     else reviewRef.current?.focus();
   }, [phase]);
+
+  // Keep an unsaved answer so a sign-in round trip (or an accidental navigation) cannot lose it.
+  useEffect(() => {
+    if (phase === 'review') return;
+    if (text.length === 0) clearDraft(drill.id);
+    else saveDraft(drill.id, { response: text, ticks });
+  }, [phase, text, ticks, drill.id]);
 
   const blank = text.trim().length === 0;
   const ticked = ticks.filter(Boolean).length;
@@ -55,14 +66,17 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
   async function save() {
     if (saving) return;
     setSaving(true);
-    setSaveError(false);
+    setSaveError(null);
     try {
       await onSubmit({ itemId: drill.id, response: text, criteriaMet: [...ticks] });
-    } catch {
-      setSaveError(true);
+    } catch (err) {
+      const auth = (err as { kind?: string } | null)?.kind === 'auth';
+      if (auth) saveDraft(drill.id, { response: text, ticks });
+      setSaveError(auth ? 'auth' : 'other');
       setSaving(false);
       return;
     }
+    clearDraft(drill.id);
     setSaving(false);
     setSaved({ response: text, met: wouldMeet });
     setPhase('review');
@@ -75,7 +89,7 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
     setSaved(null);
     setModel(null);
     setModelError(false);
-    setSaveError(false);
+    setSaveError(null);
     setPhase('writing');
   }
 
@@ -143,7 +157,13 @@ export function DrillCard({ drill, attempts, onSubmit, getModel, onNext }: Props
             ))}
           </fieldset>
           {!wouldMeet && <p className="muted">{t.needHint}</p>}
-          {saveError && <p role="alert" className="error">{t.saveError}</p>}
+          {saveError === 'other' && <p role="alert" className="error">{t.saveError}</p>}
+          {saveError === 'auth' && (
+            <div>
+              <p role="alert" className="error">{t.sessionExpired}</p>
+              {onReauth && <button type="button" className="btn primary" onClick={onReauth}>{t.signInAgain}</button>}
+            </div>
+          )}
           <div className="row">
             <button type="button" className="btn primary" disabled={saving} onClick={save}>
               {saving ? t.saving : t.saveSelfCheck}

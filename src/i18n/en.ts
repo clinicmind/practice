@@ -24,6 +24,9 @@ export const en = {
     needHint:
       'A response counts as met when you tick at least 2 criteria and write at least 20 characters.',
     saveError: 'Could not save your attempt. Your response is still here; please try again.',
+    sessionExpired:
+      'Your sign-in has expired, so this attempt was not saved. Your response is kept on this device. Sign in again and you will return to this question.',
+    signInAgain: 'Sign in again',
     modelError: 'Could not load the example response.',
     modelRetry: 'Retry loading the example',
     yourResponse: 'Your response',
@@ -123,6 +126,9 @@ export const en = {
       invalid_display_name: 'Enter a display name of 1 to 40 characters.',
       other: 'Could not join. Check your connection and try again.',
     } as Record<string, string>,
+    importing: 'Moving the progress saved in this browser to your account…',
+    importError:
+      'Could not move your saved progress to your account. Nothing was lost; it is still in this browser. Check your connection and try again.',
     signOut: 'Sign out',
     signedInAs: (name: string) => `Signed in as ${name}`,
     supervisorLink: 'Supervisor',

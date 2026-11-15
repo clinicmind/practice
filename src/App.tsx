@@ -19,8 +19,11 @@ import { WalkthroughPage } from './routes/WalkthroughPage';
 /**
  * `store` is the local (browser) store. `backend` is the Supabase client, or
  * null/undefined for local mode, where the app behaves exactly as in phase 1.
+ * `storage` is the Storage `store` writes to; it is cleared after a successful import.
  */
-export function App({ store, wasReset, backend = null }: { store: ProgressStore; wasReset?: boolean; backend?: Backend | null }) {
+export function App({ store, wasReset, backend = null, storage = globalThis.localStorage }: {
+  store: ProgressStore; wasReset?: boolean; backend?: Backend | null; storage?: Storage;
+}) {
   return (
     <AuthProvider backend={backend}>
       <Layout wasReset={wasReset}>
@@ -28,7 +31,7 @@ export function App({ store, wasReset, backend = null }: { store: ProgressStore;
           <Route path="/login" element={<LoginPage />} />
           <Route path="/join" element={<JoinPage />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
-          <Route element={<RequireAuth store={store} />}>
+          <Route element={<RequireAuth store={store} backend={backend} storage={storage} />}>
             <Route path="/" element={<StagePage />} />
             <Route path="/m/:slug" element={<ModuleGate><ModulePage /></ModuleGate>} />
             <Route path="/m/:slug/walkthrough/:sessionId" element={<ModuleGate><WalkthroughPage /></ModuleGate>} />

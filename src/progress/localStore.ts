@@ -33,7 +33,11 @@ const clone = <T,>(v: T): T => JSON.parse(JSON.stringify(v));
 function newId(): string {
   const c = globalThis.crypto;
   if (c && typeof c.randomUUID === 'function') return c.randomUUID();
-  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+  // uuid-shaped, so the id can double as the cloud client_id
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (ch) => {
+    const r = Math.floor(Math.random() * 16);
+    return (ch === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+  });
 }
 
 /** now, but strictly later than every timestamp in `existing` so ordering is stable. */
@@ -115,14 +119,18 @@ export function createLocalStore(storage: Storage = globalThis.localStorage): Lo
     },
     async saveDecision(d: NewDecision): Promise<Decision> {
       if (!d.sessionId || !d.decisionId) throw new Error('sessionId and decisionId required');
-      return append('decisions', { ...d });
+      return append('decisions', {
+        sessionId: d.sessionId, decisionId: d.decisionId,
+        ...(d.optionId !== undefined && { optionId: d.optionId }),
+        ...(d.response !== undefined && { response: d.response }),
+      });
     },
     async listDecisions(sessionId?: string) {
       return clone(read().decisions.filter((x) => sessionId === undefined || x.sessionId === sessionId));
     },
     async saveReflection(r: NewReflection): Promise<Reflection> {
       if (!r.moduleSlug || !r.promptId) throw new Error('moduleSlug and promptId required');
-      return append('reflections', { ...r });
+      return append('reflections', { moduleSlug: r.moduleSlug, promptId: r.promptId, text: r.text });
     },
     async listReflections(moduleSlug?: string) {
       return clone(read().reflections.filter((x) => moduleSlug === undefined || x.moduleSlug === moduleSlug));

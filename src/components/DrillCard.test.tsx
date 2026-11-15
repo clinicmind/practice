@@ -3,6 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, test, vi } from 'vitest';
 import type { Drill, Model } from '../content/schema';
+import { en } from '../i18n/en';
 import type { Attempt, NewAttempt } from '../progress/types';
 import { DrillCard } from './DrillCard';
 
@@ -161,5 +162,61 @@ describe('DrillCard', () => {
     await user.click(submit());
     for (const c of drill.criteria) expect(screen.getByRole('checkbox', { name: c })).toBeVisible();
     expect(screen.getByRole('group', { name: /self-check/i })).toBeVisible();
+  });
+});
+
+describe('DrillCard drafts', () => {
+  const KEY = 'cm.draft.intake-e01';
+  const authError = () => Object.assign(new Error('expired'), { name: 'StoreError', kind: 'auth' });
+
+  test('an auth failure keeps the text, offers sign-in, and keeps a draft for after re-login', async () => {
+    sessionStorage.clear();
+    const onReauth = vi.fn();
+    const onSubmit = vi.fn(async () => { throw authError(); });
+    const user = userEvent.setup();
+    const { unmount } = render(<DrillCard drill={drill} attempts={[]} onSubmit={onSubmit} getModel={async () => model} onReauth={onReauth} />);
+    await user.type(box(), LONG);
+    await user.click(submit());
+    await user.click(screen.getByRole('checkbox', { name: /asks an open question/i }));
+    await user.click(screen.getByRole('checkbox', { name: /stays brief/i }));
+    await user.click(save());
+    expect(await screen.findByRole('alert')).toHaveTextContent(en.drill.sessionExpired);
+    await user.click(screen.getByRole('button', { name: en.drill.signInAgain }));
+    expect(onReauth).toHaveBeenCalled();
+    expect(JSON.parse(sessionStorage.getItem(KEY)!)).toEqual({ response: LONG, ticks: [true, true, false] });
+    unmount();
+
+    // Back after re-login: the text and ticks are restored; a successful save removes the draft.
+    const ok = vi.fn(async () => {});
+    render(<DrillCard drill={drill} attempts={[]} onSubmit={ok} getModel={async () => model} />);
+    expect(box()).toHaveValue(LONG);
+    await user.click(submit());
+    expect(screen.getByRole('checkbox', { name: /asks an open question/i })).toBeChecked();
+    await user.click(save());
+    await screen.findByText(en.drill.met);
+    expect(ok).toHaveBeenCalledWith({ itemId: 'intake-e01', response: LONG, criteriaMet: [true, true, false] });
+    expect(sessionStorage.getItem(KEY)).toBeNull();
+  });
+
+  test('a draft for a different question is not restored here', () => {
+    sessionStorage.setItem('cm.draft.intake-e99', JSON.stringify({ response: 'other', ticks: [false, false, false] }));
+    render(<DrillCard drill={drill} attempts={[]} onSubmit={async () => {}} getModel={async () => model} />);
+    expect(box()).toHaveValue('');
+  });
+
+  test('a corrupt draft is ignored', () => {
+    sessionStorage.setItem(KEY, '{nope');
+    render(<DrillCard drill={drill} attempts={[]} onSubmit={async () => {}} getModel={async () => model} />);
+    expect(box()).toHaveValue('');
+  });
+
+  test('clearing the text removes the draft', async () => {
+    sessionStorage.clear();
+    const user = userEvent.setup();
+    render(<DrillCard drill={drill} attempts={[]} onSubmit={async () => {}} getModel={async () => model} />);
+    await user.type(box(), 'abc');
+    expect(sessionStorage.getItem(KEY)).not.toBeNull();
+    await user.clear(box());
+    expect(sessionStorage.getItem(KEY)).toBeNull();
   });
 });

@@ -1,4 +1,5 @@
 import type { Backend } from '../auth/supabase';
+import type { FakeDb } from './fakeDb';
 
 export type ProfileRow = { id: string; role: 'student' | 'supervisor'; display_name: string; cohort_id: string | null };
 type Session = { user: { id: string } } | null;
@@ -17,7 +18,7 @@ export interface FakeBackend {
 }
 
 /** A fake of the parts of the Supabase client that auth and join use. */
-export function createFakeBackend(opts: { userId?: string | null; profile?: ProfileRow } = {}): FakeBackend {
+export function createFakeBackend(opts: { userId?: string | null; profile?: ProfileRow; db?: FakeDb } = {}): FakeBackend {
   let session: Session = opts.userId ? { user: { id: opts.userId } } : null;
   const listeners = new Set<Listener>();
   const profiles = new Map<string, ProfileRow>();
@@ -50,7 +51,10 @@ export function createFakeBackend(opts: { userId?: string | null; profile?: Prof
         },
       },
       from: (table: string) => {
-        if (table !== 'profiles') throw new Error(`fake: unexpected table ${table}`);
+        if (table !== 'profiles') {
+          if (!opts.db) throw new Error(`fake: unexpected table ${table}`);
+          return opts.db.client.from(table);
+        }
         return {
           select: () => ({
             eq: (_col: string, val: string) => ({
