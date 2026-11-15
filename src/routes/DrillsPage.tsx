@@ -1,3 +1,4 @@
+import { Meter } from '../components/Meter';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
@@ -87,7 +88,7 @@ export function DrillsPage() {
     <div>
       <h1>{s.drillsPage.heading(s.levels[lv] ?? level)}</h1>
       <FallbackNotice />
-      <p aria-live="polite">{s.drillsPage.progress(met, drills.length)}</p>
+      <p className="progress-line"><Meter met={met} total={drills.length} /> <span aria-live="polite">{s.drillsPage.progress(met, drills.length)}</span></p>
       {drill ? (
         <>
           <p ref={questionRef} tabIndex={-1} className="muted">{s.drill.questionOf(index + 1, drills.length)}</p>

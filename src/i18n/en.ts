@@ -86,6 +86,9 @@ const enStrings = {
     unreviewedNotShipped:
       'This module has not been reviewed yet, and its content is not part of this build. Only a preview build includes unreviewed content.',
     open: 'Open',
+    lede: 'One client, sixteen sessions, eight stages. Follow Client M from her first meeting to her last, and practise the skills each stage asks of you.',
+    nextUp: 'Next up',
+    stepLabel: (n: number) => `Stage ${n}`,
   },
   module: {
     walkthrough: 'Walkthrough',

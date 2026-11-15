@@ -11,16 +11,20 @@ export function StagePage() {
   if (state.status === 'loading') return <p>{s.common.loading}</p>;
   if (state.status === 'error') return <ErrorBlock message={s.stage.loadError} onRetry={state.reload} />;
   const { data } = state;
+  // The furthest module the student can open is where they will most likely want to go.
+  const nextUp = [...data.visible].reverse().find((m) => !m.lockedReason)?.slug;
   return (
     <div>
       <h1>{data.stage.title}</h1>
+      <p className="lede">{s.stage.lede}</p>
       {notice && <p role="status" className="notice">{notice}</p>}
       {data.visible.length === 0 ? (
         <p>{s.stage.empty}</p>
       ) : (
-        <ol className="module-list">
-          {data.visible.map((m) => (
-            <li key={m.slug}>
+        <ol className="module-list arc">
+          {data.visible.map((m, i) => (
+            <li key={m.slug} className={m.lockedReason ? 'arc-locked' : m.slug === nextUp ? 'arc-next' : 'arc-open'}>
+              <span className="arc-step" aria-hidden="true">{i + 1}</span>
               {m.lockedReason ? (
                 <div className="locked">
                   <span className="module-title">{m.title}</span>{' '}
@@ -29,7 +33,8 @@ export function StagePage() {
                 </div>
               ) : (
                 <>
-                  <Link to={`/m/${m.slug}`}>{m.title}</Link>
+                  <Link className="module-title" to={`/m/${m.slug}`}>{m.title}</Link>
+                  {m.slug === nextUp && <>{' '}<span className="badge next">{s.stage.nextUp}</span></>}
                   {m.unreviewed && <>{' '}<span className="badge">{s.stage.unreviewed}</span></>}
                 </>
               )}

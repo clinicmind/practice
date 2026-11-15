@@ -107,8 +107,8 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
   const earlier = attempts.filter((a) => a.itemId === drill.id);
 
   return (
-    <article className="card" aria-labelledby={`${uid}-client`}>
-      <p className="muted">
+    <article className="card drill" aria-labelledby={`${uid}-client`}>
+      <p className="muted context">
         <strong>{t.context}:</strong> {drill.context}
       </p>
       <p id={`${uid}-client`} className="client-line">
@@ -188,9 +188,12 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
 
       {phase === 'review' && saved && (
         <>
+          <div className="compare">
+          <div className="mine">
           <h3 ref={reviewRef} tabIndex={-1}>{t.yourResponse}</h3>
           <blockquote>{saved.response}</blockquote>
-          <p>{saved.met ? t.met : t.notMet}</p>
+          <p className={saved.met ? 'verdict met' : 'verdict'}>{saved.met ? t.met : t.notMet}</p>
+          </div>
           {modelError && (
             <div>
               <p role="alert" className="error">{t.modelError}</p>
@@ -200,15 +203,16 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
             </div>
           )}
           {model && (
-            <section>
+            <section className="model">
               <h3>{t.modelHeading}</h3>
-              <p>{model.model_response}</p>
+              <blockquote>{model.model_response}</blockquote>
               <h4>{t.whyHeading}</h4>
               <p>{model.why}</p>
               <h4>{t.avoidHeading}</h4>
               <p>{model.avoid}</p>
             </section>
           )}
+          </div>
           <div className="row">
             <button type="button" className="btn" onClick={retry}>{t.tryAgain}</button>
             {onNext && <button type="button" className="btn primary" onClick={onNext}>{t.next}</button>}

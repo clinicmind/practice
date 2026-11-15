@@ -77,6 +77,9 @@ export const zhHant: Strings = {
     unreviewed: '未審核',
     unreviewedNotShipped: '這個模組還未審核，內容不包含在這個版本中。只有預覽版本才含有未審核的內容。',
     open: '開啟',
+    lede: '一位個案，十六次會談，八個階段。跟著個案 M 由第一次見面走到最後一次，逐一練習每個階段需要的技能。',
+    nextUp: '接下來',
+    stepLabel: (n: number) => `第 ${n} 階段`,
   },
   module: {
     walkthrough: '療程走讀',

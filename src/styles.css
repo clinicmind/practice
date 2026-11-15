@@ -1,69 +1,189 @@
+/*
+  ClinicMind Practice
+
+  The interface is built around the thing a trainee actually studies: two voices in a room.
+  - Serif is the voice of the session: what the client says, what a therapist might say back.
+  - Sans is the voice of the tool: labels, buttons, progress.
+  - Plum marks the client. Pine marks the therapist's craft and the student's progress.
+  - Ochre appears only where the student has to act: a pause in the session, the next stage.
+*/
 :root {
-  --bg: #fbfaf7;
-  --fg: #1d2330;
-  --muted: #4b5563;
-  --line: #cfd5df;
-  --accent: #1f4e8c;
-  --accent-fg: #ffffff;
-  --err: #9b1c1c;
-  --notice-bg: #eef4fb;
+  --paper: #f3f5f2;
   --card: #ffffff;
-  --focus: #b45309;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.5;
+  --ink: #1b2a2f;
+  --muted: #55615f;
+  --line: #d3dad5;
+  --pine: #1f5a52;
+  --pine-tint: #e6efec;
+  --plum: #6b3f5c;
+  --plum-tint: #f4ecf1;
+  --ochre: #c98a1b;
+  --ochre-tint: #f8ecd0;
+  --ochre-ink: #5a3d00;
+  --err: #9b1c1c;
+  --focus: #9a5b00;
+
+  --serif: 'Newsreader Variable', 'Noto Serif TC', Georgia, 'Songti TC', serif;
+  --sans: 'Instrument Sans', 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --measure: 42rem;
+  font-family: var(--sans);
+  line-height: 1.6;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--fg); overflow-wrap: anywhere; }
-.shell { min-height: 100vh; display: flex; flex-direction: column; max-width: 46rem; margin: 0 auto; padding: 0 1rem; }
-main { flex: 1; padding: 1rem 0 2rem; }
+body { margin: 0; background: var(--paper); color: var(--ink); overflow-wrap: anywhere; }
+
+/* ---------- frame ---------- */
+.shell { min-height: 100vh; display: flex; flex-direction: column; max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+main { flex: 1; width: 100%; max-width: var(--measure); padding: 2.5rem 0 4rem; }
 main:focus { outline: none; }
-h1 { font-size: 1.5rem; line-height: 1.25; margin: 0.5rem 0 1rem; }
-h2 { font-size: 1.2rem; margin: 1.5rem 0 0.5rem; }
-h3, h4 { margin: 1rem 0 0.25rem; }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--focus); outline-offset: 2px;
-}
-.skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--accent-fg); padding: 0.5rem 1rem; z-index: 10; }
-.skip:focus { left: 0; }
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.site-header { padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between; }
-.account { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
-.brand { font-weight: 700; text-decoration: none; color: var(--fg); }
-.site-footer { border-top: 1px solid var(--line); padding: 1rem 0; color: var(--muted); font-size: 0.875rem; }
+.site-header { padding: 1.1rem 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; justify-content: space-between; }
+.brand { font-family: var(--serif); font-size: 1.3rem; font-weight: 560; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+.account { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; font-size: 0.925rem; }
+.site-footer { border-top: 1px solid var(--line); padding: 1.25rem 0 2rem; color: var(--muted); font-size: 0.85rem; max-width: var(--measure); }
+.site-footer p { margin: 0; }
+
+/* ---------- type ---------- */
+h1 { font-family: var(--serif); font-weight: 520; font-size: clamp(1.9rem, 1.4rem + 2vw, 2.6rem); line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 1rem; }
+h2 { font-family: var(--serif); font-weight: 560; font-size: 1.4rem; line-height: 1.25; margin: 2.75rem 0 0.75rem; }
+h3 { font-size: 0.95rem; font-weight: 600; margin: 1.25rem 0 0.4rem; }
+h4 { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin: 1rem 0 0.2rem; }
+p { margin: 0 0 0.85rem; }
+html[lang='zh-Hant'] h1 { letter-spacing: 0; font-weight: 700; line-height: 1.25; }
+html[lang='zh-Hant'] h2 { font-weight: 700; }
+.lede { font-family: var(--serif); font-size: 1.2rem; line-height: 1.55; color: var(--ink); margin-bottom: 1.5rem; }
+a { color: var(--pine); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
 .muted { color: var(--muted); }
 .error { color: var(--err); font-weight: 600; }
-.notice { background: var(--notice-bg); border: 1px solid var(--line); border-radius: 6px; padding: 0.5rem 0.75rem; margin: 0.75rem 0; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 1rem 0; }
-.field { margin: 0.75rem 0; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px;
+}
+.skip { position: absolute; left: -999px; top: 0; background: var(--pine); color: #fff; padding: 0.5rem 1rem; z-index: 10; }
+.skip:focus { left: 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- controls ---------- */
+.btn { font: inherit; font-weight: 500; min-height: 44px; padding: 0.55rem 1.15rem; border-radius: 10px; border: 1px solid var(--pine); background: transparent; color: var(--pine); cursor: pointer; }
+.btn:hover:not(:disabled) { background: var(--pine-tint); }
+.btn.primary { background: var(--pine); color: #fff; }
+.btn.primary:hover:not(:disabled) { background: #174840; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn.lang-switch { border-color: transparent; padding: 0.4rem 0.6rem; text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+.row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
+.field { margin: 1rem 0; }
 label { font-weight: 600; display: block; }
-label.check { font-weight: 400; display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.5rem 0; min-height: 44px; }
-label.check input { margin-top: 0.3rem; }
-textarea { width: 100%; font: inherit; padding: 0.5rem; border: 1px solid var(--muted); border-radius: 6px; background: #fff; color: var(--fg); }
-textarea[readonly] { background: #f1f3f6; }
-fieldset { border: 1px solid var(--line); border-radius: 6px; margin: 0.75rem 0; padding: 0.5rem 0.75rem; min-width: 0; }
-legend { font-weight: 600; padding: 0 0.25rem; }
-.btn { font: inherit; min-height: 44px; padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid var(--accent); background: #fff; color: var(--accent); cursor: pointer; }
-.btn.primary { background: var(--accent); color: var(--accent-fg); }
-.btn:disabled { opacity: 0.55; cursor: not-allowed; }
-.row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
-.badge { display: inline-block; font-size: 0.8rem; border: 1px solid var(--muted); border-radius: 999px; padding: 0 0.5rem; color: var(--muted); }
-.fit { display: inline-block; font-weight: 700; border: 1px solid currentColor; border-radius: 4px; padding: 0 0.4rem; }
-.fit-strong { color: #14532d; }
-.fit-workable { color: #7c4a03; }
-.fit-weak { color: #7f1d1d; }
-blockquote { margin: 0.25rem 0 0.75rem; padding: 0.25rem 0.75rem; border-left: 4px solid var(--line); }
-.client-line { font-size: 1.1rem; font-weight: 600; }
-.module-list, .turns { padding-left: 1.25rem; }
-.turns { list-style: none; padding-left: 0; }
-.turns li { margin: 0.5rem 0; }
-.module-list li { margin: 0.75rem 0; }
-.attempt-list { padding-left: 1.25rem; }
+textarea, input[type='text'], input[type='email'], input[type='date'] {
+  width: 100%; font: inherit; padding: 0.7rem 0.85rem; border: 1px solid #8b9794; border-radius: 10px; background: #fff; color: var(--ink);
+}
+/* What the student writes is something they would say aloud, so it takes the session voice. */
+textarea { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; min-height: 7.5rem; resize: vertical; }
+textarea[readonly] { background: var(--paper); border-style: dashed; }
+fieldset { border: 0; margin: 1rem 0; padding: 0; min-width: 0; }
+legend { font-weight: 600; padding: 0; margin-bottom: 0.5rem; }
+
+/* Options and criteria are tiles: the whole tile is the target, and the chosen one is unmistakable. */
+label.check { font-weight: 400; display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.8rem 0.95rem; margin: 0.5rem 0; min-height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); cursor: pointer; }
+label.check:hover { border-color: #9fb0ab; }
+label.check:has(input:checked) { border-color: var(--pine); background: var(--pine-tint); box-shadow: inset 0 0 0 1px var(--pine); }
+label.check input { margin-top: 0.3rem; accent-color: var(--pine); width: 1.05rem; height: 1.05rem; flex: none; }
+
+/* ---------- small parts ---------- */
+.notice { background: var(--ochre-tint); color: var(--ochre-ink); border-radius: 10px; padding: 0.65rem 0.9rem; margin: 1rem 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.5rem; margin: 1.25rem 0; }
+.badge { display: inline-block; font-size: 0.78rem; font-weight: 500; line-height: 1.5; border: 1px solid #9aa6a3; border-radius: 999px; padding: 0 0.55rem; color: var(--muted); vertical-align: 0.1em; }
+.badge.next { border-color: transparent; background: var(--ochre-tint); color: var(--ochre-ink); }
+.badge.flag { border-color: transparent; background: var(--plum-tint); color: var(--plum); }
+blockquote { margin: 0.35rem 0 1rem; padding: 0.15rem 0 0.15rem 1rem; border-left: 3px solid var(--line); font-family: var(--serif); font-size: 1.12rem; line-height: 1.5; }
+
+.meter { display: inline-flex; gap: 3px; vertical-align: middle; }
+.meter .seg { width: 14px; height: 7px; border-radius: 2px; background: var(--line); }
+.meter .seg.on { background: var(--pine); }
+
+/* ---------- the course of therapy: one line, eight stages ---------- */
+.module-list.arc { list-style: none; margin: 2rem 0 0; padding: 0; }
+.arc > li { position: relative; margin: 0; padding: 0 0 2rem 3.6rem; min-height: 3.4rem; }
+.arc > li::before { content: ''; position: absolute; left: 1.2rem; top: 2.4rem; bottom: 0; width: 2px; background: var(--pine); }
+.arc > li.arc-locked::before, .arc > li.arc-next::before { background: repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 11px); }
+.arc > li:last-child { padding-bottom: 0; }
+.arc > li:last-child::before { display: none; }
+.arc-step { position: absolute; left: 0; top: 0; width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 1.15rem; font-weight: 560; border: 2px solid var(--pine); color: var(--pine); background: var(--paper); }
+.arc-next .arc-step { background: var(--pine); color: #fff; }
+.arc-locked .arc-step { border-color: var(--line); color: #7d8a87; }
+.arc .module-title { font-family: var(--serif); font-size: 1.35rem; line-height: 1.3; font-weight: 520; }
+.arc a.module-title { color: var(--ink); text-decoration: none; }
+.arc a.module-title:hover { color: var(--pine); text-decoration: underline; }
+.arc .locked .module-title { color: #6c7976; }
+.arc .locked p { margin: 0.15rem 0 0; font-size: 0.9rem; }
+html[lang='zh-Hant'] .arc .module-title { font-weight: 700; font-size: 1.25rem; }
+
+/* ---------- a module ---------- */
+.sessions, .levels { list-style: none; margin: 0; padding: 0; }
+.sessions li, .levels li { padding: 0.9rem 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.75rem; }
+.sessions li:last-child, .levels li:last-child { border-bottom: 1px solid var(--line); }
+.sessions a, .level-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 520; }
+.level-name { order: -2; min-width: 4.5rem; }
+.levels .meter { order: -1; align-self: center; }
+.level-locked { color: var(--muted); }
+.reflect-link { margin-top: 2.5rem; }
+.progress-line { display: flex; align-items: center; gap: 0.75rem; color: var(--muted); margin-bottom: 0.25rem; }
+
+/* ---------- the session transcript: two voices ---------- */
+.turns { list-style: none; margin: 1.5rem 0 0; padding: 0; }
+.turns > li { margin: 0 0 1.4rem; }
+.turn { margin: 0; }
+.turn strong { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-bottom: 0.1rem; }
+.turn-therapist { font-size: 1.05rem; }
+.turn-client { font-family: var(--serif); font-size: 1.22rem; line-height: 1.5; margin-left: clamp(1rem, 6vw, 3rem); padding-left: 1rem; border-left: 3px solid var(--plum); }
+.turn-client strong { font-family: var(--sans); color: var(--plum); }
+
+/* A decision point is a pause in the session. Ochre is used nowhere else on this page. */
+.decision { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--ochre); border-radius: 4px 4px 16px 16px; padding: 1.4rem 1.5rem 1.5rem; margin: 2rem 0; }
+.decision.answered { border-top-color: var(--pine); }
+.decision .prompt, .decision legend.prompt { font-family: var(--serif); font-size: 1.3rem; font-weight: 520; line-height: 1.35; margin-bottom: 0.9rem; }
+html[lang='zh-Hant'] .decision .prompt { font-weight: 700; font-size: 1.2rem; }
+.decision .btn { margin-top: 0.75rem; }
+.decision blockquote { border-left-color: var(--pine); }
+.decision p > strong:only-child { font-size: 0.85rem; color: var(--muted); }
+.fit { display: inline-block; font-size: 0.85rem; font-weight: 600; border-radius: 999px; padding: 0.1rem 0.7rem; }
+.fit-strong { background: var(--pine-tint); color: #14463f; }
+.fit-workable { background: var(--ochre-tint); color: var(--ochre-ink); }
+.fit-weak { background: var(--plum-tint); color: #5a2f4b; }
+
+/* ---------- practice ---------- */
+.card.drill { padding: clamp(1.25rem, 4vw, 2.25rem); }
+.drill .context { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.client-line { font-family: var(--serif); font-size: clamp(1.45rem, 1.2rem + 1.4vw, 1.95rem); line-height: 1.3; font-weight: 480; color: var(--plum); margin: 0 0 1.75rem; }
+html[lang='zh-Hant'] .client-line { font-weight: 700; line-height: 1.45; }
+.attempt-list { padding-left: 1.1rem; }
 .attempt-list li { margin: 0.5rem 0; }
-.decision { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 0.75rem 1rem; }
-.prompt { font-weight: 600; }
+
+/* After saving, the student's response and the example sit side by side: comparing them is the exercise. */
+.compare { display: grid; gap: 0 2rem; }
+@media (min-width: 46rem) { .compare { grid-template-columns: 1fr 1fr; align-items: start; } }
+.compare h3 { margin-top: 0; }
+.compare .mine blockquote { border-left-color: #9aa6a3; }
+.compare .model { border-top: 1px solid var(--line); padding-top: 1.25rem; margin-top: 0.5rem; }
+@media (min-width: 46rem) { .compare .model { border-top: 0; padding-top: 0; margin-top: 0; border-left: 1px solid var(--line); padding-left: 2rem; } }
+.compare .model blockquote { border-left-color: var(--pine); color: #123f39; }
+.verdict { font-size: 0.9rem; color: var(--muted); }
+.verdict.met { color: var(--pine); font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) {
+  .compare .model { animation: reveal 420ms ease-out both; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+
+/* ---------- supervisor ---------- */
 .table-scroll { overflow-x: auto; }
-.table-scroll table { border-collapse: collapse; min-width: 100%; }
-.table-scroll th, .table-scroll td { border-bottom: 1px solid var(--line); padding: 0.5rem; text-align: left; vertical-align: top; }
-.badge.flag { background: var(--notice-bg); }
+.table-scroll table { border-collapse: collapse; min-width: 100%; font-size: 0.95rem; }
+.table-scroll th { font-weight: 600; color: var(--muted); font-size: 0.85rem; }
+.table-scroll th, .table-scroll td { border-bottom: 1px solid var(--line); padding: 0.65rem 0.6rem; text-align: left; vertical-align: top; }
+
+@media (max-width: 30rem) {
+  .shell { padding: 0 1rem; }
+  main { padding-top: 1.75rem; }
+  .card, .decision { padding: 1.1rem; }
+  .turn-client { margin-left: 0.5rem; }
+}
