@@ -1,0 +1,120 @@
+termination-e01:
+  model_response: "I see it too. Twelve weeks ago you'd let the phone ring out, and last week you rang the bank yourself. You did that by making one call at a time. What other differences do you notice?"
+  why: "It gives one concrete before and after, credits the client's method, and asks for more."
+  avoid: "'You've done so well.' It is warm, and it tells the client nothing they can keep."
+termination-e02:
+  model_response: "She's noticing something real. You went back to choir, and you've kept going every week. That was your decision. What does 'your old self' mean to you?"
+  why: "It ties the sister's comment to a specific action the client took and asks the client to define it."
+  avoid: "Taking the sister's verdict as the review."
+termination-e03:
+  model_response: "A year, and on Saturday you did it alone. You got there by doing the short trips first, even on the days you didn't want to. How was it, standing in the queue?"
+  why: "It names the achievement, places it in the client's own steps, and asks about the experience."
+  avoid: "'I knew you could do it.' The moment becomes about your prediction."
+termination-e04:
+  model_response: "It makes sense. You used to leave when it started, and now you stay and it passes. You taught yourself that by staying. Is that how you'd put it?"
+  why: "It turns the client's phrase into a concrete change and checks the wording with them."
+  avoid: "Explaining the theory behind it. The client has already said it better."
+termination-e05:
+  model_response: "Here's one that I've seen. When we started, you couldn't say no to your manager. Last month you turned down the extra shifts and nothing terrible happened. You practised that sentence here first. Does that match your memory of it?"
+  why: "It answers the question with one specific example, notes the client's own practice, and checks."
+  avoid: "A long list. One clear example is easier to believe than ten."
+termination-e06:
+  model_response: "Yes. Next week is our last session. How is it to say that?"
+  why: "It confirms the ending in plain words and asks about the feeling."
+  avoid: "'But you can always come back.' It softens the ending before the client has felt it."
+termination-e07:
+  model_response: "You'll miss it. I'm glad you can say so. What will you miss?"
+  why: "It receives the feeling and asks for more, without rushing to comfort."
+  avoid: "'You've got lots of support now.' It answers the missing with a substitute."
+termination-e08:
+  model_response: "It is strange to end just as things are going well. Part of you might wonder whether it holds without these sessions. What comes up when you think about stopping?"
+  why: "It agrees with the client's sense, names one possible worry lightly, and asks."
+  avoid: "'That's exactly the right time to stop.' It may be right, and it closes the feeling."
+termination-e09:
+  model_response: "Mixed makes sense for an ending. Tell me about both sides."
+  why: "It is short, it treats mixed feelings as fitting, and it invites both."
+  avoid: "Asking only about the positive side."
+termination-e10:
+  model_response: "All sorts of ways. Some are relieved, some sad, some proud, and often it's a mixture. I'm more curious about you. How do you feel as we come to the end?"
+  why: "It answers briefly and honestly, then brings the question back to this client."
+  avoid: "A long description of typical reactions. The client may be asking permission to have their own."
+termination-m01:
+  model_response: "Two things, then. Your sleep is better, and you got it there by keeping the same bedtime even at weekends. And with your dad, it's as it was. I don't want to pretend otherwise. How do you feel about leaving that part where it is?"
+  why: "It states both plainly, credits the client for the gain, and asks about the unfinished part."
+  avoid: "'But look how much better you're sleeping!' The 'but' erases the father."
+termination-m02:
+  model_response: "Both may well have helped. I'd add what I saw you do. You went back to swimming and to your Thursday class, and you spoke to your manager about your workload. Time didn't do those. How much weight would you give them?"
+  why: "It does not dispute the client's explanation or comment on the tablets. It adds the client's own actions and asks."
+  avoid: "'No, it was your hard work.' You cannot know the proportions, and you would be arguing."
+termination-m03:
+  model_response: "I notice you're asking me for the verdict. Here's what I can honestly say. You did things that were hard for you, and they made a difference. I'm more interested in your own judgement. If you marked it yourself, what would you say?"
+  why: "It names the request gently, gives an honest and specific answer, and hands the judging back."
+  avoid: "'Yes, you've done brilliantly!' It feeds the need for outside approval at the moment of leaving."
+termination-m04:
+  model_response: "That's a real worry. I was here, and that mattered. But I wasn't at the supermarket, or on the phone to your sister. You were. What do you think you'll take with you?"
+  why: "It takes the worry seriously, admits your part, and points to what the client did alone."
+  avoid: "'It was all you.' It is untrue, and the client knows it."
+termination-m05:
+  model_response: "You hoped for more, and I'd like to hear about that. Where did you expect to be by now?"
+  why: "It makes room for disappointment without correcting it and asks for the detail."
+  avoid: "Listing the gains to prove the client wrong."
+termination-m06:
+  model_response: "Maybe they don't. I have noticed that we've missed two of the last three sessions as we've come near the end, and I wonder whether that's a way of leaving a bit at a time. What do you think?"
+  why: "It accepts the statement as possible, offers a tentative observation, and asks."
+  avoid: "'I think endings bother you more than you admit.' It tells the client what they feel."
+termination-m07:
+  model_response: "I want to hear about it, and we will use today for it. We still end next week, though. I've noticed that something big has arrived just as we're about to finish, and I wonder if stopping is part of what's hard."
+  why: "It takes the new problem seriously, holds the ending, and gently links the timing."
+  avoid: "Extending the therapy on the spot. Also avoid dismissing the new issue as avoidance."
+termination-m08:
+  model_response: "We could. It would spare us both something. I'd like to keep the two sessions, because how we finish matters. I wonder what 'dragging it out' would feel like for you."
+  why: "It grants the appeal, states your position with a reason, and asks about what the client wants to avoid."
+  avoid: "Agreeing with relief."
+termination-m09:
+  model_response: "Thank you. It means something that you thought of it. I'll need to check our service's rules before I can accept it. What I can take today is what it stands for. What did you want it to say?"
+  why: "It receives the gesture warmly, is honest about the policy, and asks about the meaning."
+  avoid: "A flat refusal on grounds of policy. Also avoid accepting without checking the rules."
+termination-m10:
+  model_response: "You're laughing, and I don't think it's entirely a joke. No, I won't be glad. I wonder if part of you expects people to be relieved when you go."
+  why: "It hears the worry under the humour, answers it truthfully in a few words, and asks."
+  avoid: "Laughing along. Also avoid a hurried 'Of course not!'"
+termination-h01:
+  model_response: "You're leaving without the thing you came for, and that's a real disappointment. I won't argue with how it feels. You did tell me that you're sleeping more and back at work full time. I can see those may not be the changes that count for you. What did you most hope would be different?"
+  why: "It honours the disappointment, states the client's own reported facts once without pressing them, and asks what mattered."
+  avoid: "'That's not true, look at everything you've achieved.' It argues with the client's own experience."
+termination-h02:
+  model_response: "It may have sounded like that. They were changes you told me about, and I shouldn't have led with them. Forget my list. How would you describe where you are?"
+  why: "It does not protest about motives. It gives up the list and asks for the client's own account."
+  avoid: "Defending your sincerity."
+termination-h03:
+  model_response: "You do more, and the hating yourself is still there. That's the part that mattered most, and it hasn't moved. I'm sorry it hasn't. I don't think that's a small thing to be left with. What would you want to happen with it now?"
+  why: "It states both truths, does not minimise what remains, and asks about next steps without promising."
+  avoid: "'Doing more is the first step.' It turns the client's pain into a stage on a path."
+termination-h04:
+  model_response: "Before, you didn't have to think about it, and now you can't not think about it. That's a real cost, and I don't want to talk you out of it. What has thinking about it been like?"
+  why: "It accepts that therapy has had a cost and asks about it without defending the work."
+  avoid: "'Awareness is the first step to change.' It is a slogan, and it is a defence."
+termination-h05:
+  model_response: "No speech. Tell me how you see it."
+  why: "It respects the request in two words and asks for the client's view."
+  avoid: "Giving a shorter version of the speech."
+termination-h06:
+  model_response: "It feels like being dropped. You let me in, and now I'm the one ending it. I am ending it, because my time here is finishing, and I can see how that lands. I'm not ending it because of anything you told me. Say more about what it's like."
+  why: "It names the feeling at full strength, gives the true reason, corrects the meaning, and stays."
+  avoid: "'We agreed the number of sessions at the start.' It is a contract offered in answer to a wound."
+termination-h07:
+  model_response: "I understand wanting that, and I'm glad the work has mattered. I can't give you my number. Contact after we finish isn't allowed here, and I think that rule is right. What I can do is make sure you leave with the details of who to contact if things get hard. What is the 'just in case' you have in mind?"
+  why: "It honours the wish, states the boundary without apology or blame, offers what is possible, and asks about the fear."
+  avoid: "Blaming the rule ('I would if I could'). Also avoid any private arrangement."
+termination-h08:
+  model_response: "If it's going to end, why sit through the ending. I get that. I'd still like you to come. I think leaving early would be a way of not saying goodbye, and I'd like us to do that part properly. Will you think about it?"
+  why: "It understands the logic, states your wish and the reason, and leaves the decision to the client."
+  avoid: "'That's your choice.' It is true, and it sounds as though you do not mind."
+termination-h09:
+  model_response: "You're right. We're stopping because my placement ends. It isn't because you've finished. That isn't fair to you, and it makes sense to be angry about it. Let's talk about what you still need, and where you could get it."
+  why: "It agrees with the accurate statement, validates the anger, and turns to practical next steps."
+  avoid: "'I think you are ready, though.' It defends the ending with a claim you have not earned."
+termination-h10:
+  model_response: "I am leaving, so on that count I'm no different. What may be different is that I'm telling you, I'm here until the last minute, and I'm sorry to be going. How have the other leavings been?"
+  why: "It concedes the fact, names what is different about this ending without overselling it, and asks about the history."
+  avoid: "'I'm not like the others.' From where the client sits, you are doing exactly what they did."

@@ -1,0 +1,20 @@
+slug: termination
+version: 1.0.0
+title: "Ending therapy"
+intro: >-
+  The end of therapy is part of the treatment. For many clients the reason they
+  came has to do with how relationships end, so the last sessions bring the
+  central theme back one more time, now with you in it. Trainees often hurry
+  the ending or fill it with advice. In this module Client M reaches her final
+  session. You practise reviewing the work so that the client owns the change,
+  and talking about the ending itself.
+skills:
+  - review
+  - processing-ending
+reflection_prompts:
+  - id: termination-r1
+    text: "M said, 'This time it's you who goes.' How do you usually handle endings in your own life: early, late, lightly, or not at all? How might that show in your final sessions with clients?"
+  - id: termination-r2
+    text: "The therapist told M she was sad that the work was ending. When is it useful to say something like this, and when would it serve the therapist more than the client?"
+  - id: termination-r3
+    text: "M's therapy ended with partial improvement. Her mood is better, and her relationship with her mother has changed only a little. What does a good-enough ending look like to you? What do you find hard to leave unfinished?"
