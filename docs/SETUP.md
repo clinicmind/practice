@@ -4,17 +4,21 @@
 
 ## A. 本機模式上線（最快，零成本）
 
-1. 在 Cloudflare Pages 建立專案，連結 `clinicmind/practice`。
-2. Build command：`npm run build`。Output directory：`dist`。Node 版本：22。
-3. 部署。學生打開網址就能用模組 1–2。其餘模組要先審核（見 C）。
+專案用 Cloudflare Workers 的靜態資源功能部署。設定已寫在 repo 的 `wrangler.jsonc`，不用在 Cloudflare 介面填輸出目錄。
+
+1. 在 Cloudflare 連結 `clinicmind/practice`（Workers → 由 Git 匯入）。
+2. Build command：`npm run build`。Deploy command：`npx wrangler deploy`。
+3. 每次推送到正式分支，Cloudflare 會自動重新建置和部署。
+
+注意：不要加入 `public/_redirects`。Cloudflare 會把「全部轉到 index.html」的規則判為無限循環而拒絕部署。深層連結由 `wrangler.jsonc` 的 `not_found_handling` 處理。
 
 ## B. 雲端模式
 
 1. 在 supabase.com 建立專案，區域選 Singapore。
-2. 套用資料庫結構：在 SQL Editor 依次執行 `supabase/migrations/` 內的 `0001_core.sql`、`0002_supervisor_views.sql`、`0003_hardening.sql`。
+2. 套用資料庫結構：打開 `supabase/setup-all.sql`，全部複製，貼到 Supabase 的 SQL Editor 執行一次。
 3. Authentication → URL Configuration：Site URL 填你的網址；Redirect URLs 加上 `https://你的網址/auth/callback`。
 4. 修改 `public/_headers` 最後一行，加入你的 Supabase 網址（檔案頂部有範例）。**不做這一步，瀏覽器會擋住登入和儲存。**
-5. 在 Cloudflare Pages 設定兩個環境變數，然後重新部署：
+5. 在 Cloudflare 該專案的 Settings → Build → Variables and secrets 設定兩個建置變數，然後重新部署：
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`（用 anon key。service role key 絕對不可以放在這裡。）
 6. 建立你的督導帳號：
@@ -43,7 +47,7 @@ VITE_SUPABASE_URL=... VITE_SUPABASE_ANON_KEY=... npm run e2e
 未審核的模組學生看不到，督導看得到並標示 `Unreviewed`。
 審核後，在 `content/REVIEW.md` 加一列（slug、locale、version 要和該模組的 `module.yaml` 一致），然後重新部署。
 
-目前狀態：`intake`、`alliance` 已審核。`assessment`、`formulation`、`planning`、`intervention`、`rupture`、`termination` 待審核。
+目前狀態：基礎階段 8 個模組全部已審核（2026-11-15）。
 
 ## 指令
 

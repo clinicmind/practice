@@ -6,3 +6,9 @@
 |---|---|---|---|
 | intake | en | 1.0.0 | 2026-11-15 |
 | alliance | en | 1.0.0 | 2026-11-15 |
+| assessment | en | 1.0.0 | 2026-11-15 |
+| formulation | en | 1.0.0 | 2026-11-15 |
+| planning | en | 1.0.0 | 2026-11-15 |
+| intervention | en | 1.0.0 | 2026-11-15 |
+| rupture | en | 1.0.0 | 2026-11-15 |
+| termination | en | 1.0.0 | 2026-11-15 |

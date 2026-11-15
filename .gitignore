@@ -4,3 +4,4 @@ public/content
 test-results
 playwright-report
 *.tsbuildinfo
+.wrangler
