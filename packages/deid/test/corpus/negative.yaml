@@ -1,0 +1,59 @@
+# Each case: the rule must find nothing in the text.
+- { rule: hkid, text: "A123456(4)" }
+- { rule: hkid, text: "PHQ123456" }
+- { rule: hkid, text: "scored B12 on the test" }
+- { rule: hkid, text: "session A1 2 3" }
+- { rule: mo-bir, text: "2234567(8)" }
+- { rule: mo-bir, text: "12345678" }
+- { rule: mo-bir, text: "see note (8)" }
+- { rule: mo-bir, text: "1234567" }
+- { rule: phone, text: "12345678" }
+- { rule: phone, text: "in 2024-2025 she" }
+- { rule: phone, text: "session 12 of 34567" }
+- { rule: phone, text: "scored 9123 points" }
+- { rule: email, text: "at 5 @ the clinic" }
+- { rule: email, text: "user@" }
+- { rule: email, text: "@handle only" }
+- { rule: email, text: "a @ b . c" }
+- { rule: url, text: "e.g. this" }
+- { rule: url, text: "i.e. that" }
+- { rule: url, text: "the www is large" }
+- { rule: url, text: "http is a protocol" }
+- { rule: full-date, text: "in Week 3" }
+- { rule: full-date, text: "scored 3/10" }
+- { rule: full-date, text: "in 2026" }
+- { rule: full-date, text: "March was hard" }
+- { rule: dob, text: "born into a large family" }
+- { rule: dob, text: "a born leader" }
+- { rule: dob, text: "出生後不久" }
+- { rule: dob, text: "in 1998 she moved" }
+- { rule: age-90, text: "aged 39" }
+- { rule: age-90, text: "90% of the time" }
+- { rule: age-90, text: "scored 93" }
+- { rule: age-90, text: "29歲" }
+- { rule: address, text: "on the road to recovery" }
+- { rule: address, text: "to block the thought" }
+- { rule: address, text: "Block the thought when it comes" }
+- { rule: address, text: "一樓梯" }
+- { rule: institution, text: "seen at a public hospital" }
+- { rule: institution, text: "一間公立醫院" }
+- { rule: institution, text: "school refusal" }
+- { rule: institution, text: "The Hospital was busy" }
+- { rule: title-name, text: "Mr and Mrs were there" }
+- { rule: title-name, text: "the doctor said" }
+- { rule: title-name, text: "一位先生" }
+- { rule: title-name, text: "Dr. said nothing" }
+- { rule: cjk-name, text: "王牌" }
+- { rule: cjk-name, text: "高興" }
+- { rule: cjk-name, text: "個案A" }
+- { rule: cjk-name, text: "陳述事實" }
+- { rule: cjk-name, text: "黃色的車" }
+- { rule: cjk-name, text: "周末在家" }
+- { rule: cap-name, text: "Cognitive Behavioural Therapy" }
+- { rule: cap-name, text: "The Client arrived" }
+- { rule: cap-name, text: "So I said no. To be fair, Man is mortal." }
+- { rule: cap-name, text: "Emotion Focused work" }
+- { rule: id-like, text: "in 2026" }
+- { rule: id-like, text: "CBT12" }
+- { rule: id-like, text: "12345" }
+- { rule: id-like, text: "PHQ9" }
