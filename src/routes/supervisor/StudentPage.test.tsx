@@ -2,6 +2,8 @@ import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest';
 import { en } from '../../i18n/en';
+import { zhHant } from '../../i18n/zh-Hant';
+import { LOCALE_KEY } from '../../i18n';
 import { buildFixture, renderCloud, serve, spy } from '../../test/appHarness';
 import { createFakeDb, type FakeDb } from '../../test/fakeDb';
 import { createFakeBackend, type FakeBackend } from '../../test/fakeSupabase';
@@ -45,6 +47,32 @@ describe('student page', () => {
     expect(items[0]).toHaveTextContent(en.supervisor.flags['copied-model']);
     expect(items[1]).toHaveTextContent(en.supervisor.flags['all-met-but-short']);
     expect(items[2]).not.toHaveTextContent(en.supervisor.flagPrefix);
+  });
+
+  test('copied-model also recognises the zh-Hant example response, and a missing Chinese file is not an error', async () => {
+    addAttempt(db, { user: BEA, item: 'intake-e03', response: '測試用示範回應（intake-e03）。', at: '2026-04-03T10:00:00.000Z' });
+    addAttempt(db, { user: BEA, item: 'alliance-e01', response: 'Fixture demonstration for alliance-e01.', at: '2026-04-04T10:00:00.000Z' });
+    renderCloud(`/supervisor/students/${BEA}`, fake);
+    const items = Array.from((await screen.findByRole('list', { name: en.supervisor.attemptsHeading })).children) as HTMLElement[];
+    // alliance has no reviewed zh-Hant module, so there is no zh models file; the English one still matches.
+    expect(items[0]).toHaveTextContent(en.supervisor.flags['copied-model']);
+    expect(items[1]).toHaveTextContent(en.supervisor.flags['copied-model']);
+    expect(screen.queryByText(en.supervisor.modelsMissing)).not.toBeInTheDocument();
+  });
+
+  test('the supervisor pages have a Chinese interface, including flag text', async () => {
+    localStorage.setItem(LOCALE_KEY, 'zh-Hant');
+    addAttempt(db, { user: BEA, item: 'intake-e03', response: 'FIXTURE DEMONSTRATION FOR intake-e03!!', at: '2026-04-03T10:00:00.000Z' });
+    try {
+      renderCloud(`/supervisor/students/${BEA}`, fake);
+      expect(await screen.findByRole('heading', { name: 'Bea' })).toBeVisible();
+      const items = Array.from((await screen.findByRole('list', { name: zhHant.supervisor.attemptsHeading })).children) as HTMLElement[];
+      expect(items[0]).toHaveTextContent(zhHant.supervisor.flags['copied-model']);
+      expect(screen.getByRole('link', { name: zhHant.supervisor.backToCohort })).toBeVisible();
+      expect(screen.getByText(zhHant.supervisor.flagsNote)).toBeVisible();
+    } finally {
+      localStorage.clear();
+    }
   });
 
   test('flags a repeated identical response', async () => {

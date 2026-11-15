@@ -90,3 +90,25 @@ describe('flagAttempts', () => {
     expect(flagAttempts([], models)).toEqual([]);
   });
 });
+
+describe('copied-model against both languages', () => {
+  const enModels = { 'intake-e01': { model_response: 'It sounds like starting feels overwhelming.' } };
+  const zhModels = { 'intake-e01': { model_response: '聽起來，要開始真的很不容易。' } };
+  test('a response matching either language is flagged', () => {
+    const a = att({ itemId: 'intake-e01', response: 'it sounds like starting feels overwhelming' });
+    const b = att({ itemId: 'intake-e01', response: ' 聽起來 要開始真的很不容易 ' });
+    const flags = flagAttempts([a, b], [enModels, zhModels]);
+    expect(flags).toContainEqual({ attemptId: a.id, reason: 'copied-model' });
+    expect(flags).toContainEqual({ attemptId: b.id, reason: 'copied-model' });
+  });
+  test('an own response matches neither', () => {
+    const a = att({ itemId: 'intake-e01', response: 'I wonder what would help you begin today.' });
+    expect(flagAttempts([a], [enModels, zhModels]).map((f) => f.reason)).not.toContain('copied-model');
+  });
+  test('only the English models available still works, and an empty list is fine', () => {
+    const a = att({ itemId: 'intake-e01', response: 'It sounds like starting feels overwhelming' });
+    expect(flagAttempts([a], [enModels]).map((f) => f.reason)).toEqual(['copied-model']);
+    expect(flagAttempts([a], [])).toEqual([]);
+  });
+});
+

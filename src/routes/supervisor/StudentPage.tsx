@@ -10,7 +10,7 @@ import { useSupervisorApi } from '../../supervisor/SupervisorContext';
 
 const day = (iso: string) => iso.slice(0, 10);
 
-type Loaded = { detail: StudentDetail; course: Course; models: Record<string, Model>; modelsMissing: boolean };
+type Loaded = { detail: StudentDetail; course: Course; models: Record<string, Model>[]; modelsMissing: boolean };
 type State = { status: 'loading' } | { status: 'error' } | { status: 'missing' } | ({ status: 'ready' } & Loaded);
 
 export function StudentPage() {
@@ -32,10 +32,15 @@ export function StudentPage() {
       // Example responses are needed only to spot copied answers, and only for modules this student has used.
       const used = new Set(detail.attempts.map((a) => a.itemId.replace(/-[emh]\d+$/, '')));
       let modelsMissing = false;
-      const models: Record<string, Model> = {};
-      await Promise.all([...used].filter((slug) => course.bundles[slug]).map(async (slug) => {
-        try { Object.assign(models, await loadModels(slug)); } catch { modelsMissing = true; }
-      }));
+      const modelsEn: Record<string, Model> = {};
+      const modelsZh: Record<string, Model> = {};
+      await Promise.all([...used].filter((slug) => course.bundles[slug]).flatMap((slug) => [
+        // English is the reference: failing to load it means copies could go unnoticed.
+        loadModels(slug, 'en').then((m) => { Object.assign(modelsEn, m); }, () => { modelsMissing = true; }),
+        // A Chinese module may simply not exist (or not be reviewed) yet; that is not an error.
+        loadModels(slug, 'zh-Hant').then((m) => { Object.assign(modelsZh, m); }, () => {}),
+      ]));
+      const models = [modelsEn, modelsZh];
       if (live) setState({ status: 'ready', detail, course, models, modelsMissing });
     })().catch(() => live && setState({ status: 'error' }));
     return () => { live = false; };
