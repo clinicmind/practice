@@ -1,18 +1,18 @@
 import { Link, useLocation } from 'react-router-dom';
 import { LEVELS, isDecision } from '../content/schema';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import { itemMet, levelPassed } from '../progress/rules';
 import { useGate } from './ModuleGate';
 
-const t = en.module;
-
 export function ModulePage() {
+  const s = useT();
+  const t = s.module;
   const { slug, bundle, attempts, decisions, levels, unreviewed } = useGate();
   const notice = (useLocation().state as { notice?: string } | null)?.notice;
   return (
     <div>
       <h1>{bundle.meta.title}</h1>
-      {unreviewed && <p><span className="badge">{en.stage.unreviewed}</span></p>}
+      {unreviewed && <p><span className="badge">{s.stage.unreviewed}</span></p>}
       {notice && <p role="status" className="notice">{notice}</p>}
       <p>{bundle.meta.intro}</p>
 
@@ -42,9 +42,9 @@ export function ModulePage() {
             return (
               <li key={lv}>
                 {open ? (
-                  <Link to={`/m/${slug}/drills/${lv}`}>{t.levelLine(en.levels[lv])}</Link>
+                  <Link to={`/m/${slug}/drills/${lv}`}>{t.levelLine(s.levels[lv])}</Link>
                 ) : (
-                  <span>{t.levelLine(en.levels[lv])}</span>
+                  <span>{t.levelLine(s.levels[lv])}</span>
                 )}{' '}
                 <span>{t.met(met, inLevel.length)}</span>{' '}
                 {open ? (
@@ -52,7 +52,7 @@ export function ModulePage() {
                 ) : (
                   <>
                     <span className="badge">{t.levelLocked}</span>
-                    <span className="muted"> {t.levelLockedReason(en.levels[LEVELS[i - 1]])}</span>
+                    <span className="muted"> {t.levelLockedReason(s.levels[LEVELS[i - 1]])}</span>
                   </>
                 )}
               </li>

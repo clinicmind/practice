@@ -2,19 +2,20 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { loadModels } from '../../content/client';
 import { LEVELS, type Drill, type Level, type Model } from '../../content/schema';
-import { en } from '../../i18n/en';
+import { useT } from '../../i18n';
 import { itemMet, levelPassed, unlockedLevels, walkthroughDone } from '../../progress/rules';
 import { loadCourse, type Course, type StudentDetail } from '../../supervisor/api';
 import { flagAttempts, type Flag } from '../../supervisor/flags';
 import { useSupervisorApi } from '../../supervisor/SupervisorContext';
 
-const t = en.supervisor;
 const day = (iso: string) => iso.slice(0, 10);
 
 type Loaded = { detail: StudentDetail; course: Course; models: Record<string, Model>; modelsMissing: boolean };
 type State = { status: 'loading' } | { status: 'error' } | { status: 'missing' } | ({ status: 'ready' } & Loaded);
 
 export function StudentPage() {
+  const s = useT();
+  const t = s.supervisor;
   const { id = '' } = useParams();
   const api = useSupervisorApi();
   const [state, setState] = useState<State>({ status: 'loading' });
@@ -48,14 +49,14 @@ export function StudentPage() {
     return m;
   }, [loaded]);
 
-  if (state.status === 'loading') return <p>{en.common.loading}</p>;
+  if (state.status === 'loading') return <p>{s.common.loading}</p>;
   const back = <p><Link to="/supervisor">{t.backToCohort}</Link></p>;
   if (state.status === 'missing') return <div><p>{t.studentNotFound}</p>{back}</div>;
   if (state.status === 'error') {
     return (
       <div>
         <p role="alert" className="error">{t.studentLoadError}</p>
-        <button type="button" className="btn" onClick={() => { setState({ status: 'loading' }); reload(); }}>{en.common.retry}</button>
+        <button type="button" className="btn" onClick={() => { setState({ status: 'loading' }); reload(); }}>{s.common.retry}</button>
         {back}
       </div>
     );
@@ -96,7 +97,7 @@ export function StudentPage() {
           const open = unlockedLevels(detail.attempts, b.drills, handLevels);
           return (
             <div key={m.slug} className="card">
-              <h3>{m.title}{!m.reviewed && <>{' '}<span className="badge">{en.stage.unreviewed}</span></>}</h3>
+              <h3>{m.title}{!m.reviewed && <>{' '}<span className="badge">{s.stage.unreviewed}</span></>}</h3>
               <p>{walkthroughDone(detail.decisions, b.sessions) ? t.walkthroughDone : t.walkthroughNotDone}</p>
               <ul>
                 {LEVELS.map((lv) => {
@@ -104,13 +105,13 @@ export function StudentPage() {
                   const met = inLevel.filter((d) => itemMet(detail.attempts, d.id)).length;
                   return (
                     <li key={lv}>
-                      {en.levels[lv]}: {en.module.met(met, inLevel.length)}
-                      {levelPassed(detail.attempts, b.drills, lv) && <>{' '}<span className="badge">{en.module.passed}</span></>}
-                      {open.includes(lv) && !earned.includes(lv) && <> <span className="muted">{t.grantedByHand(en.levels[lv], m.title)}</span></>}
+                      {s.levels[lv]}: {s.module.met(met, inLevel.length)}
+                      {levelPassed(detail.attempts, b.drills, lv) && <>{' '}<span className="badge">{s.module.passed}</span></>}
+                      {open.includes(lv) && !earned.includes(lv) && <> <span className="muted">{t.grantedByHand(s.levels[lv], m.title)}</span></>}
                       {!open.includes(lv) && m.reviewed && (
                         <>{' '}
                           <button type="button" className="btn" disabled={busy} onClick={() => void grant(m.slug, lv)}>
-                            {t.unlockButton(en.levels[lv], m.title)}
+                            {t.unlockButton(s.levels[lv], m.title)}
                           </button>
                         </>
                       )}
@@ -144,7 +145,7 @@ export function StudentPage() {
                   <ul>
                     {a.criteriaMet.map((met, i) => (
                       <li key={i}>
-                        <span>{drill ? drill.criteria[i] : `Criterion ${i + 1}`}</span>{' '}
+                        <span>{drill ? drill.criteria[i] : t.criterionN(i + 1)}</span>{' '}
                         <span className="badge">{met ? t.criterionMet : t.criterionNotMet}</span>
                       </li>
                     ))}
@@ -164,7 +165,7 @@ export function StudentPage() {
         <ul>
           {detail.decisions.map((d) => (
             <li key={d.id}>
-              <span className="muted">{d.sessionId} · {d.decisionId}{d.optionId ? ` · option ${d.optionId}` : ''}</span>
+              <span className="muted">{d.sessionId} · {d.decisionId}{d.optionId ? ` · ${t.optionLabel(d.optionId)}` : ''}</span>
               {d.response && <blockquote>{d.response}</blockquote>}
             </li>
           ))}

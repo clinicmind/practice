@@ -1,9 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { DecisionPoint } from '../content/schema';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import type { Decision, NewDecision } from '../progress/types';
-
-const t = en.walkthrough;
 
 interface Props {
   sessionId: string;
@@ -14,6 +12,8 @@ interface Props {
 }
 
 export function DecisionPointView({ sessionId, decision, answer, onAnswer }: Props) {
+  const s = useT();
+  const t = s.walkthrough;
   const uid = useId();
   const [optionId, setOptionId] = useState<string | null>(null);
   const [text, setText] = useState('');

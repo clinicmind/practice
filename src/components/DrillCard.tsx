@@ -1,13 +1,11 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { Drill, Model } from '../content/schema';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import { clearDraft, loadDraft, saveDraft } from '../progress/drafts';
 import { MIN_CRITERIA, MIN_RESPONSE } from '../progress/rules';
 import type { Attempt, NewAttempt } from '../progress/types';
 
 type Phase = 'writing' | 'rating' | 'review';
-const t = en.drill;
-
 interface Props {
   drill: Drill;
   attempts: Attempt[];
@@ -20,6 +18,8 @@ interface Props {
 }
 
 export function DrillCard({ drill, attempts, onSubmit, getModel, onNext, onReauth }: Props) {
+  const s = useT();
+  const t = s.drill;
   const uid = useId();
   const [phase, setPhase] = useState<Phase>('writing');
   const [draft] = useState(() => loadDraft(drill.id));

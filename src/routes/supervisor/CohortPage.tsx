@@ -2,11 +2,9 @@ import { useCallback, useEffect, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { loadStage } from '../../content/client';
 import type { StageIndex } from '../../content/schema';
-import { en } from '../../i18n/en';
+import { useT } from '../../i18n';
 import type { CohortInfo, StudentSummary } from '../../supervisor/api';
 import { useSupervisorApi } from '../../supervisor/SupervisorContext';
-
-const t = en.supervisor;
 
 /** Local calendar date as YYYY-MM-DD, comparable as a string with a date input's value. */
 function todayLocal(): string {
@@ -15,6 +13,8 @@ function todayLocal(): string {
 }
 
 function CreateCohortForm({ onCreated }: { onCreated: () => void }) {
+  const s = useT();
+  const t = s.supervisor;
   const api = useSupervisorApi();
   const [name, setName] = useState('');
   const [termEnd, setTermEnd] = useState('');
@@ -56,6 +56,8 @@ function CreateCohortForm({ onCreated }: { onCreated: () => void }) {
 }
 
 function InviteCode({ code }: { code: string }) {
+  const s = useT();
+  const t = s.supervisor;
   const [copied, setCopied] = useState(false);
   async function copy() {
     try {
@@ -74,18 +76,22 @@ function InviteCode({ code }: { code: string }) {
   );
 }
 
-function ProgressCell({ s, slug }: { s: StudentSummary; slug: string }) {
-  const m = s.modules[slug];
+function ProgressCell({ student, slug }: { student: StudentSummary; slug: string }) {
+  const s = useT();
+  const t = s.supervisor;
+  const m = student.modules[slug];
   if (!m) return <>–</>;
   return (
     <>
       <div>{m.walkthroughDone ? t.walkthroughDone : t.walkthroughNotDone}</div>
-      <div>{t.passed(m.passed.map((l) => en.levels[l]))}</div>
+      <div>{t.passed(m.passed.map((l) => s.levels[l]))}</div>
     </>
   );
 }
 
 function CohortSection({ cohort, students, stage }: { cohort: CohortInfo; students: StudentSummary[]; stage: StageIndex }) {
+  const s = useT();
+  const t = s.supervisor;
   const modules = stage.modules.filter((m) => m.reviewed);
   const closed = cohort.termEnd < todayLocal();
   return (
@@ -114,7 +120,7 @@ function CohortSection({ cohort, students, stage }: { cohort: CohortInfo; studen
                 <tr key={s.id}>
                   <th scope="row"><Link to={`/supervisor/students/${s.id}`}>{s.displayName}</Link></th>
                   <td>{s.lastActiveAt ? s.lastActiveAt.slice(0, 10) : t.neverActive}</td>
-                  {modules.map((m) => <td key={m.slug}><ProgressCell s={s} slug={m.slug} /></td>)}
+                  {modules.map((m) => <td key={m.slug}><ProgressCell student={s} slug={m.slug} /></td>)}
                 </tr>
               ))}
             </tbody>
@@ -131,6 +137,8 @@ type State =
   | { status: 'ready'; cohorts: CohortInfo[]; students: StudentSummary[]; stage: StageIndex };
 
 export function CohortPage() {
+  const s = useT();
+  const t = s.supervisor;
   const api = useSupervisorApi();
   const [state, setState] = useState<State>({ status: 'loading' });
   const [tick, setTick] = useState(0);
@@ -145,12 +153,12 @@ export function CohortPage() {
     return () => { live = false; };
   }, [api, tick]);
 
-  if (state.status === 'loading') return <p>{en.common.loading}</p>;
+  if (state.status === 'loading') return <p>{s.common.loading}</p>;
   if (state.status === 'error') {
     return (
       <div>
         <p role="alert" className="error">{t.loadError}</p>
-        <button type="button" className="btn" onClick={reload}>{en.common.retry}</button>
+        <button type="button" className="btn" onClick={reload}>{s.common.retry}</button>
       </div>
     );
   }

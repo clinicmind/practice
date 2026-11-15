@@ -3,14 +3,14 @@ import { Link, useParams } from 'react-router-dom';
 import { DecisionPointView } from '../components/DecisionPointView';
 import { loadModule } from '../content/client';
 import { isDecision, type ModuleBundle } from '../content/schema';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import type { Decision, NewDecision } from '../progress/types';
 import { useStore } from '../StoreContext';
 import { NotFound } from './NotFound';
 
-const t = en.walkthrough;
-
 export function WalkthroughPage() {
+  const s = useT();
+  const t = s.walkthrough;
   const { slug = '', sessionId = '' } = useParams();
   const store = useStore();
   const [bundle, setBundle] = useState<ModuleBundle | null>(null);
@@ -43,11 +43,11 @@ export function WalkthroughPage() {
     return (
       <div>
         <p role="alert" className="error">{t.loadError}</p>
-        <button type="button" className="btn" onClick={() => setReload((n) => n + 1)}>{en.common.retry}</button>
+        <button type="button" className="btn" onClick={() => setReload((n) => n + 1)}>{s.common.retry}</button>
       </div>
     );
   }
-  if (!bundle || !decisions) return <p>{en.common.loading}</p>;
+  if (!bundle || !decisions) return <p>{s.common.loading}</p>;
 
   const session = bundle.sessions.find((s) => s.id === sessionId);
   if (!session) return <NotFound />;
