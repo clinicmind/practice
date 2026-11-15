@@ -1,0 +1,203 @@
+- id: assessment-e01
+  level: easy
+  skill: focusing
+  context: "Third session. You asked how the week went."
+  client: "Work was fine. My sister visited, which was nice. I had a bad night on Tuesday, I don't know why. And I finally got my bike fixed."
+  criteria: &fo_easy
+    - "It picks one thread from what the client said and names it in the client's own words."
+    - "It invites the client to say more about that thread, with a statement or one open question."
+    - "It does not add a topic of your own, and it does not explain why you chose the thread."
+- id: assessment-e02
+  level: easy
+  skill: focusing
+  context: "Early session."
+  client: "I've always been a worrier. Money, my parents' health, whether I locked the door. Lately it's mostly been about my job."
+  criteria: *fo_easy
+- id: assessment-e03
+  level: easy
+  skill: focusing
+  context: "Early session."
+  client: "The headaches started around March. Around then I'd also moved flat, and my manager had changed. The doctor says there's nothing wrong."
+  criteria: *fo_easy
+- id: assessment-e04
+  level: easy
+  skill: focusing
+  context: "Early session."
+  client: "Mostly I'm okay in the mornings. It's the evenings, when the kids are in bed and the flat goes quiet. That's when it's hard."
+  criteria: *fo_easy
+- id: assessment-e05
+  level: easy
+  skill: focusing
+  context: "Early session."
+  client: "I get on well with most people. My brother and I haven't spoken since the funeral, though. But otherwise the family is close."
+  criteria: *fo_easy
+
+- id: assessment-e06
+  level: easy
+  skill: summary
+  context: "Ten minutes into a session."
+  client: "So that's it, really. I can't sleep, I've stopped going to the gym, and I've been eating rubbish. I just don't feel like myself."
+  criteria: &su_easy
+    - "It gathers two or three main points in fewer words than the client used."
+    - "It is in your own words and adds no interpretation, advice or new information."
+    - "It ends by checking, for example 'Have I got that right?'"
+- id: assessment-e07
+  level: easy
+  skill: summary
+  context: "The client has described their work history."
+  client: "I did three years at the bank, hated it, then moved to the charity, which I loved until the funding went. Now I'm temping and I can't decide what's next."
+  criteria: *su_easy
+- id: assessment-e08
+  level: easy
+  skill: summary
+  context: "The client has described a typical day."
+  client: "I get up at six, get the kids to school, work until five, cook, do bedtime, and then I sit on the sofa and scroll until midnight."
+  criteria: *su_easy
+- id: assessment-e09
+  level: easy
+  skill: summary
+  context: "The client has described their supports."
+  client: "There's my husband, he's great, but he travels a lot. My mum helps with the baby on Thursdays. And I've got one friend from work I can really talk to."
+  criteria: *su_easy
+- id: assessment-e10
+  level: easy
+  skill: summary
+  context: "End of an assessment session."
+  client: "I think what I want is to worry less, to sleep properly, and to stop snapping at my partner."
+  criteria: *su_easy
+
+- id: assessment-m01
+  level: medium
+  skill: focusing
+  context: "Early session. The client speaks quickly, and slows at one point."
+  client: "Uni was fine, good friends, good marks. Second year was a bit rough. Then I graduated, got the job, moved here. Everything went to plan, really."
+  criteria: &fo_medium
+    - "It picks the thread the client passed over quickly or played down."
+    - "It names that thread in the client's own words, without suggesting it was worse than the client said."
+    - "It is one short invitation, and it does not ask 'why'."
+- id: assessment-m02
+  level: medium
+  skill: focusing
+  context: "Early session."
+  client: "My dad drank a bit when we were young. Anyway, what I really wanted to talk about is this thing with my boss."
+  criteria: *fo_medium
+- id: assessment-m03
+  level: medium
+  skill: focusing
+  context: "Early session. The client's voice drops on the last sentence."
+  client: "The panic attacks happen on the train, in meetings, in supermarkets. Places I can't get out of. The first one was at my wedding."
+  criteria: *fo_medium
+- id: assessment-m04
+  level: medium
+  skill: focusing
+  context: "Early session."
+  client: "I'm fine when I'm busy. Honestly, the problem is weekends. Well, Sundays. Sunday afternoons, if I'm exact."
+  criteria: *fo_medium
+- id: assessment-m05
+  level: medium
+  skill: focusing
+  context: "Early session."
+  client: "I've had low patches before, on and off. After the baby, obviously. One at university. This one's different, though I couldn't tell you how."
+  criteria: *fo_medium
+
+- id: assessment-m06
+  level: medium
+  skill: summary
+  context: "The client has described two relationships that ended."
+  client: "With Sam I was always the one arranging things, and eventually I got fed up and left. With Jo it was the same, me doing everything, and then one day I'd had enough."
+  criteria: &su_medium
+    - "It puts the repeated elements side by side, in the same order, so the client can see what repeats."
+    - "It does not state the pattern or explain it. There is no 'so it seems that'."
+    - "It is shorter than what the client said, and it ends by checking."
+- id: assessment-m07
+  level: medium
+  skill: summary
+  context: "The client has described when the anxiety is better and worse."
+  client: "It's bad on Monday mornings and before the team meeting. It's fine at the gym, fine with my kids. Oh, and it was terrible at my review."
+  criteria: *su_medium
+- id: assessment-m08
+  level: medium
+  skill: summary
+  context: "The client is describing mixed feelings about their mother."
+  client: "She did everything for us. Three jobs. And she never once asked how I was. I owe her everything. I can't stand being in the same room for more than an hour."
+  criteria: *su_medium
+- id: assessment-m09
+  level: medium
+  skill: summary
+  context: "The client has described three times they stopped therapy."
+  client: "The first counsellor, I just stopped going after she went on holiday. The second moved clinics, and I didn't follow. The last one, I cancelled once and never rebooked."
+  criteria: *su_medium
+- id: assessment-m10
+  level: medium
+  skill: summary
+  context: "The client has described drinking."
+  client: "I don't drink in the week. Well, a glass if work's been bad. Which is most days lately. But I never drink on my own. Except when my partner's away."
+  criteria: *su_medium
+
+- id: assessment-h01
+  level: hard
+  skill: focusing
+  context: "You asked about the client's childhood."
+  client: "Oh, here we go. It always comes back to the mother, doesn't it? Fine. Happy childhood, nice house, next question."
+  criteria: &fo_hard
+    - "It keeps or chooses a focus without arguing, defending your question, or backing away from the subject altogether."
+    - "It focuses on something the client has just shown or said, which may be the objection itself."
+    - "It is short and plain, and it leaves the client free to say no."
+- id: assessment-h02
+  level: hard
+  skill: focusing
+  context: "Each time you ask about the client's marriage, the client talks about work."
+  client: "Anyway, the restructure is the real problem. Did I tell you they've moved my desk again?"
+  criteria: *fo_hard
+- id: assessment-h03
+  level: hard
+  skill: focusing
+  context: "You asked about the night the client was taken to hospital."
+  client: "I don't remember much. I don't see why it matters. I'm here now, aren't I?"
+  criteria: *fo_hard
+- id: assessment-h04
+  level: hard
+  skill: focusing
+  context: "The client has talked without a break for fifteen minutes about many things."
+  client: "...and that's the neighbours, and then there's my sister's divorce, and the car, and honestly the whole council is useless, and my knee, don't get me started."
+  criteria: *fo_hard
+- id: assessment-h05
+  level: hard
+  skill: focusing
+  context: "You asked how much the client drinks."
+  client: "Why is everyone obsessed with my drinking? You sound exactly like my wife."
+  criteria: *fo_hard
+
+- id: assessment-h06
+  level: hard
+  skill: summary
+  context: "The client has complained about services for some time."
+  client: "The GP fobbed me off, the crisis line put me on hold, the last place discharged me after six sessions, and now I get a trainee. Brilliant."
+  criteria: &su_hard
+    - "It summarises the client's account fairly and at full strength, including the part that is about you."
+    - "It contains no defence, apology or promise."
+    - "It is brief, and it ends by checking that you have understood."
+- id: assessment-h07
+  level: hard
+  skill: summary
+  context: "The client is angry and jumping between topics."
+  client: "He lied about the money, my mother took his side, the solicitor is useless, and you want me to talk about my feelings?"
+  criteria: *su_hard
+- id: assessment-h08
+  level: hard
+  skill: summary
+  context: "End of an assessment session. The client has given short answers."
+  client: "So you've asked your forty questions. What have you actually learned? Because I haven't learned anything."
+  criteria: *su_hard
+- id: assessment-h09
+  level: hard
+  skill: summary
+  context: "The client disputes something you said earlier."
+  client: "That's not what I said. I didn't say I was depressed. I said I was tired, and work is hard, and I don't see the point of things. You people always jump to labels."
+  criteria: *su_hard
+- id: assessment-h10
+  level: hard
+  skill: summary
+  context: "The client was sent by an employer."
+  client: "HR said I had to come or I'd lose my job. There was one incident. One. Ten years I've given them. And now I'm the problem."
+  criteria: *su_hard

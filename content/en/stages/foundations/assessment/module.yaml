@@ -1,0 +1,20 @@
+slug: assessment
+version: 1.0.0
+title: "Assessment: from story to information"
+intro: >-
+  Clients arrive with a story. Assessment turns the story into information you
+  can use: what happens, when, in what order, and what follows. The risk is
+  that it becomes an interrogation, or that you collect a history and never
+  notice what repeats in it. In this module Client M tells you about three
+  episodes of low mood. You practise two skills that organise what a client
+  brings without taking it over: focusing on one thread, and summarising.
+skills:
+  - focusing
+  - summary
+reflection_prompts:
+  - id: assessment-r1
+    text: "M saw the pattern herself after a summary. Think of a time you told a client the pattern you had noticed. What did they do with it? What might a summary have done differently?"
+  - id: assessment-r2
+    text: "When a client gives you five things at once, what decides which one you follow: the most emotional, the most recent, the one you understand best, or the one that makes you least uneasy?"
+  - id: assessment-r3
+    text: "M's mother told her to think about what she had done to annoy her friends. What did you feel when you read that? How might that feeling shape what you ask next?"

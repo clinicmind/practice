@@ -1,0 +1,100 @@
+sessions:
+  - id: assessment-s4
+    title: "Session 4: three episodes"
+    turns:
+      - id: assessment-s4-t01
+        speaker: therapist
+        text: "In our first meeting you said this isn't the first time you've felt this low. I'd like to understand each of those times. Where would you like to begin?"
+      - id: assessment-s4-t02
+        speaker: client
+        text: "The first one, I suppose. Second year of secondary school. There were four of us, always together. Then one day they stopped saving me a seat at lunch. Nobody said why. It just... stopped. I didn't want to go to school after that. I couldn't sleep. My marks dropped. It was about four months. My mother was annoyed about the marks. Then it sort of lifted in the summer."
+      - id: assessment-s4-d1
+        type: choice
+        prompt: "M has given you the friends, the seat, school refusal, sleep, marks, her mother and the summer. Where do you focus?"
+        options:
+          - id: a
+            text: "Why do you think they stopped including you?"
+            fit: weak
+            note: "It asks M to guess at other people's motives from eleven years ago. She cannot know, and a 'why' question about being excluded can sound as though the answer lies in her."
+          - id: b
+            text: "Let's stay with those four months. When it was at its worst, who knew how bad it was for you?"
+            fit: strong
+            note: "It picks one thread and stays there. It asks about something M can report, and something that matters for understanding how her low mood works: what she did with it, and whether anyone knew."
+          - id: c
+            text: "And when was the second time?"
+            fit: workable
+            note: "You do need the timeline, and this gets it. But you leave the first episode with only its outline. If you collect three outlines, you will have dates and nothing that explains them."
+        actual: "Let's stay with those four months. When it was at its worst, who knew how bad it was for you?"
+        rationale: "Focusing is choosing. A good focus in assessment is one that tells you how the problem works, not only what happened. Here you already have a working idea from session two, that M hides distress, and this question tests it against her history."
+      - id: assessment-s4-t03
+        speaker: client
+        text: "Nobody, really. I tried to tell my mother once. She said maybe I should think about what I'd done to annoy them. (pause) So I stopped bringing it up. I told the school counsellor I was fine, I was just tired."
+      - id: assessment-s4-t04
+        speaker: therapist
+        text: "You tried once, it came back as your fault, and after that you kept it to yourself. Tell me about the second time."
+      - id: assessment-s4-t05
+        speaker: client
+        text: "I was seventeen. Final year. It was exam stress, really, everyone was stressed. My best friend, the one person I talked to, got a place abroad and left in the autumn. Then it was just studying. I got very hard on myself. That was when I had those thoughts I told you about. I saw the family doctor for a few months, and then I just stopped going. Nobody noticed that I'd stopped."
+      - id: assessment-s4-d2
+        type: free
+        prompt: "Write a summary of the two episodes. Put the facts side by side so that M can see what repeats. Do not tell her the pattern. End by checking."
+        actual: "Let me check that I have this right. At fourteen, your friends pulled away. You tried once to tell your mother, and after that you carried it alone for four months. At seventeen, your closest friend left, the exams came, and again nobody knew how bad it had become. Is that right?"
+        rationale: "A summary selects. This one keeps the same two things from each episode, who left and who knew, and puts them in the same order. It adds no 'so it seems that'. If the pattern is there, M can see it, and a pattern she sees is worth more than one she is told. The check at the end is a real one. She may correct you."
+      - id: assessment-s4-t06
+        speaker: client
+        text: "(pause) Yes. I've never put them next to each other like that. (longer pause) And now it's the same. He left in the spring, and I didn't tell anyone for weeks. When I finally told my friend, I made it into a joke."
+      - id: assessment-s4-d3
+        type: choice
+        prompt: "M has just added the third episode herself. What do you say?"
+        options:
+          - id: a
+            text: "So the pattern is that you become depressed whenever someone leaves you."
+            fit: weak
+            note: "It may be close to true. It is also your sentence, said a moment before she would have reached her own, and it is tidier than the evidence. She will agree with it. She agrees with most things."
+          - id: b
+            text: "You're noticing something. When you put the three side by side, what do you see?"
+            fit: strong
+            note: "It marks the moment and gives the discovery back to her. What she says next will be in her words, and you will learn how she understands it."
+          - id: c
+            text: "That's a really important insight."
+            fit: workable
+            note: "It is encouraging. It also grades her, and with M praise tends to end the exploring. She has not yet said what the insight is."
+        actual: "You're noticing something. When you put the three side by side, what do you see?"
+        rationale: "Assessment done well is already an intervention. M is doing the formulating. Your part is to keep the three episodes in front of her and stay out of the way."
+      - id: assessment-s4-t07
+        speaker: client
+        text: "That it's always after someone goes. And that I always go quiet. (pause) I thought I was just a person who gets depressed. Like it was weather."
+      - id: assessment-s4-t08
+        speaker: therapist
+        text: "Like weather. Something that arrives by itself. And today it looks less like weather. Someone goes, and you go quiet."
+      - id: assessment-s4-t09
+        speaker: client
+        text: "(nods slowly) I don't know what to do with that yet."
+      - id: assessment-s4-t10
+        speaker: therapist
+        text: "You don't have to do anything with it yet. We'll come back to it. For now, I'd also like to understand what an ordinary week looks like for you at the moment."
+      - id: assessment-s4-d4
+        type: choice
+        prompt: "You want M to keep a simple record of her activities and mood for a week. How do you propose it?"
+        options:
+          - id: a
+            text: "For homework, I need you to fill in this sheet every day."
+            fit: weak
+            note: "It is an instruction with no reason given. M will either complete it perfectly, for you, or miss a day and arrive ashamed. Either way you learn more about her compliance than about her week."
+          - id: b
+            text: "It would help me to see what a week actually looks like: roughly what you did, and how your mood moved with it. Would you be willing to keep a rough note? Rough is fine. And if it doesn't happen, that will tell us something too."
+            fit: strong
+            note: "It gives the reason, asks for her agreement, lowers the standard on purpose, and takes the shame out of not doing it before the week starts. Agreeing on tasks is one of the three parts of the alliance."
+          - id: c
+            text: "Some people find a mood diary helpful. It's up to you."
+            fit: workable
+            note: "It respects her choice, but it gives her nothing to choose with. She has no reason for the task and has to guess what you would prefer. M is very good at guessing what people prefer."
+        actual: "It would help me to see what a week actually looks like: roughly what you did, and how your mood moved with it. Would you be willing to keep a rough note? Rough is fine. And if it doesn't happen, that will tell us something too."
+        rationale: "A task between sessions should be proposed, explained and agreed. With a client who expects to be judged, say in advance what happens if she does not do it."
+      - id: assessment-s4-t11
+        speaker: client
+        text: "Okay. Rough. (small smile) I'll try not to make it perfect."
+    notes:
+      goals: "Take a history of the three episodes. Begin to understand the present week. Agree a first between-session task."
+      alliance: "Stronger. M did real work today and stayed with a hard discovery without apologising. First small joke at her own expense that was warm, not dismissive. A task was agreed with a reason."
+      formulation_update: "A pattern across three episodes, in M's own words: 'It's always after someone goes. And I always go quiet.' At fourteen she tried once to tell her mother and was told to look at her own behaviour. Since then she has not told anyone when she is struggling. Each time, the help she did get stopped without anyone noticing. Still to understand: what she believes would happen if she did tell someone now."

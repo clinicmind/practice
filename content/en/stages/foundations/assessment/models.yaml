@@ -1,0 +1,120 @@
+assessment-e01:
+  model_response: "Tell me about the bad night on Tuesday."
+  why: "Of four items, one was a difficulty. The response names it in the client's words and invites more."
+  avoid: "Responding to all four items in turn. That is a conversation, and it does not focus."
+assessment-e02:
+  model_response: "Lately it's mostly been your job. What are the worries about your job?"
+  why: "The client has already said which worry is current. The response follows that lead."
+  avoid: "'Have you always been anxious?' It goes back to the general point when the client has offered a specific one."
+assessment-e03:
+  model_response: "A lot changed around March. Let's start with the headaches themselves. What are they like?"
+  why: "It notes the timing in passing and then chooses one thread, the presenting problem, to describe first."
+  avoid: "'So the headaches are caused by stress.' That is a conclusion, and you have not assessed anything yet."
+assessment-e04:
+  model_response: "When the flat goes quiet. What happens for you then?"
+  why: "It takes the client's most exact phrase and asks about that moment."
+  avoid: "Asking about the mornings. The client has told you they are fine."
+assessment-e05:
+  model_response: "You and your brother haven't spoken since the funeral. I'd like to hear about that, if you're willing."
+  why: "It picks the one exception in an otherwise positive account and asks permission to go there."
+  avoid: "'It's good that the rest of the family is close.' That focuses on the part that needs no attention."
+assessment-e06:
+  model_response: "Sleep, exercise and eating have all slipped, and you don't feel like yourself. Have I got that right?"
+  why: "Three points and the overall sense, in one sentence, with a check."
+  avoid: "Adding 'which are all signs of depression.' That is new information, and it is a label."
+assessment-e07:
+  model_response: "A job you hated, a job you loved and lost, and now temporary work while you decide. Is that it?"
+  why: "It keeps the three stages and the feeling attached to each, in order."
+  avoid: "'You've had a lot of instability.' That is your judgement of the history."
+assessment-e08:
+  model_response: "From six until the children are in bed, the day belongs to everyone else. Then the evening goes on the sofa with your phone until midnight. Is that right?"
+  why: "It reduces seven steps to two halves and stays descriptive."
+  avoid: "'You need some time for yourself.' That is advice."
+assessment-e09:
+  model_response: "So there's your husband when he's home, your mum on Thursdays, and one friend you can really talk to. Have I missed anyone?"
+  why: "It lists the three supports with the limits the client gave, and the check invites additions."
+  avoid: "'You have a good support network.' The client described three people, each with a limit."
+assessment-e10:
+  model_response: "Less worry, proper sleep, and more patience with your partner. Are those the three?"
+  why: "It gives the client's goals back in short form so they can be confirmed before you write them down."
+  avoid: "Rewriting them at once as measurable targets. First make sure they are the right goals."
+assessment-m01:
+  model_response: "Second year was a bit rough. What was happening then?"
+  why: "It goes to the one sentence where the client slowed, uses the client's own mild wording, and asks openly."
+  avoid: "'It sounds as if something difficult happened in second year.' That makes it bigger than the client did."
+assessment-m02:
+  model_response: "We can go to your boss. Before we do, you mentioned your dad's drinking when you were young. I'd like to come back to that at some point, if that's all right."
+  why: "It respects the client's agenda and still marks the passed-over thread so that it is not lost."
+  avoid: "Insisting on the father now, or dropping him entirely. The first overrides the client. The second colludes with the 'anyway'."
+assessment-m03:
+  model_response: "The first one was at your wedding. Tell me about that day."
+  why: "The client's voice dropped there. The response follows it with a plain invitation."
+  avoid: "Listing more situations to check for avoidance. That is useful later. It misses where the feeling is."
+assessment-m04:
+  model_response: "Sunday afternoons, to be exact. What happens on a Sunday afternoon?"
+  why: "The client narrowed it down three times. The response trusts that and asks about exactly that."
+  avoid: "'What do you usually do at weekends?' It widens what the client has just narrowed."
+assessment-m05:
+  model_response: "This one is different, and you can't say how yet. What's the first thing you notice that's different?"
+  why: "It stays with the client's own uncertainty and offers a small way in."
+  avoid: "Taking a history of the earlier episodes first. The client has pointed at this one."
+assessment-m06:
+  model_response: "With Sam, you did the arranging until you were fed up, and you left. With Jo, you did everything until you'd had enough, and you left. Is that how it went?"
+  why: "The two stories are told in the same three steps, so the repetition is visible without being named."
+  avoid: "'You seem to choose partners who don't pull their weight.' That is an interpretation, and it blames."
+assessment-m07:
+  model_response: "Worse on Monday mornings, before the team meeting and at your review. Fine at the gym and with your children. Have I got the two lists right?"
+  why: "Sorting the examples into two lists lets the client see what each list has in common."
+  avoid: "'So it's about being evaluated.' The client is one step from saying it."
+assessment-m08:
+  model_response: "She gave everything, and she never asked how you were. You owe her, and an hour is your limit. All of that at once. Is that right?"
+  why: "Four statements, none softened and none ranked, joined so that they stand together."
+  avoid: "'It sounds like you resent her.' It chooses one side of something the client is holding as two."
+assessment-m09:
+  model_response: "Three times, there was a gap, a holiday, a move, a cancelled session, and you didn't go back. Have I got that right?"
+  why: "It names the common shape, a gap and then not returning, as a description of events. It also matters for this therapy."
+  avoid: "'You have a pattern of dropping out.' It is accurate and it accuses."
+assessment-m10:
+  model_response: "Not in the week, except after a bad day, and most days are bad lately. Not alone, except when your partner's away. Is that about right?"
+  why: "It gives back each rule with its exception, in the client's order, without comment."
+  avoid: "'So you're drinking most days.' It is the right sum, and it will be heard as a charge."
+assessment-h01:
+  model_response: "You've been asked about your mother before, and you're tired of it. What happened the other times?"
+  why: "It does not defend the question and does not drop the subject. It takes the objection as the focus."
+  avoid: "'It's a standard question, I ask everyone.' That is a defence, and it confirms the client is being processed."
+assessment-h02:
+  model_response: "I've noticed that when I ask about your marriage, we end up at work. I wonder if the marriage is hard to talk about."
+  why: "It names what is happening in the room, tentatively, and makes that the focus without forcing the topic."
+  avoid: "Asking the marriage question again more firmly, or following the desk."
+assessment-h03:
+  model_response: "You're here now, and that matters. I'm asking about that night because I want to understand what it was like for you. We can go slowly, or leave it for today."
+  why: "It keeps the focus, gives the reason in one sentence, and offers a real choice about pace."
+  avoid: "'I need this for the assessment.' The client asked why it matters, and a form is not a reason."
+assessment-h04:
+  model_response: "There's a lot pressing on you at once. If we could look at only one of these today, which one would you choose?"
+  why: "One sentence acknowledges the load, and then the client is asked to do the focusing."
+  avoid: "Picking the knee, or the sister, yourself. With a client who is flooding, your choice becomes one more thing on the list."
+assessment-h05:
+  model_response: "You're hearing your wife in my question. What is it like when she asks?"
+  why: "It does not defend the question. It focuses on what the client has just revealed, that the drinking is an issue at home."
+  avoid: "'I'm not judging you.' The client did not say you were, and now you have raised it."
+assessment-h06:
+  model_response: "The GP, the crisis line and the last service each let you down, and now you've been given a trainee, which feels like more of the same. Have I understood?"
+  why: "It includes the part about you, without flinching, as one more item in the client's list."
+  avoid: "'I'm sorry you've had that experience.' It is polite, and it puts you outside the list."
+assessment-h07:
+  model_response: "He lied, your mother sided with him, your solicitor isn't helping, and my asking about feelings seems beside the point. Is that it?"
+  why: "Four items in the client's order, including the criticism of you, with a check."
+  avoid: "Explaining why feelings matter. Right now the client needs proof that you can keep up."
+assessment-h08:
+  model_response: "I asked a lot of questions, you answered them, and you're leaving with nothing new. That's a fair complaint. Is that how it feels?"
+  why: "It summarises the session as the client experienced it and does not claim it was useful."
+  avoid: "Listing what you have learned. It answers the literal question and misses the complaint."
+assessment-h09:
+  model_response: "You're right. What you said was that you're tired, work is hard, and you don't see the point of things. And you don't want that turned into a label. Have I got it right this time?"
+  why: "It concedes the error in two words, restates the client's exact three points, and includes the objection."
+  avoid: "'Those are symptoms of depression, though.' You may be correct, and you will have lost the client."
+assessment-h10:
+  model_response: "Ten years of work, one incident, and now you're told to come here or lose your job. You're being treated as the problem. Is that right?"
+  why: "It gives the client's account back in the client's own proportions. You can do that without agreeing with every part."
+  avoid: "'Let's talk about the incident.' It may be necessary, but it is too soon, and it sides with HR."
