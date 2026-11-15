@@ -1,0 +1,4 @@
+stage: foundations
+title: Foundations
+modules:
+  - intake

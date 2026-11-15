@@ -1,0 +1,206 @@
+# 30 drills: 10 per level, 5 per skill per level.
+# Criteria tighten as the level rises.
+
+- id: intake-e01
+  level: easy
+  skill: open-question
+  context: "First session. The client has just sat down."
+  client: "I'm not sure where to start."
+  criteria: &oq_easy
+    - "It cannot be answered with yes or no. It begins with what, how, or an invitation such as 'tell me about'."
+    - "It stays with something the client has just said. It does not bring in a new topic."
+    - "It is one short question, not two joined together."
+- id: intake-e02
+  level: easy
+  skill: open-question
+  context: "First session."
+  client: "My sister said talking to someone helped her, so I thought I'd try."
+  criteria: *oq_easy
+- id: intake-e03
+  level: easy
+  skill: open-question
+  context: "First session with a university student."
+  client: "It's mostly been stress about exams, I guess."
+  criteria: *oq_easy
+- id: intake-e04
+  level: easy
+  skill: open-question
+  context: "You have just explained confidentiality and its limits."
+  client: "Okay. That makes sense. So... what happens now?"
+  criteria: *oq_easy
+- id: intake-e05
+  level: easy
+  skill: open-question
+  context: "First session."
+  client: "I've been feeling really low since I moved here for work."
+  criteria: *oq_easy
+
+- id: intake-e06
+  level: easy
+  skill: restatement
+  context: "First session. You asked what brings the client in."
+  client: "I just started a new job, and my landlord is selling the flat, so I have to find somewhere new by next month. It's a lot."
+  criteria: &rs_easy
+    - "It gives back the main content in fewer words than the client used."
+    - "It uses your own words. It does not repeat the client's sentence, and it adds no interpretation or advice."
+    - "It is a statement, not a question, and it leaves the client room to correct you."
+- id: intake-e07
+  level: easy
+  skill: restatement
+  context: "First session."
+  client: "I get to work fine. It's when I get home that everything feels heavy."
+  criteria: *rs_easy
+- id: intake-e08
+  level: easy
+  skill: restatement
+  context: "First session. The client is describing family."
+  client: "My mum calls every night to check on me. I know she cares, but I'm worn out after every call."
+  criteria: *rs_easy
+- id: intake-e09
+  level: easy
+  skill: restatement
+  context: "First session."
+  client: "I used to go hiking every weekend. I haven't been in months, and I don't really know why."
+  criteria: *rs_easy
+- id: intake-e10
+  level: easy
+  skill: restatement
+  context: "You asked what the client hopes to get from therapy."
+  client: "I want to feel like myself again. That's really all I'm hoping for."
+  criteria: *rs_easy
+
+- id: intake-m01
+  level: medium
+  skill: open-question
+  context: "First session. You asked what brings the client in."
+  client: "I don't know. Things are fine, mostly. My partner thought I should come."
+  criteria: &oq_medium
+    - "It cannot be answered with yes or no."
+    - "It picks up the part the client passed over or played down, without arguing with it."
+    - "It is one short question, and it asks about the client's experience, not for a justification. It does not begin with 'why'."
+- id: intake-m02
+  level: medium
+  skill: open-question
+  context: "First session."
+  client: "It's kind of a long story, and it's probably boring."
+  criteria: *oq_medium
+- id: intake-m03
+  level: medium
+  skill: open-question
+  context: "First session. The client laughs while speaking."
+  client: "Honestly, I'm probably just being dramatic."
+  criteria: *oq_medium
+- id: intake-m04
+  level: medium
+  skill: open-question
+  context: "First session. The client speaks quickly, in a flat voice."
+  client: "Work is busy. Family is okay. I sleep badly. That's about it."
+  criteria: *oq_medium
+- id: intake-m05
+  level: medium
+  skill: open-question
+  context: "First session. You asked about earlier experience of therapy."
+  client: "I saw a counsellor once before. It was... okay."
+  criteria: *oq_medium
+
+- id: intake-m06
+  level: medium
+  skill: restatement
+  context: "First session."
+  client: "I love my job, I really do. I just start dreading Monday from about Saturday afternoon."
+  criteria: &rs_medium
+    - "It includes both sides of what the client said, not only the easier side."
+    - "It joins the two sides with 'and', not 'but', so that neither one cancels the other."
+    - "It is shorter than what the client said, in your own words, with no interpretation of why."
+- id: intake-m07
+  level: medium
+  skill: restatement
+  context: "First session."
+  client: "I'm not sad exactly. It's more like nothing is very interesting any more. But I still get everything done."
+  criteria: *rs_medium
+- id: intake-m08
+  level: medium
+  skill: restatement
+  context: "First session. You asked about the client's family growing up."
+  client: "My dad wasn't around much. But that's normal, everyone's dad worked shifts. It's not a big deal."
+  criteria: *rs_medium
+- id: intake-m09
+  level: medium
+  skill: restatement
+  context: "First session. The client is describing a friendship."
+  client: "I told my friend I was fine with her cancelling. And I was. I just didn't text her for two weeks afterwards."
+  criteria: *rs_medium
+- id: intake-m10
+  level: medium
+  skill: restatement
+  context: "Near the end of a first session."
+  client: "I want to come here, but I also keep thinking I should be able to sort this out myself."
+  criteria: *rs_medium
+
+- id: intake-h01
+  level: hard
+  skill: open-question
+  context: "First session. The client sits with arms crossed."
+  client: "My doctor made me come. I don't see how talking is going to change anything."
+  criteria: &oq_hard
+    - "It does not defend therapy, explain yourself or reassure before asking."
+    - "It cannot be answered with yes or no, and it takes the client's doubt or objection as the subject."
+    - "It is short and plain. Read aloud, it sounds curious, not wounded and not clever."
+- id: intake-h02
+  level: hard
+  skill: open-question
+  context: "First session. The client is in their fifties. You are a trainee."
+  client: "You look about my daughter's age. How long have you actually been doing this?"
+  criteria: *oq_hard
+- id: intake-h03
+  level: hard
+  skill: open-question
+  context: "First session. A long silence. The client is looking at the floor."
+  client: "...I don't know what you want me to say."
+  criteria: *oq_hard
+- id: intake-h04
+  level: hard
+  skill: open-question
+  context: "First session at a new service."
+  client: "I've told this whole story to three different people already. Do I have to do it again?"
+  criteria: *oq_hard
+- id: intake-h05
+  level: hard
+  skill: open-question
+  context: "First session. The client is watching your notepad."
+  client: "Are you going to write all of this down and send it to someone?"
+  criteria: *oq_hard
+
+- id: intake-h06
+  level: hard
+  skill: restatement
+  context: "First session."
+  client: "The last therapist just nodded and said 'mm-hm' for six weeks. Total waste of money."
+  criteria: &rs_hard
+    - "It gives back the client's complaint or doubt accurately, at full strength, without softening it."
+    - "It contains no defence, apology, promise or explanation."
+    - "It is one or two short sentences in your own words, said as a statement."
+- id: intake-h07
+  level: hard
+  skill: restatement
+  context: "First session."
+  client: "Everyone keeps telling me to 'open up.' You're going to say the same thing, aren't you."
+  criteria: *rs_hard
+- id: intake-h08
+  level: hard
+  skill: restatement
+  context: "First session. The client has given one-word answers so far."
+  client: "Fine. Whatever. Ask your questions."
+  criteria: *rs_hard
+- id: intake-h09
+  level: hard
+  skill: restatement
+  context: "First session. The client checks their phone as they sit down."
+  client: "I've only got forty minutes because I have to get back to work, so can we skip the feelings part."
+  criteria: *rs_hard
+- id: intake-h10
+  level: hard
+  skill: restatement
+  context: "First session."
+  client: "I don't really trust people who get paid to listen."
+  criteria: *rs_hard

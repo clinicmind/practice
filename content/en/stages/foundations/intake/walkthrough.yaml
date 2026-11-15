@@ -1,0 +1,148 @@
+sessions:
+  - id: intake-s1
+    title: "Session 1: meeting Client M"
+    turns:
+      - id: intake-s1-t01
+        speaker: therapist
+        text: "Hi, M. Come in, sit wherever you like. Did you find the place all right?"
+      - id: intake-s1-t02
+        speaker: client
+        text: "Yes, fine. Sorry, I'm a bit early. I wasn't sure how long it would take to get here."
+      - id: intake-s1-t03
+        speaker: therapist
+        text: "No need to be sorry. Before we start, I'd like to tell you a little about how this works, and then the time is yours. Is that okay?"
+      - id: intake-s1-t04
+        speaker: client
+        text: "Okay. Sure."
+      - id: intake-s1-t05
+        speaker: therapist
+        text: "We have fifty minutes today. I'm a trainee, which means I work under a supervisor. I talk with them about my work so that you get better care. What you say here stays between us and that supervision."
+      - id: intake-s1-t06
+        speaker: client
+        text: "So... my mother wouldn't know? She doesn't know I'm here. I'd like to keep it that way."
+      - id: intake-s1-d1
+        type: choice
+        prompt: "M has just asked whether her mother could find out. What do you say?"
+        options:
+          - id: a
+            text: "Don't worry, everything here is one hundred percent confidential."
+            fit: weak
+            note: "It is warm, and it is untrue. Confidentiality has limits. If you ever have to act on one, M will learn that a promise made in the first ten minutes did not hold. For someone who expects her feelings to cost her, that is a heavy lesson."
+          - id: b
+            text: "Your mother won't hear anything from me. You're an adult, and coming here is your business. There is one exception I want you to know about: if I were seriously worried that you or someone else was in danger, I would need to involve other people to keep you safe, and I would tell you first wherever I could."
+            fit: strong
+            note: "It answers the question she asked before giving the general rule. It states the limit plainly, in one breath, and says what you would do. M hears both that her privacy is real and that you will not surprise her."
+          - id: c
+            text: "Confidentiality is governed by our professional code and the law. There are several exceptions, including risk of harm to self or others, child protection concerns, and court orders."
+            fit: workable
+            note: "It is accurate and complete. It also answers a different question from the one M asked. She wanted to know about her mother. A list of legal exceptions can sound like a warning, and she still does not know the answer."
+        actual: "Your mother won't hear anything from me. You're an adult, and coming here is your business. There is one exception I want you to know about: if I were seriously worried that you or someone else was in danger, I would need to involve other people to keep you safe, and I would tell you first wherever I could."
+        rationale: "Answer the person, then give the rule. Informed consent is something the client understands, so it has to be said in words she can take in while she is nervous. Notice also what M has just told you without meaning to: at twenty-five, she is hiding help-seeking from her mother. You do not explore it yet. You remember it."
+      - id: intake-s1-t07
+        speaker: client
+        text: "Okay. That's fair. Thank you."
+      - id: intake-s1-t08
+        speaker: therapist
+        text: "So. What brings you here?"
+      - id: intake-s1-t09
+        speaker: client
+        text: "I don't know, it's probably nothing. I've just been tired for a while. Not sleeping great. Work is busy. I thought maybe I should talk to someone before it gets... I don't know. It's really not that serious."
+      - id: intake-s1-d2
+        type: free
+        prompt: "M has said she is tired and sleeping badly, and twice that it is not serious. Write a restatement. Do not reassure her and do not push for more yet."
+        actual: "You've been tired and not sleeping well for a while, and part of you wonders whether it's even worth bringing here."
+        rationale: "The restatement holds both halves: the difficulty and the playing down. If you take only the first half and say 'that sounds really hard,' you go further than she has gone, and a client like M will follow you out of politeness. If you take only the second half and agree it is probably nothing, the session is over. Restating both lets her choose which one to say more about."
+      - id: intake-s1-t10
+        speaker: client
+        text: "Yeah. Exactly. I mean, other people have real problems. (pause) It's been about six months, I think. Since around when my boyfriend and I broke up. But that's not... I'm over that."
+      - id: intake-s1-d3
+        type: choice
+        prompt: "M has named a breakup and at once said she is over it. What do you ask?"
+        options:
+          - id: a
+            text: "Are you sure you're over it? Six months of poor sleep suggests otherwise."
+            fit: weak
+            note: "You may be right, and you have just told her that you know her mind better than she does. In a first session, with a client who yields easily, she is likely to agree with you and feel a little less safe."
+          - id: b
+            text: "What have these six months been like for you?"
+            fit: strong
+            note: "It is open, it uses her time frame, and it does not make her defend the claim that she is over it. She can start anywhere: sleep, work or the breakup."
+          - id: c
+            text: "How long were you and your boyfriend together?"
+            fit: workable
+            note: "It is a fair question and you will want the answer. It is also closed, and it takes her straight to the one topic she has just stepped away from. She will answer it, briefly, and wait for your next question."
+        actual: "What have these six months been like for you?"
+        rationale: "An open question hands the direction back to the client. Early in an intake, where the client chooses to go is information. M chose work and tiredness first and reached the breakup only in passing. That order tells you something about what is easy for her to say."
+      - id: intake-s1-t11
+        speaker: client
+        text: "Flat, mostly. I get up, I go to work, I'm fine at work. Then I come home and I just... sit. I used to draw. I don't any more. I cancel on my friends and then feel bad about cancelling. (small laugh) My cat is the only reason I get out of bed some days."
+      - id: intake-s1-t12
+        speaker: therapist
+        text: "So you keep going at work, and when you get home there's very little left. The things that used to be yours, drawing and seeing friends, have dropped away."
+      - id: intake-s1-t13
+        speaker: client
+        text: "(quietly) Yes. (pause) This isn't the first time, actually. It happened in secondary school, twice. I thought I was done with it."
+      - id: intake-s1-t14
+        speaker: therapist
+        text: "Thank you for telling me that. I'd like to hear about those times, and we'll come back to them. There's something I ask everyone who tells me they've felt this low, and I'd like to ask you as well."
+      - id: intake-s1-d4
+        type: choice
+        prompt: "You need to ask about thoughts of death or suicide. Which wording do you use?"
+        options:
+          - id: a
+            text: "You're not having any thoughts of hurting yourself, are you?"
+            fit: weak
+            note: "The question tells her the answer you hope for. M watches closely for what others want from her. She will say no, and you will have learned nothing."
+          - id: b
+            text: "When things have felt this flat, now or back then, have you had thoughts that life isn't worth living, or thoughts of ending your life?"
+            fit: strong
+            note: "It is direct and calm. It names the thing in plain words, covers both the present and the past, and leaves either answer open. Asking plainly does not put the idea in someone's mind. It tells her this is something that can be said here."
+          - id: c
+            text: "Do you ever have, you know, dark thoughts?"
+            fit: workable
+            note: "It opens the subject, and the vagueness shows your own unease. She cannot tell what you are asking, so she can answer something easier. You would then have to ask again more plainly."
+        actual: "When things have felt this flat, now or back then, have you had thoughts that life isn't worth living, or thoughts of ending your life?"
+        rationale: "Ask directly, in ordinary words, at the same pace as everything else. This walkthrough shows only how to ask. What you do with the answer is not yours to decide alone: follow your placement's risk policy and tell your supervisor the same day, whatever the client says."
+      - id: intake-s1-t15
+        speaker: client
+        text: "(long pause) When I was seventeen, there was a while when I'd go to sleep and hope I wouldn't wake up. I never did anything. I never told anyone either. Now... no. It's not like that now. I'm just tired."
+      - id: intake-s1-t16
+        speaker: therapist
+        text: "At seventeen you carried that by yourself. And now it's tiredness, without those thoughts. I'm glad you told me. I'll ask you about this again from time to time, because it matters, and if it ever changes I'd want us to be able to talk about it here."
+      - id: intake-s1-t17
+        speaker: client
+        text: "Okay. (pause) Sorry, that got heavy."
+      - id: intake-s1-t18
+        speaker: therapist
+        text: "You don't need to apologise for that here. It's what this room is for."
+      - id: intake-s1-t19
+        speaker: client
+        text: "(nods) How long does this usually take? Therapy, I mean. I don't want to take up a slot someone else needs more."
+      - id: intake-s1-d5
+        type: choice
+        prompt: "M asks how long therapy takes and adds that she does not want to take someone else's place. How do you answer?"
+        options:
+          - id: a
+            text: "It really depends on the person. Let's not worry about that for now."
+            fit: weak
+            note: "She asked a practical question and got no answer. 'Let's not worry' also teaches her that her questions about the frame are not welcome."
+          - id: b
+            text: "I'd suggest we meet weekly for four sessions to understand what's going on, and then decide together what would be useful from there. And I heard the second part too: this slot is yours. You don't have to earn it by being worse off than someone else."
+            fit: strong
+            note: "It gives a concrete, limited proposal and makes the decision a shared one. Then it answers the worry inside the question, briefly, without turning it into an interpretation she did not ask for."
+          - id: c
+            text: "Most people with these difficulties need somewhere between twelve and twenty sessions."
+            fit: workable
+            note: "It is a straight answer and she may value that. But you do not know yet what her difficulties are, and a number given in session one tends to be remembered as a promise. It also passes over what she said about taking someone's place."
+        actual: "I'd suggest we meet weekly for four sessions to understand what's going on, and then decide together what would be useful from there. And I heard the second part too: this slot is yours. You don't have to earn it by being worse off than someone else."
+        rationale: "A clear frame is a kindness. An anxious client is steadier with 'four sessions, then we decide' than with 'it depends.' The last sentence matters as well. In fifty minutes M has apologised for arriving early, called her difficulties nothing, apologised for a heavy moment, and now offered to give up her place. You will not interpret that today. You do answer it."
+      - id: intake-s1-t20
+        speaker: client
+        text: "(eyes fill, looks away) Okay. Four sessions. Same time next week?"
+      - id: intake-s1-t21
+        speaker: therapist
+        text: "Same time next week."
+    notes:
+      goals: "Set the frame and its limits in plain words. Hear the presenting difficulty in M's terms. Ask about risk. Agree a first block of four sessions."
+      alliance: "Polite, careful, quick to agree. Three apologies and one offer to give up her place. A small opening near the end when she was told the slot was hers. It is too early to say whether her agreement is real agreement or compliance."
+      formulation_update: "Only observations so far. Low mood for about six months, beginning around a breakup she says she is over. Two earlier episodes in secondary school. Passive thoughts of death at seventeen that she told no one. She hides help-seeking from her mother. She plays down her own distress and compares herself with people who have 'real problems.' Question to carry forward: what did M learn about what happens when she shows that she is struggling?"
