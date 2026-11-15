@@ -15,7 +15,8 @@
 | 階段 2：登入、雲端進度、督導後台 | 程式完成，已上線 | 權限規則只在行程內 Postgres 測過，見第 3 節 |
 | 階段 3 Task 1：去識別化掃描器 | 完成 | 142 個測試 |
 | 階段 3 Task 2–6：報告上傳、Drive、評閱 | 未開始 | — |
-| 階段 4–6：AI 回饋、EFT、DBT | 只有設計規格 | — |
+| 階段 4–6：AI 回饋、EFT、DBT | 設計規格已定。EFT 和 DBT 的貫穿個案有草稿（`content/CLIENT_EFT.md`、`content/CLIENT_DBT.md`），待擁有人確認 | — |
+| 多階段支援（階段 5、6 的前置） | **進行中**：子 session `session_01SLv2v8TSu1TbZNWdNJLTun`，分支 `claude/multi-stage`。尚未覆核，尚未合併 | — |
 
 最後一次完整測試：`npm run check` 309＋142 個通過；`npm run e2e` 24 個通過、4 個跳過。
 
@@ -82,6 +83,13 @@
 - Playwright 和 Chromium 已預裝，直接用。
 - 掃描器的測試要用 `npx vitest run --root packages/deid`。`npm run check` 已包含它。
 - 開子 session 做獨立工作是可行的（階段 1、2、雙語都這樣做）。子 session 遇到用量上限會直接失敗，要重新送一次訊息。它們完成後不一定會通知，要主動查看。
+
+## 5a. 進行中的工作（接手時先處理）
+
+- 分支 `claude/multi-stage` 由一個 Sonnet 子 session 實作多階段支援（規格 `docs/specs/2026-11-15-stage4-6-design.md` 的「共同前置工作」）。接手時先看它是否完成：`git fetch origin claude/multi-stage`。
+- 完成後要做的事：(1) 讀它新增的 `supabase/migrations/0004_cohort_stages.sql`，按 0001–0003 的標準覆核權限規則；(2) 合併到一個整合分支，跑 `npm run check` 和 `npm run e2e`；(3) 用真實內容在瀏覽器確認首頁和舊路徑 `/m/intake` 都和現在一樣；(4) 全部通過才合併到正式分支。
+- 合併上線後，請擁有人在 Supabase 的 SQL Editor **只貼 `0004_cohort_stages.sql` 那一份**（開新的查詢分頁）。在那之前，雲端模式下不會出現新階段，現有功能不受影響。這一點要在合併前用測試確認：資料表不存在時，應用不可出錯。
+- 兩份個案設定草稿（EFT 的 Client R、DBT 的 Client J）各有一節「需你決定」。擁有人回答之前，不寫這兩個階段的走讀和練習題。
 
 ## 6. 下一步（按次序）
 
