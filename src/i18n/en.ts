@@ -1,0 +1,47 @@
+/** All UI strings live here. Components must not hard-code English sentences. */
+export const en = {
+  appName: 'ClinicMind Practice',
+  footer:
+    "Training tool. Not for use with clients in crisis. If someone is at risk, follow your placement's policy and contact your supervisor.",
+  common: {
+    loading: 'Loading…',
+    back: 'Back',
+    retry: 'Try again',
+    skipToContent: 'Skip to content',
+  },
+  levels: { easy: 'Easy', medium: 'Medium', hard: 'Hard' } as Record<string, string>,
+  drill: {
+    questionOf: (n: number, total: number) => `Question ${n} of ${total}`,
+    context: 'Context',
+    client: 'Client says',
+    responseLabel: 'Your response',
+    responseHelp: 'Write what you would say to the client.',
+    submit: 'Submit response',
+    editResponse: 'Edit response',
+    selfCheckLegend: 'Self-check: tick each criterion your response met',
+    saveSelfCheck: 'Save self-check',
+    saving: 'Saving…',
+    needHint:
+      'A response counts as met when you tick at least 2 criteria and write at least 20 characters.',
+    saveError: 'Could not save your attempt. Your response is still here; please try again.',
+    modelError: 'Could not load the example response.',
+    modelRetry: 'Retry loading the example',
+    yourResponse: 'Your response',
+    met: 'Counted as met.',
+    notMet: 'Not counted as met yet. Try again, or move on and come back.',
+    modelHeading: 'Example response',
+    whyHeading: 'Why it works',
+    avoidHeading: 'Common slip to avoid',
+    tryAgain: 'Try again',
+    next: 'Next question',
+    earlierAttempts: 'Earlier attempts',
+    attemptSummary: (met: number) => `${met} of 3 criteria ticked`,
+  },
+  drillsPage: {
+    heading: (level: string) => `${level} practice`,
+    progress: (met: number, total: number) => `${met} / ${total} met`,
+    levelDone: 'You have reached the end of this level.',
+    backToModule: 'Back to module',
+    loadError: 'Could not load this practice set. Check your connection and try again.',
+  },
+} as const;
