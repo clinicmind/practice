@@ -1,0 +1,270 @@
+- id: alliance-e01
+  level: easy
+  skill: validation
+  context: Fixture context for alliance-e01.
+  client: Fixture client statement for alliance-e01.
+  criteria:
+    - alliance-e01 criterion one
+    - alliance-e01 criterion two
+    - alliance-e01 criterion three
+- id: alliance-e02
+  level: easy
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-e02.
+  client: Fixture client statement for alliance-e02.
+  criteria:
+    - alliance-e02 criterion one
+    - alliance-e02 criterion two
+    - alliance-e02 criterion three
+- id: alliance-e03
+  level: easy
+  skill: validation
+  context: Fixture context for alliance-e03.
+  client: Fixture client statement for alliance-e03.
+  criteria:
+    - alliance-e03 criterion one
+    - alliance-e03 criterion two
+    - alliance-e03 criterion three
+- id: alliance-e04
+  level: easy
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-e04.
+  client: Fixture client statement for alliance-e04.
+  criteria:
+    - alliance-e04 criterion one
+    - alliance-e04 criterion two
+    - alliance-e04 criterion three
+- id: alliance-e05
+  level: easy
+  skill: validation
+  context: Fixture context for alliance-e05.
+  client: Fixture client statement for alliance-e05.
+  criteria:
+    - alliance-e05 criterion one
+    - alliance-e05 criterion two
+    - alliance-e05 criterion three
+- id: alliance-e06
+  level: easy
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-e06.
+  client: Fixture client statement for alliance-e06.
+  criteria:
+    - alliance-e06 criterion one
+    - alliance-e06 criterion two
+    - alliance-e06 criterion three
+- id: alliance-e07
+  level: easy
+  skill: validation
+  context: Fixture context for alliance-e07.
+  client: Fixture client statement for alliance-e07.
+  criteria:
+    - alliance-e07 criterion one
+    - alliance-e07 criterion two
+    - alliance-e07 criterion three
+- id: alliance-e08
+  level: easy
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-e08.
+  client: Fixture client statement for alliance-e08.
+  criteria:
+    - alliance-e08 criterion one
+    - alliance-e08 criterion two
+    - alliance-e08 criterion three
+- id: alliance-e09
+  level: easy
+  skill: validation
+  context: Fixture context for alliance-e09.
+  client: Fixture client statement for alliance-e09.
+  criteria:
+    - alliance-e09 criterion one
+    - alliance-e09 criterion two
+    - alliance-e09 criterion three
+- id: alliance-e10
+  level: easy
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-e10.
+  client: Fixture client statement for alliance-e10.
+  criteria:
+    - alliance-e10 criterion one
+    - alliance-e10 criterion two
+    - alliance-e10 criterion three
+- id: alliance-m01
+  level: medium
+  skill: validation
+  context: Fixture context for alliance-m01.
+  client: Fixture client statement for alliance-m01.
+  criteria:
+    - alliance-m01 criterion one
+    - alliance-m01 criterion two
+    - alliance-m01 criterion three
+- id: alliance-m02
+  level: medium
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-m02.
+  client: Fixture client statement for alliance-m02.
+  criteria:
+    - alliance-m02 criterion one
+    - alliance-m02 criterion two
+    - alliance-m02 criterion three
+- id: alliance-m03
+  level: medium
+  skill: validation
+  context: Fixture context for alliance-m03.
+  client: Fixture client statement for alliance-m03.
+  criteria:
+    - alliance-m03 criterion one
+    - alliance-m03 criterion two
+    - alliance-m03 criterion three
+- id: alliance-m04
+  level: medium
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-m04.
+  client: Fixture client statement for alliance-m04.
+  criteria:
+    - alliance-m04 criterion one
+    - alliance-m04 criterion two
+    - alliance-m04 criterion three
+- id: alliance-m05
+  level: medium
+  skill: validation
+  context: Fixture context for alliance-m05.
+  client: Fixture client statement for alliance-m05.
+  criteria:
+    - alliance-m05 criterion one
+    - alliance-m05 criterion two
+    - alliance-m05 criterion three
+- id: alliance-m06
+  level: medium
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-m06.
+  client: Fixture client statement for alliance-m06.
+  criteria:
+    - alliance-m06 criterion one
+    - alliance-m06 criterion two
+    - alliance-m06 criterion three
+- id: alliance-m07
+  level: medium
+  skill: validation
+  context: Fixture context for alliance-m07.
+  client: Fixture client statement for alliance-m07.
+  criteria:
+    - alliance-m07 criterion one
+    - alliance-m07 criterion two
+    - alliance-m07 criterion three
+- id: alliance-m08
+  level: medium
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-m08.
+  client: Fixture client statement for alliance-m08.
+  criteria:
+    - alliance-m08 criterion one
+    - alliance-m08 criterion two
+    - alliance-m08 criterion three
+- id: alliance-m09
+  level: medium
+  skill: validation
+  context: Fixture context for alliance-m09.
+  client: Fixture client statement for alliance-m09.
+  criteria:
+    - alliance-m09 criterion one
+    - alliance-m09 criterion two
+    - alliance-m09 criterion three
+- id: alliance-m10
+  level: medium
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-m10.
+  client: Fixture client statement for alliance-m10.
+  criteria:
+    - alliance-m10 criterion one
+    - alliance-m10 criterion two
+    - alliance-m10 criterion three
+- id: alliance-h01
+  level: hard
+  skill: validation
+  context: Fixture context for alliance-h01.
+  client: Fixture client statement for alliance-h01.
+  criteria:
+    - alliance-h01 criterion one
+    - alliance-h01 criterion two
+    - alliance-h01 criterion three
+- id: alliance-h02
+  level: hard
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-h02.
+  client: Fixture client statement for alliance-h02.
+  criteria:
+    - alliance-h02 criterion one
+    - alliance-h02 criterion two
+    - alliance-h02 criterion three
+- id: alliance-h03
+  level: hard
+  skill: validation
+  context: Fixture context for alliance-h03.
+  client: Fixture client statement for alliance-h03.
+  criteria:
+    - alliance-h03 criterion one
+    - alliance-h03 criterion two
+    - alliance-h03 criterion three
+- id: alliance-h04
+  level: hard
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-h04.
+  client: Fixture client statement for alliance-h04.
+  criteria:
+    - alliance-h04 criterion one
+    - alliance-h04 criterion two
+    - alliance-h04 criterion three
+- id: alliance-h05
+  level: hard
+  skill: validation
+  context: Fixture context for alliance-h05.
+  client: Fixture client statement for alliance-h05.
+  criteria:
+    - alliance-h05 criterion one
+    - alliance-h05 criterion two
+    - alliance-h05 criterion three
+- id: alliance-h06
+  level: hard
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-h06.
+  client: Fixture client statement for alliance-h06.
+  criteria:
+    - alliance-h06 criterion one
+    - alliance-h06 criterion two
+    - alliance-h06 criterion three
+- id: alliance-h07
+  level: hard
+  skill: validation
+  context: Fixture context for alliance-h07.
+  client: Fixture client statement for alliance-h07.
+  criteria:
+    - alliance-h07 criterion one
+    - alliance-h07 criterion two
+    - alliance-h07 criterion three
+- id: alliance-h08
+  level: hard
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-h08.
+  client: Fixture client statement for alliance-h08.
+  criteria:
+    - alliance-h08 criterion one
+    - alliance-h08 criterion two
+    - alliance-h08 criterion three
+- id: alliance-h09
+  level: hard
+  skill: validation
+  context: Fixture context for alliance-h09.
+  client: Fixture client statement for alliance-h09.
+  criteria:
+    - alliance-h09 criterion one
+    - alliance-h09 criterion two
+    - alliance-h09 criterion three
+- id: alliance-h10
+  level: hard
+  skill: reflection-of-feeling
+  context: Fixture context for alliance-h10.
+  client: Fixture client statement for alliance-h10.
+  criteria:
+    - alliance-h10 criterion one
+    - alliance-h10 criterion two
+    - alliance-h10 criterion three

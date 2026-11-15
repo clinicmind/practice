@@ -1,0 +1,43 @@
+sessions:
+  - id: alliance-s1
+    title: Session 1
+    turns:
+      - id: t1
+        speaker: therapist
+        text: Welcome (alliance).
+      - id: t2
+        speaker: client
+        text: I am not sure where to start.
+      - id: d1
+        type: choice
+        prompt: What would you say next?
+        options:
+          - id: a
+            text: Option A text
+            fit: strong
+            note: Why A fits.
+          - id: b
+            text: Option B text
+            fit: workable
+            note: Why B is workable.
+          - id: c
+            text: Option C text
+            fit: weak
+            note: Why C is weak.
+        actual: What the therapist actually said (d1).
+        rationale: Rationale for d1.
+      - id: t3
+        speaker: client
+        text: It has been a hard few weeks.
+      - id: d2
+        type: free
+        prompt: Write your own response.
+        actual: What the therapist actually said (d2).
+        rationale: Rationale for d2.
+      - id: t4
+        speaker: therapist
+        text: Thank you for telling me.
+    notes:
+      goals: Goals note (alliance).
+      alliance: Alliance note (alliance).
+      formulation_update: Formulation note (alliance).
