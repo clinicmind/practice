@@ -118,7 +118,7 @@
 - id: planning-m08
   level: medium
   skill: rationale-giving
-  context: "你建議談一段個案一直迴避的回憶。"
+  context: "你建議談一段個案一直逃避的回憶。"
   client: "談這件事只會讓我更難受。為什麼我要故意這樣做？"
   criteria: *rg_medium
 - id: planning-m09
