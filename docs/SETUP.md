@@ -14,14 +14,18 @@
 
 ## B. 雲端模式
 
-1. 在 supabase.com 建立專案，區域選 Singapore。
-2. 套用資料庫結構：打開 `supabase/setup-all.sql`，全部複製，貼到 Supabase 的 SQL Editor 執行一次。
-3. Authentication → URL Configuration：Site URL 填你的網址；Redirect URLs 加上 `https://你的網址/auth/callback`。
-4. 修改 `public/_headers` 最後一行，加入你的 Supabase 網址（檔案頂部有範例）。**不做這一步，瀏覽器會擋住登入和儲存。**
-5. 在 Cloudflare 該專案的 Settings → Build → Variables and secrets 設定兩個建置變數，然後重新部署：
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`（用 anon key。service role key 絕對不可以放在這裡。）
-6. 建立你的督導帳號：
+已完成（2026-11-15）：Supabase 專案已建立，`supabase/setup-all.sql` 已套用，安全標頭已加入專案網址。已用公開金鑰實測：未登入者讀不到、寫不進任何資料表，也呼叫不了任何函式。
+
+餘下三步由專案擁有人做，**請按這個次序**。做完第 2 步，網站就會要求登入。
+
+1. Supabase → Authentication → URL Configuration：
+   - Site URL：填 Cloudflare 給你的網址（例如 `https://practice.你的帳號.workers.dev`）。
+   - Redirect URLs：加上 `https://你的網址/auth/callback`。
+   - 不做這一步，電郵裡的登入連結會跳到錯誤的地址。
+2. Cloudflare → 該專案 → Settings → Build → Variables and secrets，新增兩個變數，然後重新部署：
+   - `VITE_SUPABASE_URL` ＝ `https://amjukuutiqnsprgzxkan.supabase.co`
+   - `VITE_SUPABASE_ANON_KEY` ＝ 你的 publishable key（`sb_publishable_` 開頭那一個）。service role／secret key 絕對不可以放在這裡。
+3. 建立你的督導帳號：
    1. 用你的電郵在網站登入一次（會收到登入連結）。
    2. 在 Supabase 的 SQL Editor 執行（換成你的電郵和想顯示的名稱）：
       ```sql
@@ -29,7 +33,9 @@
       select id, 'supervisor', '你的顯示名稱' from auth.users where email = '你的電郵';
       ```
    3. 重新整理網站，進入 `/supervisor`，建立班別，取得邀請碼。
-7. 把邀請碼和網址發給學生。學生登入後在 `/join` 輸入邀請碼。
+4. 把邀請碼和網址發給學生。學生登入後在 `/join` 輸入邀請碼。
+
+注意：Supabase 免費方案內建的電郵服務每小時只能發很少的信，只適合自己測試。全班學生同一時間登入前，要在 Supabase → Authentication → Emails 設定自己的 SMTP 服務。
 
 ### 雲端模式第一次上線後必須做的驗證
 

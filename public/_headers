@@ -1,8 +1,6 @@
-# When Supabase is switched on, the browser must be allowed to reach it.
-# Add your project to the policy below, or sign-in and saving will be blocked:
-#   Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://YOUR-PROJECT.supabase.co
-# See docs/SETUP.md, step 4.
+# connect-src lists the only outside host the app may talk to: the project's Supabase backend.
+# If the Supabase project changes, change the host here as well, or sign-in and saving will be blocked.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
-  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'
+  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://amjukuutiqnsprgzxkan.supabase.co
