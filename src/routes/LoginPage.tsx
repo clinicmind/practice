@@ -3,12 +3,12 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { rememberReturnTo, safePath } from '../auth/returnTo';
 import { usePostLoginTarget } from '../auth/usePostLogin';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import { NotFound } from './NotFound';
 
-const t = en.auth;
-
 export function LoginPage() {
+  const s = useT();
+  const t = s.auth;
   const { status, signIn } = useAuth();
   const from = safePath((useLocation().state as { from?: string } | null)?.from);
   const target = usePostLoginTarget();
@@ -21,7 +21,7 @@ export function LoginPage() {
   useEffect(() => { if (phase === 'sent') statusRef.current?.focus(); }, [phase]);
 
   if (status === 'local') return <NotFound />;
-  if (status === 'loading') return <p>{en.common.loading}</p>;
+  if (status === 'loading') return <p>{s.common.loading}</p>;
   if (target) return <Navigate to={target} replace />;
 
   async function submit(e: FormEvent) {

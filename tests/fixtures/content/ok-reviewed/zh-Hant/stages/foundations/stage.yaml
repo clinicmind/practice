@@ -1,0 +1,5 @@
+stage: foundations
+title: 基礎（測試）
+modules:
+  - intake
+  - alliance

@@ -16,7 +16,7 @@ export class ContentLoadError extends Error {
   }
 }
 
-const LOCALE = 'en';
+export type ContentLocale = 'en' | 'zh-Hant';
 const STAGE = 'foundations';
 const SLUG_RE = /^[a-z0-9][a-z0-9-]*$/;
 const cache = new Map<string, Promise<unknown>>();
@@ -31,8 +31,8 @@ function base(): string {
 }
 
 /** Fetches, validates and caches; failures are not cached so a retry can succeed. */
-function load<T>(path: string, schema: ZodType<T, z.ZodTypeDef, unknown>): Promise<T> {
-  const url = `${base()}content/${LOCALE}/${STAGE}/${path}`;
+function load<T>(locale: ContentLocale, path: string, schema: ZodType<T, z.ZodTypeDef, unknown>): Promise<T> {
+  const url = `${base()}content/${locale}/${STAGE}/${path}`;
   const hit = cache.get(url);
   if (hit) return hit as Promise<T>;
   const p = (async () => {
@@ -62,15 +62,15 @@ function checkSlug(slug: string) {
   if (!SLUG_RE.test(slug)) throw new ContentLoadError('Invalid module name', slug);
 }
 
-export const loadStage = (): Promise<StageIndex> => load('index.json', StageIndexSchema);
+export const loadStage = (locale: ContentLocale = 'en'): Promise<StageIndex> => load(locale, 'index.json', StageIndexSchema);
 
-export async function loadModule(slug: string): Promise<ModuleBundle> {
+export async function loadModule(slug: string, locale: ContentLocale = 'en'): Promise<ModuleBundle> {
   checkSlug(slug);
-  return load(`${slug}/module.json`, ModuleBundleSchema);
+  return load(locale, `${slug}/module.json`, ModuleBundleSchema);
 }
 
 /** Only call once the learner has saved an attempt for the item (spec §3.1). */
-export async function loadModels(slug: string): Promise<Record<string, Model>> {
+export async function loadModels(slug: string, locale: ContentLocale = 'en'): Promise<Record<string, Model>> {
   checkSlug(slug);
-  return load(`${slug}/models.json`, ModelsFileSchema);
+  return load(locale, `${slug}/models.json`, ModelsFileSchema);
 }

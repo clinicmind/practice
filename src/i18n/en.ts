@@ -1,9 +1,19 @@
 /** All UI strings live here. Components must not hard-code English sentences. */
-export const en = {
+
+/** Widens literal strings to `string` so another language can implement the same shape. */
+type Widen<T> = T extends (...args: infer A) => string
+  ? (...args: A) => string
+  : T extends string
+    ? string
+    : { -readonly [K in keyof T]: Widen<T[K]> };
+
+const enStrings = {
   appName: 'ClinicMind Practice',
   footer:
     "Training tool. Not for use with clients in crisis. If someone is at risk, follow your placement's policy and contact your supervisor.",
+  contentFallback: 'The Chinese version of this module is not available yet. Showing the English version.',
   common: {
+    account: 'Account',
     loading: 'Loading…',
     back: 'Back',
     retry: 'Try again',
@@ -189,6 +199,8 @@ export const en = {
     decisionsHeading: 'Walkthrough answers',
     reflectionsHeading: 'Reflections',
     unknownItem: 'Question not in this build',
+    criterionN: (n: number) => `Criterion ${n}`,
+    optionLabel: (id: string) => `option ${id}`,
   },
   notFound: {
     heading: 'Page not found',
@@ -203,3 +215,6 @@ export const en = {
     loadError: 'Could not load this practice set. Check your connection and try again.',
   },
 } as const;
+
+export type Strings = Widen<typeof enStrings>;
+export const en: Strings = enStrings;

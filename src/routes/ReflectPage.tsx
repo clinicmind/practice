@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import type { Reflection } from '../progress/types';
 import { useStore } from '../StoreContext';
-import { useGate } from './ModuleGate';
-
-const t = en.reflect;
+import { FallbackNotice, useGate } from './ModuleGate';
 
 function PromptForm({ promptId, text, entries, onSave }: {
   promptId: string; text: string; entries: Reflection[]; onSave: (promptId: string, value: string) => Promise<void>;
 }) {
+  const s = useT();
+  const t = s.reflect;
   const [value, setValue] = useState('');
   const [error, setError] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -57,6 +57,8 @@ function PromptForm({ promptId, text, entries, onSave }: {
 }
 
 export function ReflectPage() {
+  const s = useT();
+  const t = s.reflect;
   const { slug, bundle } = useGate();
   const store = useStore();
   const [entries, setEntries] = useState<Reflection[] | null>(null);
@@ -74,10 +76,11 @@ export function ReflectPage() {
   }
 
   if (failed) return <p role="alert" className="error">{t.saveError}</p>;
-  if (!entries) return <p>{en.common.loading}</p>;
+  if (!entries) return <p>{s.common.loading}</p>;
   return (
     <div>
       <h1>{t.heading(bundle.meta.title)}</h1>
+      <FallbackNotice />
       {bundle.meta.reflection_prompts.map((p) => (
         <PromptForm key={p.id} promptId={p.id} text={p.text} entries={entries.filter((e) => e.promptId === p.id)} onSave={save} />
       ))}

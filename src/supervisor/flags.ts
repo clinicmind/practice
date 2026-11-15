@@ -21,12 +21,15 @@ export function normalize(s: string): string {
 /**
  * Attempts a supervisor may want to read by hand. These are prompts for a
  * human to look, not judgements. `attempts` must all belong to ONE student.
- * `models` maps item id → its example response (only `model_response` is read).
+ * `models` maps item id → its example response (only `model_response` is read). Pass one map per
+ * language: a response that copies the example in any language is flagged.
  */
+type Models = Record<string, { model_response: string }>;
 export function flagAttempts(
   attempts: Attempt[],
-  models: Record<string, { model_response: string }> = {},
+  models: Models | readonly Models[] = {},
 ): Flag[] {
+  const modelSets: readonly Models[] = Array.isArray(models) ? (models as readonly Models[]) : [models as Models];
   // Attempts per item in time order, to find the previous one.
   const prev = new Map<string, Attempt>();
   const byTime = [...attempts].sort((a, b) => (a.createdAt < b.createdAt ? -1 : a.createdAt > b.createdAt ? 1 : 0));
@@ -46,11 +49,12 @@ export function flagAttempts(
     if (p && p.response === a.response) {
       flags.push({ attemptId: a.id, reason: 'identical-to-previous' });
     }
-    const model = models[a.itemId]?.model_response;
-    if (model !== undefined) {
-      const m = normalize(model);
-      if (m !== '' && m === normalize(a.response)) flags.push({ attemptId: a.id, reason: 'copied-model' });
-    }
+    const response = normalize(a.response);
+    const copied = modelSets.some((set) => {
+      const model = set[a.itemId]?.model_response;
+      return model !== undefined && normalize(model) !== '' && normalize(model) === response;
+    });
+    if (copied) flags.push({ attemptId: a.id, reason: 'copied-model' });
   }
   return flags;
 }

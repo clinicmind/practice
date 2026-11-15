@@ -1,0 +1,270 @@
+- id: alliance-e01
+  level: easy
+  skill: validation
+  context: 測試用情境（alliance-e01）。
+  client: 測試用個案說的話（alliance-e01）。
+  criteria:
+    - alliance-e01 標準一
+    - alliance-e01 標準二
+    - alliance-e01 標準三
+- id: alliance-e02
+  level: easy
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-e02）。
+  client: 測試用個案說的話（alliance-e02）。
+  criteria:
+    - alliance-e02 標準一
+    - alliance-e02 標準二
+    - alliance-e02 標準三
+- id: alliance-e03
+  level: easy
+  skill: validation
+  context: 測試用情境（alliance-e03）。
+  client: 測試用個案說的話（alliance-e03）。
+  criteria:
+    - alliance-e03 標準一
+    - alliance-e03 標準二
+    - alliance-e03 標準三
+- id: alliance-e04
+  level: easy
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-e04）。
+  client: 測試用個案說的話（alliance-e04）。
+  criteria:
+    - alliance-e04 標準一
+    - alliance-e04 標準二
+    - alliance-e04 標準三
+- id: alliance-e05
+  level: easy
+  skill: validation
+  context: 測試用情境（alliance-e05）。
+  client: 測試用個案說的話（alliance-e05）。
+  criteria:
+    - alliance-e05 標準一
+    - alliance-e05 標準二
+    - alliance-e05 標準三
+- id: alliance-e06
+  level: easy
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-e06）。
+  client: 測試用個案說的話（alliance-e06）。
+  criteria:
+    - alliance-e06 標準一
+    - alliance-e06 標準二
+    - alliance-e06 標準三
+- id: alliance-e07
+  level: easy
+  skill: validation
+  context: 測試用情境（alliance-e07）。
+  client: 測試用個案說的話（alliance-e07）。
+  criteria:
+    - alliance-e07 標準一
+    - alliance-e07 標準二
+    - alliance-e07 標準三
+- id: alliance-e08
+  level: easy
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-e08）。
+  client: 測試用個案說的話（alliance-e08）。
+  criteria:
+    - alliance-e08 標準一
+    - alliance-e08 標準二
+    - alliance-e08 標準三
+- id: alliance-e09
+  level: easy
+  skill: validation
+  context: 測試用情境（alliance-e09）。
+  client: 測試用個案說的話（alliance-e09）。
+  criteria:
+    - alliance-e09 標準一
+    - alliance-e09 標準二
+    - alliance-e09 標準三
+- id: alliance-e10
+  level: easy
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-e10）。
+  client: 測試用個案說的話（alliance-e10）。
+  criteria:
+    - alliance-e10 標準一
+    - alliance-e10 標準二
+    - alliance-e10 標準三
+- id: alliance-m01
+  level: medium
+  skill: validation
+  context: 測試用情境（alliance-m01）。
+  client: 測試用個案說的話（alliance-m01）。
+  criteria:
+    - alliance-m01 標準一
+    - alliance-m01 標準二
+    - alliance-m01 標準三
+- id: alliance-m02
+  level: medium
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-m02）。
+  client: 測試用個案說的話（alliance-m02）。
+  criteria:
+    - alliance-m02 標準一
+    - alliance-m02 標準二
+    - alliance-m02 標準三
+- id: alliance-m03
+  level: medium
+  skill: validation
+  context: 測試用情境（alliance-m03）。
+  client: 測試用個案說的話（alliance-m03）。
+  criteria:
+    - alliance-m03 標準一
+    - alliance-m03 標準二
+    - alliance-m03 標準三
+- id: alliance-m04
+  level: medium
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-m04）。
+  client: 測試用個案說的話（alliance-m04）。
+  criteria:
+    - alliance-m04 標準一
+    - alliance-m04 標準二
+    - alliance-m04 標準三
+- id: alliance-m05
+  level: medium
+  skill: validation
+  context: 測試用情境（alliance-m05）。
+  client: 測試用個案說的話（alliance-m05）。
+  criteria:
+    - alliance-m05 標準一
+    - alliance-m05 標準二
+    - alliance-m05 標準三
+- id: alliance-m06
+  level: medium
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-m06）。
+  client: 測試用個案說的話（alliance-m06）。
+  criteria:
+    - alliance-m06 標準一
+    - alliance-m06 標準二
+    - alliance-m06 標準三
+- id: alliance-m07
+  level: medium
+  skill: validation
+  context: 測試用情境（alliance-m07）。
+  client: 測試用個案說的話（alliance-m07）。
+  criteria:
+    - alliance-m07 標準一
+    - alliance-m07 標準二
+    - alliance-m07 標準三
+- id: alliance-m08
+  level: medium
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-m08）。
+  client: 測試用個案說的話（alliance-m08）。
+  criteria:
+    - alliance-m08 標準一
+    - alliance-m08 標準二
+    - alliance-m08 標準三
+- id: alliance-m09
+  level: medium
+  skill: validation
+  context: 測試用情境（alliance-m09）。
+  client: 測試用個案說的話（alliance-m09）。
+  criteria:
+    - alliance-m09 標準一
+    - alliance-m09 標準二
+    - alliance-m09 標準三
+- id: alliance-m10
+  level: medium
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-m10）。
+  client: 測試用個案說的話（alliance-m10）。
+  criteria:
+    - alliance-m10 標準一
+    - alliance-m10 標準二
+    - alliance-m10 標準三
+- id: alliance-h01
+  level: hard
+  skill: validation
+  context: 測試用情境（alliance-h01）。
+  client: 測試用個案說的話（alliance-h01）。
+  criteria:
+    - alliance-h01 標準一
+    - alliance-h01 標準二
+    - alliance-h01 標準三
+- id: alliance-h02
+  level: hard
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-h02）。
+  client: 測試用個案說的話（alliance-h02）。
+  criteria:
+    - alliance-h02 標準一
+    - alliance-h02 標準二
+    - alliance-h02 標準三
+- id: alliance-h03
+  level: hard
+  skill: validation
+  context: 測試用情境（alliance-h03）。
+  client: 測試用個案說的話（alliance-h03）。
+  criteria:
+    - alliance-h03 標準一
+    - alliance-h03 標準二
+    - alliance-h03 標準三
+- id: alliance-h04
+  level: hard
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-h04）。
+  client: 測試用個案說的話（alliance-h04）。
+  criteria:
+    - alliance-h04 標準一
+    - alliance-h04 標準二
+    - alliance-h04 標準三
+- id: alliance-h05
+  level: hard
+  skill: validation
+  context: 測試用情境（alliance-h05）。
+  client: 測試用個案說的話（alliance-h05）。
+  criteria:
+    - alliance-h05 標準一
+    - alliance-h05 標準二
+    - alliance-h05 標準三
+- id: alliance-h06
+  level: hard
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-h06）。
+  client: 測試用個案說的話（alliance-h06）。
+  criteria:
+    - alliance-h06 標準一
+    - alliance-h06 標準二
+    - alliance-h06 標準三
+- id: alliance-h07
+  level: hard
+  skill: validation
+  context: 測試用情境（alliance-h07）。
+  client: 測試用個案說的話（alliance-h07）。
+  criteria:
+    - alliance-h07 標準一
+    - alliance-h07 標準二
+    - alliance-h07 標準三
+- id: alliance-h08
+  level: hard
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-h08）。
+  client: 測試用個案說的話（alliance-h08）。
+  criteria:
+    - alliance-h08 標準一
+    - alliance-h08 標準二
+    - alliance-h08 標準三
+- id: alliance-h09
+  level: hard
+  skill: validation
+  context: 測試用情境（alliance-h09）。
+  client: 測試用個案說的話（alliance-h09）。
+  criteria:
+    - alliance-h09 標準一
+    - alliance-h09 標準二
+    - alliance-h09 標準三
+- id: alliance-h10
+  level: hard
+  skill: reflection-of-feeling
+  context: 測試用情境（alliance-h10）。
+  client: 測試用個案說的話（alliance-h10）。
+  criteria:
+    - alliance-h10 標準一
+    - alliance-h10 標準二
+    - alliance-h10 標準三

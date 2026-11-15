@@ -3,16 +3,18 @@ import { Link, useParams } from 'react-router-dom';
 import { DecisionPointView } from '../components/DecisionPointView';
 import { loadModule } from '../content/client';
 import { isDecision, type ModuleBundle } from '../content/schema';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import type { Decision, NewDecision } from '../progress/types';
 import { useStore } from '../StoreContext';
+import { FallbackNotice, useGateOptional } from './ModuleGate';
 import { NotFound } from './NotFound';
 
-const t = en.walkthrough;
-
 export function WalkthroughPage() {
+  const s = useT();
+  const t = s.walkthrough;
   const { slug = '', sessionId = '' } = useParams();
   const store = useStore();
+  const contentLocale = useGateOptional()?.contentLocale ?? 'en';
   const [bundle, setBundle] = useState<ModuleBundle | null>(null);
   const [decisions, setDecisions] = useState<Decision[] | null>(null);
   const [error, setError] = useState(false);
@@ -21,7 +23,7 @@ export function WalkthroughPage() {
   useEffect(() => {
     let live = true;
     setError(false);
-    Promise.all([loadModule(slug), store.listDecisions(sessionId)])
+    Promise.all([loadModule(slug, contentLocale), store.listDecisions(sessionId)])
       .then(([b, d]) => {
         if (!live) return;
         setBundle(b);
@@ -29,7 +31,7 @@ export function WalkthroughPage() {
       })
       .catch(() => live && setError(true));
     return () => { live = false; };
-  }, [slug, sessionId, store, reload]);
+  }, [slug, sessionId, store, reload, contentLocale]);
 
   const answer = useCallback(
     async (d: NewDecision) => {
@@ -43,11 +45,11 @@ export function WalkthroughPage() {
     return (
       <div>
         <p role="alert" className="error">{t.loadError}</p>
-        <button type="button" className="btn" onClick={() => setReload((n) => n + 1)}>{en.common.retry}</button>
+        <button type="button" className="btn" onClick={() => setReload((n) => n + 1)}>{s.common.retry}</button>
       </div>
     );
   }
-  if (!bundle || !decisions) return <p>{en.common.loading}</p>;
+  if (!bundle || !decisions) return <p>{s.common.loading}</p>;
 
   const session = bundle.sessions.find((s) => s.id === sessionId);
   if (!session) return <NotFound />;
@@ -61,6 +63,7 @@ export function WalkthroughPage() {
   return (
     <div>
       <h1>{t.heading(session.title)}</h1>
+      <FallbackNotice />
       <ol className="turns">
         {visible.map((turn) => (
           <li key={turn.id}>

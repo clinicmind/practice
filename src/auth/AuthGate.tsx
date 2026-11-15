@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import { importLocal } from '../progress/importLocal';
 import { STORAGE_KEY } from '../progress/localStore';
 import { createSupabaseStore } from '../progress/supabaseStore';
@@ -15,16 +15,17 @@ import { rememberReturnTo } from './returnTo';
 import type { Backend } from './supabase';
 
 function Loading() {
+  const s = useT();
   const { profileError, reloadProfile } = useAuth();
   if (profileError) {
     return (
       <div>
-        <p role="alert" className="error">{en.auth.profileLoadError}</p>
-        <button type="button" className="btn" onClick={reloadProfile}>{en.common.retry}</button>
+        <p role="alert" className="error">{s.auth.profileLoadError}</p>
+        <button type="button" className="btn" onClick={reloadProfile}>{s.common.retry}</button>
       </div>
     );
   }
-  return <p>{en.common.loading}</p>;
+  return <p>{s.common.loading}</p>;
 }
 
 /**
@@ -34,6 +35,7 @@ function Loading() {
 function CloudShell({ backend, profile, local, storage }: {
   backend: Backend; profile: Profile; local: ProgressStore; storage: Storage;
 }) {
+  const s = useT();
   const remote = useMemo(() => createSupabaseStore(backend, profile.id), [backend, profile.id]);
   const readGrants = useMemo(() => createGrantReader(backend, profile.id), [backend, profile.id]);
   const supervisorApi = useMemo(
@@ -56,12 +58,12 @@ function CloudShell({ backend, profile, local, storage }: {
     return () => { live = false; };
   }, [hasLocal, local, remote, storage, attempt]);
 
-  if (phase === 'running') return <p role="status">{en.auth.importing}</p>;
+  if (phase === 'running') return <p role="status">{s.auth.importing}</p>;
   if (phase === 'error') {
     return (
       <div>
-        <p role="alert" className="error">{en.auth.importError}</p>
-        <button type="button" className="btn" onClick={() => setAttempt((n) => n + 1)}>{en.common.retry}</button>
+        <p role="alert" className="error">{s.auth.importError}</p>
+        <button type="button" className="btn" onClick={() => setAttempt((n) => n + 1)}>{s.common.retry}</button>
       </div>
     );
   }

@@ -5,15 +5,18 @@ import { rememberReturnTo } from '../auth/returnTo';
 import { DrillCard } from '../components/DrillCard';
 import { loadModels, loadModule } from '../content/client';
 import { LEVELS, type Level, type ModuleBundle } from '../content/schema';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import { loadDraft } from '../progress/drafts';
 import { itemMet } from '../progress/rules';
 import type { Attempt, NewAttempt } from '../progress/types';
 import { useStore } from '../StoreContext';
+import { FallbackNotice, useGateOptional } from './ModuleGate';
 
 export function DrillsPage() {
+  const s = useT();
   const { slug = '', level = '' } = useParams();
   const store = useStore();
+  const contentLocale = useGateOptional()?.contentLocale ?? 'en';
   const { signOut } = useAuth();
   const navigate = useNavigate();
   const here = useLocation();
@@ -34,7 +37,7 @@ export function DrillsPage() {
   useEffect(() => {
     let live = true;
     setError(false);
-    Promise.all([loadModule(slug), store.listAttempts()])
+    Promise.all([loadModule(slug, contentLocale), store.listAttempts()])
       .then(([b, a]) => {
         if (!live) return;
         setBundle(b);
@@ -49,7 +52,7 @@ export function DrillsPage() {
       })
       .catch(() => live && setError(true));
     return () => { live = false; };
-  }, [slug, level, store, reload]);
+  }, [slug, level, store, reload, contentLocale]);
 
   const submit = useCallback(
     async (a: NewAttempt) => {
@@ -68,12 +71,12 @@ export function DrillsPage() {
   if (error) {
     return (
       <div>
-        <p role="alert" className="error">{en.drillsPage.loadError}</p>
-        <button type="button" className="btn" onClick={() => setReload((n) => n + 1)}>{en.common.retry}</button>
+        <p role="alert" className="error">{s.drillsPage.loadError}</p>
+        <button type="button" className="btn" onClick={() => setReload((n) => n + 1)}>{s.common.retry}</button>
       </div>
     );
   }
-  if (!bundle) return <p>{en.common.loading}</p>;
+  if (!bundle) return <p>{s.common.loading}</p>;
 
   const lv = level as Level;
   const drills = bundle.drills.filter((d) => d.level === (LEVELS.includes(lv) ? lv : undefined));
@@ -82,18 +85,20 @@ export function DrillsPage() {
 
   return (
     <div>
-      <h1>{en.drillsPage.heading(en.levels[lv] ?? level)}</h1>
-      <p aria-live="polite">{en.drillsPage.progress(met, drills.length)}</p>
+      <h1>{s.drillsPage.heading(s.levels[lv] ?? level)}</h1>
+      <FallbackNotice />
+      <p aria-live="polite">{s.drillsPage.progress(met, drills.length)}</p>
       {drill ? (
         <>
-          <p ref={questionRef} tabIndex={-1} className="muted">{en.drill.questionOf(index + 1, drills.length)}</p>
+          <p ref={questionRef} tabIndex={-1} className="muted">{s.drill.questionOf(index + 1, drills.length)}</p>
           <DrillCard
             key={drill.id}
             drill={drill}
+            contentKey={contentLocale}
             attempts={attempts.filter((a) => a.itemId === drill.id)}
             onSubmit={submit}
             getModel={async () => {
-              const models = await loadModels(slug);
+              const models = await loadModels(slug, contentLocale);
               const m = models[drill.id];
               if (!m) throw new Error('missing model');
               return m;
@@ -103,9 +108,9 @@ export function DrillsPage() {
           />
         </>
       ) : (
-        <p>{en.drillsPage.levelDone}</p>
+        <p>{s.drillsPage.levelDone}</p>
       )}
-      <p><Link to={`/m/${slug}`}>{en.drillsPage.backToModule}</Link></p>
+      <p><Link to={`/m/${slug}`}>{s.drillsPage.backToModule}</Link></p>
     </div>
   );
 }

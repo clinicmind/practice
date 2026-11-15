@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
 import { JoinError, useAuth } from '../auth/AuthContext';
-import { en } from '../i18n/en';
+import { useT } from '../i18n';
 import { NotFound } from './NotFound';
 
-const t = en.auth;
-
 export function JoinPage() {
+  const s = useT();
+  const t = s.auth;
   const { status, join } = useAuth();
   const [code, setCode] = useState('');
   const [name, setName] = useState('');
@@ -14,7 +14,7 @@ export function JoinPage() {
   const [busy, setBusy] = useState(false);
 
   if (status === 'local') return <NotFound />;
-  if (status === 'loading') return <p>{en.common.loading}</p>;
+  if (status === 'loading') return <p>{s.common.loading}</p>;
   if (status === 'signedOut') return <Navigate to="/login" replace />;
   if (status === 'student') return <Navigate to="/" replace />;
   if (status === 'supervisor') return <Navigate to="/supervisor" replace />;
