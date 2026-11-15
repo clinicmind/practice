@@ -64,7 +64,7 @@ describe('route guards', () => {
     await waitFor(() => expect(path).toBe('/login'));
     expect(screen.getByRole('heading', { name: en.auth.loginHeading })).toBeInTheDocument();
     act(() => fake.emit('SIGNED_IN', STUDENT.id));
-    await waitFor(() => expect(path).toBe('/m/intake'));
+    await waitFor(() => expect(path).toBe('/s/foundations/m/intake'));
   });
 
   test('after a magic link in a new tab, /auth/callback returns to the remembered page', async () => {
@@ -78,7 +78,7 @@ describe('route guards', () => {
     const fake2 = createFakeBackend({ userId: STUDENT.id });
     fake2.profiles.set(STUDENT.id, STUDENT);
     renderApp('/auth/callback', fake2);
-    await waitFor(() => expect(path).toBe('/m/intake/drills/easy'));
+    await waitFor(() => expect(path).toBe('/s/foundations/m/intake/drills/easy'));
   });
 
   test('a remembered return path that is not a local path is ignored', async () => {

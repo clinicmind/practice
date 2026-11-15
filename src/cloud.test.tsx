@@ -33,7 +33,9 @@ class Mem implements Storage {
 
 const ME = '11111111-1111-4111-8111-111111111111';
 const STUDENT: ProfileRow = { id: ME, role: 'student', display_name: 'Pat', cohort_id: 'c1' };
+/** The old bookmark form: still opens, and is redirected to the canonical path below. */
 const DRILLS = '/m/intake/drills/easy';
+const DRILLS_NOW = '/s/foundations/m/intake/drills/easy';
 const TEXT = 'I can hear how hard it is to know where to begin.';
 
 let db: FakeDb;
@@ -142,7 +144,7 @@ describe('Review focus 5: sign-in expires mid-answer', () => {
 
     db.restore();
     act(() => fake.emit('SIGNED_IN', ME));
-    await waitFor(() => expect(path).toBe(DRILLS));
+    await waitFor(() => expect(path).toBe(DRILLS_NOW));
     expect(await screen.findByText(en.drill.questionOf(2, 10))).toBeInTheDocument();
     expect(box()).toHaveValue('Second answer typed before the session ran out.');
 
@@ -165,7 +167,7 @@ describe('Review focus 5: sign-in expires mid-answer', () => {
     await user.click(saveBtn());
     await user.click(await screen.findByRole('button', { name: en.drill.signInAgain }));
     await waitFor(() => expect(path).toBe('/login'));
-    expect(localStorage.getItem('cm.returnTo')).toBe(DRILLS);
+    expect(localStorage.getItem('cm.returnTo')).toBe(DRILLS_NOW);
   });
 });
 

@@ -5,6 +5,7 @@ import { loadModule } from '../content/client';
 import { isDecision, type ModuleBundle } from '../content/schema';
 import { useT } from '../i18n';
 import type { Decision, NewDecision } from '../progress/types';
+import { modulePath, useStageParam } from '../stages';
 import { useStore } from '../StoreContext';
 import { FallbackNotice, useGateOptional } from './ModuleGate';
 import { NotFound } from './NotFound';
@@ -13,6 +14,7 @@ export function WalkthroughPage() {
   const s = useT();
   const t = s.walkthrough;
   const { slug = '', sessionId = '' } = useParams();
+  const stage = useStageParam();
   const store = useStore();
   const contentLocale = useGateOptional()?.contentLocale ?? 'en';
   const [bundle, setBundle] = useState<ModuleBundle | null>(null);
@@ -23,7 +25,7 @@ export function WalkthroughPage() {
   useEffect(() => {
     let live = true;
     setError(false);
-    Promise.all([loadModule(slug, contentLocale), store.listDecisions(sessionId)])
+    Promise.all([loadModule(slug, contentLocale, stage), store.listDecisions(sessionId)])
       .then(([b, d]) => {
         if (!live) return;
         setBundle(b);
@@ -31,7 +33,7 @@ export function WalkthroughPage() {
       })
       .catch(() => live && setError(true));
     return () => { live = false; };
-  }, [slug, sessionId, store, reload, contentLocale]);
+  }, [stage, slug, sessionId, store, reload, contentLocale]);
 
   const answer = useCallback(
     async (d: NewDecision) => {
@@ -90,7 +92,7 @@ export function WalkthroughPage() {
           <p><strong>{t.notesFormulation}:</strong> {session.notes.formulation_update}</p>
         </section>
       )}
-      <p><Link to={`/m/${slug}`}>{t.backToModule}</Link></p>
+      <p><Link to={modulePath(stage, slug)}>{t.backToModule}</Link></p>
     </div>
   );
 }

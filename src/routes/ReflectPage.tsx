@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n';
 import type { Reflection } from '../progress/types';
+import { modulePath } from '../stages';
 import { useStore } from '../StoreContext';
 import { FallbackNotice, useGate } from './ModuleGate';
 
@@ -59,7 +60,7 @@ function PromptForm({ promptId, text, entries, onSave }: {
 export function ReflectPage() {
   const s = useT();
   const t = s.reflect;
-  const { slug, bundle } = useGate();
+  const { stage, slug, bundle } = useGate();
   const store = useStore();
   const [entries, setEntries] = useState<Reflection[] | null>(null);
   const [failed, setFailed] = useState(false);
@@ -84,7 +85,7 @@ export function ReflectPage() {
       {bundle.meta.reflection_prompts.map((p) => (
         <PromptForm key={p.id} promptId={p.id} text={p.text} entries={entries.filter((e) => e.promptId === p.id)} onSave={save} />
       ))}
-      <p><Link to={`/m/${slug}`}>{t.backToModule}</Link></p>
+      <p><Link to={modulePath(stage, slug)}>{t.backToModule}</Link></p>
     </div>
   );
 }

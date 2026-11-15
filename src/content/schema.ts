@@ -157,6 +157,10 @@ export const StageIndexSchema = z.object({
 });
 export type StageIndex = z.infer<typeof StageIndexSchema>;
 
+/** stages.json: every stage in the build, foundations first. */
+export const StageListSchema = z.array(z.object({ stage: text, title: text }));
+export type StageListItem = z.infer<typeof StageListSchema>[number];
+
 /** stage.yaml as authored: ordered module slugs. */
 export const StageFileSchema = z
   .object({ stage: text, title: text, modules: z.array(text) })

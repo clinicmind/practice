@@ -128,19 +128,19 @@ describe('route guards', () => {
   test('deep link to a locked level redirects to the module page with the reason', async () => {
     renderAt('/m/intake/drills/hard');
     expect(await screen.findByRole('status')).toHaveTextContent(/pass medium first/i);
-    expect(path).toBe('/m/intake');
+    expect(path).toBe('/s/foundations/m/intake');
   });
   test('deep link to medium before easy is passed is redirected too', async () => {
     renderAt('/m/intake/drills/medium');
     expect(await screen.findByRole('status')).toHaveTextContent(/pass easy first/i);
-    expect(path).toBe('/m/intake');
+    expect(path).toBe('/s/foundations/m/intake');
   });
   test('a level that is skipped (medium passed, easy not) stays locked', async () => {
     const store = createLocalStore(storage);
     await passLevel(store, 'intake', 'm');
     renderAt('/m/intake/drills/hard', store);
     expect(await screen.findByRole('status')).toHaveTextContent(/pass medium first/i);
-    expect(path).toBe('/m/intake');
+    expect(path).toBe('/s/foundations/m/intake');
   });
   test('deep link to a locked module redirects to / with the reason', async () => {
     for (const url of ['/m/alliance', '/m/alliance/drills/easy', '/m/alliance/reflect', '/m/alliance/walkthrough/alliance-s1']) {
@@ -152,14 +152,14 @@ describe('route guards', () => {
         return r;
       })();
       expect(await screen.findByRole('status')).toHaveTextContent(/finish the intake.*walkthrough first/i);
-      expect(path).toBe('/');
+      expect(path).toBe('/s/foundations');
       unmount();
     }
   });
   test('an unlocked level opens', async () => {
     renderAt('/m/intake/drills/easy');
     expect(await screen.findByRole('textbox', { name: /your response/i })).toBeVisible();
-    expect(path).toBe('/m/intake/drills/easy');
+    expect(path).toBe('/s/foundations/m/intake/drills/easy');
   });
   test('unknown slug, level or session shows the not-found page', async () => {
     for (const url of ['/m/nope', '/m/intake/drills/impossible', '/m/intake/walkthrough/nope', '/totally/unknown']) {

@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from './auth/AuthContext';
-import { loadModule, loadStage, type ContentLocale } from './content/client';
+import { loadModule, loadStage, loadStages, type ContentLocale } from './content/client';
 import { useLocale } from './i18n';
 import type { ModuleBundle, StageIndex } from './content/schema';
 import { unlockedModules } from './progress/rules';
 import { useGrantReader, type Grants } from './progress/unlocks';
 import type { Attempt, Decision } from './progress/types';
+import { useStageParam } from './stages';
 import { useStore } from './StoreContext';
 
 export interface StageEntry {
@@ -35,6 +36,8 @@ export interface StageData {
 
 export type StageState =
   | { status: 'loading' }
+  /** The stage in the URL does not exist in this build. */
+  | { status: 'notfound' }
   | { status: 'error'; reload: () => void }
   | { status: 'ready'; data: StageData };
 
@@ -43,6 +46,7 @@ export type StageState =
  * An unreviewed module can never be completed, so it blocks every module after it.
  */
 export function useStageData(): StageState {
+  const stageName = useStageParam();
   const store = useStore();
   const readGrants = useGrantReader();
   const isSupervisor = useAuth().status === 'supervisor';
@@ -62,11 +66,17 @@ export function useStageData(): StageState {
     setState((prev) => (sameNavigation && prev.status === 'ready' ? prev : { status: 'loading' }));
     (async () => {
       // English is the reference: it decides which modules exist and in what order.
-      const stage = await loadStage('en');
+      // An unknown stage name is a missing page, not a load error.
+      const stages = await loadStages('en');
+      if (!stages.some((s) => s.stage === stageName)) {
+        if (live) setState({ status: 'notfound' });
+        return;
+      }
+      const stage = await loadStage('en', stageName);
       // Chinese is optional per module; a missing or unreadable Chinese index just means English everywhere.
       let zh: StageIndex | undefined;
       if (locale === 'zh-Hant') {
-        try { zh = await loadStage('zh-Hant'); } catch { zh = undefined; }
+        try { zh = await loadStage('zh-Hant', stageName); } catch { zh = undefined; }
       }
       const zhEntry = (slug: string) => zh?.modules.find((m) => m.slug === slug);
       // Students only get a Chinese module that has been reviewed; supervisors may preview one that has not.
@@ -79,13 +89,13 @@ export function useStageData(): StageState {
       const titleOf = (slug: string, enTitle: string) => (contentLocale[slug] === 'zh-Hant' ? zhEntry(slug)?.title ?? enTitle : enTitle);
       const fetchModule = async (slug: string, soft: boolean) => {
         if (contentLocale[slug] === 'zh-Hant') {
-          try { return await loadModule(slug, 'zh-Hant'); } catch (e) {
+          try { return await loadModule(slug, 'zh-Hant', stageName); } catch (e) {
             if (!soft) throw e;
             // A supervisor's preview of a Chinese module that is not shipped falls back to English.
             contentLocale[slug] = 'en';
           }
         }
-        return loadModule(slug, 'en');
+        return loadModule(slug, 'en', stageName);
       };
       const stageTitle = zh && zh.modules.length > 0 ? zh.title : stage.title;
       const [attempts, decisions, grants] = await Promise.all([
@@ -128,7 +138,7 @@ export function useStageData(): StageState {
       if (live) setState({ status: 'ready', data: { stage: { ...stage, title: stageTitle }, visible, contentLocale, bundles, grants, unlocked, attempts, decisions } });
     })().catch(() => live && setState({ status: 'error', reload }));
     return () => { live = false; };
-  }, [store, readGrants, isSupervisor, tick, reload, locationKey, locale]);
+  }, [stageName, store, readGrants, isSupervisor, tick, reload, locationKey, locale]);
 
   return state;
 }

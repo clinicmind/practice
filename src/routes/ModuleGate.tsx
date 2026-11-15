@@ -4,6 +4,7 @@ import type { ContentLocale } from '../content/client';
 import { useLocale, useT } from '../i18n';
 import type { Strings } from '../i18n/en';
 import { LEVELS, type Level, type ModuleBundle } from '../content/schema';
+import { useStageParam, modulePath, stagePath } from '../stages';
 import { unlockedLevels } from '../progress/rules';
 import type { Attempt, Decision } from '../progress/types';
 import { useStageData, type StageEntry } from '../useStageData';
@@ -16,6 +17,7 @@ export function lockedModuleNotice(entry: StageEntry, s: Strings): string {
 }
 
 interface GateValue {
+  stage: string;
   slug: string;
   bundle: ModuleBundle;
   /** The language the module content is actually in (English when the Chinese version is not ready). */
@@ -58,14 +60,16 @@ export function ErrorBlock({ message, onRetry }: { message: string; onRetry: () 
 export function ModuleGate({ children }: { children: ReactNode }) {
   const s = useT();
   const { slug = '' } = useParams();
+  const stage = useStageParam();
   const state = useStageData();
   if (state.status === 'loading') return <p>{s.common.loading}</p>;
+  if (state.status === 'notfound') return <NotFound />;
   if (state.status === 'error') return <ErrorBlock message={s.stage.loadError} onRetry={state.reload} />;
   const { data } = state;
   const entry = data.visible.find((v) => v.slug === slug);
   if (!entry) return <NotFound />;
   if (!data.unlocked.includes(slug)) {
-    return <Navigate to="/" replace state={{ notice: lockedModuleNotice(entry, s) }} />;
+    return <Navigate to={stagePath(stage)} replace state={{ notice: lockedModuleNotice(entry, s) }} />;
   }
   const bundle = data.bundles[slug];
   if (!bundle) {
@@ -75,13 +79,13 @@ export function ModuleGate({ children }: { children: ReactNode }) {
         <h1>{entry.title}</h1>
         <p><span className="badge">{s.stage.unreviewed}</span></p>
         <p>{s.stage.unreviewedNotShipped}</p>
-        <p><Link to="/">{s.notFound.home}</Link></p>
+        <p><Link to={stagePath(stage)}>{s.notFound.home}</Link></p>
       </div>
     );
   }
   const levels = unlockedLevels(data.attempts, bundle.drills, data.grants[slug] ?? []);
   return (
-    <GateContext.Provider value={{ slug, bundle, contentLocale: data.contentLocale[slug] ?? 'en', attempts: data.attempts, decisions: data.decisions, levels, unreviewed: !!entry.unreviewed }}>
+    <GateContext.Provider value={{ stage, slug, bundle, contentLocale: data.contentLocale[slug] ?? 'en', attempts: data.attempts, decisions: data.decisions, levels, unreviewed: !!entry.unreviewed }}>
       {children}
     </GateContext.Provider>
   );
@@ -91,11 +95,11 @@ export function ModuleGate({ children }: { children: ReactNode }) {
 export function LevelGate({ children }: { children: ReactNode }) {
   const s = useT();
   const { level = '' } = useParams();
-  const { slug, levels } = useGate();
+  const { stage, slug, levels } = useGate();
   if (!(LEVELS as readonly string[]).includes(level)) return <NotFound />;
   if (!levels.includes(level as Level)) {
     const prev = s.levels[LEVELS[LEVELS.indexOf(level as Level) - 1]];
-    return <Navigate to={`/m/${slug}`} replace state={{ notice: s.module.levelLockedReason(prev) }} />;
+    return <Navigate to={modulePath(stage, slug)} replace state={{ notice: s.module.levelLockedReason(prev) }} />;
   }
   return <>{children}</>;
 }
