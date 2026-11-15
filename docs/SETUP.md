@@ -30,8 +30,11 @@
    2. 在 Supabase 的 SQL Editor 執行（換成你的電郵和想顯示的名稱）：
       ```sql
       insert into profiles (id, role, display_name)
-      select id, 'supervisor', '你的顯示名稱' from auth.users where email = '你的電郵';
+      select id, 'supervisor', 'Supervisor' from auth.users order by created_at limit 1
+      on conflict (id) do update set role = 'supervisor';
+      select u.email, p.role, p.display_name from profiles p join auth.users u on u.id = p.id;
       ```
+      這段指令把**最早註冊的帳號**設為督導，不用修改任何字。執行前先開一個新的查詢分頁（SQL Editor 左上的「+」），分頁裡只貼這一段。結果表格應顯示你的電郵和 `supervisor`。顯示的不是你的電郵時，告訴接手的 session，不要自行再試。
    3. 重新整理網站，進入 `/supervisor`，建立班別，取得邀請碼。
 4. 把邀請碼和網址發給學生。學生登入後在 `/join` 輸入邀請碼。
 
