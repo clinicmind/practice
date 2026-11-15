@@ -193,6 +193,12 @@ export async function buildContent(opts: BuildOptions): Promise<void> {
 // CLI: `npm run content`. CONTENT_DIR / OUT_DIR / INCLUDE_UNREVIEWED=1 override defaults.
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href;
 if (isMain) {
+  // Printed in the deploy log so the project owner can see which mode a build produced.
+  // The Supabase variables are read at build time: they must be build variables, and a new build must run after they change.
+  const cloud = Boolean(process.env.VITE_SUPABASE_URL && process.env.VITE_SUPABASE_ANON_KEY);
+  console.log(cloud
+    ? '[mode] CLOUD: Supabase build variables found. The site will ask users to sign in.'
+    : '[mode] LOCAL: no Supabase build variables. The site will run without sign-in.');
   buildContent({
     contentDir: resolve(process.env.CONTENT_DIR ?? 'content'),
     outDir: resolve(process.env.OUT_DIR ?? 'public/content'),
