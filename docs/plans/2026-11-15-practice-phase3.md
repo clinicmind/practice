@@ -25,6 +25,12 @@ Spec 新增 §8.5。它改動 Task 3 和 Task 5，執行時以下列為準：
 - Task 3 Step 0（新增）：冒煙測試 OAuth `drive.file` 範圍能否建檔、讀檔、刪檔。不行就停下來問用戶。
 - 追加測試：`drive write fails → 502, nothing stored`；`db insert fails after drive write → drive file is deleted`；`get-report for another student's report → 404`；`get-report when the Drive file is gone → 410 and the page shows "file no longer exists"`；`delete removes both; a second delete is a no-op`；`refresh token never appears in any response or log`。
 
+## 進度更新（2026-11-15）
+
+- **Task 1 已完成**：`packages/deid/`，142 個測試。執行：`npx vitest run --root packages/deid`（已併入 `npm run check`）。介面比計畫多兩項：`scan(text, { only?, levels? })` 和 `findingKey(f)`。
+- 階段 2 覆核後新增了 `supabase/migrations/0003_hardening.sql`。所以本計畫的 migration 檔名順延：`0003_reports.sql` 改為 `0004_reports.sql`，`0004_retention.sql` 改為 `0005_retention.sql`。
+- 已知行為：8 位數而且以 2、3、5、6、7、9 開頭的數字（例如某些病歷號）會被 `phone` 規則判為 high。這是刻意從嚴。
+
 ## Global Constraints
 
 - 只接受貼上的純文字；不做檔案上傳。
