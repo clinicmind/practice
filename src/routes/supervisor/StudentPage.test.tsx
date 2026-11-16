@@ -145,6 +145,6 @@ describe('granting an unlock makes that level available to the student (rules la
     );
     renderCloud('/m/intake/drills/medium', createFakeBackend({ userId: BEA, db }));
     // Locked: sent back to the module page.
-    await waitFor(() => expect(spy.path).toBe('/m/intake'));
+    await waitFor(() => expect(spy.path).toBe('/s/foundations/m/intake'));
   });
 });

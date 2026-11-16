@@ -1,0 +1,12 @@
+slug: alliance
+title: Alliance (fixture)
+version: 1.0.0
+intro: Intro for Alliance (fixture).
+skills:
+  - reflection-of-feeling
+  - validation
+reflection_prompts:
+  - id: r1
+    text: What stood out for you in this module?
+  - id: r2
+    text: What will you try next?

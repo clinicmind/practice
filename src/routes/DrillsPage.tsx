@@ -10,12 +10,14 @@ import { useT } from '../i18n';
 import { loadDraft } from '../progress/drafts';
 import { itemMet } from '../progress/rules';
 import type { Attempt, NewAttempt } from '../progress/types';
+import { modulePath, useStageParam } from '../stages';
 import { useStore } from '../StoreContext';
 import { FallbackNotice, useGateOptional } from './ModuleGate';
 
 export function DrillsPage() {
   const s = useT();
   const { slug = '', level = '' } = useParams();
+  const stage = useStageParam();
   const store = useStore();
   const contentLocale = useGateOptional()?.contentLocale ?? 'en';
   const { signOut } = useAuth();
@@ -38,7 +40,7 @@ export function DrillsPage() {
   useEffect(() => {
     let live = true;
     setError(false);
-    Promise.all([loadModule(slug, contentLocale), store.listAttempts()])
+    Promise.all([loadModule(slug, contentLocale, stage), store.listAttempts()])
       .then(([b, a]) => {
         if (!live) return;
         setBundle(b);
@@ -53,7 +55,7 @@ export function DrillsPage() {
       })
       .catch(() => live && setError(true));
     return () => { live = false; };
-  }, [slug, level, store, reload, contentLocale]);
+  }, [stage, slug, level, store, reload, contentLocale]);
 
   const submit = useCallback(
     async (a: NewAttempt) => {
@@ -99,7 +101,7 @@ export function DrillsPage() {
             attempts={attempts.filter((a) => a.itemId === drill.id)}
             onSubmit={submit}
             getModel={async () => {
-              const models = await loadModels(slug, contentLocale);
+              const models = await loadModels(slug, contentLocale, stage);
               const m = models[drill.id];
               if (!m) throw new Error('missing model');
               return m;
@@ -111,7 +113,7 @@ export function DrillsPage() {
       ) : (
         <p>{s.drillsPage.levelDone}</p>
       )}
-      <p><Link to={`/m/${slug}`}>{s.drillsPage.backToModule}</Link></p>
+      <p><Link to={modulePath(stage, slug)}>{s.drillsPage.backToModule}</Link></p>
     </div>
   );
 }

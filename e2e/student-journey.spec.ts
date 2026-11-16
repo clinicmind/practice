@@ -105,7 +105,7 @@ test('deep links to locked content redirect with a reason (server fallback works
   await expect(page).toHaveURL(/\/m\/intake$/);
   await expect(page.getByRole('status')).toContainText(/pass medium first/i);
   await page.goto('/m/alliance');
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/s\/foundations$/);
   await expect(page.getByRole('status')).toContainText(/finish the intake.*walkthrough first/i);
   await page.goto('/nowhere/at/all');
   await expect(page.getByRole('heading', { name: /page not found/i })).toBeVisible();
@@ -191,4 +191,10 @@ test('walkthrough can be done with the keyboard only', async ({ page }) => {
   await tabTo(/submit response/i, 'button');
   await page.keyboard.press('Enter');
   await expect(page.getByText(/Goals note/)).toBeVisible();
+});
+
+test('an old bookmark /m/:slug still opens, on its new address', async ({ page }) => {
+  await page.goto('/m/intake/drills/easy');
+  await expect(page).toHaveURL(/\/s\/foundations\/m\/intake\/drills\/easy$/);
+  await expect(page.getByRole('heading', { name: /easy practice/i })).toBeVisible();
 });

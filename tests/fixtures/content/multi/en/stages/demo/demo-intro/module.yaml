@@ -1,0 +1,12 @@
+slug: demo-intro
+title: Demo intro (fixture)
+version: 1.0.0
+intro: Intro for Demo intro (fixture).
+skills:
+  - demo-skill-a
+  - demo-skill-b
+reflection_prompts:
+  - id: r1
+    text: What stood out for you in this module?
+  - id: r2
+    text: What will you try next?

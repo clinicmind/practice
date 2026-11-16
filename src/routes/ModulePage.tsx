@@ -3,12 +3,13 @@ import { LEVELS, isDecision } from '../content/schema';
 import { useT } from '../i18n';
 import { itemMet, levelPassed } from '../progress/rules';
 import { Meter } from '../components/Meter';
+import { modulePath } from '../stages';
 import { FallbackNotice, useGate } from './ModuleGate';
 
 export function ModulePage() {
   const s = useT();
   const t = s.module;
-  const { slug, bundle, attempts, decisions, levels, unreviewed } = useGate();
+  const { stage, slug, bundle, attempts, decisions, levels, unreviewed } = useGate();
   const notice = (useLocation().state as { notice?: string } | null)?.notice;
   return (
     <div>
@@ -26,7 +27,7 @@ export function ModulePage() {
             const done = ds.every((d) => decisions.some((x) => x.sessionId === s.id && x.decisionId === d.id));
             return (
               <li key={s.id}>
-                <Link to={`/m/${slug}/walkthrough/${s.id}`}>{t.sessionLabel(s.title, done)}</Link>
+                <Link to={modulePath(stage, slug, 'walkthrough', s.id)}>{t.sessionLabel(s.title, done)}</Link>
               </li>
             );
           })}
@@ -45,7 +46,7 @@ export function ModulePage() {
               <li key={lv} className={open ? 'level-open' : 'level-locked'}>
                 <Meter met={met} total={inLevel.length} />
                 {open ? (
-                  <Link className="level-name" to={`/m/${slug}/drills/${lv}`}>{t.levelLine(s.levels[lv])}</Link>
+                  <Link className="level-name" to={modulePath(stage, slug, 'drills', lv)}>{t.levelLine(s.levels[lv])}</Link>
                 ) : (
                   <span className="level-name">{t.levelLine(s.levels[lv])}</span>
                 )}{' '}
@@ -65,7 +66,7 @@ export function ModulePage() {
       </section>
 
       <p className="reflect-link">
-        <Link to={`/m/${slug}/reflect`}>{t.reflectLink}</Link>
+        <Link to={modulePath(stage, slug, 'reflect')}>{t.reflectLink}</Link>
       </p>
     </div>
   );

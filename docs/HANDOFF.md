@@ -13,12 +13,13 @@
 | 基礎階段 8 個模組，英文和繁中 | 完成，兩種語言都已審核登記 | 建置腳本逐項對照兩種語言的結構 |
 | 語言切換（英文／繁中） | 完成 | 單元測試＋端到端 |
 | 階段 2：登入、雲端進度、督導後台 | 程式完成，已上線 | 權限規則只在行程內 Postgres 測過，見第 3 節 |
+| 多階段支援（建置、路由、階段解鎖、階段清單） | 程式完成，在分支 `claude/multi-stage`，**尚未合併、尚未部署**；`0004_cohort_stages.sql` 尚未套用到正式專案 | 單元測試＋端到端＋行程內 Postgres 權限測試 |
 | 階段 3 Task 1：去識別化掃描器 | 完成 | 142 個測試 |
 | 階段 3 Task 2–6：報告上傳、Drive、評閱 | 未開始 | — |
 | 階段 4–6：AI 回饋、EFT、DBT | 設計規格已定。EFT 和 DBT 的貫穿個案有草稿（`content/CLIENT_EFT.md`、`content/CLIENT_DBT.md`），待擁有人確認 | — |
 | 多階段支援（階段 5、6 的前置） | **進行中**：子 session `session_01SLv2v8TSu1TbZNWdNJLTun`，分支 `claude/multi-stage`。尚未覆核，尚未合併 | — |
 
-最後一次完整測試：`npm run check` 309＋142 個通過；`npm run e2e` 24 個通過、4 個跳過。
+最後一次完整測試（分支 `claude/multi-stage`）：`npm run check` 381＋142 個通過；`npm run e2e` 25 個通過、4 個跳過（同一批需要服務金鑰的測試）。
 
 ## 2. 擁有人還沒做完的事
 
@@ -78,6 +79,15 @@
 - 字型自帶（fontsource），因為安全標頭只容許載入本站資源。中文字型按字元分割成數百個小檔，只會下載用到的部分。
 - 內容的 YAML 用 `>-` 折行時，中文行與行之間會多出空格。繁中的長文字寫成單行字串。
 
+**多階段（分支 `claude/multi-stage`）**
+- 內容在 `content/<語言>/stages/<階段>/`。建置輸出 `public/content/<語言>/stages.json`（階段清單，foundations 在前）和各階段的 `index.json`。
+- 網址：`/s/:stage`、`/s/:stage/m/:slug/...`。舊的 `/m/:slug/...` 轉到 `/s/foundations/m/:slug/...`。題目 id 沒變，進度照常有效（有測試）。
+- 非 foundations 階段的模組 slug 必須以 `<階段>-` 開頭；各階段的 slug 和技能代碼不可重複（建置會報錯）。
+- 首頁：只有一個階段時就是 foundations 的頁面（和以前一樣）；多於一個時顯示階段清單。學生只會看到至少有一個已審核模組的階段，所以未審核的新階段不會令介面改變。
+- 階段解鎖：表 `cohort_stages(cohort_id, stage)`，有一列就是開放。foundations 不用列。本機模式和督導都全部開放。讀取失敗時顯示錯誤，不會當成開放。
+- 「一位個案，十六次會談，八個階段」那句 lede 只在 foundations 顯示。這句裡的「階段」其實指模組，和新的「階段」（course stage）用詞重疊。改動這句要先問擁有人（已審核的介面文字）。
+- 測試夾具 `tests/fixtures/content/multi/`（foundations＋`demo`）由 `npx tsx tests/fixtures/generate.ts` 產生。這個指令會重寫全部夾具；執行後看 `git status` 確認舊夾具沒有變動。
+
 **環境**
 - 這個雲端環境的網路是白名單制。名為「ClinicMind」的環境已開放正式的 Supabase 網址。其他網址被擋時，用環境工具提出申請。
 - Playwright 和 Chromium 已預裝，直接用。
@@ -93,6 +103,10 @@
 
 ## 6. 下一步（按次序）
 
+0. **多階段分支收尾。** 擁有人看過後合併 `claude/multi-stage`。合併前先請擁有人**只貼 `supabase/migrations/0004_cohort_stages.sql`** 到 Supabase SQL Editor（正式專案已有 0001–0003）。沒套用的話，正式網站讀不到 `cohort_stages`，學生打開首頁會看到載入錯誤。目前只有一個階段，所以程式不會讀這張表（有測試），先套用也可以，晚點套用也不會壞。把上面那句「學生打開首頁會看到載入錯誤」理解為：有第二個階段上線之後才會發生。
+   - 還沒有督導介面可以開放或關閉階段。表的權限已測試（督導可為自己的班新增和刪除，學生只讀），但按鈕還沒做。階段 5、6 上線前要補。
+   - 督導後台（`loadCourse`、班級頁、學生頁）仍然只讀 foundations。
+   - 階段 4–6 的規格第 4 項：新階段的技能名稱 i18n 鍵尚未存在（現在技能名稱不走 i18n），不用處理，除非日後加進去。
 1. **確認雲端模式可用。** 問擁有人第 2 節的三件事。有問題先修。
 2. **階段 3 Task 2–6。** 計畫在 `docs/plans/2026-11-15-practice-phase3.md`，注意頂部的「修訂」和「進度更新」。動工前有兩個未解決的問題要先處理：
    - Edge Function 怎樣部署。擁有人不會用命令列。先確認能否在 Supabase 介面的 Edge Function 編輯器貼上程式碼；每個函式要做成單一檔案才可行。

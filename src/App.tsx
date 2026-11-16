@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext';
 import { RequireAuth, RequireSupervisor } from './auth/AuthGate';
 import type { Backend } from './auth/supabase';
@@ -7,6 +7,7 @@ import { LocaleProvider } from './i18n';
 import type { ProgressStore } from './progress/types';
 import { AuthCallback } from './routes/AuthCallback';
 import { DrillsPage } from './routes/DrillsPage';
+import { HomePage } from './routes/HomePage';
 import { JoinPage } from './routes/JoinPage';
 import { LoginPage } from './routes/LoginPage';
 import { LevelGate, ModuleGate } from './routes/ModuleGate';
@@ -17,6 +18,15 @@ import { StagePage } from './routes/StagePage';
 import { CohortPage } from './routes/supervisor/CohortPage';
 import { StudentPage } from './routes/supervisor/StudentPage';
 import { WalkthroughPage } from './routes/WalkthroughPage';
+import { DEFAULT_STAGE } from './stages';
+
+/** Old bookmarks: /m/:slug/... lived before stages existed, and all of it was foundations. */
+function LegacyModuleRedirect() {
+  const { slug = '', '*': rest = '' } = useParams();
+  const { search, hash, state } = useLocation();
+  const tail = rest ? `/${rest}` : '';
+  return <Navigate to={`/s/${DEFAULT_STAGE}/m/${slug}${tail}${search}${hash}`} replace state={state} />;
+}
 
 /**
  * `store` is the local (browser) store. `backend` is the Supabase client, or
@@ -35,11 +45,13 @@ export function App({ store, wasReset, backend = null, storage = globalThis.loca
           <Route path="/join" element={<JoinPage />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route element={<RequireAuth store={store} backend={backend} storage={storage} />}>
-            <Route path="/" element={<StagePage />} />
-            <Route path="/m/:slug" element={<ModuleGate><ModulePage /></ModuleGate>} />
-            <Route path="/m/:slug/walkthrough/:sessionId" element={<ModuleGate><WalkthroughPage /></ModuleGate>} />
-            <Route path="/m/:slug/drills/:level" element={<ModuleGate><LevelGate><DrillsPage /></LevelGate></ModuleGate>} />
-            <Route path="/m/:slug/reflect" element={<ModuleGate><ReflectPage /></ModuleGate>} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/s/:stage" element={<StagePage />} />
+            <Route path="/s/:stage/m/:slug" element={<ModuleGate><ModulePage /></ModuleGate>} />
+            <Route path="/s/:stage/m/:slug/walkthrough/:sessionId" element={<ModuleGate><WalkthroughPage /></ModuleGate>} />
+            <Route path="/s/:stage/m/:slug/drills/:level" element={<ModuleGate><LevelGate><DrillsPage /></LevelGate></ModuleGate>} />
+            <Route path="/s/:stage/m/:slug/reflect" element={<ModuleGate><ReflectPage /></ModuleGate>} />
+            <Route path="/m/:slug/*" element={<LegacyModuleRedirect />} />
             <Route path="/supervisor" element={<RequireSupervisor><CohortPage /></RequireSupervisor>} />
             <Route path="/supervisor/students/:id" element={<RequireSupervisor><StudentPage /></RequireSupervisor>} />
             <Route path="*" element={<NotFound />} />

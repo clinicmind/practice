@@ -208,3 +208,102 @@ describe('buildContent zh-Hant', () => {
     expect(readJson('en/foundations/index.json').modules).toHaveLength(2);
   });
 });
+
+describe('buildContent multi-stage', () => {
+  const MULTI = join(__dirname, '..', 'tests', 'fixtures', 'content', 'multi');
+  const buildBoth = async (dir = MULTI) => {
+    await buildContent({ contentDir: dir, outDir, locale: 'en' });
+    await buildContent({ contentDir: dir, outDir, locale: 'zh-Hant' });
+  };
+  function copyMulti(edit: (dir: string) => void): string {
+    const dir = mkdtempSync(join(tmpdir(), 'fxmulti-'));
+    cpSync(MULTI, dir, { recursive: true });
+    edit(dir);
+    return dir;
+  }
+  const editYaml = (file: string, fn: (d: any) => any) => {
+    const data = parse(readFileSync(file, 'utf8'));
+    writeFileSync(file, stringify(fn(data) ?? data));
+  };
+
+  test('every stage directory gets its own index and modules, in both languages', async () => {
+    await buildBoth();
+    expect(readJson('en/foundations/index.json').modules.map((m: any) => m.slug)).toEqual(['intake', 'alliance']);
+    expect(readJson('en/demo/index.json')).toMatchObject({ stage: 'demo', title: 'Demo stage (fixture)' });
+    expect(readJson('en/demo/index.json').modules).toEqual([{ slug: 'demo-intro', title: 'Demo intro (fixture)', reviewed: true }]);
+    expect(existsSync(join(outDir, 'en/demo/demo-intro/module.json'))).toBe(true);
+    expect(existsSync(join(outDir, 'en/demo/demo-intro/models.json'))).toBe(true);
+    expect(readJson('zh-Hant/demo/index.json').title).toBe('示範階段（測試）');
+    expect(existsSync(join(outDir, 'zh-Hant/demo/demo-intro/module.json'))).toBe(true);
+  });
+
+  test('stages.json lists the stages: foundations first, then the others by name', async () => {
+    await buildBoth();
+    expect(readJson('en/stages.json')).toEqual([
+      { stage: 'foundations', title: 'Foundations (fixture)' },
+      { stage: 'demo', title: 'Demo stage (fixture)' },
+    ]);
+    expect(readJson('zh-Hant/stages.json').map((s: any) => s.stage)).toEqual(['foundations', 'demo']);
+  });
+
+  test('a content tree with only foundations still lists one stage', async () => {
+    await buildContent({ contentDir: OK, outDir, locale: 'en' });
+    expect(readJson('en/stages.json').map((s: any) => s.stage)).toEqual(['foundations']);
+  });
+
+  test('an empty content tree still lists foundations', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'empty-'));
+    await buildContent({ contentDir: dir, outDir, locale: 'en' });
+    expect(readJson('en/stages.json').map((s: any) => s.stage)).toEqual(['foundations']);
+  });
+
+  test('zh-Hant lists the English stages even when it has no tree for one', async () => {
+    const dir = copyMulti((d) => rmSync(join(d, 'zh-Hant', 'stages', 'demo'), { recursive: true }));
+    await buildContent({ contentDir: dir, outDir, locale: 'zh-Hant' });
+    expect(readJson('zh-Hant/stages.json').map((s: any) => s.stage)).toEqual(['foundations', 'demo']);
+    expect(readJson('zh-Hant/demo/index.json').modules).toEqual([]);
+  });
+
+  test('a module slug in a non-foundations stage must carry the stage prefix', async () => {
+    const dir = copyMulti((d) => {
+      editYaml(join(d, 'en/stages/demo/stage.yaml'), (s) => ({ ...s, modules: ['intro'] }));
+      cpSync(join(d, 'en/stages/demo/demo-intro'), join(d, 'en/stages/demo/intro'), { recursive: true });
+      rmSync(join(d, 'en/stages/demo/demo-intro'), { recursive: true });
+    });
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/module "intro".*must start with "demo-"/);
+  });
+
+  test('the same module slug in two stages is rejected', async () => {
+    const dir = copyMulti((d) => {
+      // a foundations module named like the demo module
+      editYaml(join(d, 'en/stages/demo/stage.yaml'), (s) => s);
+      cpSync(join(d, 'en/stages/foundations/intake'), join(d, 'en/stages/demo/intake'), { recursive: true });
+      editYaml(join(d, 'en/stages/demo/stage.yaml'), (s) => ({ ...s, modules: [...s.modules, 'intake'] }));
+    });
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/module "intake" is used in more than one stage/);
+  });
+
+  test('a skill code reused in another stage is rejected', async () => {
+    const dir = copyMulti((d) => {
+      const f = join(d, 'en/stages/demo/demo-intro');
+      editYaml(join(f, 'module.yaml'), (m) => ({ ...m, skills: ['open-question', 'demo-skill-b'] }));
+      editYaml(join(f, 'drills.yaml'), (ds) => { for (const x of ds) if (x.skill === 'demo-skill-a') x.skill = 'open-question'; });
+    });
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/skill "open-question" is used in stages "demo" and "foundations"/);
+  });
+
+  test('stage.yaml must name its own directory', async () => {
+    const dir = copyMulti((d) => editYaml(join(d, 'en/stages/demo/stage.yaml'), (s) => ({ ...s, stage: 'other' })));
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/demo\/stage\.yaml: stage "other" does not match directory "demo"/);
+  });
+
+  test('a stage that exists only in zh-Hant is rejected', async () => {
+    const dir = copyMulti((d) => rmSync(join(d, 'en', 'stages', 'demo'), { recursive: true }));
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'zh-Hant' })).rejects.toThrow(/stage "demo" has no English counterpart/);
+  });
+
+  test('an error in one stage names the stage', async () => {
+    const dir = copyMulti((d) => editYaml(join(d, 'en/stages/demo/demo-intro/drills.yaml'), (ds) => ds.slice(1)));
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/\[demo\].*demo-intro/s);
+  });
+});

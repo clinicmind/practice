@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { ContentLoadError, loadModels, loadModule, loadStage, resetContentCache } from './client';
+import { ContentLoadError, loadModels, loadModule, loadStage, loadStages, resetContentCache } from './client';
 
 const json = (body: unknown, status = 200) =>
   Promise.resolve(new Response(JSON.stringify(body), { status }));
@@ -52,6 +52,31 @@ describe('content client', () => {
   });
   test('slug is not allowed to escape the content path', async () => {
     await expect(loadModule('../x')).rejects.toBeInstanceOf(ContentLoadError);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  test('a stage argument selects the stage folder; the default is foundations', async () => {
+    fetchMock.mockImplementation(() => json({ stage: 'demo', title: 'D', modules: [] }));
+    await loadStage('en', 'demo');
+    await loadStage('zh-Hant', 'demo');
+    expect(urls()[0]).toMatch(/content\/en\/demo\/index\.json$/);
+    expect(urls()[1]).toMatch(/content\/zh-Hant\/demo\/index\.json$/);
+  });
+  test('loadModule and loadModels take the stage too, and are cached per stage', async () => {
+    fetchMock.mockImplementation(() => json({ 'x-e01': { model_response: 'm', why: 'w', avoid: 'a' } }));
+    await loadModels('demo-intro', 'en', 'demo');
+    await loadModels('demo-intro', 'en', 'demo');
+    expect(urls()).toHaveLength(1);
+    expect(urls()[0]).toMatch(/content\/en\/demo\/demo-intro\/models\.json$/);
+  });
+  test('loadStages reads stages.json', async () => {
+    fetchMock.mockImplementation(() => json([{ stage: 'foundations', title: 'F' }, { stage: 'demo', title: 'D' }]));
+    await expect(loadStages('en')).resolves.toHaveLength(2);
+    expect(urls()[0]).toMatch(/content\/en\/stages\.json$/);
+  });
+  test('a stage name that is not a plain slug is refused before any request', async () => {
+    await expect(loadStage('en', '../x')).rejects.toBeInstanceOf(ContentLoadError);
+    await expect(loadModule('intake', 'en', 'a/b')).rejects.toBeInstanceOf(ContentLoadError);
     expect(fetchMock).not.toHaveBeenCalled();
   });
 });

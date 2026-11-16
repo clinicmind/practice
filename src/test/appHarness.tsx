@@ -23,7 +23,7 @@ export class Mem implements Storage {
 const FIXTURES = join(__dirname, '..', '..', 'tests', 'fixtures', 'content');
 
 /** Build a fixture course the way `npm run content` would. */
-export async function buildFixture(name: 'ok' | 'ok-reviewed', opts: { includeUnreviewed?: boolean } = {}): Promise<string> {
+export async function buildFixture(name: 'ok' | 'ok-reviewed' | 'multi', opts: { includeUnreviewed?: boolean } = {}): Promise<string> {
   const out = mkdtempSync(join(tmpdir(), `fx-${name}-`));
   for (const locale of ['en', 'zh-Hant'] as const) {
     await buildContent({ contentDir: join(FIXTURES, name), outDir: out, locale, includeUnreviewed: opts.includeUnreviewed });
@@ -43,7 +43,7 @@ export function serve(dir: string) {
 }
 
 export const spy = { path: '' };
-function PathSpy() { spy.path = useLocation().pathname; return null; }
+export function PathSpy() { spy.path = useLocation().pathname; return null; }
 
 export function renderCloud(url: string, fake: FakeBackend) {
   const storage = new Mem();

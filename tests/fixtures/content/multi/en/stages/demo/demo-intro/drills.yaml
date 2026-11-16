@@ -1,0 +1,270 @@
+- id: demo-intro-e01
+  level: easy
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-e01.
+  client: Fixture client statement for demo-intro-e01.
+  criteria:
+    - demo-intro-e01 criterion one
+    - demo-intro-e01 criterion two
+    - demo-intro-e01 criterion three
+- id: demo-intro-e02
+  level: easy
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-e02.
+  client: Fixture client statement for demo-intro-e02.
+  criteria:
+    - demo-intro-e02 criterion one
+    - demo-intro-e02 criterion two
+    - demo-intro-e02 criterion three
+- id: demo-intro-e03
+  level: easy
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-e03.
+  client: Fixture client statement for demo-intro-e03.
+  criteria:
+    - demo-intro-e03 criterion one
+    - demo-intro-e03 criterion two
+    - demo-intro-e03 criterion three
+- id: demo-intro-e04
+  level: easy
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-e04.
+  client: Fixture client statement for demo-intro-e04.
+  criteria:
+    - demo-intro-e04 criterion one
+    - demo-intro-e04 criterion two
+    - demo-intro-e04 criterion three
+- id: demo-intro-e05
+  level: easy
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-e05.
+  client: Fixture client statement for demo-intro-e05.
+  criteria:
+    - demo-intro-e05 criterion one
+    - demo-intro-e05 criterion two
+    - demo-intro-e05 criterion three
+- id: demo-intro-e06
+  level: easy
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-e06.
+  client: Fixture client statement for demo-intro-e06.
+  criteria:
+    - demo-intro-e06 criterion one
+    - demo-intro-e06 criterion two
+    - demo-intro-e06 criterion three
+- id: demo-intro-e07
+  level: easy
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-e07.
+  client: Fixture client statement for demo-intro-e07.
+  criteria:
+    - demo-intro-e07 criterion one
+    - demo-intro-e07 criterion two
+    - demo-intro-e07 criterion three
+- id: demo-intro-e08
+  level: easy
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-e08.
+  client: Fixture client statement for demo-intro-e08.
+  criteria:
+    - demo-intro-e08 criterion one
+    - demo-intro-e08 criterion two
+    - demo-intro-e08 criterion three
+- id: demo-intro-e09
+  level: easy
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-e09.
+  client: Fixture client statement for demo-intro-e09.
+  criteria:
+    - demo-intro-e09 criterion one
+    - demo-intro-e09 criterion two
+    - demo-intro-e09 criterion three
+- id: demo-intro-e10
+  level: easy
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-e10.
+  client: Fixture client statement for demo-intro-e10.
+  criteria:
+    - demo-intro-e10 criterion one
+    - demo-intro-e10 criterion two
+    - demo-intro-e10 criterion three
+- id: demo-intro-m01
+  level: medium
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-m01.
+  client: Fixture client statement for demo-intro-m01.
+  criteria:
+    - demo-intro-m01 criterion one
+    - demo-intro-m01 criterion two
+    - demo-intro-m01 criterion three
+- id: demo-intro-m02
+  level: medium
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-m02.
+  client: Fixture client statement for demo-intro-m02.
+  criteria:
+    - demo-intro-m02 criterion one
+    - demo-intro-m02 criterion two
+    - demo-intro-m02 criterion three
+- id: demo-intro-m03
+  level: medium
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-m03.
+  client: Fixture client statement for demo-intro-m03.
+  criteria:
+    - demo-intro-m03 criterion one
+    - demo-intro-m03 criterion two
+    - demo-intro-m03 criterion three
+- id: demo-intro-m04
+  level: medium
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-m04.
+  client: Fixture client statement for demo-intro-m04.
+  criteria:
+    - demo-intro-m04 criterion one
+    - demo-intro-m04 criterion two
+    - demo-intro-m04 criterion three
+- id: demo-intro-m05
+  level: medium
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-m05.
+  client: Fixture client statement for demo-intro-m05.
+  criteria:
+    - demo-intro-m05 criterion one
+    - demo-intro-m05 criterion two
+    - demo-intro-m05 criterion three
+- id: demo-intro-m06
+  level: medium
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-m06.
+  client: Fixture client statement for demo-intro-m06.
+  criteria:
+    - demo-intro-m06 criterion one
+    - demo-intro-m06 criterion two
+    - demo-intro-m06 criterion three
+- id: demo-intro-m07
+  level: medium
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-m07.
+  client: Fixture client statement for demo-intro-m07.
+  criteria:
+    - demo-intro-m07 criterion one
+    - demo-intro-m07 criterion two
+    - demo-intro-m07 criterion three
+- id: demo-intro-m08
+  level: medium
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-m08.
+  client: Fixture client statement for demo-intro-m08.
+  criteria:
+    - demo-intro-m08 criterion one
+    - demo-intro-m08 criterion two
+    - demo-intro-m08 criterion three
+- id: demo-intro-m09
+  level: medium
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-m09.
+  client: Fixture client statement for demo-intro-m09.
+  criteria:
+    - demo-intro-m09 criterion one
+    - demo-intro-m09 criterion two
+    - demo-intro-m09 criterion three
+- id: demo-intro-m10
+  level: medium
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-m10.
+  client: Fixture client statement for demo-intro-m10.
+  criteria:
+    - demo-intro-m10 criterion one
+    - demo-intro-m10 criterion two
+    - demo-intro-m10 criterion three
+- id: demo-intro-h01
+  level: hard
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-h01.
+  client: Fixture client statement for demo-intro-h01.
+  criteria:
+    - demo-intro-h01 criterion one
+    - demo-intro-h01 criterion two
+    - demo-intro-h01 criterion three
+- id: demo-intro-h02
+  level: hard
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-h02.
+  client: Fixture client statement for demo-intro-h02.
+  criteria:
+    - demo-intro-h02 criterion one
+    - demo-intro-h02 criterion two
+    - demo-intro-h02 criterion three
+- id: demo-intro-h03
+  level: hard
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-h03.
+  client: Fixture client statement for demo-intro-h03.
+  criteria:
+    - demo-intro-h03 criterion one
+    - demo-intro-h03 criterion two
+    - demo-intro-h03 criterion three
+- id: demo-intro-h04
+  level: hard
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-h04.
+  client: Fixture client statement for demo-intro-h04.
+  criteria:
+    - demo-intro-h04 criterion one
+    - demo-intro-h04 criterion two
+    - demo-intro-h04 criterion three
+- id: demo-intro-h05
+  level: hard
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-h05.
+  client: Fixture client statement for demo-intro-h05.
+  criteria:
+    - demo-intro-h05 criterion one
+    - demo-intro-h05 criterion two
+    - demo-intro-h05 criterion three
+- id: demo-intro-h06
+  level: hard
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-h06.
+  client: Fixture client statement for demo-intro-h06.
+  criteria:
+    - demo-intro-h06 criterion one
+    - demo-intro-h06 criterion two
+    - demo-intro-h06 criterion three
+- id: demo-intro-h07
+  level: hard
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-h07.
+  client: Fixture client statement for demo-intro-h07.
+  criteria:
+    - demo-intro-h07 criterion one
+    - demo-intro-h07 criterion two
+    - demo-intro-h07 criterion three
+- id: demo-intro-h08
+  level: hard
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-h08.
+  client: Fixture client statement for demo-intro-h08.
+  criteria:
+    - demo-intro-h08 criterion one
+    - demo-intro-h08 criterion two
+    - demo-intro-h08 criterion three
+- id: demo-intro-h09
+  level: hard
+  skill: demo-skill-b
+  context: Fixture context for demo-intro-h09.
+  client: Fixture client statement for demo-intro-h09.
+  criteria:
+    - demo-intro-h09 criterion one
+    - demo-intro-h09 criterion two
+    - demo-intro-h09 criterion three
+- id: demo-intro-h10
+  level: hard
+  skill: demo-skill-a
+  context: Fixture context for demo-intro-h10.
+  client: Fixture client statement for demo-intro-h10.
+  criteria:
+    - demo-intro-h10 criterion one
+    - demo-intro-h10 criterion two
+    - demo-intro-h10 criterion three

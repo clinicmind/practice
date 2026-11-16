@@ -1,0 +1,4 @@
+stage: demo
+title: 示範階段（測試）
+modules:
+  - demo-intro

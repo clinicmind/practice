@@ -15,6 +15,10 @@ export const FIXTURE_MODULES: FixtureModule[] = [
   { slug: 'alliance', title: 'Alliance (fixture)', skills: ['reflection-of-feeling', 'validation'] },
 ];
 
+/** A second stage with one module, for multi-stage tests. Slug and skills carry the stage prefix, as the build requires. */
+export const DEMO_STAGE = 'demo';
+export const DEMO_MODULE: FixtureModule = { slug: 'demo-intro', title: 'Demo intro (fixture)', skills: ['demo-skill-a', 'demo-skill-b'] };
+
 export const FIXTURE_VERSION = '1.0.0';
 const LEVEL_CODE = { easy: 'e', medium: 'm', hard: 'h' } as const;
 
@@ -186,7 +190,12 @@ export function writeModule(stage: string, m: FixtureModule, loc: FixtureLocale)
  * Writes a complete, valid content tree to `dir`. `reviewed` = English slugs registered in REVIEW.md.
  * `zh` = slugs that also get a zh-Hant module; `zhReviewed` = the subset registered as reviewed in zh-Hant.
  */
-export function writeFixture(dir: string, reviewed: string[], zh: { present: string[]; reviewed: string[] } = { present: [], reviewed: [] }) {
+export function writeFixture(
+  dir: string,
+  reviewed: string[],
+  zh: { present: string[]; reviewed: string[] } = { present: [], reviewed: [] },
+  opts: { demoStage?: boolean } = {},
+) {
   const stage = join(dir, 'en', 'stages', 'foundations');
   w(join(stage, 'stage.yaml'), {
     stage: 'foundations',
@@ -198,6 +207,16 @@ export function writeFixture(dir: string, reviewed: string[], zh: { present: str
     const zhStage = join(dir, 'zh-Hant', 'stages', 'foundations');
     w(join(zhStage, 'stage.yaml'), { stage: 'foundations', title: '基礎（測試）', modules: zh.present });
     for (const m of FIXTURE_MODULES.filter((x) => zh.present.includes(x.slug))) writeModule(zhStage, m, 'zh-Hant');
+  }
+  if (opts.demoStage) {
+    const enDemo = join(dir, 'en', 'stages', DEMO_STAGE);
+    w(join(enDemo, 'stage.yaml'), { stage: DEMO_STAGE, title: 'Demo stage (fixture)', modules: [DEMO_MODULE.slug] });
+    writeModule(enDemo, DEMO_MODULE, 'en');
+    const zhDemo = join(dir, 'zh-Hant', 'stages', DEMO_STAGE);
+    w(join(zhDemo, 'stage.yaml'), { stage: DEMO_STAGE, title: '示範階段（測試）', modules: [DEMO_MODULE.slug] });
+    writeModule(zhDemo, DEMO_MODULE, 'zh-Hant');
+    reviewed = [...reviewed, DEMO_MODULE.slug];
+    zh = { ...zh, reviewed: [...zh.reviewed, DEMO_MODULE.slug] };
   }
   const rows = [
     ...reviewed.map((s) => `| ${s} | en | ${FIXTURE_VERSION} | 2026-01-01 |`),
