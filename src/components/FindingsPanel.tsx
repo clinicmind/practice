@@ -1,7 +1,8 @@
 import { findingKey, type Finding, type Resolution } from '../../packages/deid/src';
 import { useT } from '../i18n';
 
-/** Lists what the scanner found. It never shows a matched text of its own: the student reads it in the text box. */
+/** Lists what the scanner found. Each finding quotes the matched text so the student can see it without counting characters.
+ *  The scan runs only in the student's browser; the quote is never sent or stored (the summary holds counts only). */
 export function FindingsPanel({ findings, resolutions, pending, onLocate, onResolve, onUndo }: {
   findings: Finding[];
   resolutions: Record<string, Resolution>;
@@ -28,6 +29,7 @@ export function FindingsPanel({ findings, resolutions, pending, onLocate, onReso
                 <div className="finding-head">
                   <strong>{s.rules[f.rule] ?? f.rule}</strong>{' '}
                   <span className={`badge level-${f.level}`}>{s.level[f.level]}</span>{' '}
+                  <q className="finding-match">{f.match}</q>{' '}
                   <span className="muted">{s.findings.position(f.start + 1, f.end)}</span>
                 </div>
                 <p className="finding-tip">{s.suggestions[f.rule]}</p>

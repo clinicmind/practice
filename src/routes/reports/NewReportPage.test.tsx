@@ -56,6 +56,14 @@ describe('new report', () => {
     expect(document.activeElement).toBe(body());
   });
 
+  test('each finding quotes the matched text, so the student does not have to count characters', async () => {
+    const user = userEvent.setup();
+    await toStep2(user);
+    await write(user, CLEAN + ' Mr Chan came late.');
+    const item = (await screen.findByText(s.rules['title-name'])).closest('li')!;
+    expect(within(item).getByText('Mr Chan').tagName).toBe('Q');
+  });
+
   test('high finding has no "not identifying" button', async () => {
     const user = userEvent.setup();
     await toStep2(user);

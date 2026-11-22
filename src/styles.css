@@ -204,6 +204,8 @@ html[lang='zh-Hant'] .client-line { font-weight: 700; line-height: 1.45; }
 .finding.low { border-left-color: var(--line); }
 .finding.done { background: var(--pine-tint); border-left-color: var(--pine); }
 .finding-tip { margin: 0.3rem 0 0.5rem; }
+.finding-match { font-family: var(--serif); font-size: 1.05rem; quotes: '「' '」'; }
+html[lang='en'] .finding-match { quotes: '\201C' '\201D'; }
 .finding-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .badge.level-high { border-color: var(--err); color: var(--err); }
 .badge.level-medium { border-color: transparent; background: var(--ochre-tint); color: var(--ochre-ink); }
