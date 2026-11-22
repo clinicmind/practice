@@ -209,6 +209,18 @@ const enStrings = {
     criterionN: (n: number) => `Criterion ${n}`,
     optionLabel: (id: string) => `option ${id}`,
   },
+  stageAdmin: {
+    heading: 'Stages',
+    intro: 'Open a stage to let this cohort start it. Foundations is always open.',
+    onlyFoundations: 'There is only the Foundations stage right now, so there is nothing to open.',
+    toggleLabel: (stage: string) => `Open ${stage} to this cohort`,
+    unreviewed: 'Unreviewed: students cannot see it yet',
+    loading: 'Loading stages…',
+    loadError: 'Could not load which stages are open. Check your connection and try again.',
+    saveError: 'Could not save that change. Check your connection and try again.',
+    needsMigration:
+      'Stages cannot be opened yet. The project owner needs to apply the database update 0004 (cohort_stages) in Supabase. The rest of this page works as usual.',
+  },
   notFound: {
     heading: 'Page not found',
     body: 'We could not find that page.',

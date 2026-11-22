@@ -14,6 +14,8 @@ export interface FakeDb {
   networkDown: boolean;
   /** Reads of these tables fail as network errors. */
   failReads: Set<string>;
+  /** Every request to these tables fails as Supabase does for a table that was never created (PGRST205). */
+  missingTables: Set<string>;
   authExpired: boolean;
   /** Let n more writes succeed, then fail every write as a network error until reset. */
   failWritesAfter(n: number): void;
@@ -30,6 +32,7 @@ export function createFakeDb(): FakeDb {
     tables: { profiles: [], cohorts: [], attempts: [], decisions: [], reflections: [], unlocks: [], audit_log: [] },
     networkDown: false,
     failReads: new Set<string>(),
+    missingTables: new Set<string>(),
     authExpired: false,
     writes: 0,
     reads: [],
@@ -41,10 +44,11 @@ export function createFakeDb(): FakeDb {
 }
 
 const NETWORK: Res = { data: null, status: 0, error: { message: 'TypeError: Failed to fetch', code: '', details: '', hint: '' } };
+const MISSING: Res = { data: null, status: 404, error: { message: "Could not find the table 'public.cohort_stages' in the schema cache", code: 'PGRST205', details: '', hint: '' } };
 const EXPIRED: Res = { data: null, status: 401, error: { message: 'JWT expired', code: 'PGRST301', details: '', hint: '' } };
 
 class Query implements PromiseLike<Res> {
-  private op: 'select' | 'upsert' = 'select';
+  private op: 'select' | 'upsert' | 'insert' | 'delete' = 'select';
   private rows: Row[] = [];
   private opts: { onConflict?: string; ignoreDuplicates?: boolean } = {};
   private filters: [string, unknown][] = [];
@@ -58,6 +62,8 @@ class Query implements PromiseLike<Res> {
   upsert(rows: Row | Row[], opts: { onConflict?: string; ignoreDuplicates?: boolean } = {}) {
     this.op = 'upsert'; this.rows = Array.isArray(rows) ? rows : [rows]; this.opts = opts; return this;
   }
+  insert(rows: Row | Row[]) { this.op = 'insert'; this.rows = Array.isArray(rows) ? rows : [rows]; return this; }
+  delete() { this.op = 'delete'; return this; }
   eq(col: string, val: unknown) { this.filters.push([col, val]); return this; }
   order(col: string, o: { ascending?: boolean } = {}) { this.orders.push({ col, asc: o.ascending !== false }); return this; }
   range(from: number, to: number) { this.window = [from, to]; return this; }
@@ -79,6 +85,7 @@ class Query implements PromiseLike<Res> {
   private run(): Res {
     if (this.db.networkDown || (this.op === 'select' && this.db.failReads.has(this.table))) return NETWORK;
     if (this.db.authExpired) return EXPIRED;
+    if (this.db.missingTables.has(this.table)) return MISSING;
     const table = (this.db.tables[this.table] ??= []);
     let out: Row[];
     if (this.op === 'upsert') {
@@ -96,6 +103,24 @@ class Query implements PromiseLike<Res> {
         table.push(row);
         out.push(row);
       }
+    } else if (this.op === 'insert') {
+      if (!this.mayWrite()) return NETWORK;
+      this.db.writes++;
+      out = [];
+      for (const r of this.rows) {
+        // The only table written by insert today is cohort_stages: unique (cohort_id, stage).
+        if (table.some((e) => e.cohort_id === r.cohort_id && e.stage === r.stage)) {
+          return { data: null, status: 409, error: { message: 'duplicate key value violates unique constraint', code: '23505', details: '', hint: '' } };
+        }
+        const row = { id: crypto.randomUUID(), created_at: new Date(this.tick()).toISOString(), ...r };
+        table.push(row);
+        out.push(row);
+      }
+    } else if (this.op === 'delete') {
+      if (!this.mayWrite()) return NETWORK;
+      this.db.writes++;
+      out = table.filter((r) => this.filters.every(([c, v]) => r[c] === v));
+      this.db.tables[this.table] = table.filter((r) => !out.includes(r));
     } else {
       const source = this.table === 'student_activity' ? this.activity() : table;
       out = source.filter((r) => this.filters.every(([c, v]) => r[c] === v));

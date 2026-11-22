@@ -198,6 +198,18 @@ export const zhHant: Strings = {
     criterionN: (n) => `標準 ${n}`,
     optionLabel: (id) => `選項 ${id}`,
   },
+  stageAdmin: {
+    heading: '階段',
+    intro: '開放一個階段，這個班級就可以開始做。基礎階段永遠開放。',
+    onlyFoundations: '目前只有基礎階段，沒有可以開放的階段。',
+    toggleLabel: (stage) => `向這個班級開放「${stage}」`,
+    unreviewed: '未審核：學生暫時看不到',
+    loading: '正在載入階段…',
+    loadError: '無法載入哪些階段已開放。請檢查網路連線後再試。',
+    saveError: '無法儲存這個更改。請檢查網路連線後再試。',
+    needsMigration:
+      '暫時無法開放階段。請專案擁有人在 Supabase 套用資料庫更新 0004（cohort_stages）。這一頁的其他部分照常運作。',
+  },
   notFound: {
     heading: '找不到頁面',
     body: '我們找不到這個頁面。',
