@@ -5,13 +5,15 @@ import type { ReportsApi } from './ReportsContext';
  * Stand-in for the real backend, used only by the end-to-end build (VITE_REPORTS_FAKE_API=true).
  * It refuses high-level findings the way the server will, and keeps accepted reports in memory.
  */
+export const FAKE_API_MARKER = 'e2e-fake-reports-api';
+
 export function createFakeApi(): ReportsApi {
   const store = new Map<string, { title: string; body: string }>();
   return {
     async submit({ title, body }) {
       const high = scanHigh(body);
       if (high.length > 0) return { ok: false, status: 422, findings: high.map(({ rule, start, end }) => ({ rule, start, end })) };
-      const id = `fake-${store.size + 1}`;
+      const id = `${FAKE_API_MARKER}-${store.size + 1}`;
       store.set(id, { title, body });
       return { ok: true, id };
     },
