@@ -15,10 +15,11 @@
 | 階段 2：登入、雲端進度、督導後台 | 程式完成，已上線 | 權限規則只在行程內 Postgres 測過，見第 3 節 |
 | 多階段支援（建置、路由、階段解鎖、階段清單） | 完成，已合併上線（2026-11-16）。督導後台的階段開關和多階段讀取已在分支 `claude/stage-admin` 完成（2026-11-22），**尚未合併到正式分支**。`0004_cohort_stages.sql` 尚未套用到正式專案，見第 2 節 | 單元測試＋端到端＋行程內 Postgres 權限測試；用真實內容在瀏覽器確認首頁不變、舊網址 `/m/...` 自動轉到 `/s/foundations/m/...`、進度保留 |
 | 階段 3 Task 1：去識別化掃描器 | 完成 | 142 個測試 |
-| 階段 3 Task 2–6：報告上傳、Drive、評閱 | 未開始 | — |
+| 階段 3 Task 2：報告撰寫介面 | 完成，在分支 `claude/report-compose`，**尚未合併**。介面預設完全隱藏（`reportsEnabled` 預設關），正式網站不會改變。提交經注入的 `ReportSubmitter`，預設回「報告功能尚未開放」；沒有後端 | 單元測試＋端到端（用打開開關的另一個建置和假後端） |
+| 階段 3 Task 3–6：資料表、Edge Function、Drive、評閱、保存期限 | 未開始 | — |
 | 階段 4–6：AI 回饋、EFT、DBT | 設計規格已定。EFT 和 DBT 的貫穿個案有草稿（`content/CLIENT_EFT.md`、`content/CLIENT_DBT.md`），待擁有人確認 | — |
 
-最後一次完整測試（2026-11-22，分支 `claude/stage-admin`）：`npm run check` 395＋142 個通過；`npm run e2e` 25 個通過、4 個跳過（同一批需要服務金鑰的測試）。
+最後一次完整測試（2026-11-22，整合 `claude/stage-admin` 和 `claude/report-compose` 之後）：見下一次更新。
 
 ## 2. 擁有人還沒做完的事
 
@@ -104,12 +105,23 @@
    - 這個分支還沒合併到 `claude/modest-meitner-ttiru5`，也還沒在真實瀏覽器內用真實內容看過畫面（只有單元測試和既有端到端）。合併前建議擁有人預覽一次。
    - 階段 4–6 的規格第 4 項：新階段的技能名稱 i18n 鍵尚未存在（現在技能名稱不走 i18n），不用處理，除非日後加進去。
 1. **確認雲端模式可用。** 問擁有人第 2 節的第 1–3 項。有問題先修。
-2. **階段 3 Task 2–6。** 計畫在 `docs/plans/2026-11-15-practice-phase3.md`，注意頂部的「修訂」和「進度更新」。動工前有兩個未解決的問題要先處理：
+2. **階段 3 Task 3–6**（Task 2 已在 `claude/report-compose`，尚待擁有人檢查後合併）。 計畫在 `docs/plans/2026-11-15-practice-phase3.md`，注意頂部的「修訂」和「進度更新」。動工前有兩個未解決的問題要先處理：
    - Edge Function 怎樣部署。擁有人不會用命令列。先確認能否在 Supabase 介面的 Edge Function 編輯器貼上程式碼；每個函式要做成單一檔案才可行。
    - Google Drive 授權。規格 §8.5 選了 OAuth `drive.file`。擁有人要在 Google Cloud 建立 OAuth 用戶端，並取得 refresh token。先寫出逐步指引，並做冒煙測試。行不通就停下來，和擁有人商量改用「正文存資料庫，每日備份到 Drive」。
    - `reports_enabled` 預設關。擁有人已確認實習單位容許上傳去識別化的報告，保存期限是學期結束後 90 天。
 3. **階段 4–6。** 設計規格在 `docs/specs/2026-11-15-stage4-6-design.md`。每個階段先寫實作計畫，再動工。階段 4 要花錢，先給擁有人成本估算。
 4. **專案 1（收入產品）** 在另一個 repo `clinicmind/clinicmind`，看它的 `docs/roadmap/STATUS.md`。
+
+**報告撰寫介面（階段 3 Task 2，分支 `claude/report-compose`）**
+- 開關：`<App reportsEnabled>`。正式建置只有在 `VITE_REPORTS_ENABLED=true` 時才打開（`reportsFlag`），Cloudflare 沒有設這個變數，所以網站不變。關閉時沒有頁首連結，`/reports`、`/reports/new`、`/reports/:id` 都是找不到頁面。
+- 後端介面都在 `src/reports/ReportsContext.tsx`：`ReportSubmitter`（照計畫）加 `list`、`get`、`remove`（為了列表、閱讀和刪除，計畫沒寫簽名，是這個 session 補的）。預設實作全部回「尚未開放」。Task 3 接真正的 Edge Function 時，只要提供 `reportsApi`。
+- 端到端用第二個建置（`dist-reports`，埠 4174，`VITE_REPORTS_ENABLED=true`＋`VITE_REPORTS_FAKE_API=true`）。假後端 `src/reports/fakeApi.ts` 不會進正式建置（有端到端測試檢查 bundle）。`playwright.config.ts` 現在有兩個 webServer。
+- 繁中和英文的規則名稱、改寫建議在 `reports` 鍵底下，按規則代碼索引。英文建議有測試和 `SUGGESTIONS` 對照，防止偏離。沒有改 `packages/deid/`。
+- 標題也會掃描：標題有任何命中就不能繼續（計畫只掃正文，這是從嚴的補充）。
+- 提交給 `ReportSubmitter` 的只有 `{ title, body }`。`useDeid().summary` 已算好，但伺服器會自己重算，介面目前不送它。
+- 命中的位置在介面以 1 起算顯示（「第 154 至 161 字元」）；程式內部仍是 0 起算。
+- 「cohort 的 `reports_enabled`」目前以建置開關代替。Task 3 要把它改成讀 cohort 設定。
+- 掃描超過 30,000 字元的文字時不執行掃描（避免卡頁），只顯示長度提示。
 
 ## 7. 文件地圖
 

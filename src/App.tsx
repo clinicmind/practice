@@ -13,6 +13,10 @@ import { LoginPage } from './routes/LoginPage';
 import { LevelGate, ModuleGate } from './routes/ModuleGate';
 import { ModulePage } from './routes/ModulePage';
 import { NotFound } from './routes/NotFound';
+import { ReportsProvider, useReportsEnabled, type ReportsApi } from './reports/ReportsContext';
+import { NewReportPage } from './routes/reports/NewReportPage';
+import { ReportPage } from './routes/reports/ReportPage';
+import { ReportsPage } from './routes/reports/ReportsPage';
 import { ReflectPage } from './routes/ReflectPage';
 import { StagePage } from './routes/StagePage';
 import { CohortPage } from './routes/supervisor/CohortPage';
@@ -33,9 +37,22 @@ function LegacyModuleRedirect() {
  * null/undefined for local mode, where the app behaves exactly as in phase 1.
  * `storage` is the Storage `store` writes to; it is cleared after a successful import.
  */
-export function App({ store, wasReset, backend = null, storage = globalThis.localStorage }: {
+export function App({ store, wasReset, backend = null, storage = globalThis.localStorage, reportsEnabled = false, reportsApi }: {
   store: ProgressStore; wasReset?: boolean; backend?: Backend | null; storage?: Storage;
+  /** Reports are hidden unless this is true: no link, and the report routes do not exist. */
+  reportsEnabled?: boolean; reportsApi?: Partial<ReportsApi>;
 }) {
+  return (
+    <ReportsProvider enabled={reportsEnabled} api={reportsApi}>
+      <AppRoutes store={store} wasReset={wasReset} backend={backend} storage={storage} />
+    </ReportsProvider>
+  );
+}
+
+function AppRoutes({ store, wasReset, backend, storage }: {
+  store: ProgressStore; wasReset?: boolean; backend: Backend | null; storage: Storage;
+}) {
+  const reports = useReportsEnabled();
   return (
     <LocaleProvider>
     <AuthProvider backend={backend}>
@@ -52,6 +69,9 @@ export function App({ store, wasReset, backend = null, storage = globalThis.loca
             <Route path="/s/:stage/m/:slug/drills/:level" element={<ModuleGate><LevelGate><DrillsPage /></LevelGate></ModuleGate>} />
             <Route path="/s/:stage/m/:slug/reflect" element={<ModuleGate><ReflectPage /></ModuleGate>} />
             <Route path="/m/:slug/*" element={<LegacyModuleRedirect />} />
+            {reports && <Route path="/reports" element={<ReportsPage />} />}
+            {reports && <Route path="/reports/new" element={<NewReportPage />} />}
+            {reports && <Route path="/reports/:id" element={<ReportPage />} />}
             <Route path="/supervisor" element={<RequireSupervisor><CohortPage /></RequireSupervisor>} />
             <Route path="/supervisor/students/:id" element={<RequireSupervisor><StudentPage /></RequireSupervisor>} />
             <Route path="*" element={<NotFound />} />
