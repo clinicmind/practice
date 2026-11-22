@@ -187,3 +187,18 @@ html[lang='zh-Hant'] .client-line { font-weight: 700; line-height: 1.45; }
   .card, .decision { padding: 1.1rem; }
   .turn-client { margin-left: 0.5rem; }
 }
+
+/* ---------- reports: de-identification check (existing colours only) ---------- */
+.reports-link { font-size: 0.925rem; }
+.finding-list { list-style: none; margin: 0; padding: 0; }
+.finding { background: var(--card); border: 1px solid var(--line); border-left-width: 4px; border-radius: 12px; padding: 0.75rem 1rem; margin: 0.6rem 0; }
+.finding.high { border-left-color: var(--err); }
+.finding.medium { border-left-color: var(--ochre); }
+.finding.low { border-left-color: var(--line); }
+.finding.done { background: var(--pine-tint); border-left-color: var(--pine); }
+.finding-tip { margin: 0.3rem 0 0.5rem; }
+.finding-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.badge.level-high { border-color: var(--err); color: var(--err); }
+.badge.level-medium { border-color: transparent; background: var(--ochre-tint); color: var(--ochre-ink); }
+.report-title { font-family: var(--serif); font-size: 1.2rem; }
+.report-text { font-family: var(--serif); font-size: 1.1rem; line-height: 1.55; white-space: pre-wrap; background: var(--paper); border: 1px dashed #8b9794; border-radius: 10px; padding: 0.85rem 1rem; max-height: 24rem; overflow: auto; margin-bottom: 1rem; }

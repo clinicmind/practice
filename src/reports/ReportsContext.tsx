@@ -47,4 +47,4 @@ export const useReportsEnabled = (): boolean => useContext(ReportsContext).enabl
 export const useReportsApi = (): ReportsApi => useContext(ReportsContext).api;
 
 /** The build-time switch. Only the exact string "true" turns reports on. */
-export const reportsFlag = (env: { VITE_REPORTS_ENABLED?: string }): boolean => env.VITE_REPORTS_ENABLED === 'true';
+export const reportsFlag = (env: Record<string, unknown>): boolean => env.VITE_REPORTS_ENABLED === 'true';

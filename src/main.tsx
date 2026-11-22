@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import { getSupabase } from './auth/supabase';
 import { createLocalStore } from './progress/localStore';
+import { reportsFlag, type ReportsApi } from './reports/ReportsContext';
 import '@fontsource-variable/newsreader/wght.css';
 import '@fontsource-variable/newsreader/wght-italic.css';
 import '@fontsource/instrument-sans/400.css';
@@ -17,10 +18,22 @@ import './styles.css';
 
 const store = createLocalStore();
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App store={store} wasReset={store.wasReset} backend={getSupabase()} />
-    </BrowserRouter>
-  </StrictMode>,
-);
+// Reports are off unless the build sets VITE_REPORTS_ENABLED=true. The production build does not.
+const reportsEnabled = reportsFlag(import.meta.env);
+
+async function start() {
+  // End-to-end builds only: a stand-in backend, so the screens can be driven without Edge Functions.
+  // The condition is replaced at build time, so the fake never reaches a normal build.
+  let reportsApi: Partial<ReportsApi> | undefined;
+  if (import.meta.env.VITE_REPORTS_FAKE_API === 'true') {
+    reportsApi = (await import('./reports/fakeApi')).createFakeApi();
+  }
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <BrowserRouter>
+        <App store={store} wasReset={store.wasReset} backend={getSupabase()} reportsEnabled={reportsEnabled} reportsApi={reportsApi} />
+      </BrowserRouter>
+    </StrictMode>,
+  );
+}
+void start();

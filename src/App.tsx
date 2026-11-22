@@ -15,6 +15,8 @@ import { ModulePage } from './routes/ModulePage';
 import { NotFound } from './routes/NotFound';
 import { ReportsProvider, useReportsEnabled, type ReportsApi } from './reports/ReportsContext';
 import { NewReportPage } from './routes/reports/NewReportPage';
+import { ReportPage } from './routes/reports/ReportPage';
+import { ReportsPage } from './routes/reports/ReportsPage';
 import { ReflectPage } from './routes/ReflectPage';
 import { StagePage } from './routes/StagePage';
 import { CohortPage } from './routes/supervisor/CohortPage';
@@ -67,7 +69,9 @@ function AppRoutes({ store, wasReset, backend, storage }: {
             <Route path="/s/:stage/m/:slug/drills/:level" element={<ModuleGate><LevelGate><DrillsPage /></LevelGate></ModuleGate>} />
             <Route path="/s/:stage/m/:slug/reflect" element={<ModuleGate><ReflectPage /></ModuleGate>} />
             <Route path="/m/:slug/*" element={<LegacyModuleRedirect />} />
+            {reports && <Route path="/reports" element={<ReportsPage />} />}
             {reports && <Route path="/reports/new" element={<NewReportPage />} />}
+            {reports && <Route path="/reports/:id" element={<ReportPage />} />}
             <Route path="/supervisor" element={<RequireSupervisor><CohortPage /></RequireSupervisor>} />
             <Route path="/supervisor/students/:id" element={<RequireSupervisor><StudentPage /></RequireSupervisor>} />
             <Route path="*" element={<NotFound />} />
