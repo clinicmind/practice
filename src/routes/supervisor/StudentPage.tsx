@@ -1,13 +1,14 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { loadModels } from '../../content/client';
-import { LEVELS, type Drill, type Level, type Model } from '../../content/schema';
+import { LEVELS, type Drill, type Level, type Model, type StageIndex } from '../../content/schema';
 import { useT } from '../../i18n';
 import { itemMet, levelPassed, unlockedLevels, walkthroughDone } from '../../progress/rules';
 import { loadCourse, type Course, type StudentDetail } from '../../supervisor/api';
 import { flagAttempts, type Flag } from '../../supervisor/flags';
 import { useSupervisorApi } from '../../supervisor/SupervisorContext';
 
+const Heading = ({ level, children }: { level: 3 | 4; children: ReactNode }) => (level === 3 ? <h3>{children}</h3> : <h4>{children}</h4>);
 const day = (iso: string) => iso.slice(0, 10);
 
 type Loaded = { detail: StudentDetail; course: Course; models: Record<string, Model>[]; modelsMissing: boolean };
@@ -36,9 +37,9 @@ export function StudentPage() {
       const modelsZh: Record<string, Model> = {};
       await Promise.all([...used].filter((slug) => course.bundles[slug]).flatMap((slug) => [
         // English is the reference: failing to load it means copies could go unnoticed.
-        loadModels(slug, 'en').then((m) => { Object.assign(modelsEn, m); }, () => { modelsMissing = true; }),
+        loadModels(slug, 'en', course.stageOf[slug]).then((m) => { Object.assign(modelsEn, m); }, () => { modelsMissing = true; }),
         // A Chinese module may simply not exist (or not be reviewed) yet; that is not an error.
-        loadModels(slug, 'zh-Hant').then((m) => { Object.assign(modelsZh, m); }, () => {}),
+        loadModels(slug, 'zh-Hant', course.stageOf[slug]).then((m) => { Object.assign(modelsZh, m); }, () => {}),
       ]));
       const models = [modelsEn, modelsZh];
       if (live) setState({ status: 'ready', detail, course, models, modelsMissing });
@@ -84,6 +85,41 @@ export function StudentPage() {
     }
   }
 
+  const grouped = course.stages.length > 1;
+  const moduleCard = (m: StageIndex['modules'][number], level: 3 | 4) => {
+    const b = course.bundles[m.slug];
+    if (!b) return null;
+    const handLevels = detail.grants.filter((g) => g.moduleSlug === m.slug).map((g) => g.level);
+    const earned = unlockedLevels(detail.attempts, b.drills);
+    const open = unlockedLevels(detail.attempts, b.drills, handLevels);
+    return (
+      <div key={m.slug} className="card">
+        <Heading level={level}>{m.title}{!m.reviewed && <>{' '}<span className="badge">{s.stage.unreviewed}</span></>}</Heading>
+        <p>{walkthroughDone(detail.decisions, b.sessions) ? t.walkthroughDone : t.walkthroughNotDone}</p>
+        <ul>
+          {LEVELS.map((lv) => {
+            const inLevel = b.drills.filter((d) => d.level === lv);
+            const met = inLevel.filter((d) => itemMet(detail.attempts, d.id)).length;
+            return (
+              <li key={lv}>
+                {s.levels[lv]}: {s.module.met(met, inLevel.length)}
+                {levelPassed(detail.attempts, b.drills, lv) && <>{' '}<span className="badge">{s.module.passed}</span></>}
+                {open.includes(lv) && !earned.includes(lv) && <> <span className="muted">{t.grantedByHand(s.levels[lv], m.title)}</span></>}
+                {!open.includes(lv) && m.reviewed && (
+                  <>{' '}
+                    <button type="button" className="btn" disabled={busy} onClick={() => void grant(m.slug, lv)}>
+                      {t.unlockButton(s.levels[lv], m.title)}
+                    </button>
+                  </>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  };
+
   const newest = [...detail.attempts].reverse(); // stored oldest → newest
   return (
     <div>
@@ -94,36 +130,13 @@ export function StudentPage() {
       <section aria-labelledby="progress-h">
         <h2 id="progress-h">{t.progressHeading}</h2>
         {grantError && <p role="alert" className="error">{t.grantError}</p>}
-        {course.stage.modules.map((m) => {
-          const b = course.bundles[m.slug];
-          if (!b) return null;
-          const handLevels = detail.grants.filter((g) => g.moduleSlug === m.slug).map((g) => g.level);
-          const earned = unlockedLevels(detail.attempts, b.drills);
-          const open = unlockedLevels(detail.attempts, b.drills, handLevels);
+        {course.stages.map((st) => {
+          const cards = st.index.modules.map((m) => moduleCard(m, grouped ? 4 : 3));
+          if (!grouped) return <Fragment key={st.stage}>{cards}</Fragment>;
           return (
-            <div key={m.slug} className="card">
-              <h3>{m.title}{!m.reviewed && <>{' '}<span className="badge">{s.stage.unreviewed}</span></>}</h3>
-              <p>{walkthroughDone(detail.decisions, b.sessions) ? t.walkthroughDone : t.walkthroughNotDone}</p>
-              <ul>
-                {LEVELS.map((lv) => {
-                  const inLevel = b.drills.filter((d) => d.level === lv);
-                  const met = inLevel.filter((d) => itemMet(detail.attempts, d.id)).length;
-                  return (
-                    <li key={lv}>
-                      {s.levels[lv]}: {s.module.met(met, inLevel.length)}
-                      {levelPassed(detail.attempts, b.drills, lv) && <>{' '}<span className="badge">{s.module.passed}</span></>}
-                      {open.includes(lv) && !earned.includes(lv) && <> <span className="muted">{t.grantedByHand(s.levels[lv], m.title)}</span></>}
-                      {!open.includes(lv) && m.reviewed && (
-                        <>{' '}
-                          <button type="button" className="btn" disabled={busy} onClick={() => void grant(m.slug, lv)}>
-                            {t.unlockButton(s.levels[lv], m.title)}
-                          </button>
-                        </>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+            <div key={st.stage} role="group" aria-labelledby={`stage-h-${st.stage}`} className="stage-group">
+              <h3 id={`stage-h-${st.stage}`}>{st.title}</h3>
+              {cards}
             </div>
           );
         })}

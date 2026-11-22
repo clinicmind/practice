@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { loadStage } from '../../content/client';
-import type { StageIndex } from '../../content/schema';
 import { useT } from '../../i18n';
-import type { CohortInfo, StudentSummary } from '../../supervisor/api';
+import { isMissingTable } from '../../progress/storeError';
+import { DEFAULT_STAGE } from '../../stages';
+import { loadCourse, type CohortInfo, type Course, type CourseStage, type StudentSummary } from '../../supervisor/api';
 import { useSupervisorApi } from '../../supervisor/SupervisorContext';
 
 /** Local calendar date as YYYY-MM-DD, comparable as a string with a date input's value. */
@@ -89,10 +89,105 @@ function ProgressCell({ student, slug }: { student: StudentSummary; slug: string
   );
 }
 
-function CohortSection({ cohort, students, stage }: { cohort: CohortInfo; students: StudentSummary[]; stage: StageIndex }) {
+type StagesState =
+  | { status: 'loading' }
+  | { status: 'ready'; open: string[] }
+  | { status: 'error'; kind: 'migration' | 'load' };
+
+/**
+ * Which stages this cohort can open. Foundations is always open and has no
+ * control. This panel fails on its own: a missing cohort_stages table (0004 not
+ * applied yet) or a failed read leaves the rest of the cohort page working.
+ */
+function StagesPanel({ cohort, stages }: { cohort: CohortInfo; stages: CourseStage[] }) {
+  const s = useT();
+  const t = s.stageAdmin;
+  const api = useSupervisorApi();
+  const others = stages.filter((x) => x.stage !== DEFAULT_STAGE);
+  const [state, setState] = useState<StagesState>({ status: 'loading' });
+  const [busy, setBusy] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState(false);
+  const [tick, setTick] = useState(0);
+  const hasOthers = others.length > 0;
+
+  useEffect(() => {
+    // With only foundations there is nothing to open, so do not depend on the cohort_stages table.
+    if (!hasOthers) return;
+    let live = true;
+    setState({ status: 'loading' });
+    api.listOpenStages(cohort.id)
+      .then((open) => live && setState({ status: 'ready', open }))
+      .catch((e) => live && setState({ status: 'error', kind: isMissingTable(e) ? 'migration' : 'load' }));
+    return () => { live = false; };
+  }, [api, cohort.id, hasOthers, tick]);
+
+  async function toggle(stage: string, open: string[], wantOpen: boolean) {
+    setBusy(stage);
+    setSaveError(false);
+    try {
+      if (wantOpen) await api.openStage(cohort.id, stage);
+      else await api.closeStage(cohort.id, stage);
+      setState({ status: 'ready', open: wantOpen ? [...open, stage] : open.filter((x) => x !== stage) });
+    } catch (e) {
+      if (isMissingTable(e)) setState({ status: 'error', kind: 'migration' });
+      else setSaveError(true);
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  const headingId = `stages-${cohort.id}`;
+  return (
+    <section aria-labelledby={headingId} className="stage-admin">
+      <h3 id={headingId}>{t.heading}</h3>
+      {!hasOthers ? (
+        <p>{t.onlyFoundations}</p>
+      ) : state.status === 'loading' ? (
+        <p role="status">{t.loading}</p>
+      ) : state.status === 'error' ? (
+        state.kind === 'migration' ? (
+          <p role="status" className="notice">{t.needsMigration}</p>
+        ) : (
+          <div>
+            <p role="alert" className="error">{t.loadError}</p>
+            <button type="button" className="btn" onClick={() => setTick((n) => n + 1)}>{s.common.retry}</button>
+          </div>
+        )
+      ) : (
+        <>
+          <p className="muted">{t.intro}</p>
+          {saveError && <p role="alert" className="error">{t.saveError}</p>}
+          <ul className="stage-admin-list">
+            {others.map((x) => {
+              const open = state.open.includes(x.stage);
+              const reviewed = x.index.modules.some((m) => m.reviewed);
+              return (
+                <li key={x.stage}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={open}
+                      disabled={busy !== null}
+                      aria-label={t.toggleLabel(x.title)}
+                      onChange={() => void toggle(x.stage, state.open, !open)}
+                    />{' '}
+                    <span>{x.title}</span>
+                  </label>
+                  {!reviewed && <>{' '}<span className="badge">{t.unreviewed}</span></>}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+    </section>
+  );
+}
+
+function CohortSection({ cohort, students, course }: { cohort: CohortInfo; students: StudentSummary[]; course: Course }) {
   const s = useT();
   const t = s.supervisor;
-  const modules = stage.modules.filter((m) => m.reviewed);
+  const modules = course.stages.flatMap((st) => st.index.modules).filter((m) => m.reviewed);
   const closed = cohort.termEnd < todayLocal();
   return (
     <section aria-labelledby={`cohort-${cohort.id}`} className="card">
@@ -102,6 +197,7 @@ function CohortSection({ cohort, students, stage }: { cohort: CohortInfo; studen
         <span>{t.termEnds(cohort.termEnd)}</span>
         {closed && <>{' '}<span className="badge">{t.termClosed}</span></>}
       </p>
+      <StagesPanel cohort={cohort} stages={course.stages} />
       {students.length === 0 ? (
         <p>{t.noStudents}</p>
       ) : (
@@ -134,7 +230,7 @@ function CohortSection({ cohort, students, stage }: { cohort: CohortInfo; studen
 type State =
   | { status: 'loading' }
   | { status: 'error' }
-  | { status: 'ready'; cohorts: CohortInfo[]; students: StudentSummary[]; stage: StageIndex };
+  | { status: 'ready'; cohorts: CohortInfo[]; students: StudentSummary[]; course: Course };
 
 export function CohortPage() {
   const s = useT();
@@ -147,8 +243,8 @@ export function CohortPage() {
   useEffect(() => {
     let live = true;
     setState({ status: 'loading' });
-    Promise.all([api.listCohorts(), api.listStudents(), loadStage()])
-      .then(([cohorts, students, stage]) => live && setState({ status: 'ready', cohorts, students, stage }))
+    Promise.all([api.listCohorts(), api.listStudents(), loadCourse()])
+      .then(([cohorts, students, course]) => live && setState({ status: 'ready', cohorts, students, course }))
       .catch(() => live && setState({ status: 'error' }));
     return () => { live = false; };
   }, [api, tick]);
@@ -162,7 +258,7 @@ export function CohortPage() {
       </div>
     );
   }
-  const { cohorts, students, stage } = state;
+  const { cohorts, students, course } = state;
   return (
     <div>
       <h1>{t.heading}</h1>
@@ -174,7 +270,7 @@ export function CohortPage() {
       ) : (
         <>
           {cohorts.map((c) => (
-            <CohortSection key={c.id} cohort={c} stage={stage} students={students.filter((s) => s.cohortId === c.id)} />
+            <CohortSection key={c.id} cohort={c} course={course} students={students.filter((s) => s.cohortId === c.id)} />
           ))}
           <details>
             <summary>{t.createAnother}</summary>

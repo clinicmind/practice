@@ -2,7 +2,7 @@ export type StoreErrorKind = 'network' | 'auth' | 'other';
 
 /** A cloud store failure. `auth` means the sign-in has expired; `network` means try again. */
 export class StoreError extends Error {
-  constructor(public readonly kind: StoreErrorKind, message: string) {
+  constructor(public readonly kind: StoreErrorKind, message: string, public readonly code?: string) {
     super(message);
     this.name = 'StoreError';
   }
@@ -14,5 +14,9 @@ export function toStoreError(error: Failure, status?: number): StoreError {
   const msg = error.message ?? 'store error';
   if (status === 401 || error.code === 'PGRST301' || /jwt (expired|invalid)/i.test(msg)) return new StoreError('auth', msg);
   if (!status || /failed to fetch|network|timeout|load failed/i.test(msg)) return new StoreError('network', msg);
-  return new StoreError('other', msg);
+  return new StoreError('other', msg, error.code);
 }
+
+/** The table was never created: PostgREST says PGRST205, Postgres itself says 42P01. */
+export const isMissingTable = (e: unknown): boolean =>
+  e instanceof StoreError && (e.code === 'PGRST205' || e.code === '42P01');

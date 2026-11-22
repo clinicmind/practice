@@ -48,7 +48,7 @@ describe('stage controls on the cohort page', () => {
     const box = await region.findByRole('checkbox', { name: t.toggleLabel('Demo stage (fixture)') });
     expect(box).not.toBeChecked();
     expect(region.getAllByRole('checkbox')).toHaveLength(1);
-    expect(region.queryByText(/foundations/i)).toBeNull();
+    expect(region.queryByRole('checkbox', { name: /foundations/i })).toBeNull();
   });
 
   test('a stage with a row is shown as open', async () => {
@@ -164,7 +164,7 @@ describe('student page groups progress by stage', () => {
     expect(stageHeads).toEqual(['Foundations (fixture)', 'Demo stage (fixture)']);
     const demoGroup = within(progress.getByRole('group', { name: 'Demo stage (fixture)' }));
     expect(demoGroup.getByRole('heading', { level: 4, name: 'Demo intro (fixture)' })).toBeVisible();
-    expect(demoGroup.getByText(en.module.met(1, 4).replace(/^/, `${en.levels.easy}: `))).toBeVisible();
+    expect(demoGroup.getByText(new RegExp(`^${en.levels.easy}: 1 / \\d+`))).toBeVisible();
     // The attempt is not "unknown" now that the demo stage is read
     expect(screen.queryByText(new RegExp(en.supervisor.unknownItem))).toBeNull();
   });

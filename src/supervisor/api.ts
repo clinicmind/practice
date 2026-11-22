@@ -1,6 +1,7 @@
-import { loadModule, loadStage } from '../content/client';
+import { loadModule, loadStage, loadStages } from '../content/client';
 import { LEVELS, type Level, type ModuleBundle, type StageIndex } from '../content/schema';
 import type { Backend } from '../auth/supabase';
+import { StoreError } from '../progress/storeError';
 import { fetchAll, run, type Result, type Row } from '../progress/cloud';
 import { levelPassed, walkthroughDone } from '../progress/rules';
 import { toAttempt, toDecision, toReflection } from '../progress/supabaseStore';
@@ -26,15 +27,27 @@ export type StudentDetail = {
   grants: { moduleSlug: string; level: Level }[];
 };
 export type CohortInfo = { id: string; name: string; inviteCode: string; termEnd: string };
-export type Course = { stage: StageIndex; bundles: Record<string, ModuleBundle> };
+export type CourseStage = { stage: string; title: string; index: StageIndex };
+export type Course = {
+  /** Every stage this build ships, foundations first. */
+  stages: CourseStage[];
+  /** Keyed by module slug; slugs are unique across stages. */
+  bundles: Record<string, ModuleBundle>;
+  /** Which stage each module slug belongs to. */
+  stageOf: Record<string, string>;
+};
 
-/** Every module whose content this build ships. A missing unreviewed module is expected; a missing reviewed one is an error. */
+/** Every module of every stage whose content this build ships. A missing unreviewed module is expected; a missing reviewed one is an error. */
 export async function loadCourse(): Promise<Course> {
-  const stage = await loadStage();
+  const list = await loadStages();
+  const stages: CourseStage[] = await Promise.all(
+    list.map(async (s) => ({ stage: s.stage, title: s.title, index: await loadStage('en', s.stage) })),
+  );
+  const modules = stages.flatMap((s) => s.index.modules.map((m) => ({ stage: s.stage, m })));
   const loaded = await Promise.all(
-    stage.modules.map(async (m) => {
+    modules.map(async ({ stage, m }) => {
       try {
-        return await loadModule(m.slug);
+        return await loadModule(m.slug, 'en', stage);
       } catch (e) {
         if (m.reviewed) throw e;
         return null;
@@ -42,8 +55,12 @@ export async function loadCourse(): Promise<Course> {
     }),
   );
   const bundles: Record<string, ModuleBundle> = {};
-  stage.modules.forEach((m, i) => { const b = loaded[i]; if (b) bundles[m.slug] = b; });
-  return { stage, bundles };
+  const stageOf: Record<string, string> = {};
+  modules.forEach(({ stage, m }, i) => {
+    const b = loaded[i];
+    if (b) { bundles[m.slug] = b; stageOf[m.slug] = stage; }
+  });
+  return { stages, bundles, stageOf };
 }
 
 export function progressOf(attempts: Attempt[], decisions: Decision[], bundles: Record<string, ModuleBundle>): Record<string, ModuleProgress> {
@@ -131,6 +148,29 @@ export function createSupervisorApi(client: Backend, supervisorId: string) {
           .filter((x) => (LEVELS as readonly string[]).includes(x.level))
           .map((x) => ({ moduleSlug: x.module_slug as string, level: x.level as Level })),
       };
+    },
+
+    /** Stages (other than foundations) open to this cohort. Throws; a missing table is recognised by isMissingTable. */
+    async listOpenStages(cohortId: string): Promise<string[]> {
+      const rows = await all('cohort_stages', 'stage', (q) => ordered(q.eq('cohort_id', cohortId), 'created_at', 'id'));
+      return rows.map((r: Row) => String(r.stage));
+    },
+
+    /** Opening a stage that is already open (another tab, another supervisor) is not a failure. */
+    async openStage(cohortId: string, stage: string): Promise<void> {
+      try {
+        await run(() =>
+          client.from('cohort_stages').insert({ cohort_id: cohortId, stage, opened_by: supervisorId }) as unknown as PromiseLike<Result>,
+        );
+      } catch (e) {
+        if (!(e instanceof StoreError && e.code === '23505')) throw e;
+      }
+    },
+
+    async closeStage(cohortId: string, stage: string): Promise<void> {
+      await run(() =>
+        client.from('cohort_stages').delete().eq('cohort_id', cohortId).eq('stage', stage) as unknown as PromiseLike<Result>,
+      );
     },
 
     async grantUnlock(studentId: string, moduleSlug: string, level: Level): Promise<void> {
