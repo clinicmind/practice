@@ -31,6 +31,8 @@ Spec 新增 §8.5。它改動 Task 3 和 Task 5，執行時以下列為準：
 - 階段 2 覆核後新增了 `supabase/migrations/0003_hardening.sql`。所以本計畫的 migration 檔名順延：`0003_reports.sql` 改為 `0004_reports.sql`，`0004_retention.sql` 改為 `0005_retention.sql`。
 - 已知行為：8 位數而且以 2、3、5、6、7、9 開頭的數字（例如某些病歷號）會被 `phone` 規則判為 high。這是刻意從嚴。
 
+- **Task 2 已完成（2026-11-22，分支 `claude/report-compose`，未合併）**：`useDeid`、`FindingsPanel`、`NewReportPage`、`ReportsPage`、`ReportPage`。計畫的 10 個測試都有對應（名稱照計畫），另加標題掃描、檔案拖放、成功和失敗路徑、中文介面、預設隱藏。介面和計畫的差異：(1) 提交經注入的 `ReportSubmitter`，加 `list/get/remove`；(2)「reports_enabled」暫以建置開關 `VITE_REPORTS_ENABLED` 代替，Task 3 再接 cohort；(3) 繁中文字放在新的頂層鍵 `reports`；(4) 步驟 2 的「繼續」按鈕在有未處理命中時停用，最後的「提交」在步驟 3 並需勾選聲明；(5) 標題也掃描。計畫原檔名 `src/i18n/en.ts` 之外還改了 `zh-Hant.ts`。端到端：`e2e/reports.spec.ts`，用第二個建置（埠 4174）。測試：`npm run check` 424＋142；`npm run e2e` 30 過、4 跳過。
+
 ## Global Constraints
 
 - 只接受貼上的純文字；不做檔案上傳。
