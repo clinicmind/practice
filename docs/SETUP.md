@@ -38,6 +38,8 @@
    3. 重新整理網站，進入 `/supervisor`，建立班別，取得邀請碼。
 4. 把邀請碼和網址發給學生。學生登入後在 `/join` 輸入邀請碼。
 
+全班使用前的完整準備（自訂 SMTP、學生隔離檢查、開班流程）見 [`docs/SETUP-class.md`](SETUP-class.md)。
+
 注意：Supabase 免費方案內建的電郵服務每小時只能發很少的信，只適合自己測試。全班學生同一時間登入前，要在 Supabase → Authentication → Emails 設定自己的 SMTP 服務。
 
 ### 雲端模式第一次上線後必須做的驗證
