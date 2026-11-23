@@ -81,7 +81,7 @@
   level: medium
   skill: empathic-exploration
   context: "第二次會談。"
-  client: "我知道為了在公司打翻一杯飲料就這麼難受，是不應該的。很可笑。"
+  client: "我知道為了在工作時打翻一杯飲料就這麼難受，是不應該的。很可笑。"
   criteria: *ee_medium
 - id: eft-attunement-m03
   level: medium

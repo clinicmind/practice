@@ -10,7 +10,7 @@ sessions:
         text: "（呼氣）還好。主要是改作業。（停頓）有些東西。我不知道。從星期日起。"
       - id: eft-focusing-s5-d1
         type: choice
-        prompt: "R 說從星期日起有「一些東西」，而他不知道是什麼。你怎樣回應？"
+        prompt: "R 說從星期日起「有些東西」，而他不知道是什麼。你怎樣回應？"
         options:
           - id: a
             text: "它比較像擔心，還是比較像難過？"
