@@ -8,6 +8,7 @@ import { buildContent } from '../../scripts/build-content';
 import { App } from '../App';
 import { resetContentCache } from '../content/client';
 import { createLocalStore } from '../progress/localStore';
+import type { ReportsApi } from '../reports/ReportsContext';
 import type { FakeBackend } from './fakeSupabase';
 
 export class Mem implements Storage {
@@ -45,11 +46,11 @@ export function serve(dir: string) {
 export const spy = { path: '' };
 export function PathSpy() { spy.path = useLocation().pathname; return null; }
 
-export function renderCloud(url: string, fake: FakeBackend) {
+export function renderCloud(url: string, fake: FakeBackend, opts: { reportsEnabled?: boolean; reportsApi?: Partial<ReportsApi> } = {}) {
   const storage = new Mem();
   return render(
     <MemoryRouter initialEntries={[url]}>
-      <App store={createLocalStore(storage)} storage={storage} backend={fake.backend} />
+      <App store={createLocalStore(storage)} storage={storage} backend={fake.backend} reportsEnabled={opts.reportsEnabled} reportsApi={opts.reportsApi} />
       <PathSpy />
     </MemoryRouter>,
   );

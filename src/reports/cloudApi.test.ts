@@ -6,7 +6,7 @@ const URL = 'https://proj.supabase.test';
 const mk = (token: string | null, respond: (u: string, i: RequestInit) => Response | Promise<Response>) => {
   const calls: { url: string; init: RequestInit }[] = [];
   const fetchFn = vi.fn(async (u: RequestInfo | URL, i?: RequestInit) => { calls.push({ url: String(u), init: i ?? {} }); return respond(String(u), i ?? {}); });
-  const api = createCloudReportsApi({ url: URL, anonKey: 'anon-fiction', getToken: async () => token, fetch: fetchFn as unknown as typeof fetch });
+  const api = createCloudReportsApi({ url: URL, anonKey: 'anon-fiction', getToken: async () => token, getUserId: async () => 'sup-1', fetch: fetchFn as unknown as typeof fetch });
   return { api, calls };
 };
 const json = (status: number, v: unknown) => new Response(JSON.stringify(v), { status, headers: { 'Content-Type': 'application/json' } });
@@ -68,5 +68,86 @@ describe('get, remove, list', () => {
   test('list throws on failure so the page shows its error', async () => {
     await expect(mk('tok', () => json(500, {})).api.list()).rejects.toThrow();
     await expect(mk(null, () => json(200, [])).api.list()).rejects.toThrow();
+  });
+});
+
+describe('review: supervisor', () => {
+  const fb = { id: 'f1', scores: { picture: 3 }, comments: 'ok', status: 'draft', released_at: null };
+  test('listForReview reads reports and student names with the supervisor’s own token', async () => {
+    const { api, calls } = mk('tok', (u) =>
+      u.includes('/reports?')
+        ? json(200, [{ id: 'r1', title: 'One', created_at: '2026-11-01T00:00:00Z', status: 'submitted', delete_after: '2027-04-01', user_id: 'u1', deid_summary: { 'cjk-name': { found: 2, rewritten: 0, notIdentifying: 0 } } }])
+        : json(200, [{ id: 'u1', display_name: 'Alice' }]));
+    expect(await api.listForReview()).toEqual([
+      { id: 'r1', title: 'One', createdAt: '2026-11-01T00:00:00Z', studentName: 'Alice', status: 'submitted', deleteAfter: '2027-04-01', summary: { 'cjk-name': { found: 2 } } },
+    ]);
+    expect(calls.map((c) => c.url)).toEqual([
+      `${URL}/rest/v1/reports?select=id,title,created_at,status,delete_after,user_id,deid_summary&order=created_at.desc`,
+      `${URL}/rest/v1/profiles?select=id,display_name&role=eq.student`,
+    ]);
+    expect(calls.every((c) => (c.init.headers as Record<string, string>).Authorization === 'Bearer tok')).toBe(true);
+  });
+  test('a report whose student is not found still lists, with an empty name; a failed read throws', async () => {
+    const { api } = mk('tok', (u) => (u.includes('/reports?') ? json(200, [{ id: 'r1', title: 'One', created_at: 'd', status: 'reviewed', delete_after: 'x', user_id: 'gone', deid_summary: {} }]) : json(200, [])));
+    expect((await api.listForReview())[0]).toMatchObject({ studentName: '', status: 'reviewed', summary: {} });
+    await expect(mk('tok', () => json(500, {})).api.listForReview()).rejects.toThrow();
+  });
+  test('myFeedback reads the newest row for the report; null when there is none', async () => {
+    const { api, calls } = mk('tok', () => json(200, [fb]));
+    expect(await api.myFeedback('r1')).toEqual({ id: 'f1', scores: { picture: 3 }, comments: 'ok', status: 'draft', releasedAt: null });
+    expect(calls[0]!.url).toBe(`${URL}/rest/v1/feedback?report_id=eq.r1&select=id,scores,comments,status,released_at&order=created_at.desc&limit=1`);
+    expect(await mk('tok', () => json(200, [])).api.myFeedback('r1')).toBeNull();
+    await expect(mk('tok', () => json(500, {})).api.myFeedback('r1')).rejects.toThrow();
+  });
+  test('saveFeedback inserts a new draft signed by the supervisor', async () => {
+    const { api, calls } = mk('tok', (u, i) => (i.method === 'POST' ? json(201, [{ ...fb, scores: { picture: 4 }, comments: 'hello' }]) : json(200, [])));
+    const r = await api.saveFeedback('r1', { scores: { picture: 4 }, comments: 'hello' }, false);
+    expect(r).toEqual({ ok: true, record: { id: 'f1', scores: { picture: 4 }, comments: 'hello', status: 'draft', releasedAt: null } });
+    const post = calls.find((c) => c.init.method === 'POST')!;
+    expect(post.url).toBe(`${URL}/rest/v1/feedback`);
+    expect(sent(post)).toEqual({ report_id: 'r1', author_id: 'sup-1', scores: { picture: 4 }, comments: 'hello' });
+    expect((post.init.headers as Record<string, string>).Prefer).toBe('return=representation');
+  });
+  test('saveFeedback updates the existing row, and a release sets status and time once', async () => {
+    const { api, calls } = mk('tok', (u, i) => (i.method === 'PATCH' ? json(200, [{ ...fb, status: 'released', released_at: '2026-11-23T00:00:00Z' }]) : json(200, [fb])));
+    const r = await api.saveFeedback('r1', { scores: { picture: 3 }, comments: 'ok' }, true);
+    expect(r).toMatchObject({ ok: true, record: { status: 'released' } });
+    const patch = calls.find((c) => c.init.method === 'PATCH')!;
+    expect(patch.url).toBe(`${URL}/rest/v1/feedback?id=eq.f1`);
+    expect(sent(patch)).toMatchObject({ scores: { picture: 3 }, comments: 'ok', status: 'released' });
+    expect(typeof sent(patch).released_at).toBe('string');
+  });
+  test('correcting released feedback does not move its release time or status', async () => {
+    const released = { ...fb, status: 'released', released_at: '2026-11-20T00:00:00Z' };
+    const { api, calls } = mk('tok', (u, i) => (i.method === 'PATCH' ? json(200, [released]) : json(200, [released])));
+    await api.saveFeedback('r1', { scores: { picture: 3 }, comments: 'fixed' }, true);
+    expect(sent(calls.find((c) => c.init.method === 'PATCH')!)).toEqual({ scores: { picture: 3 }, comments: 'fixed' });
+  });
+  test('a refusal from the database (an incomplete release) is a failure, not a throw', async () => {
+    const { api } = mk('tok', (u, i) => (i.method === 'PATCH' ? json(400, { code: '23514' }) : json(200, [fb])));
+    expect(await api.saveFeedback('r1', { scores: {}, comments: '' }, true)).toEqual({ ok: false });
+  });
+  test('purgeExpired and driveStatus call the function', async () => {
+    const p = mk('tok', () => json(200, { purged: 2, failed: 0, more: false, driveError: null }));
+    expect(await p.api.purgeExpired()).toEqual({ ok: true, purged: 2, failed: 0, more: false, driveError: null });
+    expect(sent(p.calls[0]!)).toEqual({ action: 'purge' });
+    expect(await mk('tok', () => json(403, { error: 'not_allowed' })).api.purgeExpired()).toEqual({ ok: false, status: 403 });
+    const d = mk('tok', () => json(200, { status: 'auth' }));
+    expect(await d.api.driveStatus()).toBe('auth');
+    expect(sent(d.calls[0]!)).toEqual({ action: 'drive_status' });
+    expect(await mk('tok', () => json(500, {})).api.driveStatus()).toBe('error');
+    expect(await mk('tok', () => json(200, { status: 'weird' })).api.driveStatus()).toBe('error');
+  });
+});
+
+describe('review: student', () => {
+  test('releasedFeedback asks only for released rows', async () => {
+    const { api, calls } = mk('tok', () => json(200, [{ id: 'f1', scores: { picture: 3 }, comments: 'ok', status: 'released', released_at: '2026-11-20T00:00:00Z' }]));
+    expect(await api.releasedFeedback('r1')).toMatchObject({ id: 'f1', status: 'released', releasedAt: '2026-11-20T00:00:00Z' });
+    expect(calls[0]!.url).toBe(`${URL}/rest/v1/feedback?report_id=eq.r1&status=eq.released&select=id,scores,comments,status,released_at&order=released_at.desc&limit=1`);
+  });
+  test('null when nothing is released; a failure throws', async () => {
+    expect(await mk('tok', () => json(200, [])).api.releasedFeedback('r1')).toBeNull();
+    await expect(mk('tok', () => json(500, {})).api.releasedFeedback('r1')).rejects.toThrow();
   });
 });

@@ -26,6 +26,12 @@ test.describe('normal build: reports do not exist', () => {
     await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
     await expect(page.getByLabel('Report text')).toHaveCount(0);
   });
+  test('the supervisor review pages do not exist either', async ({ page }) => {
+    for (const path of ['/supervisor/reports', '/supervisor/reports/00000000-0000-4000-8000-000000000001']) {
+      await page.goto(path);
+      await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
+    }
+  });
   test('the stand-in backend is not in the normal bundle, and is in the reports build', () => {
     const marker = 'e2e-fake-reports-api';
     const has = (dir: string) => files(dir).filter((p) => p.endsWith('.js')).some((p) => readFileSync(p, 'utf8').includes(marker));

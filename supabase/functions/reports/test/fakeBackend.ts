@@ -98,7 +98,13 @@ export class FakeBackend {
       if (method === 'GET') {
         // Row level security: a student sees own rows, a supervisor sees their cohort's.
         const visible = (r: Report) => asService || r.user_id === uid || (this.profiles[r.user_id]?.cohort_id != null && this.cohorts[this.profiles[r.user_id]!.cohort_id!]?.supervisor_id === uid);
-        return json(200, this.reports.filter((r) => r.id === eq('id') && visible(r)));
+        // Filters the function uses: id=eq.X, or delete_after=lt.DATE (the purge), and an optional limit.
+        const before = url.searchParams.get('delete_after')?.replace(/^lt\./, '');
+        const wantId = eq('id');
+        let hit = this.reports.filter((r) => visible(r) && (wantId === undefined ? before !== undefined : r.id === wantId) && (before === undefined || r.delete_after < before));
+        const limit = Number(url.searchParams.get('limit') ?? NaN);
+        if (Number.isFinite(limit)) hit = hit.slice(0, limit);
+        return json(200, hit);
       }
       if (method === 'DELETE') {
         if (!asService) return json(403, { message: 'permission denied' });

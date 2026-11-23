@@ -15,11 +15,46 @@ export type ReportSubmitter = (r: { title: string; body: string }) => Promise<Su
 export type ReportRow = { id: string; title: string; createdAt: string };
 export type ReportContent = { ok: true; title: string; body: string } | { ok: false; status: 404 | 410 | number };
 
+/** The six dimensions of the report rubric (spec §9), in display order. */
+export const DIMENSIONS = ['picture', 'formulation', 'link', 'process', 'self', 'ethics'] as const;
+export type Dimension = (typeof DIMENSIONS)[number];
+export type Score = 1 | 2 | 3 | 4;
+export type Scores = Partial<Record<Dimension, Score>>;
+export type FeedbackInput = { scores: Scores; comments: string };
+export type FeedbackRecord = { id: string; scores: Scores; comments: string; status: 'draft' | 'released'; releasedAt: string | null };
+
+/** One row of the supervisor's list. `summary` is counts per rule, computed by the server; never text. */
+export type ReviewRow = {
+  id: string;
+  title: string;
+  createdAt: string;
+  studentName: string;
+  status: 'submitted' | 'reviewed';
+  deleteAfter: string;
+  summary: Record<string, { found: number }>;
+};
+export type DriveStatus = 'ok' | 'auth' | 'quota' | 'unavailable' | 'not_configured';
+export type PurgeResult =
+  | { ok: true; purged: number; failed: number; more: boolean; driveError: string | null }
+  | { ok: false; status: number };
+
 export type ReportsApi = {
   submit: ReportSubmitter;
   list: () => Promise<ReportRow[]>;
   get: (id: string) => Promise<ReportContent>;
   remove: (id: string) => Promise<boolean>;
+  /** Student: the released feedback on one of their own reports, or null. Never a draft. */
+  releasedFeedback: (reportId: string) => Promise<FeedbackRecord | null>;
+  /** Supervisor: every report of their cohorts, newest first. */
+  listForReview: () => Promise<ReviewRow[]>;
+  /** Supervisor: their own feedback on a report (draft or released), or null. */
+  myFeedback: (reportId: string) => Promise<FeedbackRecord | null>;
+  /** Supervisor: save as a draft, or release (which the database refuses unless all six scores and a comment are present). */
+  saveFeedback: (reportId: string, input: FeedbackInput, release: boolean) => Promise<{ ok: true; record: FeedbackRecord } | { ok: false }>;
+  /** Supervisor: delete the reports that are past their date, with their Drive files. */
+  purgeExpired: () => Promise<PurgeResult>;
+  /** Supervisor: does the saved Google authorisation still work? 'error' when the question itself failed. */
+  driveStatus: () => Promise<DriveStatus | 'error'>;
 };
 
 /** Status used by the default implementations: the feature has no backend yet. */
@@ -32,6 +67,12 @@ export const defaultReportsApi: ReportsApi = {
   list: async () => { throw new Error('reports not open'); },
   get: async () => ({ ok: false, status: NOT_OPEN }),
   remove: async () => false,
+  releasedFeedback: async () => null,
+  listForReview: async () => { throw new Error('reports not open'); },
+  myFeedback: async () => { throw new Error('reports not open'); },
+  saveFeedback: async () => ({ ok: false }),
+  purgeExpired: async () => ({ ok: false, status: NOT_OPEN }),
+  driveStatus: async () => 'error',
 };
 
 type Value = { enabled: boolean; api: ReportsApi };

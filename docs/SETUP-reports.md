@@ -40,30 +40,41 @@
 ## 2. Supabase
 
 1. **套用資料表。** 左側 **SQL Editor** → 左上「+」開一個**新的查詢分頁** → 只貼 `supabase/migrations/0005_reports.sql` 的內容 → **Run**。不要貼 `setup-all.sql`。成功時顯示 `Success. No rows returned`。
-2. **貼上函式。**
+2. **套用保存期限與評閱規則（`0006`）。** 在 `0005` 成功之後才做。SQL Editor → 「+」開**新的查詢分頁** → 只貼 `supabase/migrations/0006_retention.sql` 的內容 → **Run**。成功時顯示 `Success. No rows returned`。它做兩件事：改學期結束日時，該班報告的刪除日期跟著改；督導的評閱要六個分數加意見才能發布，發布時報告標為已評閱。不要貼 `setup-all.sql`。
+3. **貼上函式。**
    1. 左側 **Edge Functions** → **Deploy a new function** → **Via Editor**。
    2. 函式名稱填 `reports`（要完全一樣，小寫）。
    3. 刪掉編輯器裡的範例程式，貼上 `supabase/functions/reports/index.ts` 的**全部內容**。這個檔案是程式產生的單一檔案，不要修改。
    4. **Deploy function**。
    5. 如果之後測試時看到 `Invalid JWT`（在函式程式碼執行之前就被擋下），到這個函式的設定頁，把 **Verify JWT** 關掉再試一次。函式自己會向 Supabase 驗證登入，所以關掉不會讓未登入者通過。這一點尚未證實，見第 5 節。
-3. **設定密鑰。** **Edge Functions** → **Secrets**（或 **Manage secrets**）→ 新增三個：
+4. **設定密鑰。** **Edge Functions** → **Secrets**（或 **Manage secrets**）→ 新增三個：
    - `GOOGLE_CLIENT_ID` ＝ 第 1 節第 6 步的 Client ID
    - `GOOGLE_CLIENT_SECRET` ＝ 第 1 節第 6 步的 Client secret
    - `GOOGLE_REFRESH_TOKEN` ＝ 第 1 節第 7 步的 Refresh token
 
    Supabase 會自動提供 `SUPABASE_URL`、`SUPABASE_ANON_KEY`、`SUPABASE_SERVICE_ROLE_KEY` 給函式。**你不需要複製或貼上任何 Supabase 金鑰。**
-4. **為一個測試班開啟報告。** SQL Editor → 新的查詢分頁 → 貼上（把名稱換成測試班的班名）：
+5. **為一個測試班開啟報告。** SQL Editor → 新的查詢分頁 → 貼上（把名稱換成測試班的班名）：
    ```sql
    update cohorts set reports_enabled = true where name = '測試班名稱';
    select name, reports_enabled from cohorts;
    ```
    其他班維持關閉。
 
+   > 函式有更新（新增「清理過期報告」和「Drive 連線狀態」兩個動作）。如果你之前已貼過舊版，要把新的 `supabase/functions/reports/index.ts` 全部內容再貼一次並 **Deploy**。
+
+## 2.5 督導後台的新功能（開啟報告功能後才會出現）
+
+- **Google Drive 連線**：督導首頁和「待評閱的報告」頁頂部。授權失效時顯示紅字，並指向本文件第 5 節。
+- **待評閱的報告**：列出本班報告（標題、學生、日期、狀態、殘留的可能識別資料數）。點標題讀正文、評分、寫意見。按「儲存草稿」學生看不到；六個向度都有分數並寫了意見，才能按「發布給學生」。
+- **立即清理過期報告**：報告頁的按鈕。刪除已過期（學期結束後 90 天）的報告，連 Drive 檔案和回饋。一次最多 50 份，多了就再按一次。
+- 規準各級的描述是**草稿**，頁面上會標示「規準尚未審核」。審核並同意後，由接手的 session 把 `src/reports/rubric.ts` 的 `RUBRIC_REVIEWED` 改成 `true`。
+
 ## 3. 不要做的事
 
 - 不要改名、移動或刪除 Drive 裡的 `ClinicMind Practice Reports` 資料夾。程式按名稱在「我的雲端硬碟」根目錄找它；移走後程式會另建一個新資料夾。
 - 不要在 Drive 裡手動刪除報告檔案。要刪報告，用網站上的刪除（會同時刪 Drive 檔和資料庫列）。手動刪除後，學生打開那份報告會看到「檔案已不存在」。
 - 檔名只是報告編號，看不出是誰的。編號對應到學生，要查資料庫的 `reports` 表。
+- 過期報告要靠督導按「立即清理過期報告」。Supabase 網頁介面能否設定定時執行，尚未證實，所以沒有做排程。
 - 刪除某個學生的帳號時，資料庫的報告列會一併刪除，但 Drive 裡的檔案**不會**。目前沒有自動清理；要先在網站上刪掉他的報告，再刪帳號。
 
 ## 4. 冒煙測試（尚未做）
@@ -85,6 +96,10 @@
 - 學生看到「Google Drive 沒有回應」：多數是暫時的，稍後再試。
 
 ## 6. 尚未證實的地方（如實列出）
+
+- `0006`、清理、Drive 狀態、評閱介面都只在行程內 Postgres 和模擬的 `fetch` 測過，沒有連過真實的 Supabase 或 Google。
+- Drive 狀態檢查用「取得 access token＋列出一個檔案」判斷。在 `drive.file` 權限下這個列表呼叫是否可用，尚未證實。
+- 「Drive 已滿」只在寫入時才會被發現，狀態檢查看不出來。
 
 - 上面所有 Google 和 Supabase 介面的按鈕名稱、順序，是按文件寫的，沒有在真實畫面上走過。
 - 「Verify JWT」是否擋住新式登入憑證，尚未證實。

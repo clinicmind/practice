@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useT } from '../../i18n';
 import { useReportsApi, type ReportContent } from '../../reports/ReportsContext';
+import { FeedbackView } from './FeedbackView';
 
 export function ReportPage() {
   const t = useT();
@@ -27,6 +28,7 @@ export function ReportPage() {
     <div>
       <h1>{r.title}</h1>
       <div className="report-text">{r.body}</div>
+      <FeedbackView reportId={id} />
       {back}
     </div>
   );

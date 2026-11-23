@@ -21,6 +21,8 @@ export type Drive = {
   readFile(id: string): Promise<string | null>;
   /** A file that is already gone counts as deleted. */
   deleteFile(id: string): Promise<void>;
+  /** Proves the authorisation works: gets an access token and makes one cheap Drive call. Throws DriveError. */
+  check(): Promise<void>;
 };
 
 const API = 'https://www.googleapis.com/drive/v3';
@@ -126,6 +128,11 @@ export function createDrive(env: DriveEnv, fetchFn: FetchFn): Drive {
       if (res.status === 404) return null;
       if (!res.ok) await fail(res);
       return await res.text();
+    },
+
+    async check() {
+      const res = await call(`${API}/files?${new URLSearchParams({ fields: 'files(id)', pageSize: '1', spaces: 'drive' })}`);
+      if (!res.ok) await fail(res);
     },
 
     async deleteFile(id) {

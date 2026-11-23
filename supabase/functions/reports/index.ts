@@ -685,6 +685,10 @@ ${text}\r
       if (!res.ok) await fail2(res);
       return await res.text();
     },
+    async check() {
+      const res = await call(`${API}/files?${new URLSearchParams({ fields: "files(id)", pageSize: "1", spaces: "drive" })}`);
+      if (!res.ok) await fail2(res);
+    },
     async deleteFile(id) {
       const res = await call(`${API}/files/${encodeURIComponent(id)}`, { method: "DELETE" });
       if (res.status === 404 || res.ok) return;
@@ -699,6 +703,7 @@ var MAX_BODY = 3e4;
 var MAX_TITLE = 100;
 var MAX_PER_DAY = 5;
 var KEEP_DAYS = 90;
+var PURGE_BATCH = 50;
 var MAX_REQUEST_BYTES = 2e5;
 var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 var CORS = {
@@ -735,7 +740,7 @@ async function route(req, env, fetchFn, now) {
     return fail(400, "bad_request");
   }
   const action = input.action;
-  if (action !== "submit" && action !== "get" && action !== "delete") return fail(400, "bad_request");
+  if (action !== "submit" && action !== "get" && action !== "delete" && action !== "purge" && action !== "drive_status") return fail(400, "bad_request");
   const who = await fetchFn(`${url}/auth/v1/user`, { headers: { apikey: anon, Authorization: `Bearer ${token}` } });
   if (!who.ok) return fail(401, "unauthorized");
   const userId = (await who.json().catch(() => null))?.id;
@@ -746,7 +751,56 @@ async function route(req, env, fetchFn, now) {
   const audit = (action2, target) => asService("audit_log", { method: "POST", headers: { Prefer: "return=minimal" }, body: JSON.stringify({ actor_id: userId, action: action2, target_table: "reports", target_id: target }) }).catch(() => null);
   const drive = createDrive(env, fetchFn);
   if (action === "submit") return submit();
+  if (action === "purge") return purge();
+  if (action === "drive_status") return driveStatus();
   return existing(action);
+  async function isSupervisor() {
+    const prof = await asService(`profiles?id=eq.${userId}&select=role`);
+    if (!prof.ok) return null;
+    return (await prof.json())[0]?.role === "supervisor";
+  }
+  async function purge() {
+    const sup = await isSupervisor();
+    if (sup === null) return fail(500, "server_error");
+    if (!sup) return fail(403, "not_allowed");
+    const today = now().toISOString().slice(0, 10);
+    const found = await asUser(`reports?delete_after=lt.${today}&select=id,drive_file_id&order=delete_after.asc,id.asc&limit=${PURGE_BATCH + 1}`);
+    if (!found.ok) return fail(500, "server_error");
+    const rows = await found.json();
+    const batch = rows.slice(0, PURGE_BATCH);
+    let purged = 0, failed = 0;
+    let driveError = null;
+    for (const row of batch) {
+      try {
+        await drive.deleteFile(row.drive_file_id);
+      } catch (e) {
+        if (!(e instanceof DriveError)) throw e;
+        driveError = DRIVE_STATUS[e.kind];
+        break;
+      }
+      const del = await asService(`reports?id=eq.${row.id}`, { method: "DELETE" }).catch(() => null);
+      if (!del?.ok) {
+        failed++;
+        continue;
+      }
+      await audit("purge_report", row.id);
+      purged++;
+    }
+    return reply(200, { purged, failed, more: rows.length > PURGE_BATCH, driveError });
+  }
+  async function driveStatus() {
+    const sup = await isSupervisor();
+    if (sup === null) return fail(500, "server_error");
+    if (!sup) return fail(403, "not_allowed");
+    if (!env.GOOGLE_CLIENT_ID || !env.GOOGLE_CLIENT_SECRET || !env.GOOGLE_REFRESH_TOKEN) return reply(200, { status: "not_configured" });
+    try {
+      await drive.check();
+      return reply(200, { status: "ok" });
+    } catch (e) {
+      if (e instanceof DriveError) return reply(200, { status: e.kind });
+      throw e;
+    }
+  }
   async function submit() {
     const title = typeof input.title === "string" ? input.title.trim() : null;
     const body = input.body;

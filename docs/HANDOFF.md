@@ -17,7 +17,7 @@
 | 階段 3 Task 1：去識別化掃描器 | 完成 | 142 個測試 |
 | 階段 3 Task 2：報告撰寫介面 | 完成並上線（2026-11-22）。介面預設完全隱藏（`reportsEnabled` 預設關），正式網站不會改變。提交經注入的 `ReportSubmitter`，預設回「報告功能尚未開放」；沒有後端 | 單元測試＋端到端（用打開開關的另一個建置和假後端） |
 | 階段 3 Task 3–4（本文件「報告後端」）：資料表、Edge Function `reports`、Drive、真實 `ReportSubmitter` | 程式完成，已合併上線（2026-11-23），但**從未連上真實的 Supabase 或 Google**，`0005_reports.sql` 未套用。`reportsEnabled` 仍預設關；正式建置的行為不變 | 單元測試（模擬 `fetch`、行程內 Postgres）。冒煙測試見 `docs/SETUP-reports.md` 第 4 節，尚未做 |
-| 階段 3 督導評閱、保存期限（`0006`）、督導後台的 Drive 連線狀態 | 未開始 | — |
+| 階段 3 督導評閱、保存期限（`0006`）、督導後台的 Drive 連線狀態 | 程式完成，在分支 `claude/reports-review`，**未合併、未上線**。`reportsEnabled` 關閉時正式網站看不到（路由不存在、沒有連結、不呼叫後端）。`0006` 未套用。規準各級描述是草稿，未經擁有人審核 | 單元測試＋pglite 權限測試＋端到端（正式建置 `/supervisor/reports` 是找不到頁面）。沒連過真實 Supabase／Google |
 | 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。模組 2 `eft-emotion-types`、模組 3 `eft-focusing` 的內容也已寫完、未登記。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
 | 階段 4、6：AI 回饋、DBT | 設計規格已定。AI 回饋的成本估算（成本腳本 19 個單元測試；定價 2026-11-23 讀官方定價頁）和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`，沒有實作、沒有呼叫付費 API。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
 
@@ -148,7 +148,8 @@
 - 前端：`src/reports/cloudApi.ts`（`createCloudReportsApi`），只有 `VITE_REPORTS_ENABLED=true` 且有 Supabase 變數的建置才會載入（`src/main.tsx` 的條件在建置時替換，另成一個 chunk）。`reportsEnabled` 仍是建置開關，**尚未改成讀 cohort 的 `reports_enabled`**。
 - 正式建置不變的證據：同一份內容建置後，加上 `main.tsx` 接線和不加，輸出逐檔相同；整個建置的輸出和改動前不同，只因為新增的 i18n 字串和 `NewReportPage` 多讀一個錯誤代碼，這些只在報告畫面顯示，而報告畫面在正式建置不存在（e2e 有檢查）。e2e 另檢查正式 bundle 不含 `functions/v1/reports`。
 - 給擁有人：`docs/SETUP-reports.md`。
-- **仍要做**：冒煙測試（真實 Google 和 Supabase）；督導評閱（Task 4，`feedback` 的介面和規準）；保存期限（`0006`，`purge-reports`，現在報告到期不會被刪）；督導後台顯示 Drive 連線狀態；把 `reportsEnabled` 改成讀 cohort 設定；刪帳號時清 Drive 檔；報告頁在 `get` 失敗為 502 時目前只顯示通用的載入錯誤。
+- **督導評閱＋保存期限（分支 `claude/reports-review`）**：`0006_retention.sql`（改 `term_end` 同步 `delete_after`；`feedback` 分數檢查、發布需六分＋意見、不能退回草稿、發布時報告標 `reviewed` 並寫 audit，不含文字）。函式新增動作 `purge`（督導；以督導自己的 token 讀過期報告，RLS 限本班；先刪 Drive 檔再刪列；每次最多 50 份；Drive 失效時回 `driveError` 且不刪列）和 `drive_status`（督導；回 `ok|auth|quota|unavailable|not_configured`）。`0006` 比 `0005` 嚴：舊測試的回饋夾具已改成六分。沒有排程（Supabase 網頁介面能否排程未證實），只有「立即清理過期報告」按鈕。前端：`/supervisor/reports`、`/supervisor/reports/:id`、學生報告頁的 `FeedbackView`；介面文字在頂層鍵 `reportsReview`。規準在 `src/reports/rubric.ts`（`RUBRIC_REVIEWED=false`）和 i18n，**不在 `content/`**，未登記審核。擁有人批准後改旗標。
+- **仍要做**：套用 `0005`、`0006` 並冒煙測試（真實 Google 和 Supabase，含 Drive 狀態檢查）；擁有人審核規準；把 `reportsEnabled` 改成讀 cohort 設定；刪帳號時清 Drive 檔；報告頁在 `get` 失敗為 502 時目前只顯示通用的載入錯誤。
 
 ## 7. 文件地圖
 
