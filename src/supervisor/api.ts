@@ -5,6 +5,8 @@ import { StoreError } from '../progress/storeError';
 import { fetchAll, run, type Result, type Row } from '../progress/cloud';
 import { levelPassed, walkthroughDone } from '../progress/rules';
 import { toAttempt, toDecision, toReflection } from '../progress/supabaseStore';
+import type { AiDisagreement, AiEvaluation } from './aiSummary';
+import type { AiBudget, UsageRow } from './aiUsage';
 import type { Attempt, Decision, Reflection } from '../progress/types';
 
 export type ModuleProgress = { walkthroughDone: boolean; passed: Level[] };
@@ -26,7 +28,11 @@ export type StudentDetail = {
   reflections: Reflection[];
   grants: { moduleSlug: string; level: Level }[];
 };
-export type CohortInfo = { id: string; name: string; inviteCode: string; termEnd: string };
+export type CohortInfo = {
+  id: string; name: string; inviteCode: string; termEnd: string;
+  /** The owner's switch for AI feedback in this cohort. Off unless the owner turned it on. */
+  aiEnabled: boolean;
+};
 export type CourseStage = { stage: string; title: string; index: StageIndex };
 export type Course = {
   /** Every stage this build ships, foundations first. */
@@ -98,7 +104,7 @@ export function createSupervisorApi(client: Backend, supervisorId: string) {
   return {
     async listCohorts(): Promise<CohortInfo[]> {
       const rows = await all('cohorts', '*', (q) => ordered(q, 'created_at', 'id'));
-      return rows.map((r) => ({ id: r.id, name: r.name, inviteCode: r.invite_code, termEnd: r.term_end }));
+      return rows.map((r) => ({ id: r.id, name: r.name, inviteCode: r.invite_code, termEnd: r.term_end, aiEnabled: r.ai_enabled === true }));
     },
 
     async listStudents(): Promise<StudentSummary[]> {
@@ -171,6 +177,48 @@ export function createSupervisorApi(client: Backend, supervisorId: string) {
       await run(() =>
         client.from('cohort_stages').delete().eq('cohort_id', cohortId).eq('stage', stage) as unknown as PromiseLike<Result>,
       );
+    },
+
+    /**
+     * Every finished AI check visible to this supervisor, as ids and a flag only: the response text and the
+     * quoted words are not read. Only called for cohorts with the AI switch on.
+     * The row shape is PostgREST's: `concern` is `output->>concern`, `attempt` is the embedded attempt.
+     */
+    async listAiEvaluations(): Promise<AiEvaluation[]> {
+      const rows = await all('ai_feedback', 'attempt_id, concern:output->>concern, attempt:attempts(user_id, item_id)', (q) => ordered(q.eq('status', 'done'), 'created_at', 'id'));
+      return rows.flatMap((r: Row): AiEvaluation[] => {
+        const a = Array.isArray(r.attempt) ? r.attempt[0] : r.attempt;
+        if (!a) return [];
+        const concern = r.concern === 'risk-content' || r.concern === 'off-task' ? r.concern : 'none';
+        return [{ attemptId: String(r.attempt_id), userId: String(a.user_id), itemId: String(a.item_id), concern }];
+      });
+    },
+
+    /** One row per criterion where the student's self-check and the AI differ (the `ai_disagreements` view). */
+    async listAiDisagreements(): Promise<AiDisagreement[]> {
+      const rows = await all('ai_disagreements', 'attempt_id, user_id, item_id, criterion_index, self_met, ai_met', (q) => ordered(q, 'attempt_id', 'criterion_index'));
+      return rows
+        .filter((r: Row) => [1, 2, 3].includes(Number(r.criterion_index)) && typeof r.self_met === 'boolean' && typeof r.ai_met === 'boolean')
+        .map((r: Row): AiDisagreement => ({
+          attemptId: String(r.attempt_id), userId: String(r.user_id), itemId: String(r.item_id),
+          criterion: Number(r.criterion_index) as 1 | 2 | 3, selfMet: r.self_met, aiMet: r.ai_met,
+        }));
+    },
+
+    /** Token counts, money and labels since `sinceIso`. There is no text in this table. */
+    async listAiUsage(sinceIso: string): Promise<UsageRow[]> {
+      const rows = await all('ai_usage', 'kind, input_tokens, output_tokens, cache_write_tokens, cache_read_tokens, cost_usd, outcome, created_at', (q) => ordered(q.gte('created_at', sinceIso), 'created_at', 'id'));
+      return rows.map((r: Row): UsageRow => ({
+        kind: r.kind, inputTokens: Number(r.input_tokens), outputTokens: Number(r.output_tokens),
+        cacheWriteTokens: Number(r.cache_write_tokens), cacheReadTokens: Number(r.cache_read_tokens),
+        costUsd: Number(r.cost_usd), outcome: r.outcome, createdAt: String(r.created_at),
+      }));
+    },
+
+    /** The monthly budget row, or null when there is none. */
+    async getAiBudget(): Promise<AiBudget | null> {
+      const row = (await run(() => client.from('ai_budget').select('monthly_limit_usd, warn_at').maybeSingle() as unknown as PromiseLike<Result>)) as Row | null;
+      return row ? { monthlyLimitUsd: Number(row.monthly_limit_usd), warnAt: Number(row.warn_at) } : null;
     },
 
     async grantUnlock(studentId: string, moduleSlug: string, level: Level): Promise<void> {

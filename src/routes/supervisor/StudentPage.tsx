@@ -1,17 +1,21 @@
 import { Fragment, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useAiAvailable } from '../../ai/AiContext';
 import { loadModels } from '../../content/client';
 import { LEVELS, type Drill, type Level, type Model, type StageIndex } from '../../content/schema';
 import { useT } from '../../i18n';
 import { itemMet, levelPassed, unlockedLevels, walkthroughDone } from '../../progress/rules';
 import { loadCourse, type Course, type StudentDetail } from '../../supervisor/api';
+import { directionOf, type AiDisagreement, type AiEvaluation } from '../../supervisor/aiSummary';
 import { flagAttempts, type Flag } from '../../supervisor/flags';
 import { useSupervisorApi } from '../../supervisor/SupervisorContext';
 
 const Heading = ({ level, children }: { level: 3 | 4; children: ReactNode }) => (level === 3 ? <h3>{children}</h3> : <h4>{children}</h4>);
 const day = (iso: string) => iso.slice(0, 10);
 
-type Loaded = { detail: StudentDetail; course: Course; models: Record<string, Model>[]; modelsMissing: boolean };
+/** What the AI said about this student's responses. 'error': the read failed, which must not break the page. */
+type StudentAi = { evals: AiEvaluation[]; diffs: AiDisagreement[] } | 'error' | null;
+type Loaded = { detail: StudentDetail; course: Course; models: Record<string, Model>[]; modelsMissing: boolean; ai: StudentAi };
 type State = { status: 'loading' } | { status: 'error' } | { status: 'missing' } | ({ status: 'ready' } & Loaded);
 
 export function StudentPage() {
@@ -19,6 +23,7 @@ export function StudentPage() {
   const t = s.supervisor;
   const { id = '' } = useParams();
   const api = useSupervisorApi();
+  const aiAvailable = useAiAvailable();
   const [state, setState] = useState<State>({ status: 'loading' });
   const [tick, setTick] = useState(0);
   const [busy, setBusy] = useState(false);
@@ -42,10 +47,24 @@ export function StudentPage() {
         loadModels(slug, 'zh-Hant', course.stageOf[slug]).then((m) => { Object.assign(modelsZh, m); }, () => {}),
       ]));
       const models = [modelsEn, modelsZh];
-      if (live) setState({ status: 'ready', detail, course, models, modelsMissing });
+      // AI marks: only when the build has the feature and this student's cohort has its switch on.
+      // A failure here is shown as a note; it does not stop the rest of the page.
+      let ai: StudentAi = null;
+      if (aiAvailable) {
+        try {
+          const cohort = (await api.listCohorts()).find((c) => c.id === detail.cohortId);
+          if (cohort?.aiEnabled) {
+            const [evals, diffs] = await Promise.all([api.listAiEvaluations(), api.listAiDisagreements()]);
+            ai = { evals: evals.filter((e) => e.userId === id), diffs: diffs.filter((d) => d.userId === id) };
+          }
+        } catch {
+          ai = 'error';
+        }
+      }
+      if (live) setState({ status: 'ready', detail, course, models, modelsMissing, ai });
     })().catch(() => live && setState({ status: 'error' }));
     return () => { live = false; };
-  }, [api, id, tick]);
+  }, [api, id, tick, aiAvailable]);
 
   const loaded = state.status === 'ready' ? state : null;
   const flagsByAttempt = useMemo(() => {
@@ -68,7 +87,8 @@ export function StudentPage() {
     );
   }
 
-  const { detail, course, modelsMissing } = state;
+  const { detail, course, modelsMissing, ai } = state;
+  const ta = s.aiFeedback.supervisor;
   const drillOf = new Map<string, Drill>();
   for (const b of Object.values(course.bundles)) for (const d of b.drills) drillOf.set(d.id, d);
 
@@ -146,6 +166,7 @@ export function StudentPage() {
         <h2 id="attempts-h">{t.attemptsHeading}</h2>
         <p className="muted">{t.flagsNote}</p>
         {modelsMissing && <p role="status" className="notice">{t.modelsMissing}</p>}
+        {ai === 'error' && <p role="alert" className="error">{ta.loadError}</p>}
         {newest.length === 0 ? (
           <p>{t.noAttempts}</p>
         ) : (
@@ -171,6 +192,7 @@ export function StudentPage() {
                   {flags.map((f) => (
                     <p key={f.reason}><span className="badge flag">{t.flagPrefix} {t.flags[f.reason]}</span></p>
                   ))}
+                  {ai && ai !== 'error' && <AiMarks attemptId={a.id} ai={ai} criteria={drill?.criteria} />}
                 </li>
               );
             })}
@@ -202,5 +224,25 @@ export function StudentPage() {
         </ul>
       </section>
     </div>
+  );
+}
+
+/** The AI's check of one response, in the supervisor's words. Differences are split by direction. Nothing if it was not checked. */
+function AiMarks({ attemptId, ai, criteria }: { attemptId: string; ai: { evals: AiEvaluation[]; diffs: AiDisagreement[] }; criteria?: string[] }) {
+  const s = useT();
+  const t = s.aiFeedback.supervisor;
+  const evaluation = ai.evals.find((e) => e.attemptId === attemptId);
+  if (!evaluation) return null;
+  if (evaluation.concern === 'risk-content') return <p><span className="badge risk">{t.riskFlag}</span></p>;
+  if (evaluation.concern === 'off-task') return <p><span className="badge">{t.offTaskFlag}</span></p>;
+  const diffs = ai.diffs.filter((d) => d.attemptId === attemptId);
+  if (diffs.length === 0) return <p className="muted">{t.agreeFlag}</p>;
+  return (
+    <ul className="plain ai-supervisor" aria-label={t.attemptHeading}>
+      {diffs.map((d) => {
+        const label = criteria?.[d.criterion - 1] ?? s.supervisor.criterionN(d.criterion);
+        return <li key={d.criterion}><span className="badge">{directionOf(d) === 'self-only' ? t.selfOnly(label) : t.aiOnly(label)}</span></li>;
+      })}
+    </ul>
   );
 }

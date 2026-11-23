@@ -2,8 +2,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
-import { getSupabase } from './auth/supabase';
+import { getSupabase, type Backend } from './auth/supabase';
 import { createLocalStore } from './progress/localStore';
+import { aiFlag, type AiFeedbackClient } from './ai/AiContext';
 import { reportsFlag, type ReportsApi } from './reports/ReportsContext';
 import '@fontsource-variable/newsreader/wght.css';
 import '@fontsource-variable/newsreader/wght-italic.css';
@@ -20,6 +21,8 @@ const store = createLocalStore();
 
 // Reports are off unless the build sets VITE_REPORTS_ENABLED=true. The production build does not.
 const reportsEnabled = reportsFlag(import.meta.env);
+// AI feedback is off unless the build sets VITE_AI_ENABLED=true. The production build does not.
+const aiEnabled = aiFlag(import.meta.env);
 
 async function start() {
   // End-to-end builds only: a stand-in backend, so the screens can be driven without Edge Functions.
@@ -41,10 +44,33 @@ async function start() {
       });
     }
   }
+  let backend: Backend | null = getSupabase();
+  let aiClient: AiFeedbackClient | undefined;
+  if (import.meta.env.VITE_AI_FAKE_API === 'true') {
+    // End-to-end builds only, like the reports stand-in above: removed from a normal build at build time.
+    const { createFakeAiClient } = await import('./ai/fakeApi');
+    // The page may ask for a seeded supervisor session, so the supervisor screens can be driven without Supabase.
+    if (sessionStorage.getItem('e2e-fake-user') === 'sup') {
+      backend = (await import('./ai/fakeBackend')).createSeededSupervisorBackend();
+      aiClient = createFakeAiClient(async () => null);
+    }
+    aiClient ??= createFakeAiClient(async (id) => (await store.listAttempts()).find((a) => a.id === id)?.response ?? null);
+  } else if (import.meta.env.VITE_AI_ENABLED === 'true') {
+    // The real client (the `ai-feedback` Edge Function). Only with a Supabase backend: local mode has no attempts on the server.
+    const sb = getSupabase();
+    if (sb) {
+      const { createCloudAiClient } = await import('./ai/cloudApi');
+      aiClient = createCloudAiClient({
+        url: import.meta.env.VITE_SUPABASE_URL,
+        anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY,
+        getToken: async () => (await sb.auth.getSession()).data.session?.access_token ?? null,
+      });
+    }
+  }
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <BrowserRouter>
-        <App store={store} wasReset={store.wasReset} backend={getSupabase()} reportsEnabled={reportsEnabled} reportsApi={reportsApi} />
+        <App store={store} wasReset={store.wasReset} backend={backend} reportsEnabled={reportsEnabled} reportsApi={reportsApi} aiEnabled={aiEnabled} aiClient={aiClient} />
       </BrowserRouter>
     </StrictMode>,
   );

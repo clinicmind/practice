@@ -1,5 +1,7 @@
-import { useCallback, useEffect, useState, type FormEvent } from 'react';
+import { Suspense, useCallback, useEffect, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { useAiAvailable } from '../../ai/AiContext';
+import { LazyAiCohortPanel, LazyAiUsagePanel } from '../../ai/lazy';
 import { DriveStatusPanel } from '../../components/DriveStatusPanel';
 import { useT } from '../../i18n';
 import { useReportsEnabled } from '../../reports/ReportsContext';
@@ -191,6 +193,7 @@ function CohortSection({ cohort, students, course }: { cohort: CohortInfo; stude
   const t = s.supervisor;
   const modules = course.stages.flatMap((st) => st.index.modules).filter((m) => m.reviewed);
   const closed = cohort.termEnd < todayLocal();
+  const aiOn = useAiAvailable() && cohort.aiEnabled && LazyAiCohortPanel !== null; // the build switch and this cohort's switch
   return (
     <section aria-labelledby={`cohort-${cohort.id}`} className="card">
       <h2 id={`cohort-${cohort.id}`}>{cohort.name}</h2>
@@ -199,6 +202,7 @@ function CohortSection({ cohort, students, course }: { cohort: CohortInfo; stude
         <span>{t.termEnds(cohort.termEnd)}</span>
         {closed && <>{' '}<span className="badge">{t.termClosed}</span></>}
       </p>
+      {aiOn && LazyAiCohortPanel && <Suspense fallback={null}><LazyAiCohortPanel cohort={cohort} students={students} /></Suspense>}
       <StagesPanel cohort={cohort} stages={course.stages} />
       {students.length === 0 ? (
         <p>{t.noStudents}</p>
@@ -239,6 +243,7 @@ export function CohortPage() {
   const t = s.supervisor;
   const api = useSupervisorApi();
   const reportsOn = useReportsEnabled();
+  const aiAvailable = useAiAvailable();
   const [state, setState] = useState<State>({ status: 'loading' });
   const [tick, setTick] = useState(0);
   const reload = useCallback(() => setTick((n) => n + 1), []);
@@ -271,6 +276,7 @@ export function CohortPage() {
           <DriveStatusPanel />
         </>
       )}
+      {aiAvailable && LazyAiUsagePanel && cohorts.some((c) => c.aiEnabled) && <Suspense fallback={null}><LazyAiUsagePanel /></Suspense>}
       {cohorts.length === 0 ? (
         <section aria-labelledby="create-h">
           <h2 id="create-h">{t.createHeading}</h2>
