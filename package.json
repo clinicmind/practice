@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "content": "tsx scripts/build-content.ts",
+    "functions": "tsx scripts/build-functions.ts",
     "dev": "npm run content && vite",
     "build": "npm run content && tsc --noEmit && vite build",
     "preview": "vite preview",
@@ -33,6 +34,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "esbuild": "^0.28.2",
     "jsdom": "^25.0.1",
     "tsx": "^4.19.0",
     "typescript": "^5.6.0",

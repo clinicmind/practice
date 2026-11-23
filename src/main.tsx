@@ -27,6 +27,18 @@ async function start() {
   let reportsApi: Partial<ReportsApi> | undefined;
   if (import.meta.env.VITE_REPORTS_FAKE_API === 'true') {
     reportsApi = (await import('./reports/fakeApi')).createFakeApi();
+  } else if (import.meta.env.VITE_REPORTS_ENABLED === 'true') {
+    // The real backend (the `reports` Edge Function). Like the line above, this condition is replaced at
+    // build time, so none of it is in a normal build. See docs/SETUP-reports.md before turning it on.
+    const sb = getSupabase();
+    if (sb) {
+      const { createCloudReportsApi } = await import('./reports/cloudApi');
+      reportsApi = createCloudReportsApi({
+        url: import.meta.env.VITE_SUPABASE_URL,
+        anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY,
+        getToken: async () => (await sb.auth.getSession()).data.session?.access_token ?? null,
+      });
+    }
   }
   createRoot(document.getElementById('root')!).render(
     <StrictMode>

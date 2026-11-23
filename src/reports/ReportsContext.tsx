@@ -9,7 +9,7 @@ export type ReportFinding = { rule: string; start: number; end: number };
 export type SubmitResult =
   | { ok: true; id: string }
   | { ok: false; status: 422; findings: ReportFinding[] }
-  | { ok: false; status: number; message: string };
+  | { ok: false; status: number; message: string; /** The Edge Function's error code, when it gave one. */ code?: string };
 export type ReportSubmitter = (r: { title: string; body: string }) => Promise<SubmitResult>;
 
 export type ReportRow = { id: string; title: string; createdAt: string };

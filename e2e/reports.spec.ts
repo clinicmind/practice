@@ -32,6 +32,10 @@ test.describe('normal build: reports do not exist', () => {
     expect(has('dist')).toBe(false);
     expect(has('dist-reports')).toBe(true);
   });
+  test('the real backend client (the reports Edge Function address) is not in the normal bundle', () => {
+    const has = (dir: string) => files(dir).filter((p) => p.endsWith('.js')).some((p) => readFileSync(p, 'utf8').includes('functions/v1/reports'));
+    expect(has('dist')).toBe(false);
+  });
 });
 
 test.describe('reports-on build', () => {

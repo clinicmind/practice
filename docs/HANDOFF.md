@@ -1,6 +1,6 @@
 # 交接文件
 
-最後更新：2026-11-23（分支 `claude/eft-m1`，尚未合併）。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
+最後更新：2026-11-23。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
 
 ## 1. 現況
 
@@ -16,9 +16,10 @@
 | 多階段支援（建置、路由、階段解鎖、階段清單） | 完成，已合併上線（2026-11-16）。督導後台的階段開關和多階段讀取已完成並上線（2026-11-22）。`0004_cohort_stages.sql` 尚未套用到正式專案，見第 2 節 | 單元測試＋端到端＋行程內 Postgres 權限測試；用真實內容在瀏覽器確認首頁不變、舊網址 `/m/...` 自動轉到 `/s/foundations/m/...`、進度保留 |
 | 階段 3 Task 1：去識別化掃描器 | 完成 | 142 個測試 |
 | 階段 3 Task 2：報告撰寫介面 | 完成並上線（2026-11-22）。介面預設完全隱藏（`reportsEnabled` 預設關），正式網站不會改變。提交經注入的 `ReportSubmitter`，預設回「報告功能尚未開放」；沒有後端 | 單元測試＋端到端（用打開開關的另一個建置和假後端） |
-| 階段 3 Task 3–6：資料表、Edge Function、Drive、評閱、保存期限 | 未開始 | — |
-| 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。在分支 `claude/eft-m1`，尚未合併。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
-| 階段 4、6：AI 回饋、DBT | 設計規格已定。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
+| 階段 3 Task 3–4（本文件「報告後端」）：資料表、Edge Function `reports`、Drive、真實 `ReportSubmitter` | 程式完成，在分支 `claude/reports-backend`，**未合併、未部署、從未連上真實的 Supabase 或 Google**。`reportsEnabled` 仍預設關；正式建置的行為不變 | 單元測試（模擬 `fetch`、行程內 Postgres）。冒煙測試見 `docs/SETUP-reports.md` 第 4 節，尚未做 |
+| 階段 3 督導評閱、保存期限（`0006`）、督導後台的 Drive 連線狀態 | 未開始 | — |
+| 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。模組 2 `eft-emotion-types`、模組 3 `eft-focusing` 的內容也已寫完、未登記。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
+| 階段 4、6：AI 回饋、DBT | 設計規格已定。AI 回饋的成本估算和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
 
 最後一次完整測試（2026-11-22，整合 `claude/stage-admin` 和 `claude/report-compose` 之後，已上線）：`npm run check` 439＋142 個通過；`npm run e2e` 30 個通過、4 個跳過（同一批需要服務金鑰的測試）。用真實內容確認：首頁 8 個階段、舊網址自動轉址、正式建置沒有報告連結，`/reports/new` 顯示找不到頁面。
 
@@ -69,7 +70,7 @@
 - `supabase/setup-all.sql` 由 `supabase/migrations/*.sql` 合併而成，有測試檢查兩者一致。新增 migration 後要重新產生它：
   `{ echo "-- GENERATED from supabase/migrations/*.sql. Do not edit. Paste the whole file into the Supabase SQL Editor once, on a new project."; for f in supabase/migrations/*.sql; do echo; echo "-- ===== $(basename $f) ====="; cat "$f"; done; } > supabase/setup-all.sql`
 - 正式專案已套用 0001–0003。之後每份新 migration，請擁有人**只貼那一份**到 SQL Editor。`setup-all.sql` 只給全新的專案用。
-- 階段 3 計畫寫的檔名要順延：報告表是 `0004_reports.sql`，保存期限是 `0005_retention.sql`。
+- 階段 3 計畫寫的檔名要順延：報告表是 `0005_reports.sql`（`0004` 已被 cohort_stages 用掉），保存期限是 `0006_retention.sql`。
 - 權限測試用 pglite 加一個模擬 Supabase 的 shim（`supabase/tests/harness.ts`）。Supabase 特有的預設權限不在測試範圍內，所以 migration 明確撤銷了 anon 的全部權限。
 
 **內容**
@@ -137,11 +138,24 @@
 - 「cohort 的 `reports_enabled`」目前以建置開關代替。Task 3 要把它改成讀 cohort 設定。
 - 掃描超過 30,000 字元的文字時不執行掃描（避免卡頁），只顯示長度提示。
 
+**報告後端（階段 3 Task 3–4，分支 `claude/reports-backend`）**
+- 資料庫：`0005_reports.sql`。`cohorts.reports_enabled`（預設 false，只能由擁有人在 SQL Editor 改）、`reports`（只有標題、`drive_file_id`、`deid_summary`、`status`、`delete_after`，沒有正文欄）、`feedback`（表和權限已建，介面在 Task 4，未做）。學生和督導都沒有 `reports` 的寫入權限；讀取：學生看自己的、督導看本班的、anon 全撤銷（`supabase/tests/reports.test.ts`）。
+- 函式：原始碼在 `supabase/functions/reports/src/`（`handler.ts`、`drive.ts`、`entry.ts`），**`supabase/functions/reports/index.ts` 是程式產生的單一檔案**（esbuild 把函式和 `packages/deid` 打包在一起），擁有人貼這個檔案。改了原始碼或掃描器，要跑 `npm run functions` 重新產生；`scripts/build-functions.test.ts` 會檢查檔案是最新的、沒有 import、打包版和原版掃描結果相同。
+- 一個函式三個動作：POST JSON `{action:'submit'|'get'|'delete', ...}`。列表不經函式，前端直接用學生自己的 token 讀 `reports` 表（RLS）。
+- 提交次序：驗證 token（向 Auth 問）→ 學生且有班 → `reports_enabled` → 長度 200–30,000 → 伺服器再掃 high 級（標題和正文）→ 每 24 小時 5 次（數 `audit_log` 的 `submit_report`，刪報告不會重置）→ 寫 Drive → 寫資料庫 → 失敗則刪 Drive 檔。Drive 失敗直接 502，不暫存正文。`delete_after` ＝ `term_end` ＋ 90 天。`deid_summary` 由伺服器自己重算。
+- 錯誤代碼（`error` 欄）：`drive_auth`（token 失效）、`drive_quota`、`drive_unavailable`、`reports_disabled`、`rate_limited`、`title_identifying`、`body_length`、`storage_failed`、`not_allowed`、`unauthorized`、`server_error`。UI 文字在頂層鍵 `reportsBackend.errors`（英文和繁中）。
+- Drive：`drive.file` 範圍；資料夾 `ClinicMind Practice Reports`（在「我的雲端硬碟」根目錄，按名稱找或建）→ 以 cohort id 命名的子資料夾 → `<報告id>.txt`。讀取時先查 `trashed`，在回收桶也當成不存在（410）。刪除用永久刪除。每次請求重新換 access token、重新找資料夾（沒有快取，之後有需要再加）。
+- 前端：`src/reports/cloudApi.ts`（`createCloudReportsApi`），只有 `VITE_REPORTS_ENABLED=true` 且有 Supabase 變數的建置才會載入（`src/main.tsx` 的條件在建置時替換，另成一個 chunk）。`reportsEnabled` 仍是建置開關，**尚未改成讀 cohort 的 `reports_enabled`**。
+- 正式建置不變的證據：同一份內容建置後，加上 `main.tsx` 接線和不加，輸出逐檔相同；整個建置的輸出和改動前不同，只因為新增的 i18n 字串和 `NewReportPage` 多讀一個錯誤代碼，這些只在報告畫面顯示，而報告畫面在正式建置不存在（e2e 有檢查）。e2e 另檢查正式 bundle 不含 `functions/v1/reports`。
+- 給擁有人：`docs/SETUP-reports.md`。
+- **仍要做**：冒煙測試（真實 Google 和 Supabase）；督導評閱（Task 4，`feedback` 的介面和規準）；保存期限（`0006`，`purge-reports`，現在報告到期不會被刪）；督導後台顯示 Drive 連線狀態；把 `reportsEnabled` 改成讀 cohort 設定；刪帳號時清 Drive 檔；報告頁在 `get` 失敗為 502 時目前只顯示通用的載入錯誤。
+
 ## 7. 文件地圖
 
 | 檔案 | 內容 |
 |---|---|
 | `docs/SETUP.md` | 上線和審核的操作步驟（給擁有人） |
+| `docs/SETUP-reports.md` | 報告功能：Google Cloud、Supabase 函式和密鑰（給擁有人，未經冒煙測試） |
 | `docs/specs/2026-11-15-practice-system-design.md` | 系統設計規格 |
 | `docs/specs/2026-11-15-stage4-6-design.md` | AI 回饋、EFT、DBT 的設計規格 |
 | `docs/plans/2026-11-15-practice-phase{1,2,3}.md` | 各階段實作計畫（1、2 已完成，留作參考） |
