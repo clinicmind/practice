@@ -35,7 +35,7 @@ eft-focusing-e09:
   why: "It keeps both pieces of what she said and asks nothing beyond noticing."
   avoid: "'What about home?' It leaves the body and goes to the story."
 eft-focusing-e10:
-  model_response: "Uneasy, and not sure where. No hurry. See if you can notice where in you it's strongest."
+  model_response: "Uneasy, and not sure where. If you like, see where in you it's strongest, and take whatever time you need."
   why: "The client has not located it yet, so the invitation is to find a place. The pace is left to him."
   avoid: "'Is it in your stomach or your chest?' It offers locations and limits the search."
 eft-focusing-m01:
@@ -59,7 +59,7 @@ eft-focusing-m05:
   why: "A body word does not make a marker. When the client knows what the feeling is, receive it."
   avoid: "'Let's slow down and find out more about the heaviness.' He has not asked for that."
 eft-focusing-m06:
-  model_response: "A small stone. Stay with that for a moment. See whether 'stone' fits how it feels. If it doesn't, let the word change."
+  model_response: "A small stone. See whether 'stone' fits when you check it against the feeling, and if it doesn't, let the word change."
   why: "It keeps the client's image and asks him to check it. It allows the word to be wrong."
   avoid: "'A stone sounds like something hard and stuck.' You added a meaning."
 eft-focusing-m07:
@@ -67,7 +67,7 @@ eft-focusing-m07:
   why: "It keeps the word she ended on, and makes it easy to change."
   avoid: "'Tense is probably the better word.' You picked for her."
 eft-focusing-m08:
-  model_response: "A closed door. Take a moment and see if that fits the feeling. If something else fits better, let it come."
+  model_response: "A closed door. See if that fits the feeling, and if something else fits better, let it come."
   why: "It uses his image and invites a check. It gives no meaning to the door."
   avoid: "'What's behind the door?' It builds on the image before he has confirmed it."
 eft-focusing-m09:
@@ -75,7 +75,7 @@ eft-focusing-m09:
   why: "'Not quite right' is useful. It tells you where to look. It keeps the work in the felt sense."
   avoid: "'Maybe it's more like numb?' You supplied a word."
 eft-focusing-m10:
-  model_response: "A weight, pressing from outside. Check that against the feeling. Is it from outside? Take your time."
+  model_response: "A weight, pressing from outside. Check that against the feeling, and if 'from outside' isn't quite right, let the word change."
   why: "It keeps the correction he made, 'from outside', and invites him to check it."
   avoid: "'Who is pressing on you?' It adds a story."
 eft-focusing-h01:
@@ -99,11 +99,11 @@ eft-focusing-h05:
   why: "Focusing needs time and a way back to the ordinary. Opening it near the end leaves the client with unfinished work."
   avoid: "'Let's stay with it quickly.' It rushes."
 eft-focusing-h06:
-  model_response: "There's no right way to do this. Nothing is a fine thing to find. You can stay with the blank for a moment, or we can stop."
+  model_response: "Nothing is a fine thing to find, and there's no right way to do this. You can stay with the blank a little, or we can stop."
   why: "It removes the pressure to perform, accepts the blank, and offers a way out."
   avoid: "'Try harder to feel it.' It makes the blankness a failure."
 eft-focusing-h07:
-  model_response: "Okay, we can step back. Open your eyes if they were closed, look around the room, and feel your feet on the floor. You choose how close to go."
+  model_response: "Okay, we can step back. Look around the room and feel your feet on the floor, and you choose how close to go."
   why: "It responds to 'I want it to stop' at once. It gives her control of the distance."
   avoid: "'Stay with it, it will pass.' It overrides her."
 eft-focusing-h08:
@@ -111,10 +111,10 @@ eft-focusing-h08:
   why: "It declines to interpret, kindly, and keeps the choice with him."
   avoid: "'It sounds like sadness.' It answers a request that would take the felt sense away."
 eft-focusing-h09:
-  model_response: "That could be part of it. If it's all right, let's see whether the throat has anything more to say. If not, that's fine too."
+  model_response: "That could be part of it. If it's all right, let's see whether the throat has more to say, and if not, that's fine too."
   why: "It does not argue with the explanation, and it offers a soft way back to the body."
   avoid: "'I don't think it's just stress.' It argues and pushes."
 eft-focusing-h10:
-  model_response: "Okay. We can stop. You decided that, and it's fine. Take a moment, and let's see what you need from the rest of today."
+  model_response: "Okay, we can stop, and it's fine that you said so. Take a moment, and let's see what you need from the rest of today."
   why: "A stop is honoured at once. Your steadiness shows it was safe to say."
   avoid: "'Are you sure? You're doing well.' It pushes."

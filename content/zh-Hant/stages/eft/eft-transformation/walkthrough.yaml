@@ -29,7 +29,7 @@ sessions:
       - id: eft-transformation-s13-d2
         type: free
         prompt: "R 同意了。寫出你說的第一句話，用現在式，帶他回到那一刻。"
-        actual: "我們回到星期天早上。你在餐桌旁。你坐在哪裡？面前有什麼？"
+        actual: "我們回到星期天早上。你在餐桌旁。你坐在哪裡？"
         rationale: "你用現在式，問一件具體的事。「你坐在哪裡」很容易回答，也開始了場景，沒有要求任何感受。"
       - id: eft-transformation-s13-t03
         speaker: client

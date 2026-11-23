@@ -29,7 +29,7 @@ sessions:
       - id: eft-transformation-s13-d2
         type: free
         prompt: "R has agreed. Write the first thing you say to take him back to the moment, in the present tense."
-        actual: "Let's go back to Sunday morning. You're at the table. Where are you sitting, and what's in front of you?"
+        actual: "Let's go back to Sunday morning. You're at the table. Where are you sitting?"
         rationale: "You use the present tense and ask for one concrete thing. 'Where are you sitting' is easy to answer, and it starts the scene without asking for any feeling."
       - id: eft-transformation-s13-t03
         speaker: client

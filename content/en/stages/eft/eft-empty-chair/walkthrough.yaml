@@ -320,7 +320,7 @@ sessions:
       - id: eft-empty-chair-s12-d9
         type: free
         prompt: "The session is nearly over. Write one or two sentences that close the chair work and check how R is, without summing up for him."
-        actual: "Let's stop the chairs there. You can stand up if you like. How are you, in your own chair, right now?"
+        actual: "Let's stop the chairs there, and you can stand up if you like. How are you, in your own chair, right now?"
         rationale: "You close the task in a simple way and ask about him, not about the father. You do not name what he has done, and you do not make a lesson out of it."
     notes:
       goals: "No change. The aim of this work was never to resolve the father. R said 'I'm still angry' and 'I miss him', and both are allowed to stay."

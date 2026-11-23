@@ -17,14 +17,14 @@ sessions:
             fit: weak
             note: "You offer him a menu. He may pick one, and the pick will be an idea about the feeling, not the feeling. It is also the opposite of what he said: he does not know."
           - id: b
-            text: "Something since Sunday, and you can't say yet what it is. Would you like to slow down and stay with it for a minute? If you'd rather not, that's fine."
+            text: "Something since Sunday, and you can't say yet what it is. Would you like to slow down and stay with it for as long as feels right? If you'd rather not, that's fine."
             fit: strong
             note: "It repeats what he said, explains in one sentence what you are proposing, and gives him a clear way to say no. A client who has so far asked for methods should be told what the task is for."
           - id: c
             text: "What happened on Sunday?"
             fit: workable
             note: "It is a natural question and the answer may help. But it turns him to events and explanations, which he does easily. The unclear sense may be easier to reach before the story."
-        actual: "Something since Sunday, and you can't say yet what it is. Would you like to slow down and stay with it for a minute? If you'd rather not, that's fine."
+        actual: "Something since Sunday, and you can't say yet what it is. Would you like to slow down and stay with it for as long as feels right? If you'd rather not, that's fine."
         rationale: "'Something' and 'I don't know' are the signs of an unclear felt sense. The task is gentle, but it asks R to turn inward, which is unfamiliar to him. So you say what you are doing and why, and you make saying no easy. If he says no, you follow him."
       - id: eft-focusing-s5-t03
         speaker: client

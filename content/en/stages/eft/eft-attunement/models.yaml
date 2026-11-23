@@ -3,7 +3,7 @@ eft-attunement-e01:
   why: "It uses his own picture, the hallway and the quiet, and it treats 'I don't know why' as an open edge, not as a gap to fill."
   avoid: "'Maybe you're lonely when you get home.' It supplies an answer he said he does not have."
 eft-attunement-e02:
-  model_response: "You tell her 'fine', and some part of you knows that isn't quite true."
+  model_response: "You tell her 'fine', and maybe some part of you knows that isn't quite true."
   why: "It holds both things he said, side by side, and does not choose between them."
   avoid: "'Why don't you tell her how you really feel?' It is advice, and it skips the part of him that knows."
 eft-attunement-e03:
@@ -19,7 +19,7 @@ eft-attunement-e05:
   why: "It takes up his own phrase, 'what to do with one', and offers a guess he can correct."
   avoid: "'You should try one anyway. Rest is important.' Advice, and it answers everybody else's comment, not his."
 eft-attunement-e06:
-  model_response: "A stone sitting in your chest. Not sharp, just heavy, and always there."
+  model_response: "It sounds like a stone sitting in your chest. Not sharp, just heavy, and always there."
   why: "It keeps his image and his detail ('not sharp', 'just there'). 'Heavy' is the only thing it adds, and it follows from a stone."
   avoid: "'That sounds like sadness.' A label that is flatter than the image he gave you."
 eft-attunement-e07:
@@ -31,7 +31,7 @@ eft-attunement-e08:
   why: "It puts the body first, as he did, and offers the 'knew first' as a guess."
   avoid: "'What were you angry about?' It moves to the story and leaves the hands behind."
 eft-attunement-e09:
-  model_response: "At night the house grows, and there's too much room around you."
+  model_response: "It's as if the house grows at night, and there's too much room around you."
   why: "It takes 'too big' and makes it something you can see. It adds no event and no explanation."
   avoid: "'Do you feel lonely at night?' It asks a question and puts a label on his image."
 eft-attunement-e10:
@@ -75,8 +75,8 @@ eft-attunement-m09:
   why: "It stays with the plank and offers a guess about what the stiffness was like."
   avoid: "'You don't like being touched?' It turns a moment into a conclusion about him."
 eft-attunement-m10:
-  model_response: "Ten minutes in the car with the engine off, between the day and the door."
-  why: "It only places what he said. The space between day and door is his, and he can fill it."
+  model_response: "It sounds like ten minutes in between, sitting in the car, with the day behind you and the door ahead."
+  why: "It places what he said as an in-between moment, using only his details: the car, the ten minutes, the door. What fills that space is his."
   avoid: "'You don't want to go home.' It states the meaning of the pause in his place."
 eft-attunement-h01:
   model_response: "You'd like something you can actually use, and you've waited long enough for it. Tell me what you most want to be different, and we'll start from there."
@@ -103,7 +103,7 @@ eft-attunement-h06:
   why: "It uses his joke as a way in. It is concrete, and it stays at the level of intensity he chose."
   avoid: "'That sounds like it was really painful.' It pushes to a feeling he declined to name, and he will hear that his joke did not work."
 eft-attunement-h07:
-  model_response: "Crying isn't how you do things. And it looked as if something rose to the edge of your eyes just now and went back down."
+  model_response: "Crying isn't how you do things. You wiped your eyes quickly, and I'm just noticing it."
   why: "It respects his rule and describes only what could be seen. It does not name a feeling or say that he should let it out."
   avoid: "'You don't have to hold it in here.' It overrules 'I don't do crying' with an invitation he did not ask for."
 eft-attunement-h08:
