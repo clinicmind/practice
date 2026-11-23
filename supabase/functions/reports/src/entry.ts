@@ -7,3 +7,7 @@ declare const Deno: { serve(h: (r: Request) => Response | Promise<Response>): vo
 if (typeof Deno !== 'undefined') {
   Deno.serve((req) => handleRequest(req, Deno!.env.toObject(), fetch));
 }
+
+// Exported so the build test can check that the bundled scanner matches the original.
+export { handleRequest } from './handler';
+export { scan, scanHigh } from '../../../../packages/deid/src';
