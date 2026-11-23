@@ -1,0 +1,206 @@
+# 30 drills: 10 per level, 5 per skill per level.
+# The marker is a puzzling reaction. Model responses never explain the reaction to the client. The meaning has to come from the client.
+
+- id: eft-transformation-e01
+  level: easy
+  skill: scene-rebuilding
+  context: "The marker, a puzzling reaction, is present, and the client has agreed to go back to the moment. Task: write one or two sentences that take the client back into it, in the present tense."
+  client: "I snapped at a colleague in the staff meeting. She only asked about the schedule. I don't understand why I reacted so strongly."
+  criteria: &sr_easy
+    - "It invites the client back into one specific moment, in the present tense, and not into a general account."
+    - "It asks for one concrete thing: where the client is, who is there, or what he or she sees or hears."
+    - "It is one or two short sentences. It does not ask why, and it does not interpret."
+- id: eft-transformation-e02
+  level: easy
+  skill: scene-rebuilding
+  context: "The marker is present, and the client has agreed to go back to the moment. Task: write one or two sentences that take the client back into it."
+  client: "My daughter hung up on me and I burst into tears. It was only a phone call. It makes no sense."
+  criteria: *sr_easy
+- id: eft-transformation-e03
+  level: easy
+  skill: scene-rebuilding
+  context: "The marker is present, and the client has agreed to go back to the moment. Task: write one or two sentences that take the client back into it."
+  client: "I walked past the bakery on the way home and suddenly wanted to cry. I have no idea why."
+  criteria: *sr_easy
+- id: eft-transformation-e04
+  level: easy
+  skill: scene-rebuilding
+  context: "The marker is present, and the client has agreed to go back to the moment. Task: write one or two sentences that take the client back into it."
+  client: "I threw my phone across the room last night. I'm not a person who does that. I don't know what got into me."
+  criteria: *sr_easy
+- id: eft-transformation-e05
+  level: easy
+  skill: scene-rebuilding
+  context: "The marker is present, and the client has agreed to go back to the moment. Task: write one or two sentences that take the client back into it."
+  client: "When my manager said 'good job' I felt sick. How strange is that? A compliment!"
+  criteria: *sr_easy
+
+- id: eft-transformation-e06
+  level: easy
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and described the reaction. Task: write one or two sentences that ask what it was about this moment, without suggesting an answer."
+  client: "I saw the red pen and I felt small. (pause) I don't know why a pen."
+  criteria: &mb_easy
+    - "It asks what the moment meant to the client, or what it was about the moment, in an open way that does not lead."
+    - "It uses a detail that the client just gave."
+    - "It is one or two short sentences. It does not tell the client what the moment meant."
+- id: eft-transformation-e07
+  level: easy
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and described the reaction. Task: write one or two sentences."
+  client: "He said 'fine' and walked off. And that's when I lost it."
+  criteria: *mb_easy
+- id: eft-transformation-e08
+  level: easy
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and described the reaction. Task: write one or two sentences."
+  client: "She didn't look at me when I walked in. That was it. That's when I felt it."
+  criteria: *mb_easy
+- id: eft-transformation-e09
+  level: easy
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and described the reaction. Task: write one or two sentences."
+  client: "She said, 'You're always like this.' Something in me just dropped."
+  criteria: *mb_easy
+- id: eft-transformation-e10
+  level: easy
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and described the reaction. Task: write one or two sentences."
+  client: "The room went quiet when I spoke. Everyone just looked at me. I wanted to disappear."
+  criteria: *mb_easy
+
+- id: eft-transformation-m01
+  level: medium
+  skill: scene-rebuilding
+  context: "The client has given a quick summary. Task: write one or two sentences that slow him down at the moment just before the reaction."
+  client: "It happened so fast. One second I was fine and the next I was yelling."
+  criteria: &sr_medium
+    - "It slows the client down inside the moment, at one step (the moment just before, or the moment of the reaction), in the present tense."
+    - "It asks what the client notices (in the body, the senses, the impulse), and not why."
+    - "It is short and does not interpret."
+- id: eft-transformation-m02
+  level: medium
+  skill: scene-rebuilding
+  context: "The client is telling the scene in the present tense. Task: write one or two sentences."
+  client: "She hands me the form. I see the red pen. And I'm... I'm out of the room."
+  criteria: *sr_medium
+- id: eft-transformation-m03
+  level: medium
+  skill: scene-rebuilding
+  context: "The client is in the scene. Task: write one or two sentences."
+  client: "I'm standing at the door, and I see him laughing with them. And then I don't remember what I said."
+  criteria: *sr_medium
+- id: eft-transformation-m04
+  level: medium
+  skill: scene-rebuilding
+  context: "The client is in the scene. Task: write one or two sentences."
+  client: "He says, 'Did you really think that would work?' And I feel hot."
+  criteria: *sr_medium
+- id: eft-transformation-m05
+  level: medium
+  skill: scene-rebuilding
+  context: "The client is in the scene. Task: write one or two sentences."
+  client: "It's quiet. Everyone's looking at me. I can feel my hands shaking."
+  criteria: *sr_medium
+
+- id: eft-transformation-m06
+  level: medium
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and linked it to another time. Task: write one or two sentences that stay with the link he made."
+  client: "It's strange. It reminds me of school. I haven't thought about that in years."
+  criteria: &mb_medium
+    - "It reflects the detail and the felt reaction the client just gave, in the client's own words."
+    - "It invites the client to say what it was about the moment, or, if the client has made a link, to stay with that link. The client does the linking."
+    - "It does not explain or interpret. It is short."
+- id: eft-transformation-m07
+  level: medium
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and offered a meaning. Task: write one or two sentences."
+  client: "I think it felt like being told I was too much."
+  criteria: *mb_medium
+- id: eft-transformation-m08
+  level: medium
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene. Task: write one or two sentences."
+  client: "I don't know. Nothing. It was just the pen."
+  criteria: *mb_medium
+- id: eft-transformation-m09
+  level: medium
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene and made a link, and doubts it. Task: write one or two sentences."
+  client: "My mother used to look at me exactly like that. (pause) But that can't be it."
+  criteria: *mb_medium
+- id: eft-transformation-m10
+  level: medium
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene. Task: write one or two sentences."
+  client: "It's as if I was waiting for it. For him to say it."
+  criteria: *mb_medium
+
+- id: eft-transformation-h01
+  level: hard
+  skill: scene-rebuilding
+  context: "The client has described a puzzling reaction and you are thinking of offering the task. Task: write one or two sentences. Respond to what the client just said first."
+  client: "I've been over this a hundred times. I know exactly why. I was tired and stressed. Let's not go over it again."
+  criteria: &sr_hard
+    - "It responds first to what the client just said or did (an explanation, a refusal, a flood, a blank, a doubt) before saying anything about the task."
+    - "It keeps the client in control: the client can say no, step out of the moment or stop, and you do not push."
+    - "It is short."
+- id: eft-transformation-h02
+  level: hard
+  skill: scene-rebuilding
+  context: "The client is in the scene. Task: write one or two sentences. Respond to what just happened."
+  client: "(breathing fast) I don't want to go back there. I can't."
+  criteria: *sr_hard
+- id: eft-transformation-h03
+  level: hard
+  skill: scene-rebuilding
+  context: "The client is in the scene. Task: write one or two sentences. Respond to what the client just said."
+  client: "It was just a dinner. Honestly, I'm making a fuss. Anyway, why would this matter?"
+  criteria: *sr_hard
+- id: eft-transformation-h04
+  level: hard
+  skill: scene-rebuilding
+  context: "The client is trying to rebuild the scene. Task: write one or two sentences. Respond to what the client just said."
+  client: "I can't see it. It's all a blur. I just remember being angry."
+  criteria: *sr_hard
+- id: eft-transformation-h05
+  level: hard
+  skill: scene-rebuilding
+  context: "You have asked the client what the room looked like. Task: write one or two sentences. Respond to what the client just said."
+  client: "Is this going to work? You're asking me what the room looked like. What's the point?"
+  criteria: *sr_hard
+
+- id: eft-transformation-h06
+  level: hard
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene. Task: write one or two sentences. Respond to what the client just said before bridging."
+  client: "So you think it's because of my father, right? Everyone's going to say that."
+  criteria: &mb_hard
+    - "It responds first to what just happened (a doubt, tears, a leap to an explanation, a request to be told the meaning) before bridging."
+    - "It leaves the meaning with the client. It does not interpret or give the link, and it does not push if the client is not ready."
+    - "It is short."
+- id: eft-transformation-h07
+  level: hard
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene. Task: write one or two sentences. Respond to what just happened."
+  client: "(tearful) Oh. It's the same. It's exactly the same thing. (cries)"
+  criteria: *mb_hard
+- id: eft-transformation-h08
+  level: hard
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene. Task: write one or two sentences. Respond to what the client just said."
+  client: "I think I get it now. It's because I'm insecure. Good. Can we move on?"
+  criteria: *mb_hard
+- id: eft-transformation-h09
+  level: hard
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene. Task: write one or two sentences. Respond to what the client just said."
+  client: "That's enough. I don't want to link anything to anything. It was just a bad day."
+  criteria: *mb_hard
+- id: eft-transformation-h10
+  level: hard
+  skill: meaning-bridge
+  context: "The client has rebuilt the scene. Task: write one or two sentences. Respond to what the client just said."
+  client: "Well? Now you tell me what it means. You're the therapist."
+  criteria: *mb_hard
