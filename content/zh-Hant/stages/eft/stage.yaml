@@ -5,3 +5,6 @@ modules:
   - eft-attunement
   - eft-emotion-types
   - eft-focusing
+  - eft-two-chair
+  - eft-empty-chair
+  - eft-transformation
