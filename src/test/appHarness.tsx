@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter, useLocation } from 'react-router-dom';
 import { vi } from 'vitest';
 import { buildContent } from '../../scripts/build-content';
+import type { AiFeedbackClient } from '../ai/AiContext';
 import { App } from '../App';
 import { resetContentCache } from '../content/client';
 import { createLocalStore } from '../progress/localStore';
@@ -46,11 +47,11 @@ export function serve(dir: string) {
 export const spy = { path: '' };
 export function PathSpy() { spy.path = useLocation().pathname; return null; }
 
-export function renderCloud(url: string, fake: FakeBackend, opts: { reportsEnabled?: boolean; reportsApi?: Partial<ReportsApi> } = {}) {
+export function renderCloud(url: string, fake: FakeBackend, opts: { reportsEnabled?: boolean; reportsApi?: Partial<ReportsApi>; aiEnabled?: boolean; aiClient?: AiFeedbackClient } = {}) {
   const storage = new Mem();
   return render(
     <MemoryRouter initialEntries={[url]}>
-      <App store={createLocalStore(storage)} storage={storage} backend={fake.backend} reportsEnabled={opts.reportsEnabled} reportsApi={opts.reportsApi} />
+      <App store={createLocalStore(storage)} storage={storage} backend={fake.backend} reportsEnabled={opts.reportsEnabled} reportsApi={opts.reportsApi} aiEnabled={opts.aiEnabled} aiClient={opts.aiClient} />
       <PathSpy />
     </MemoryRouter>,
   );

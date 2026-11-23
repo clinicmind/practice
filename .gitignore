@@ -6,6 +6,7 @@ playwright-report
 *.tsbuildinfo
 .wrangler
 dist-reports
+dist-ai
 dist-real
 dist-eft
 .e2e-eft

@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { AiProvider, type AiFeedbackClient } from './ai/AiContext';
 import { AuthProvider } from './auth/AuthContext';
 import { RequireAuth, RequireSupervisor } from './auth/AuthGate';
 import type { Backend } from './auth/supabase';
@@ -39,14 +40,18 @@ function LegacyModuleRedirect() {
  * null/undefined for local mode, where the app behaves exactly as in phase 1.
  * `storage` is the Storage `store` writes to; it is cleared after a successful import.
  */
-export function App({ store, wasReset, backend = null, storage = globalThis.localStorage, reportsEnabled = false, reportsApi }: {
+export function App({ store, wasReset, backend = null, storage = globalThis.localStorage, reportsEnabled = false, reportsApi, aiEnabled = false, aiClient }: {
   store: ProgressStore; wasReset?: boolean; backend?: Backend | null; storage?: Storage;
   /** Reports are hidden unless this is true: no link, and the report routes do not exist. */
   reportsEnabled?: boolean; reportsApi?: Partial<ReportsApi>;
+  /** AI feedback is hidden unless this is true and a client is given: nothing renders and nothing is requested. */
+  aiEnabled?: boolean; aiClient?: AiFeedbackClient;
 }) {
   return (
     <ReportsProvider enabled={reportsEnabled} api={reportsApi}>
-      <AppRoutes store={store} wasReset={wasReset} backend={backend} storage={storage} />
+      <AiProvider enabled={aiEnabled} client={aiClient}>
+        <AppRoutes store={store} wasReset={wasReset} backend={backend} storage={storage} />
+      </AiProvider>
     </ReportsProvider>
   );
 }

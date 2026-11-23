@@ -59,8 +59,9 @@ export function DrillsPage() {
 
   const submit = useCallback(
     async (a: NewAttempt) => {
-      await store.saveAttempt(a);
+      const saved = await store.saveAttempt(a);
       setAttempts(await store.listAttempts());
+      return saved;
     },
     [store],
   );

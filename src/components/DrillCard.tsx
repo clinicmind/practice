@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { Suspense, useEffect, useId, useRef, useState } from 'react';
+import { LazyAiFeedbackPanel } from '../ai/lazy';
 import type { Drill, Model } from '../content/schema';
 import { useT } from '../i18n';
 import { clearDraft, loadDraft, saveDraft } from '../progress/drafts';
@@ -11,7 +12,8 @@ interface Props {
   /** Changes when the example responses would be in another language, so a shown one is fetched again. */
   contentKey?: string;
   attempts: Attempt[];
-  onSubmit: (a: NewAttempt) => Promise<void>;
+  /** Resolves with the saved attempt when the store returns it (the AI check needs its id). */
+  onSubmit: (a: NewAttempt) => Promise<Attempt | void>;
   /** Called only after an attempt has been saved (spec §3.1). */
   getModel: () => Promise<Model>;
   onNext?: () => void;
@@ -31,7 +33,7 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
   const [saveError, setSaveError] = useState<null | 'auth' | 'other'>(null);
   const [model, setModel] = useState<Model | null>(null);
   const [modelError, setModelError] = useState(false);
-  const [saved, setSaved] = useState<{ response: string; met: boolean } | null>(null);
+  const [saved, setSaved] = useState<{ response: string; met: boolean; attemptId: string | null; ticks: boolean[] } | null>(null);
 
   // Keyboard users lose focus when a button unmounts; move it to the new step.
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -78,8 +80,9 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
     if (saving) return;
     setSaving(true);
     setSaveError(null);
+    let savedAttempt: Attempt | void;
     try {
-      await onSubmit({ itemId: drill.id, response: text, criteriaMet: [...ticks] });
+      savedAttempt = await onSubmit({ itemId: drill.id, response: text, criteriaMet: [...ticks] });
     } catch (err) {
       const auth = (err as { kind?: string } | null)?.kind === 'auth';
       if (auth) saveDraft(drill.id, { response: text, ticks });
@@ -89,7 +92,7 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
     }
     clearDraft(drill.id);
     setSaving(false);
-    setSaved({ response: text, met: wouldMeet });
+    setSaved({ response: text, met: wouldMeet, attemptId: savedAttempt ? savedAttempt.id : null, ticks: [...ticks] });
     setPhase('review');
     void fetchModel();
   }
@@ -105,6 +108,7 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
   }
 
   const earlier = attempts.filter((a) => a.itemId === drill.id);
+  const lastEarlier = earlier.reduce<Attempt | null>((m, a) => (m === null || a.createdAt >= m.createdAt ? a : m), null);
 
   return (
     <article className="card drill" aria-labelledby={`${uid}-client`}>
@@ -148,6 +152,14 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
                 ))}
               </ul>
             </section>
+          )}
+          {lastEarlier && LazyAiFeedbackPanel && (
+            <Suspense fallback={null}>
+              <LazyAiFeedbackPanel
+                mode="stored" heading={s.aiFeedback.previousSummary}
+                attemptId={lastEarlier.id} response={lastEarlier.response} criteria={drill.criteria} selfMet={lastEarlier.criteriaMet}
+              />
+            </Suspense>
           )}
         </>
       )}
@@ -213,6 +225,11 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
             </section>
           )}
           </div>
+          {saved.attemptId && LazyAiFeedbackPanel && (
+            <Suspense fallback={null}>
+              <LazyAiFeedbackPanel mode="ask" attemptId={saved.attemptId} response={saved.response} criteria={drill.criteria} selfMet={saved.ticks} />
+            </Suspense>
+          )}
           <div className="row">
             <button type="button" className="btn" onClick={retry}>{t.tryAgain}</button>
             {onNext && <button type="button" className="btn primary" onClick={onNext}>{t.next}</button>}

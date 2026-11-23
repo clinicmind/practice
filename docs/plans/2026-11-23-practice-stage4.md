@@ -399,7 +399,7 @@ test('the bundle contains no API key, no real URL other than the Anthropic endpo
 - 示範回應照舊：提交後才載入，不受影響。
 - 繁中文字由實作者起草，英文同步；**面板的學生可見文字交擁有人審核**（這是會顯示給學生的介面文字）。
 
-- [ ] **Step 1: 寫失敗的測試**
+- [x] **Step 1: 寫失敗的測試**
 
 ```tsx
 test('with aiEnabled off nothing renders and no request is made, even after saving a self-rating', …);
@@ -416,8 +416,8 @@ e2e: 'with VITE_AI_ENABLED and the fake API: save → button → panel; reload k
 e2e: 'the production bundle does not contain functions/v1/ai-feedback or the fake API'
 ```
 
-- [ ] **Step 2–4:** FAIL → 實作 → PASS。`npm run check`、`npm run e2e` 全過。
-- [ ] **Step 5:** commit `feat(ai): practice feedback panel, off by default`
+- [x] **Step 2–4:** FAIL → 實作 → PASS。`npm run check`、`npm run e2e` 全過。
+- [x] **Step 5:** commit `feat(ai): practice feedback panel, off by default`
 
 **驗收：** 預設建置與動工前的輸出逐檔相同或差異只有新增的 i18n 字串（照報告功能的做法寫證據）；截圖檢查桌面英文、桌面繁中、手機 360px（HANDOFF 的介面規則：襯線字是會談的聲音，AI 的話用無襯線的「工具的聲音」並與學生自己的話區隔；不引入新顏色或字型）。**被擋住：** 無。
 
@@ -436,7 +436,7 @@ e2e: 'the production bundle does not contain functions/v1/ai-feedback or the fak
 - 只有該班 `ai_enabled` 為 true 時才顯示這些區塊；關閉時和現在完全相同。
 - 這取代部分舊的三種機械式標記的用途（規格決策 3），**本 task 不刪舊標記**，只並存；要不要刪由擁有人看過實際使用後決定。
 
-- [ ] **Step 1: 寫失敗的測試**
+- [x] **Step 1: 寫失敗的測試**
 
 ```ts
 test('no AI blocks when ai_enabled is false for the cohort', …);
@@ -446,10 +446,18 @@ test('a supervisor never sees another cohort’s rows', …);   // 由 RLS 保�
 test('the existing three mechanical flags still render unchanged', …);
 ```
 
-- [ ] **Step 2–4:** FAIL → 實作 → PASS
-- [ ] **Step 5:** commit `feat(supervisor): ai disagreement list and risk flags`
+- [x] **Step 2–4:** FAIL → 實作 → PASS
+- [x] **Step 5:** commit `feat(supervisor): ai disagreement list and risk flags`
 
 **驗收：** 測試全過；`ai_enabled` 關閉時督導頁面快照與動工前相同。**被擋住：** 無。
+
+**實作紀錄（T8–T10，2026-11-23，分支 `claude/stage4-ui`）：**
+- 開關：前端建置 `VITE_AI_ENABLED`（`aiFlag`）＋雲端用戶端；班別的 `ai_enabled` 是第二道。學生面板啟動時先 `get`（唯讀）；伺服器回 `ai_disabled` 就整個隱藏並不再詢問。**`get` 在面板出現時就會呼叫一次**（為了重新整理能顯示已存的結果、也為了知道班別有沒有開）；「看看 AI 的評估」按下前不會呼叫模型。
+- 督導畫面要求建置開關和班別開關**同時**為開；任一關閉都不讀任何 AI 表（有測試檢查 `db.reads`）。
+- 面板用 `React.lazy`＋建置時常數，正式建置不含面板程式碼；正式建置與基線（`edacbb7`，夾具內容）相比，只有主 JS（＋10.6 KB：新 i18n 文字、督導讀取函式、context）、CSS（＋1.5 KB）和 `index.html` 的雜湊引用不同，沒有新檔案；`dist` 不含 `functions/v1/ai-feedback`、替身、面板標記（`e2e/ai-feedback.spec.ts`）。**位元組不是完全相同**，行為不變。
+- 與計畫的差異：(1) 學生回到題目時，最近一次作答的已存 AI 評估顯示在輸入框下方（唯讀，不顯示按鈕），因為計畫要求「重新整理後顯示」但重新整理後會回到題目頁；(2) `get`／`request` 多一個 `locale` 參數；(3) 督導端的風險標記放在班級區塊最上方（不是整頁最上方）；(4) 用量面板只計該督導看得到的列（RLS），並如此標示；(5) `scripts/ai-off.test.ts` 改成「只有名單內的檔案可以提到函式／新資料表」；(6) 端到端第五個建置（埠 4177，`dist-ai`）加上種子假資料庫（`src/ai/fakeBackend.ts`，`sessionStorage e2e-fake-user=sup`），讓督導畫面能在真實瀏覽器驗證；(7) `playwright.config.ts` 計畫寫埠 4175，該埠已被用掉，改 4177。
+- **未做：** T10 的 `docs/SETUP-ai.md`「查用量」一節（T13 的檔案還不存在）；`ai-usage-report.ts` 的成本情境用 `content/` 的真實題目長度計算。
+- 學生面板的可見文字（`aiFeedback` 鍵）待擁有人審核。
 
 ---
 
@@ -467,7 +475,7 @@ test('the existing three mechanical flags still render unchanged', …);
 - 另一個保險是 Anthropic 帳號端的用量上限（T13 文件）。
 - 估算對照：`ai-usage-report.ts` 讀從 SQL Editor 匯出的 `ai_usage` CSV，輸出每題平均費用、快取命中率，與成本文件的低／中／高情境並排。**沒有學生內容，因為表沒有文字欄。**
 
-- [ ] **Step 1: 寫失敗的測試**
+- [x] **Step 1: 寫失敗的測試**
 
 ```ts
 test('panel shows spent / limit and the warning at 80% and the stopped state at 100%', …);
@@ -476,8 +484,8 @@ test('without a budget row the panel says the budget is not set and AI is off', 
 test('report script reproduces the numbers from a fixture CSV and flags usage above the cost document’s high scenario', …);
 ```
 
-- [ ] **Step 2–4:** FAIL → 實作 → PASS
-- [ ] **Step 5:** commit `feat(ai): usage panel and budget report`
+- [x] **Step 2–4:** FAIL → 實作 → PASS
+- [x] **Step 5:** commit `feat(ai): usage panel and budget report`
 
 **驗收：** 測試全過。**被擋住：** 只有「設定真實的上限數字」等 D1；程式本身不擋。
 

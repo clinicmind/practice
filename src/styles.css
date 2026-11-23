@@ -213,3 +213,34 @@ html[lang='en'] .finding-match { quotes: '\201C' '\201D'; }
 .badge.level-medium { border-color: transparent; background: var(--ochre-tint); color: var(--ochre-ink); }
 .report-title { font-family: var(--serif); font-size: 1.2rem; }
 .report-text { font-family: var(--serif); font-size: 1.1rem; line-height: 1.55; white-space: pre-wrap; background: var(--paper); border: 1px dashed #8b9794; border-radius: 10px; padding: 0.85rem 1rem; max-height: 24rem; overflow: auto; margin-bottom: 1rem; }
+
+/* ---------- AI check (stage 4) ----------
+   The AI speaks in the tool's voice (sans), set apart from the student's own words (serif) by a ruled box.
+   No new colours: the pine tint marks the words the AI pointed to; a heavier rule marks a difference. */
+.ai-panel { margin: 1.5rem 0; padding: 1rem 1.15rem; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); font-family: var(--sans); }
+.ai-panel h3 { margin-top: 0; }
+.ai-caveat { font-size: 0.9rem; }
+.ai-criteria { list-style: none; margin: 0.75rem 0; padding: 0; }
+.ai-criteria > li { padding: 0.65rem 0 0.65rem 0.85rem; border-left: 3px solid var(--line); margin-bottom: 0.5rem; }
+.ai-criteria > li.differs { border-left-color: var(--ink); }
+.ai-criterion { margin: 0 0 0.25rem; font-weight: 600; }
+.ai-verdicts { margin: 0 0 0.25rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; align-items: baseline; font-size: 0.925rem; }
+.ai-verdicts .badge.flag-diff { border-color: var(--ink); color: var(--ink); font-weight: 600; }
+.ai-evidence { margin: 0 0 0.25rem; font-size: 0.925rem; }
+.ai-evidence q { font-family: var(--serif); font-size: 1.02rem; }
+.ai-response { font-family: var(--serif); font-size: 1.05rem; line-height: 1.55; margin: 0.25rem 0 1rem; white-space: pre-wrap; }
+.ai-response mark { background: var(--pine-tint); color: #123f39; border-bottom: 2px solid var(--pine); padding: 0 0.1em; }
+.ai-suggestion { margin: 0 0 0.25rem; }
+
+/* supervisor: AI differences and use */
+.ai-supervisor .bar { height: 0.6rem; border-radius: 999px; background: var(--line); overflow: hidden; margin: 0.4rem 0 0.6rem; }
+.ai-supervisor .bar > span { display: block; height: 100%; background: var(--pine); }
+.ai-supervisor .bar.warn > span { background: var(--ochre); }
+.ai-supervisor .bar.stopped > span { background: var(--err); }
+.ai-supervisor ul.plain { list-style: none; padding: 0; margin: 0.4rem 0; }
+.ai-supervisor ul.plain li { margin: 0.25rem 0; }
+.badge.risk { border-color: var(--err); color: var(--err); font-weight: 600; }
+/* Narrow screens: keep words whole in the supervisor's AI table; it scrolls inside its own box instead. */
+.ai-supervisor table { overflow-wrap: normal; word-break: normal; }
+.ai-supervisor th, .ai-supervisor td { min-width: 4.5rem; }
+.ai-supervisor th[scope='row'] { min-width: 5rem; white-space: nowrap; }
