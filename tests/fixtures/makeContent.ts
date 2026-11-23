@@ -194,7 +194,8 @@ export function writeFixture(
   dir: string,
   reviewed: string[],
   zh: { present: string[]; reviewed: string[] } = { present: [], reviewed: [] },
-  opts: { demoStage?: boolean } = {},
+  /** demoStage: true = a second stage, reviewed in both languages; 'unreviewed' = the same stage with no review rows (an authored draft). */
+  opts: { demoStage?: boolean | 'unreviewed' } = {},
 ) {
   const stage = join(dir, 'en', 'stages', 'foundations');
   w(join(stage, 'stage.yaml'), {
@@ -215,8 +216,10 @@ export function writeFixture(
     const zhDemo = join(dir, 'zh-Hant', 'stages', DEMO_STAGE);
     w(join(zhDemo, 'stage.yaml'), { stage: DEMO_STAGE, title: '示範階段（測試）', modules: [DEMO_MODULE.slug] });
     writeModule(zhDemo, DEMO_MODULE, 'zh-Hant');
-    reviewed = [...reviewed, DEMO_MODULE.slug];
-    zh = { ...zh, reviewed: [...zh.reviewed, DEMO_MODULE.slug] };
+    if (opts.demoStage !== 'unreviewed') {
+      reviewed = [...reviewed, DEMO_MODULE.slug];
+      zh = { ...zh, reviewed: [...zh.reviewed, DEMO_MODULE.slug] };
+    }
   }
   const rows = [
     ...reviewed.map((s) => `| ${s} | en | ${FIXTURE_VERSION} | 2026-01-01 |`),

@@ -1,0 +1,43 @@
+sessions:
+  - id: intake-s1
+    title: 第一次會談
+    turns:
+      - id: t1
+        speaker: therapist
+        text: 歡迎你來（intake）。
+      - id: t2
+        speaker: client
+        text: 我不知道從哪裡開始。
+      - id: d1
+        type: choice
+        prompt: 你接下來會說什麼？
+        options:
+          - id: a
+            text: 選項 A 的內容
+            fit: strong
+            note: A 為什麼貼切。
+          - id: b
+            text: 選項 B 的內容
+            fit: workable
+            note: B 為什麼可行。
+          - id: c
+            text: 選項 C 的內容
+            fit: weak
+            note: C 為什麼不貼切。
+        actual: 治療師實際說的話（d1）。
+        rationale: d1 的原因。
+      - id: t3
+        speaker: client
+        text: 這幾個星期很辛苦。
+      - id: d2
+        type: free
+        prompt: 寫下你自己的回應。
+        actual: 治療師實際說的話（d2）。
+        rationale: d2 的原因。
+      - id: t4
+        speaker: therapist
+        text: 謝謝你告訴我。
+    notes:
+      goals: 目標筆記（intake）。
+      alliance: 治療聯盟筆記（intake）。
+      formulation_update: 個案概念化筆記（intake）。

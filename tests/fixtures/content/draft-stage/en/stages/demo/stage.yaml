@@ -1,0 +1,4 @@
+stage: demo
+title: Demo stage (fixture)
+modules:
+  - demo-intro

@@ -1,0 +1,12 @@
+slug: intake
+title: Intake (fixture)
+version: 1.0.0
+intro: Intro for Intake (fixture).
+skills:
+  - open-question
+  - restatement
+reflection_prompts:
+  - id: r1
+    text: What stood out for you in this module?
+  - id: r2
+    text: What will you try next?

@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parse, stringify } from 'yaml';
@@ -305,5 +305,119 @@ describe('buildContent multi-stage', () => {
   test('an error in one stage names the stage', async () => {
     const dir = copyMulti((d) => editYaml(join(d, 'en/stages/demo/demo-intro/drills.yaml'), (ds) => ds.slice(1)));
     await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/\[demo\].*demo-intro/s);
+  });
+});
+
+describe('buildContent: a stage with nothing reviewed is not built out', () => {
+  const FX = join(__dirname, '..', 'tests', 'fixtures', 'content');
+  const REVIEWED = join(FX, 'ok-reviewed');
+  const DRAFT = join(FX, 'draft-stage'); // ok-reviewed + an unreviewed "demo" stage
+  const MULTI = join(FX, 'multi'); // ok-reviewed + a reviewed "demo" stage
+
+  /** Every emitted file with its bytes, keyed by path relative to `dir`. */
+  function tree(dir: string, base = dir): Record<string, string> {
+    const out: Record<string, string> = {};
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const p = join(dir, e.name);
+      if (e.isDirectory()) Object.assign(out, tree(p, base));
+      else out[p.slice(base.length + 1)] = readFileSync(p, 'utf8');
+    }
+    return out;
+  }
+  const buildBoth = async (contentDir: string, out: string, includeUnreviewed = false) => {
+    await buildContent({ contentDir, outDir: out, locale: 'en', includeUnreviewed });
+    await buildContent({ contentDir, outDir: out, locale: 'zh-Hant', includeUnreviewed });
+  };
+  const buildTo = async (contentDir: string, includeUnreviewed = false) => {
+    const out = mkdtempSync(join(tmpdir(), 'build-out-'));
+    await buildBoth(contentDir, out, includeUnreviewed);
+    return out;
+  };
+
+  test('the output is byte-for-byte what it is without that stage', async () => {
+    const without = await buildTo(REVIEWED);
+    const withDraft = await buildTo(DRAFT);
+    expect(tree(withDraft)).toEqual(tree(without));
+    expect(Object.keys(tree(withDraft)).some((f) => f.includes('demo'))).toBe(false);
+  });
+
+  test('stages.json in both languages lists only foundations', async () => {
+    const out = await buildTo(DRAFT);
+    for (const loc of ['en', 'zh-Hant']) {
+      expect(JSON.parse(readFileSync(join(out, loc, 'stages.json'), 'utf8')).map((s: any) => s.stage)).toEqual(['foundations']);
+    }
+  });
+
+  test('a hidden stage is still validated, so a content error does not slip through', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'draft-'));
+    cpSync(DRAFT, dir, { recursive: true });
+    const f = join(dir, 'en/stages/demo/demo-intro/drills.yaml');
+    writeFileSync(f, stringify(parse(readFileSync(f, 'utf8')).slice(1)));
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/\[demo\].*demo-intro/s);
+  });
+
+  test('the authoring preview (includeUnreviewed) builds the stage and its modules', async () => {
+    const out = await buildTo(DRAFT, true);
+    expect(JSON.parse(readFileSync(join(out, 'en/stages.json'), 'utf8')).map((s: any) => s.stage)).toEqual(['foundations', 'demo']);
+    expect(JSON.parse(readFileSync(join(out, 'en/demo/index.json'), 'utf8')).modules).toEqual([{ slug: 'demo-intro', title: 'Demo intro (fixture)', reviewed: false }]);
+    expect(existsSync(join(out, 'en/demo/demo-intro/module.json'))).toBe(true);
+    expect(existsSync(join(out, 'zh-Hant/demo/demo-intro/module.json'))).toBe(true);
+  });
+
+  test('one reviewed English module is enough to build the stage in both languages', async () => {
+    const out = await buildTo(MULTI);
+    for (const loc of ['en', 'zh-Hant']) {
+      expect(JSON.parse(readFileSync(join(out, loc, 'stages.json'), 'utf8')).map((s: any) => s.stage)).toEqual(['foundations', 'demo']);
+    }
+  });
+
+  test('a stage reviewed only in zh-Hant stays hidden (English decides, as it does for the stage list)', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'draft-'));
+    cpSync(DRAFT, dir, { recursive: true });
+    const review = join(dir, 'REVIEW.md');
+    writeFileSync(review, readFileSync(review, 'utf8') + '| demo-intro | zh-Hant | 1.0.0 | 2026-01-01 |\n');
+    const out = await buildTo(dir);
+    for (const loc of ['en', 'zh-Hant']) {
+      expect(JSON.parse(readFileSync(join(out, loc, 'stages.json'), 'utf8')).map((s: any) => s.stage)).toEqual(['foundations']);
+    }
+    expect(existsSync(join(out, 'zh-Hant/demo'))).toBe(false);
+  });
+
+  test('foundations is always built, even with nothing reviewed', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'none-'));
+    cpSync(DRAFT, dir, { recursive: true });
+    writeFileSync(join(dir, 'REVIEW.md'), '# Review\n');
+    const out = await buildTo(dir);
+    expect(JSON.parse(readFileSync(join(out, 'en/stages.json'), 'utf8')).map((s: any) => s.stage)).toEqual(['foundations']);
+    expect(existsSync(join(out, 'en/foundations/index.json'))).toBe(true);
+  });
+});
+
+describe('the real course content', () => {
+  const CONTENT = join(__dirname, '..', 'content');
+  const reviewRows = readFileSync(join(CONTENT, 'REVIEW.md'), 'utf8');
+
+  test('while no eft-* module is registered in REVIEW.md, the default build has no EFT stage', async () => {
+    const out = mkdtempSync(join(tmpdir(), 'real-'));
+    for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: CONTENT, outDir: out, locale });
+    const eftReviewed = /^\|\s*eft-/m.test(reviewRows);
+    for (const loc of ['en', 'zh-Hant']) {
+      const stages = JSON.parse(readFileSync(join(out, loc, 'stages.json'), 'utf8')).map((s: any) => s.stage);
+      expect(stages.includes('eft')).toBe(eftReviewed);
+      if (!eftReviewed) {
+        expect(stages).toEqual(['foundations']);
+        expect(existsSync(join(out, loc, 'eft'))).toBe(false);
+      }
+    }
+  });
+
+  test('the EFT stage is authored and valid in both languages (checked by the authoring preview)', async () => {
+    const out = mkdtempSync(join(tmpdir(), 'real-'));
+    for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: CONTENT, outDir: out, locale, includeUnreviewed: true });
+    for (const loc of ['en', 'zh-Hant']) {
+      const idx = JSON.parse(readFileSync(join(out, loc, 'eft/index.json'), 'utf8'));
+      expect(idx.modules.map((m: any) => m.slug)).toEqual(['eft-attunement']);
+      expect(existsSync(join(out, loc, 'eft/eft-attunement/module.json'))).toBe(true);
+    }
   });
 });

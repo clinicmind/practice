@@ -214,6 +214,19 @@ function orderStages(stages: Iterable<string>): string[] {
   return [DEFAULT_STAGE, ...rest];
 }
 
+/**
+ * True when at least one module of the stage is registered as reviewed in English.
+ * English decides, as it does for the stage list in the app, so both languages hide or show a stage together.
+ */
+function stageHasReviewedEnglish(contentDir: string, stage: string, reviewed: Set<string>): boolean {
+  const dir = join(contentDir, 'en', 'stages', stage);
+  const file = load(join(dir, 'stage.yaml'), 'stage.yaml', StageFileSchema, []);
+  return (file?.modules ?? []).some((slug) => {
+    const meta = load(join(dir, slug, 'module.yaml'), 'module.yaml', ModuleMetaSchema, []);
+    return meta !== undefined && reviewed.has(`${slug}|en|${meta.version}`);
+  });
+}
+
 function buildStage(
   opts: BuildOptions, stage: string, reviewed: Set<string>, shared: Shared, errors: string[],
 ): StageResult {
@@ -374,9 +387,16 @@ export async function buildContent(opts: BuildOptions): Promise<void> {
     throw new Error(`Content validation failed:\n${errors.map((e) => `  - ${e}`).join('\n')}`);
   }
 
-  const list = stages.map((stage) => ({ stage, title: results.get(stage)!.index.title }));
+  // A stage with nothing reviewed does not exist for students yet. It is validated above (so mistakes still fail the
+  // build) but left out of the output: no entry in stages.json, no files. That keeps a draft stage from changing the
+  // live site (a second stage makes the app read cohort_stages). Foundations is always built. The authoring preview
+  // (includeUnreviewed) builds every stage.
+  const built = stages.filter((stage) =>
+    opts.includeUnreviewed || stage === DEFAULT_STAGE || stageHasReviewedEnglish(contentDir, stage, reviewed));
+  const list = built.map((stage) => ({ stage, title: results.get(stage)!.index.title }));
   writeFileSync(join(outDir, locale, 'stages.json'), JSON.stringify(list, null, 2));
   for (const [stage, { index, emit }] of results) {
+    if (!built.includes(stage)) continue;
     const outStage = join(outDir, locale, stage);
     mkdirSync(outStage, { recursive: true });
     writeFileSync(join(outStage, 'index.json'), JSON.stringify(index, null, 2));

@@ -11,3 +11,5 @@ writeFixture(join(root, 'ok'), ['intake']); // alliance deliberately unreviewed
 writeFixture(join(root, 'ok-reviewed'), ['intake', 'alliance'], { present: ['intake', 'alliance'], reviewed: ['intake'] });
 // Two stages (foundations + demo), everything reviewed in both languages. For multi-stage tests; never used by e2e.
 writeFixture(join(root, 'multi'), ['intake', 'alliance'], { present: ['intake', 'alliance'], reviewed: ['intake', 'alliance'] }, { demoStage: true });
+// ok-reviewed plus a second stage that is written but has no reviewed module. The default build must leave it out entirely. Used by e2e.
+writeFixture(join(root, 'draft-stage'), ['intake', 'alliance'], { present: ['intake', 'alliance'], reviewed: ['intake'] }, { demoStage: 'unreviewed' });

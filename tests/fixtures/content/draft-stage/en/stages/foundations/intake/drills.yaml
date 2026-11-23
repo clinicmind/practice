@@ -1,0 +1,270 @@
+- id: intake-e01
+  level: easy
+  skill: restatement
+  context: Fixture context for intake-e01.
+  client: Fixture client statement for intake-e01.
+  criteria:
+    - intake-e01 criterion one
+    - intake-e01 criterion two
+    - intake-e01 criterion three
+- id: intake-e02
+  level: easy
+  skill: open-question
+  context: Fixture context for intake-e02.
+  client: Fixture client statement for intake-e02.
+  criteria:
+    - intake-e02 criterion one
+    - intake-e02 criterion two
+    - intake-e02 criterion three
+- id: intake-e03
+  level: easy
+  skill: restatement
+  context: Fixture context for intake-e03.
+  client: Fixture client statement for intake-e03.
+  criteria:
+    - intake-e03 criterion one
+    - intake-e03 criterion two
+    - intake-e03 criterion three
+- id: intake-e04
+  level: easy
+  skill: open-question
+  context: Fixture context for intake-e04.
+  client: Fixture client statement for intake-e04.
+  criteria:
+    - intake-e04 criterion one
+    - intake-e04 criterion two
+    - intake-e04 criterion three
+- id: intake-e05
+  level: easy
+  skill: restatement
+  context: Fixture context for intake-e05.
+  client: Fixture client statement for intake-e05.
+  criteria:
+    - intake-e05 criterion one
+    - intake-e05 criterion two
+    - intake-e05 criterion three
+- id: intake-e06
+  level: easy
+  skill: open-question
+  context: Fixture context for intake-e06.
+  client: Fixture client statement for intake-e06.
+  criteria:
+    - intake-e06 criterion one
+    - intake-e06 criterion two
+    - intake-e06 criterion three
+- id: intake-e07
+  level: easy
+  skill: restatement
+  context: Fixture context for intake-e07.
+  client: Fixture client statement for intake-e07.
+  criteria:
+    - intake-e07 criterion one
+    - intake-e07 criterion two
+    - intake-e07 criterion three
+- id: intake-e08
+  level: easy
+  skill: open-question
+  context: Fixture context for intake-e08.
+  client: Fixture client statement for intake-e08.
+  criteria:
+    - intake-e08 criterion one
+    - intake-e08 criterion two
+    - intake-e08 criterion three
+- id: intake-e09
+  level: easy
+  skill: restatement
+  context: Fixture context for intake-e09.
+  client: Fixture client statement for intake-e09.
+  criteria:
+    - intake-e09 criterion one
+    - intake-e09 criterion two
+    - intake-e09 criterion three
+- id: intake-e10
+  level: easy
+  skill: open-question
+  context: Fixture context for intake-e10.
+  client: Fixture client statement for intake-e10.
+  criteria:
+    - intake-e10 criterion one
+    - intake-e10 criterion two
+    - intake-e10 criterion three
+- id: intake-m01
+  level: medium
+  skill: restatement
+  context: Fixture context for intake-m01.
+  client: Fixture client statement for intake-m01.
+  criteria:
+    - intake-m01 criterion one
+    - intake-m01 criterion two
+    - intake-m01 criterion three
+- id: intake-m02
+  level: medium
+  skill: open-question
+  context: Fixture context for intake-m02.
+  client: Fixture client statement for intake-m02.
+  criteria:
+    - intake-m02 criterion one
+    - intake-m02 criterion two
+    - intake-m02 criterion three
+- id: intake-m03
+  level: medium
+  skill: restatement
+  context: Fixture context for intake-m03.
+  client: Fixture client statement for intake-m03.
+  criteria:
+    - intake-m03 criterion one
+    - intake-m03 criterion two
+    - intake-m03 criterion three
+- id: intake-m04
+  level: medium
+  skill: open-question
+  context: Fixture context for intake-m04.
+  client: Fixture client statement for intake-m04.
+  criteria:
+    - intake-m04 criterion one
+    - intake-m04 criterion two
+    - intake-m04 criterion three
+- id: intake-m05
+  level: medium
+  skill: restatement
+  context: Fixture context for intake-m05.
+  client: Fixture client statement for intake-m05.
+  criteria:
+    - intake-m05 criterion one
+    - intake-m05 criterion two
+    - intake-m05 criterion three
+- id: intake-m06
+  level: medium
+  skill: open-question
+  context: Fixture context for intake-m06.
+  client: Fixture client statement for intake-m06.
+  criteria:
+    - intake-m06 criterion one
+    - intake-m06 criterion two
+    - intake-m06 criterion three
+- id: intake-m07
+  level: medium
+  skill: restatement
+  context: Fixture context for intake-m07.
+  client: Fixture client statement for intake-m07.
+  criteria:
+    - intake-m07 criterion one
+    - intake-m07 criterion two
+    - intake-m07 criterion three
+- id: intake-m08
+  level: medium
+  skill: open-question
+  context: Fixture context for intake-m08.
+  client: Fixture client statement for intake-m08.
+  criteria:
+    - intake-m08 criterion one
+    - intake-m08 criterion two
+    - intake-m08 criterion three
+- id: intake-m09
+  level: medium
+  skill: restatement
+  context: Fixture context for intake-m09.
+  client: Fixture client statement for intake-m09.
+  criteria:
+    - intake-m09 criterion one
+    - intake-m09 criterion two
+    - intake-m09 criterion three
+- id: intake-m10
+  level: medium
+  skill: open-question
+  context: Fixture context for intake-m10.
+  client: Fixture client statement for intake-m10.
+  criteria:
+    - intake-m10 criterion one
+    - intake-m10 criterion two
+    - intake-m10 criterion three
+- id: intake-h01
+  level: hard
+  skill: restatement
+  context: Fixture context for intake-h01.
+  client: Fixture client statement for intake-h01.
+  criteria:
+    - intake-h01 criterion one
+    - intake-h01 criterion two
+    - intake-h01 criterion three
+- id: intake-h02
+  level: hard
+  skill: open-question
+  context: Fixture context for intake-h02.
+  client: Fixture client statement for intake-h02.
+  criteria:
+    - intake-h02 criterion one
+    - intake-h02 criterion two
+    - intake-h02 criterion three
+- id: intake-h03
+  level: hard
+  skill: restatement
+  context: Fixture context for intake-h03.
+  client: Fixture client statement for intake-h03.
+  criteria:
+    - intake-h03 criterion one
+    - intake-h03 criterion two
+    - intake-h03 criterion three
+- id: intake-h04
+  level: hard
+  skill: open-question
+  context: Fixture context for intake-h04.
+  client: Fixture client statement for intake-h04.
+  criteria:
+    - intake-h04 criterion one
+    - intake-h04 criterion two
+    - intake-h04 criterion three
+- id: intake-h05
+  level: hard
+  skill: restatement
+  context: Fixture context for intake-h05.
+  client: Fixture client statement for intake-h05.
+  criteria:
+    - intake-h05 criterion one
+    - intake-h05 criterion two
+    - intake-h05 criterion three
+- id: intake-h06
+  level: hard
+  skill: open-question
+  context: Fixture context for intake-h06.
+  client: Fixture client statement for intake-h06.
+  criteria:
+    - intake-h06 criterion one
+    - intake-h06 criterion two
+    - intake-h06 criterion three
+- id: intake-h07
+  level: hard
+  skill: restatement
+  context: Fixture context for intake-h07.
+  client: Fixture client statement for intake-h07.
+  criteria:
+    - intake-h07 criterion one
+    - intake-h07 criterion two
+    - intake-h07 criterion three
+- id: intake-h08
+  level: hard
+  skill: open-question
+  context: Fixture context for intake-h08.
+  client: Fixture client statement for intake-h08.
+  criteria:
+    - intake-h08 criterion one
+    - intake-h08 criterion two
+    - intake-h08 criterion three
+- id: intake-h09
+  level: hard
+  skill: restatement
+  context: Fixture context for intake-h09.
+  client: Fixture client statement for intake-h09.
+  criteria:
+    - intake-h09 criterion one
+    - intake-h09 criterion two
+    - intake-h09 criterion three
+- id: intake-h10
+  level: hard
+  skill: open-question
+  context: Fixture context for intake-h10.
+  client: Fixture client statement for intake-h10.
+  criteria:
+    - intake-h10 criterion one
+    - intake-h10 criterion two
+    - intake-h10 criterion three
