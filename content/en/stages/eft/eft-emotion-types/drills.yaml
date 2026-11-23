@@ -1,0 +1,206 @@
+# 30 drills: 10 per level, 5 per skill per level.
+# Emotion types here are working guesses. Model responses give the best fit and the clue.
+
+- id: eft-emotion-types-e01
+  level: easy
+  skill: emotion-differentiation
+  context: "Early session. Task: write two short sentences. Say which of the four types you hear (primary adaptive, primary maladaptive, secondary, instrumental), and give the clue from the client's words."
+  client: "My friend moved away last week. The flat feels empty. I keep wishing she'd walk in."
+  criteria: &ed_easy
+    - "It names the type that fits best: primary adaptive, primary maladaptive, secondary, or instrumental."
+    - "It gives a clue from the client's own words."
+    - "It is a working guess in your own words, and it gives no diagnosis."
+- id: eft-emotion-types-e02
+  level: easy
+  skill: emotion-differentiation
+  context: "Early session. Task: say which of the four types you hear, and give the clue."
+  client: "She cried and I got angry. Then I felt guilty for being angry. Now I'm cross with myself for the whole thing."
+  criteria: *ed_easy
+- id: eft-emotion-types-e03
+  level: easy
+  skill: emotion-differentiation
+  context: "Early session. Task: say which of the four types you hear, and give the clue."
+  client: "Whenever someone praises me, I go hot and want to disappear. It's been like that since I was small."
+  criteria: *ed_easy
+- id: eft-emotion-types-e04
+  level: easy
+  skill: emotion-differentiation
+  context: "Early session. Task: say which of the four types you hear, and give the clue."
+  client: "When we argue I cry, and he always stops. To be honest, sometimes I'm not even that upset."
+  criteria: *ed_easy
+- id: eft-emotion-types-e05
+  level: easy
+  skill: emotion-differentiation
+  context: "Early session. Task: say which of the four types you hear, and give the clue."
+  client: "My colleague took credit for my work in front of everyone. I was furious. I wanted it put right, there and then."
+  criteria: *ed_easy
+
+- id: eft-emotion-types-e06
+  level: easy
+  skill: deepening
+  context: "Early session. Task: write one response that stays with the client's feeling and invites one step toward what may be underneath."
+  client: "I'm irritated with my husband all the time lately. I don't know what's wrong with me."
+  criteria: &dp_easy
+    - "It stays with the feeling the client named, in the client's own words."
+    - "It invites one step toward what may be underneath, as an invitation or a tentative guess."
+    - "It is short. It contains no advice, no explanation of the past and no label."
+- id: eft-emotion-types-e07
+  level: easy
+  skill: deepening
+  context: "Early session. Task: write one response that stays with the feeling and invites one step toward what may be underneath."
+  client: "I feel guilty about snapping at my sister. I keep going over it."
+  criteria: *dp_easy
+- id: eft-emotion-types-e08
+  level: easy
+  skill: deepening
+  context: "Early session. Task: write one response that stays with the feeling and invites one step toward what may be underneath."
+  client: "I'm so annoyed with myself for not finishing the course."
+  criteria: *dp_easy
+- id: eft-emotion-types-e09
+  level: easy
+  skill: deepening
+  context: "Early session. Task: write one response that stays with the feeling and invites one step toward what may be underneath."
+  client: "I just feel flat since the team changed. Not sad. Just flat."
+  criteria: *dp_easy
+- id: eft-emotion-types-e10
+  level: easy
+  skill: deepening
+  context: "Early session. Task: write one response that stays with the feeling and invites one step toward what may be underneath."
+  client: "I got defensive when my brother asked about the move. I don't even know why."
+  criteria: *dp_easy
+
+- id: eft-emotion-types-m01
+  level: medium
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: say which type fits best, give the clue, and say what you would watch for or ask to check your guess."
+  client: "I'm furious at my sister. Honestly, I'm always furious at her. (pause) It never changes anything."
+  criteria: &ed_medium
+    - "It names the type that fits best and gives a clue from the client's words."
+    - "It says what you would watch for or ask to check the guess."
+    - "It is a working guess in your own words. It is not a label to give the client."
+- id: eft-emotion-types-m02
+  level: medium
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: say which type fits best, give the clue, and say how you would check your guess."
+  client: "I feel nothing about the divorce. Honestly. (eyes wet) It must be the dust in here."
+  criteria: *ed_medium
+- id: eft-emotion-types-m03
+  level: medium
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: say which type fits best, give the clue, and say how you would check your guess."
+  client: "I'm terrified before every presentation. It's been like that since school, even when I'm well prepared."
+  criteria: *ed_medium
+- id: eft-emotion-types-m04
+  level: medium
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: say which type fits best, give the clue, and say how you would check your guess."
+  client: "When I tell my team I'm disappointed, they work harder. So I say it quite often."
+  criteria: *ed_medium
+- id: eft-emotion-types-m05
+  level: medium
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: say which type fits best, give the clue, and say how you would check your guess."
+  client: "I cried for an hour after he left. It was awful, and somehow it was right. Then I felt lighter and called my sister."
+  criteria: *ed_medium
+
+- id: eft-emotion-types-m06
+  level: medium
+  skill: deepening
+  context: "Middle of therapy. The client minimises. Task: write one response that gives the client a choice about going further."
+  client: "It's nothing, really. (pause) It's just that he didn't call. Forget it."
+  criteria: &dp_medium
+    - "It acknowledges what the client said, including the part the client played down."
+    - "It invites a next step at the client's pace, with a real choice to stay or leave it."
+    - "It is short. It contains no interpretation and no label."
+- id: eft-emotion-types-m07
+  level: medium
+  skill: deepening
+  context: "Middle of therapy. Task: write one response that gives the client a choice about going further."
+  client: "I'm fine with it. I just don't get why they all got invited and I didn't."
+  criteria: *dp_medium
+- id: eft-emotion-types-m08
+  level: medium
+  skill: deepening
+  context: "Middle of therapy. Task: write one response that gives the client a choice about going further."
+  client: "I laughed it off. But I keep thinking about what she said."
+  criteria: *dp_medium
+- id: eft-emotion-types-m09
+  level: medium
+  skill: deepening
+  context: "Middle of therapy. The client's eyes are wet. Task: write one response that gives the client a choice about going further."
+  client: "I don't want to cry about this. It's stupid."
+  criteria: *dp_medium
+- id: eft-emotion-types-m10
+  level: medium
+  skill: deepening
+  context: "Middle of therapy. Task: write one response that gives the client a choice about going further."
+  client: "My head says it's fine. The rest of me isn't getting the message."
+  criteria: *dp_medium
+
+- id: eft-emotion-types-h01
+  level: hard
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: name two layers (what is on the surface and what may be beneath), give a type for each, and say which you would follow first and why."
+  client: "I snapped at my daughter again. I hate that I do that. I'm a terrible parent. Honestly, I don't know why I bother."
+  criteria: &ed_hard
+    - "It names two layers, the surface and what may sit beneath, with a type for each."
+    - "It says which layer you would follow first, and why."
+    - "It is worded as a working guess and gives no diagnosis."
+- id: eft-emotion-types-h02
+  level: hard
+  skill: emotion-differentiation
+  context: "Middle of therapy. The client's jaw is tight. Task: name two layers with a type for each, and say which you would follow first and why."
+  client: "I'm not angry at him. I'm just tired of it all."
+  criteria: *ed_hard
+- id: eft-emotion-types-h03
+  level: hard
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: name two layers with a type for each, and say which you would follow first and why."
+  client: "I was so relieved when the audit was over. Then I just felt empty. Then I got annoyed with everyone."
+  criteria: *ed_hard
+- id: eft-emotion-types-h04
+  level: hard
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: name two layers with a type for each, and say which you would follow first and why."
+  client: "Everyone says I should be proud. I'm not. I feel like a fraud, like I'm about to be found out. It's the same feeling I had at ten."
+  criteria: *ed_hard
+- id: eft-emotion-types-h05
+  level: hard
+  skill: emotion-differentiation
+  context: "Middle of therapy. Task: name two layers with a type for each, and say which you would follow first and why."
+  client: "She apologised and I forgave her straight away. Then I couldn't sleep. I just lay there, angry."
+  criteria: *ed_hard
+
+- id: eft-emotion-types-h06
+  level: hard
+  skill: deepening
+  context: "The client is crying hard and breathing fast. Task: write one response. Decide whether to go deeper."
+  client: "I can't... it's too much. I can't stop."
+  criteria: &dp_hard
+    - "It responds to what is happening now (overwhelm, refusal, rushing, disagreement, distance), not to the content underneath."
+    - "It steadies or slows the pace, or checks what the client wants, and it leaves the client in control."
+    - "It is short, and it opens no new topic to explore."
+- id: eft-emotion-types-h07
+  level: hard
+  skill: deepening
+  context: "You asked what the client felt when the family argument happened. Task: write one response. Decide whether to go deeper."
+  client: "Don't ask me that. I don't want to go there."
+  criteria: *dp_hard
+- id: eft-emotion-types-h08
+  level: hard
+  skill: deepening
+  context: "Early in therapy. The client speaks quickly. Task: write one response. Decide whether to go deeper."
+  client: "I'll tell you everything about my childhood, right now, all of it. I just want to get it out."
+  criteria: *dp_hard
+- id: eft-emotion-types-h09
+  level: hard
+  skill: deepening
+  context: "You have asked about feelings several times in this session. Task: write one response. Decide whether to go deeper."
+  client: "Why do you keep asking how I feel? I came here to deal with my boss."
+  criteria: *dp_hard
+- id: eft-emotion-types-h10
+  level: hard
+  skill: deepening
+  context: "The client has been silent for a while, looking at the wall. Task: write one response. Decide whether to go deeper."
+  client: "I feel very far from this room."
+  criteria: *dp_hard

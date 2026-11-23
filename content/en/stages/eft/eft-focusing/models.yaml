@@ -1,0 +1,120 @@
+eft-focusing-e01:
+  model_response: "Yes. The signs are 'something' and 'I can't say what it is', with a body place, the stomach. The client is aware of something and has no word for it."
+  why: "A body place plus 'can't say what it is' is the clearest form of the marker."
+  avoid: "'Yes, it's anxiety.' That decides the feeling for the client."
+eft-focusing-e02:
+  model_response: "No. The client says 'I know exactly what it is', and names it: sadness about her gran. The feeling is clear."
+  why: "The marker is about an unclear sense. When the client knows what she feels, you reflect it, and you do not slow down to look for it."
+  avoid: "Offering focusing because grief is deep. Depth is not the marker."
+eft-focusing-e03:
+  model_response: "Yes. The signs are 'something's off' and 'can't put my finger on it', with a vague sense of fog. It is in the head, and it is still a felt sense that has no word yet."
+  why: "Unclear, not named, and felt. The location does not have to be the chest."
+  avoid: "Calling it 'confusion' and moving to clarifying questions."
+eft-focusing-e04:
+  model_response: "No. The client names the feeling, fury, and gives the cause. The feeling is clear and strong."
+  why: "Clear feelings need to be received. Slowing down to find a word would be answering a question the client did not ask."
+  avoid: "Asking where he feels it in his body. He already knows what he feels."
+eft-focusing-e05:
+  model_response: "Yes. The signs are a body place, the chest, and 'I don't know what it's about'. It is tied to next month, and that may come later."
+  why: "A body sensation that comes with a topic and has no meaning yet fits the marker."
+  avoid: "Asking about next month first. That moves to the story."
+eft-focusing-e06:
+  model_response: "Take your time. See if you can stay with that place in your stomach and notice what it's like."
+  why: "It uses her place and invites her to notice. It says nothing about what the feeling is."
+  avoid: "'Is it nerves?' It names the feeling for her."
+eft-focusing-e07:
+  model_response: "Let's take a moment. Just be with that foggy feeling, and see what it's like."
+  why: "It uses the client's own image. It leaves her to find what comes."
+  avoid: "'What do you think is making it foggy?' It asks for a cause."
+eft-focusing-e08:
+  model_response: "That tightness in your throat. Stay with it for a moment, and notice anything about it."
+  why: "It is short and invites attention. 'Anything about it' is open."
+  avoid: "'Is it fear?' A guess dressed as a question."
+eft-focusing-e09:
+  model_response: "A feeling in your chest, when you think of home. Take a moment and see what that place is like."
+  why: "It keeps both pieces of what she said and asks nothing beyond noticing."
+  avoid: "'What about home?' It leaves the body and goes to the story."
+eft-focusing-e10:
+  model_response: "Uneasy, and not sure where. No hurry. See if you can notice where in you it's strongest."
+  why: "The client has not located it yet, so the invitation is to find a place. The pace is left to him."
+  avoid: "'Is it in your stomach or your chest?' It offers locations and limits the search."
+eft-focusing-m01:
+  model_response: "Yes, probably. The signs are 'something', 'off all week' and a hand rubbing the chest. But he asked to talk about work. I would first follow his request and say that we can come back, so he knows the door stays open."
+  why: "The marker is there, and the client is moving away from it. Respect his request first. A task offered over a 'no' can break trust."
+  avoid: "'Let's stay with the something.' It ignores what he asked."
+eft-focusing-m02:
+  model_response: "Yes. The sign is a knot that comes with the thought of the move and goes with the house. First I would reflect it in her words and ask whether she would like to stay with the knot for a moment."
+  why: "A feeling that appears and disappears with a topic is a clear marker. Reflect first, then ask."
+  avoid: "'Tell me about the move.' It takes her to the story and away from the knot."
+eft-focusing-m03:
+  model_response: "Yes. The signs are 'I feel something' and 'I can't say what', and she is embarrassed about not knowing. First I would respond to the embarrassment: not knowing is fine and common. Then I would ask whether she'd like to stay with it."
+  why: "Embarrassment can close the felt sense. Easing it comes before the task."
+  avoid: "Going straight to 'where do you feel it?' The embarrassment would stay."
+eft-focusing-m04:
+  model_response: "Partly. 'Weird since Tuesday' is a vague sense, but he has also offered three possible causes and has not placed it in the body. First I would reflect that it is hard to say and ask whether he notices it anywhere in his body."
+  why: "He is already analysing. A gentle step toward the body tests whether the task will help."
+  avoid: "'Let's look at each cause.' That gives him more analysis."
+eft-focusing-m05:
+  model_response: "No, not now. He says what the heaviness is: grief about his job. The meaning is clear, and he wants to get through it. I would reflect the grief and the wish to push through."
+  why: "A body word does not make a marker. When the client knows what the feeling is, receive it."
+  avoid: "'Let's slow down and find out more about the heaviness.' He has not asked for that."
+eft-focusing-m06:
+  model_response: "A small stone. Stay with that for a moment. See whether 'stone' fits how it feels. If it doesn't, let the word change."
+  why: "It keeps the client's image and asks him to check it. It allows the word to be wrong."
+  avoid: "'A stone sounds like something hard and stuck.' You added a meaning."
+eft-focusing-m07:
+  model_response: "Tight. See whether 'tight' fits when you check it against the feeling itself. If it's not quite right, that's fine."
+  why: "It keeps the word she ended on, and makes it easy to change."
+  avoid: "'Tense is probably the better word.' You picked for her."
+eft-focusing-m08:
+  model_response: "A closed door. Take a moment and see if that fits the feeling. If something else fits better, let it come."
+  why: "It uses his image and invites a check. It gives no meaning to the door."
+  avoid: "'What's behind the door?' It builds on the image before he has confirmed it."
+eft-focusing-m09:
+  model_response: "'Empty', and not quite right. See if you can feel what's not quite right, and whether another word wants to come."
+  why: "'Not quite right' is useful. It tells you where to look. It keeps the work in the felt sense."
+  avoid: "'Maybe it's more like numb?' You supplied a word."
+eft-focusing-m10:
+  model_response: "A weight, pressing from outside. Check that against the feeling. Is it from outside? Take your time."
+  why: "It keeps the correction he made, 'from outside', and invites him to check it."
+  avoid: "'Who is pressing on you?' It adds a story."
+eft-focusing-h01:
+  model_response: "Points toward: 'something' in the chest and 'I don't know what's happening'. Against: she cannot breathe and is asking for help, which looks like overwhelm. I would not offer focusing now. I would steady her first: slow breathing, feet on the floor, my presence."
+  why: "The task needs enough steadiness to attend inwards. Overwhelm comes first."
+  avoid: "'Stay with that place in your chest.' It turns her toward what is overwhelming her."
+eft-focusing-h02:
+  model_response: "Points toward: a feeling located in the stomach that he cannot name. Against: he said 'Don't make me look at it'. I would not offer the task. I would accept that and tell him that it is his choice and that I am here if he changes his mind."
+  why: "A no ends the offer. Respect for the no is what lets him say yes later."
+  avoid: "'It might help to look.' It pushes."
+eft-focusing-h03:
+  model_response: "Points toward: a 'weird feeling', not named. Against: he laughs, says 'probably nothing', and pre-empts an explanation, so he is keeping it at a distance. I would wait. I would answer the humour kindly and let him come closer in his own time."
+  why: "He is not ready to attend inwards, and the task needs his willingness."
+  avoid: "'No, I wouldn't say it's about your mother.' It engages with the guess and away from the feeling."
+eft-focusing-h04:
+  model_response: "Points toward: 'I don't know what this is', weeks of not finding a word. Against: he has done a lot of thinking, and may keep thinking in the task. I would offer it gently: I'd note he has worked hard to think it through, and ask whether he would like to try just noticing where it is in his body, without needing to name it."
+  why: "The marker is real and the thinking has not helped. An invitation to a different way may work, with a clear 'you can say no'."
+  avoid: "'Let's look at the attachment idea.' That joins the thinking."
+eft-focusing-h05:
+  model_response: "Points toward: 'I feel weird' with no more. Against: only ten minutes remain. I would not open the task now. I would acknowledge it, say that it matters, and say that we can start with it next time, so he is not left with it open."
+  why: "Focusing needs time and a way back to the ordinary. Opening it near the end leaves the client with unfinished work."
+  avoid: "'Let's stay with it quickly.' It rushes."
+eft-focusing-h06:
+  model_response: "There's no right way to do this. Nothing is a fine thing to find. You can stay with the blank for a moment, or we can stop."
+  why: "It removes the pressure to perform, accepts the blank, and offers a way out."
+  avoid: "'Try harder to feel it.' It makes the blankness a failure."
+eft-focusing-h07:
+  model_response: "Okay, we can step back. Open your eyes if they were closed, look around the room, and feel your feet on the floor. You choose how close to go."
+  why: "It responds to 'I want it to stop' at once. It gives her control of the distance."
+  avoid: "'Stay with it, it will pass.' It overrides her."
+eft-focusing-h08:
+  model_response: "I don't know what it is, and I don't think I could say better than you can find. We can stay with it a little longer, or we can step out."
+  why: "It declines to interpret, kindly, and keeps the choice with him."
+  avoid: "'It sounds like sadness.' It answers a request that would take the felt sense away."
+eft-focusing-h09:
+  model_response: "That could be part of it. If it's all right, let's see whether the throat has anything more to say. If not, that's fine too."
+  why: "It does not argue with the explanation, and it offers a soft way back to the body."
+  avoid: "'I don't think it's just stress.' It argues and pushes."
+eft-focusing-h10:
+  model_response: "Okay. We can stop. You decided that, and it's fine. Take a moment, and let's see what you need from the rest of today."
+  why: "A stop is honoured at once. Your steadiness shows it was safe to say."
+  avoid: "'Are you sure? You're doing well.' It pushes."

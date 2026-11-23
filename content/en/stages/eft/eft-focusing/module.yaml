@@ -1,0 +1,31 @@
+slug: eft-focusing
+version: 1.0.0
+title: "Focusing on a felt sense"
+intro: >-
+  In emotion-focused therapy (EFT), a marker is a sign in the session that a
+  particular kind of work may help right now. This module is about one marker:
+  an unclear felt sense. The client is aware of something in the body, such as a
+  tightness in the chest or a knot in the stomach, and cannot yet say what it
+  is. Typical signs are words like "something", "I don't know", a hand moving to
+  the place, and a pause. The matching task is focusing. You slow the session
+  down, invite the client to attend to that place, and wait for a word or a
+  picture that fits. Then you ask the client to check the word against the
+  feeling. The therapist says very little. The words come from the client, not
+  from you. Do not offer this task when the client already knows what the
+  feeling is, when the client is overwhelmed, when the client says no, or when
+  the session is almost over. In those cases, respond to the client in another
+  way. Focusing here is a different skill from the focusing you practised in the
+  foundations stage, where you helped the client narrow down a topic. In this
+  module Client R tells you, in session five, that there has been "something"
+  since Sunday. You practise two skills: identifying the marker, and guiding the
+  focusing.
+skills:
+  - marker-identification
+  - focusing-guidance
+reflection_prompts:
+  - id: eft-focusing-r1
+    text: "R found the word 'heavy' only after the session slowed down. Think of a time you had a feeling you could not name. What helped you find the word, and what got in the way?"
+  - id: eft-focusing-r2
+    text: "Guiding focusing means speaking less than feels natural. Notice the moments in your own practice when you rush to fill silence. What are you afraid will happen if you wait?"
+  - id: eft-focusing-r3
+    text: "Write down three signs that a client is not ready for this task, even if the marker seems to be present. What would you do in each case instead?"
