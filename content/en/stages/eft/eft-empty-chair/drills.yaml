@@ -1,0 +1,207 @@
+# 30 drills: 10 per level, 5 per skill per level.
+# The marker is unfinished business. In every drill the client has agreed to try the task, unless the context says otherwise.
+# The task is never to forgive or to reconcile. Model responses do not steer toward either.
+
+- id: eft-empty-chair-e01
+  level: easy
+  skill: evoking-the-other
+  context: "The client has agreed to try empty-chair work with his late mother. Task: write one to three sentences that help the client make her present in the chair."
+  client: "Okay. What do I do? Just... talk to the chair?"
+  criteria: &eo_easy
+    - "It helps the client make the other person present in the chair: to picture, look at, or begin to speak to him or her."
+    - "It uses the client's own words and does not tell the client what the other person is like or what to say."
+    - "It is one to three short sentences."
+- id: eft-empty-chair-e02
+  level: easy
+  skill: evoking-the-other
+  context: "The client has agreed to try. Task: write one to three sentences that help the client make his father present in the chair."
+  client: "(looking at the chair) I can't really see him. It's just a chair."
+  criteria: *eo_easy
+- id: eft-empty-chair-e03
+  level: easy
+  skill: evoking-the-other
+  context: "The client is picturing her mother in the chair. Task: write one to three sentences that help her stay with the picture."
+  client: "She's in the kitchen. Standing at the stove with her back to me. She always did that."
+  criteria: *eo_easy
+- id: eft-empty-chair-e04
+  level: easy
+  skill: evoking-the-other
+  context: "The client is looking at the chair. Task: write one to three sentences that help him describe what he sees."
+  client: "(looking at the chair) He's got that look on his face. That look."
+  criteria: *eo_easy
+- id: eft-empty-chair-e05
+  level: easy
+  skill: evoking-the-other
+  context: "The client has pictured her father in the chair. Task: write one or two sentences that invite her to begin speaking to him."
+  client: "Okay. He's there. (pause) Where do I start?"
+  criteria: *eo_easy
+
+- id: eft-empty-chair-e06
+  level: easy
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences that help him move from what happened to what he wanted, in words to the other person."
+  client: "(to the chair) You never came to my games. Never once. I looked for you every time."
+  criteria: &ne_easy
+    - "It helps the client move from what happened or what the other did to what he or she wanted or needed, in words addressed to the other person."
+    - "It uses the client's own words and does not name the need for the client."
+    - "It is one to three short sentences."
+- id: eft-empty-chair-e07
+  level: easy
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences that help her say what she needed."
+  client: "(to the chair) You always made me feel like a burden."
+  criteria: *ne_easy
+- id: eft-empty-chair-e08
+  level: easy
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences."
+  client: "(to the chair) You left, and you didn't say goodbye."
+  criteria: *ne_easy
+- id: eft-empty-chair-e09
+  level: easy
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences."
+  client: "(to the chair) I'm so angry with you."
+  criteria: *ne_easy
+- id: eft-empty-chair-e10
+  level: easy
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences that help him say it in full, directly."
+  client: "(to the chair) I just wanted you to be proud of me."
+  criteria: *ne_easy
+
+- id: eft-empty-chair-m01
+  level: medium
+  skill: evoking-the-other
+  context: "The client has spoken to her father for a while and has stopped. Task: write what you say to invite her, if she wishes, to speak as the other person. Say that it is her own picture, and that she can say no."
+  client: "(to the chair) You never listened. (stops) He would just say 'I'm busy.' He always did."
+  criteria: &eo_medium
+    - "It helps the client enact the other person in the client's own picture of him or her: voice, posture, words."
+    - "It makes clear that this is the client's imagining of the other person, and the client can say no or step back."
+    - "It is short, and it does not put words into the other person's mouth."
+- id: eft-empty-chair-m02
+  level: medium
+  skill: evoking-the-other
+  context: "The client is now sitting in the other chair, as his father. Task: write one or two sentences that make the father more present."
+  client: "(as his father, shrugging) I don't know."
+  criteria: *eo_medium
+- id: eft-empty-chair-m03
+  level: medium
+  skill: evoking-the-other
+  context: "The client is speaking as her mother. Task: write one or two sentences."
+  client: "(as her mother) I did my best. What do you want me to say?"
+  criteria: *eo_medium
+- id: eft-empty-chair-m04
+  level: medium
+  skill: evoking-the-other
+  context: "The client is speaking as the other person, and something shifted. Task: write one or two sentences."
+  client: "(as his mother, quietly) She... she looked tired. I never noticed."
+  criteria: *eo_medium
+- id: eft-empty-chair-m05
+  level: medium
+  skill: evoking-the-other
+  context: "The client is back in his own chair after speaking to his father. Task: write one or two sentences that help him show how his father would answer."
+  client: "He wouldn't say anything. He'd just look at me."
+  criteria: *eo_medium
+
+- id: eft-empty-chair-m06
+  level: medium
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences."
+  client: "(to the chair) I needed you to say something. Anything. (pause) But you wouldn't."
+  criteria: &ne_medium
+    - "It reflects the need or the feeling the client has just expressed, in the client's words."
+    - "It helps the client say it directly to the other person, in 'I' words, and it does not rush toward the other person's reply or toward forgiving."
+    - "It is short."
+- id: eft-empty-chair-m07
+  level: medium
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences."
+  client: "(to the chair, quietly) I'm sad that you never knew me."
+  criteria: *ne_medium
+- id: eft-empty-chair-m08
+  level: medium
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences."
+  client: "(to the chair) I wanted... I don't know. I just wanted something."
+  criteria: *ne_medium
+- id: eft-empty-chair-m09
+  level: medium
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences."
+  client: "(to the chair) I wanted you to notice me. (shakes his head) But I shouldn't need that. I'm a grown man."
+  criteria: *ne_medium
+- id: eft-empty-chair-m10
+  level: medium
+  skill: need-expression
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences. Do not promise that the other person will say it."
+  client: "(to the chair) I want you to say you're sorry."
+  criteria: *ne_medium
+
+- id: eft-empty-chair-h01
+  level: hard
+  skill: evoking-the-other
+  context: "You have offered empty-chair work. Task: write one or two sentences. Respond to what the client just said before saying more about the task."
+  client: "She's dead. What's the point of talking to a chair?"
+  criteria: &eo_hard
+    - "It responds first to what the client just said or did (a doubt, a refusal, distress) before saying anything about the task."
+    - "It keeps the client in control: the client can say no, step out or stop, and you do not push, speak for the other person or steer toward reconciling."
+    - "It is short."
+- id: eft-empty-chair-h02
+  level: hard
+  skill: evoking-the-other
+  context: "The client is looking at the empty chair. Task: write one or two sentences. Respond to what just happened."
+  client: "(to the chair, suddenly turns away) I can't. I can't look at him."
+  criteria: *eo_hard
+- id: eft-empty-chair-h03
+  level: hard
+  skill: evoking-the-other
+  context: "The client has agreed to try, and has been speaking to his father. Task: write one or two sentences. Respond to what the client said before going on."
+  client: "In my family you don't talk to your father like this. Even now. Even to a chair."
+  criteria: *eo_hard
+- id: eft-empty-chair-h04
+  level: hard
+  skill: evoking-the-other
+  context: "The client has just spoken as the other person. Task: write one or two sentences. Respond to what the client said."
+  client: "(back in her own chair) That felt awful. It was too real. I don't want to be her again."
+  criteria: *eo_hard
+- id: eft-empty-chair-h05
+  level: hard
+  skill: evoking-the-other
+  context: "The client is speaking to the other person in the chair. Task: write one or two sentences. Respond to what just happened."
+  client: "(sobbing) I can't breathe. I want to stop."
+  criteria: *eo_hard
+
+- id: eft-empty-chair-h06
+  level: hard
+  skill: need-expression
+  context: "The client has just spoken to the other person. Task: write one or two sentences. Do not steer toward or away from forgiving."
+  client: "I should forgive him. It's what a good person does. I think I'm supposed to be past this."
+  criteria: &ne_hard
+    - "It responds first to what just happened (a wish to forgive, a refusal, a need that cannot be met, grief arriving) before asking for more."
+    - "It does not steer the client toward forgiving or away from forgiving, and it does not rush."
+    - "It is short, and it leaves the choice with the client."
+- id: eft-empty-chair-h07
+  level: hard
+  skill: need-expression
+  context: "The client has just spoken to the other person. Task: write one or two sentences."
+  client: "I'll never forgive her. Don't even ask me to."
+  criteria: *ne_hard
+- id: eft-empty-chair-h08
+  level: hard
+  skill: need-expression
+  context: "The client has been speaking to his late father. Task: write one or two sentences."
+  client: "He'll never give me what I need. He's dead. What's the point of saying it?"
+  criteria: *ne_hard
+- id: eft-empty-chair-h09
+  level: hard
+  skill: need-expression
+  context: "The client has been speaking to the other person and has started to cry. Task: write one or two sentences."
+  client: "(smiling through tears) He'd have said I was being soft. (laughs) I should stop. This is silly."
+  criteria: *ne_hard
+- id: eft-empty-chair-h10
+  level: hard
+  skill: need-expression
+  context: "The client has been speaking to her late mother. Task: write one or two sentences."
+  client: "(very quietly) I think I miss her."
+  criteria: *ne_hard

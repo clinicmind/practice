@@ -1,0 +1,207 @@
+# 30 drills: 10 per level, 5 per skill per level.
+# Chair-setup drills are about the therapist's words around the task: offering it, setting it up, moving between chairs, and respecting a no.
+# Heightening drills are about the next sentence while the client is in a chair.
+
+- id: eft-two-chair-e01
+  level: easy
+  skill: chair-setup
+  context: "The marker, a self-critical split, is present. Task: write one to three sentences that offer the two-chair task. Say what it is and what it is for, and make it easy to say no."
+  client: "I'm so lazy. 'You idiot, you never finish anything.' That's what I say to myself every night. And then I just sit there."
+  criteria: &cs_easy
+    - "It reflects the two sides the client showed, using the client's own words."
+    - "It says in plain words what the task is and what it is for, and it does not promise an outcome."
+    - "It makes it easy to say no. It is one to three short sentences."
+- id: eft-two-chair-e02
+  level: easy
+  skill: chair-setup
+  context: "The marker is present. Task: write one to three sentences that offer the two-chair task, say what it is for, and make it easy to say no."
+  client: "I should be over this by now. What's wrong with me? Everyone else manages. (voice drops) I just feel like giving up on it."
+  criteria: *cs_easy
+- id: eft-two-chair-e03
+  level: easy
+  skill: chair-setup
+  context: "The marker is present. Task: write one to three sentences that offer the two-chair task, say what it is for, and make it easy to say no."
+  client: "There's a voice at work that tells me I'm a fraud. And there's another part of me that just believes it."
+  criteria: *cs_easy
+- id: eft-two-chair-e04
+  level: easy
+  skill: chair-setup
+  context: "The marker is present. Task: write one to three sentences that offer the two-chair task, say what it is for, and make it easy to say no."
+  client: "My friends say I'm too hard on myself. But when I make a mistake I hear it: 'Stupid. Again.' And then I can't think."
+  criteria: *cs_easy
+- id: eft-two-chair-e05
+  level: easy
+  skill: chair-setup
+  context: "The marker is present. Task: write one to three sentences that offer the two-chair task, say what it is for, and make it easy to say no."
+  client: "Part of me says I'm selfish for wanting time alone. The other part feels so guilty it can't enjoy any of it."
+  criteria: *cs_easy
+
+- id: eft-two-chair-e06
+  level: easy
+  skill: heightening
+  context: "The client is in the critic's chair. Task: write one or two sentences that help the critic become more specific and direct."
+  client: "(to the other chair) You should try harder. You need to do better."
+  criteria: &ht_easy
+    - "It asks for the client's words to go to the other chair ('say it to him'), and not about the other chair."
+    - "It invites a more specific, fuller or more felt version of what the client just said. It does not interpret."
+    - "It is one or two short sentences."
+- id: eft-two-chair-e07
+  level: easy
+  skill: heightening
+  context: "The client is in the critic's chair. Task: write one or two sentences that help the critic speak to the other chair."
+  client: "(looking at the therapist) He's just lazy. He never does what he should."
+  criteria: *ht_easy
+- id: eft-two-chair-e08
+  level: easy
+  skill: heightening
+  context: "The client is in the critic's chair. Task: write one or two sentences that help the critic become more specific."
+  client: "(quietly, to the other chair) You'll never get it right."
+  criteria: *ht_easy
+- id: eft-two-chair-e09
+  level: easy
+  skill: heightening
+  context: "The client has moved to the other chair, and the critic has just spoken. Task: write one or two sentences that help the client say what it is like to hear it."
+  client: "(in the other chair) It's hard to hear. When she says that."
+  criteria: *ht_easy
+- id: eft-two-chair-e10
+  level: easy
+  skill: heightening
+  context: "The client is in the criticised part's chair. Task: write one or two sentences that help the client stay with the feeling and say it to the critic."
+  client: "(in the other chair, quietly) It makes me sad. When you say that."
+  criteria: *ht_easy
+
+- id: eft-two-chair-m01
+  level: medium
+  skill: chair-setup
+  context: "The client has agreed to try. Task: write the first instruction. Say where to sit, who the client is in this chair, and whom to speak to."
+  client: "Okay. Let's try it. What do I do?"
+  criteria: &cs_medium
+    - "It gives one clear step, such as where to sit or whom to speak to."
+    - "It tells the client who he or she is in this chair ('here you are the voice') and who is being spoken to."
+    - "It is short and leaves the content to the client."
+- id: eft-two-chair-m02
+  level: medium
+  skill: chair-setup
+  context: "The client has sat in the first chair and looks unsure. Task: write one or two sentences that make the roles clear."
+  client: "(sits) So I'm... me? Or the voice? And who am I talking to?"
+  criteria: *cs_medium
+- id: eft-two-chair-m03
+  level: medium
+  skill: chair-setup
+  context: "The client has spoken as the critic and has finished. Task: write what you say to move the client to the other chair."
+  client: "(finishing, looks tired) ...That's what I tell her. All the time."
+  criteria: *cs_medium
+- id: eft-two-chair-m04
+  level: medium
+  skill: chair-setup
+  context: "The client is in the second chair and has heard the critic. Task: write one or two sentences that make clear whom to talk to."
+  client: "(in the other chair) Do I tell you how I feel? Or do I tell him?"
+  criteria: *cs_medium
+- id: eft-two-chair-m05
+  level: medium
+  skill: chair-setup
+  context: "The client is in the critic's chair and wants to change chairs by himself. Task: write what you say."
+  client: "(as the critic, stops) Can I switch? I want to answer him."
+  criteria: *cs_medium
+
+- id: eft-two-chair-m06
+  level: medium
+  skill: heightening
+  context: "The client is in the criticised part's chair and agrees with the critic. Task: write one or two sentences that help the client notice what happens in him when he hears it."
+  client: "(in the other chair) Yeah. He's right. I should do better."
+  criteria: &ht_medium
+    - "It reflects what the client just said or did in the client's own words, and does not argue with it."
+    - "It invites the client to say what he or she feels, wants or fears in this chair, in words addressed to the other chair."
+    - "It is short, and it does not name the feeling for the client."
+- id: eft-two-chair-m07
+  level: medium
+  skill: heightening
+  context: "The client is in the criticised part's chair. Task: write one or two sentences."
+  client: "(in the other chair) I don't know. I just go blank when she talks like that."
+  criteria: *ht_medium
+- id: eft-two-chair-m08
+  level: medium
+  skill: heightening
+  context: "The client is in the criticised part's chair. Task: write one or two sentences."
+  client: "(in the other chair, smiling) It doesn't bother me. I'm used to it."
+  criteria: *ht_medium
+- id: eft-two-chair-m09
+  level: medium
+  skill: heightening
+  context: "The client is in the criticised part's chair. Task: write one or two sentences that help the client say it to the critic."
+  client: "(in the other chair, voice quiet) I get smaller. I want to hide."
+  criteria: *ht_medium
+- id: eft-two-chair-m10
+  level: medium
+  skill: heightening
+  context: "The client has moved back to the critic's chair. Task: write one or two sentences that invite the critic to say what it wants or fears."
+  client: "(as the critic) Well, somebody has to do it. If I don't push, nothing gets done."
+  criteria: *ht_medium
+
+- id: eft-two-chair-h01
+  level: hard
+  skill: chair-setup
+  context: "The marker is present and you have offered the task. Task: write one or two sentences. Respond to what the client just said before saying anything about the task."
+  client: "No. I don't do that kind of thing."
+  criteria: &cs_hard
+    - "It responds first to what the client just said or did (a refusal, a doubt, distress) before saying anything about the task."
+    - "It leaves the choice with the client: the client can say no, stop or take a break, and you do not push."
+    - "It is short. It does not argue or explain at length."
+- id: eft-two-chair-h02
+  level: hard
+  skill: chair-setup
+  context: "You have offered the task. Task: write one or two sentences. Respond to what the client said before saying more about the task."
+  client: "(frowning) Isn't that a bit... theatrical? I'm not an actor."
+  criteria: *cs_hard
+- id: eft-two-chair-h03
+  level: hard
+  skill: chair-setup
+  context: "The marker is present, but the client is crying hard and cannot speak in full sentences. Task: write one or two sentences. Decide whether to offer the task, and respond to what is happening."
+  client: "(crying hard) I'm so useless. I hate myself. I can't... I can't..."
+  criteria: *cs_hard
+- id: eft-two-chair-h04
+  level: hard
+  skill: chair-setup
+  context: "The client is in the first chair. Task: write one or two sentences. Respond to what just happened."
+  client: "I can't do this. I feel sick. Stop. Please stop."
+  criteria: *cs_hard
+- id: eft-two-chair-h05
+  level: hard
+  skill: chair-setup
+  context: "You have offered the task. Task: write one or two sentences. Respond to what the client said before going on."
+  client: "Fine. If you think it's best. You're the expert."
+  criteria: *cs_hard
+
+- id: eft-two-chair-h06
+  level: hard
+  skill: heightening
+  context: "The client is in the critic's chair. Task: write one or two sentences. Respond to what just happened before asking for more."
+  client: "(as the critic, loud) You're pathetic. You disgust me. You always let everyone down."
+  criteria: &ht_hard
+    - "It responds to what just happened (a loud voice, a collapse, tears, a laugh, a flat answer, a sudden insight) before asking for more."
+    - "It checks that the client is steady enough, or gives the client a way to slow down or step out, and does not push for more intensity."
+    - "It is short, and it does not name or explain the feeling."
+- id: eft-two-chair-h07
+  level: hard
+  skill: heightening
+  context: "The client is in the criticised part's chair. Task: write one or two sentences. Respond to what just happened before asking for more."
+  client: "(in the other chair, tears) I try so hard. I try so hard and it's never enough."
+  criteria: *ht_hard
+- id: eft-two-chair-h08
+  level: hard
+  skill: heightening
+  context: "The client is in the criticised part's chair. Task: write one or two sentences. Respond to what just happened before asking for more."
+  client: "(in the other chair, flat) I don't feel anything. Can we move on?"
+  criteria: *ht_hard
+- id: eft-two-chair-h09
+  level: hard
+  skill: heightening
+  context: "The client is in the critic's chair. Task: write one or two sentences. Respond to what just happened before asking for more."
+  client: "(laughing) Listen to me. Talking to an empty chair. This is ridiculous."
+  criteria: *ht_hard
+- id: eft-two-chair-h10
+  level: hard
+  skill: heightening
+  context: "The client is in the criticised part's chair. Task: write one or two sentences. Respond to what just happened before asking for more."
+  client: "(suddenly, in the other chair) That's... that's my father's voice. (pause) I've never noticed that."
+  criteria: *ht_hard
