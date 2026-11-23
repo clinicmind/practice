@@ -19,7 +19,7 @@
 | 階段 3 Task 3–4（本文件「報告後端」）：資料表、Edge Function `reports`、Drive、真實 `ReportSubmitter` | 程式完成，在分支 `claude/reports-backend`，**未合併、未部署、從未連上真實的 Supabase 或 Google**。`reportsEnabled` 仍預設關；正式建置的行為不變 | 單元測試（模擬 `fetch`、行程內 Postgres）。冒煙測試見 `docs/SETUP-reports.md` 第 4 節，尚未做 |
 | 階段 3 督導評閱、保存期限（`0006`）、督導後台的 Drive 連線狀態 | 未開始 | — |
 | 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。模組 2 `eft-emotion-types`、模組 3 `eft-focusing` 的內容也已寫完、未登記。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
-| 階段 4、6：AI 回饋、DBT | 設計規格已定。AI 回饋的成本估算和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
+| 階段 4、6：AI 回饋、DBT | 設計規格已定。AI 回饋的成本估算（成本腳本 19 個單元測試；定價 2026-11-23 讀官方定價頁）和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`，沒有實作、沒有呼叫付費 API。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
 
 最後一次完整測試（2026-11-22，整合 `claude/stage-admin` 和 `claude/report-compose` 之後，已上線）：`npm run check` 439＋142 個通過；`npm run e2e` 30 個通過、4 個跳過（同一批需要服務金鑰的測試）。用真實內容確認：首頁 8 個階段、舊網址自動轉址、正式建置沒有報告連結，`/reports/new` 顯示找不到頁面。
 
@@ -123,7 +123,7 @@
    - Google Drive 授權。規格 §8.5 選了 OAuth `drive.file`。擁有人要在 Google Cloud 建立 OAuth 用戶端，並取得 refresh token。先寫出逐步指引，並做冒煙測試。行不通就停下來，和擁有人商量改用「正文存資料庫，每日備份到 Drive」。
    - `reports_enabled` 預設關。擁有人已確認實習單位容許上傳去識別化的報告，保存期限是學期結束後 90 天。
 3. **階段 5 模組 2–6。** 模組 1 的結構是範本：每個模組 2 項技能、30 題（每級 10 題、每技能每級 5 題）、示範回應、1–2 個走讀會談、3 個反思。弧線在 `content/CLIENT_EFT.md` 第 5 節。每個模組完成後交擁有人審核，不要自行登記。
-4. **階段 4、6。** 設計規格在 `docs/specs/2026-11-15-stage4-6-design.md`。每個階段先寫實作計畫，再動工。階段 4 要花錢，先給擁有人成本估算。
+4. **階段 4、6。** 設計規格在 `docs/specs/2026-11-15-stage4-6-design.md`。每個階段先寫實作計畫，再動工。階段 4 要花錢：成本估算已寫（`docs/plans/2026-11-23-ai-feedback-cost.md`，整班 30 人全課程約 US$3／12／45，低／中／高），等擁有人決定月預算上限和 API 帳號由誰付費（該文件第 7 節）。一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-consistency.md`，執行前要擁有人批准、金鑰、並同意第 8 節的補強門檻。資料保存條款尚未核對。
 5. **專案 1（收入產品）** 在另一個 repo `clinicmind/clinicmind`，看它的 `docs/roadmap/STATUS.md`。
 
 **報告撰寫介面（階段 3 Task 2）**
@@ -160,5 +160,7 @@
 | `docs/specs/2026-11-15-stage4-6-design.md` | AI 回饋、EFT、DBT 的設計規格 |
 | `docs/plans/2026-11-15-practice-phase{1,2,3}.md` | 各階段實作計畫（1、2 已完成，留作參考） |
 | `docs/plans/2026-11-15-zh-hant.md` | 翻譯規則和用語表 |
+| `docs/plans/2026-11-23-ai-feedback-cost.md` | 階段 4 成本估算（離線腳本 `scripts/estimate-ai-cost.ts`，`npx tsx scripts/estimate-ai-cost.ts`） |
+| `docs/plans/2026-11-23-ai-feedback-consistency.md` | 階段 4 一致性檢驗設計（未執行） |
 | `content/CLIENT_M.md` | Client M 的設定和 8 個模組的療程弧線 |
 | `content/CLIENT_EFT.md` | Client R（EFT 階段）的設定、六個模組的弧線，以及擁有人 2026-11-23 的決定 |
