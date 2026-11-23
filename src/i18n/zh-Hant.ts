@@ -347,4 +347,20 @@ export const zhHant: Strings = {
       'id-like': '如果這是病歷號或個案編號，請移除。',
     },
   },
+  // 伺服器函式可能回傳的錯誤，按錯誤代碼排列。
+  reportsBackend: {
+    errors: {
+      unauthorized: '你的登入已過期，請重新登入。你的文字仍然在這裡。',
+      not_allowed: '只有已加入班級的學生可以提交報告。',
+      reports_disabled: '你的班級還沒有開放報告功能。',
+      body_length: '報告必須在 200 至 30,000 字元之間。',
+      title_identifying: '標題含有可識別的資料。請修改標題再試一次。',
+      rate_limited: '你在過去 24 小時內已經提交了 5 份報告。請明天再試。你的文字仍然在這裡。',
+      drive_auth: '報告沒有儲存，因為存放報告的 Google Drive 連結已經失效。沒有任何內容被儲存。請通知你的督導，稍後再試。你的文字仍然在這裡。',
+      drive_quota: '報告沒有儲存，因為存放報告的 Google Drive 已滿。沒有任何內容被儲存。請通知你的督導。你的文字仍然在這裡。',
+      drive_unavailable: '報告沒有儲存，因為 Google Drive 沒有回應。沒有任何內容被儲存。請幾分鐘後再試。你的文字仍然在這裡。',
+      storage_failed: '報告沒有儲存。沒有任何內容被儲存。請再試一次。你的文字仍然在這裡。',
+      server_error: '伺服器出了問題。沒有任何內容被儲存。請再試一次。你的文字仍然在這裡。',
+    },
+  },
 };

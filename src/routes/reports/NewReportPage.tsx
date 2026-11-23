@@ -19,7 +19,8 @@ function selectSpan(ta: HTMLTextAreaElement | null, start: number, end: number) 
 }
 
 export function NewReportPage() {
-  const s = useT().reports;
+  const t = useT();
+  const s = t.reports;
   const api = useReportsApi();
   const [step, setStep] = useState<Step>(1);
   const [ack, setAck] = useState(false);
@@ -71,7 +72,7 @@ export function NewReportPage() {
       const r = await api.submit({ title: title.trim(), body: text });
       if (r.ok) { setStep(4); return; }
       if ('findings' in r) { setServerFindings(r.findings); setDeclared(false); setStep(2); return; }
-      setFailure(r.status === NOT_OPEN ? s.notOpen : s.failed.error(r.status));
+      setFailure(r.status === NOT_OPEN ? s.notOpen : (r.code && t.reportsBackend.errors[r.code]) || s.failed.error(r.status));
     } catch {
       setFailure(s.failed.error(0));
     } finally {

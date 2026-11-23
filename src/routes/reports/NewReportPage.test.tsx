@@ -187,6 +187,17 @@ describe('new report', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent(s.failed.error(500));
   });
 
+  test.each([['drive_auth'], ['drive_unavailable'], ['rate_limited'], ['reports_disabled']])('a %s failure shows its own clear message and keeps the text', async (code) => {
+    const user = userEvent.setup();
+    await toStep2(user, async () => ({ ok: false, status: 502, message: 'x', code }));
+    await write(user, CLEAN);
+    await user.click(screen.getByRole('button', { name: s.write.next }));
+    await user.click(await screen.findByRole('checkbox'));
+    await user.click(screen.getByRole('button', { name: s.confirm.submit }));
+    expect(await screen.findByRole('alert')).toHaveTextContent(en.reportsBackend.errors[code]!);
+    expect(screen.getByRole('button', { name: s.confirm.submit })).toBeEnabled();
+  });
+
   test('pasting a file or image is ignored with a message; only text is accepted', async () => {
     const user = userEvent.setup();
     await toStep2(user);

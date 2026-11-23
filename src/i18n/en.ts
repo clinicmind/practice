@@ -359,6 +359,22 @@ const enStrings = {
       'id-like': 'If this is a record or case number, remove it.',
     } as Record<string, string>,
   },
+  // Messages for the errors the `reports` Edge Function can return, by error code.
+  reportsBackend: {
+    errors: {
+      unauthorized: 'Your sign-in has expired. Please sign in again. Your text is still here.',
+      not_allowed: 'Only students who have joined a class can submit reports.',
+      reports_disabled: 'Reports are not open for your class yet.',
+      body_length: 'The report must be between 200 and 30,000 characters.',
+      title_identifying: 'The title contains identifying details. Change the title and try again.',
+      rate_limited: 'You have already submitted 5 reports in the last 24 hours. Please try again tomorrow. Your text is still here.',
+      drive_auth: 'The report was not saved, because the link to the Google Drive where reports are kept has expired. Nothing was stored. Please tell your supervisor, then try again later. Your text is still here.',
+      drive_quota: 'The report was not saved, because the Google Drive where reports are kept is full. Nothing was stored. Please tell your supervisor. Your text is still here.',
+      drive_unavailable: 'The report was not saved, because Google Drive did not answer. Nothing was stored. Please try again in a few minutes. Your text is still here.',
+      storage_failed: 'The report was not saved. Nothing was stored. Please try again. Your text is still here.',
+      server_error: 'Something went wrong on the server. Nothing was stored. Please try again. Your text is still here.',
+    } as Record<string, string>,
+  },
 } as const;
 
 export type Strings = Widen<typeof enStrings>;
