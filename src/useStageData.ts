@@ -106,7 +106,9 @@ export function useStageData(): StageState {
         }
         return loadModule(slug, 'en', stageName);
       };
-      const stageTitle = zh && zh.modules.length > 0 ? zh.title : stage.title;
+      const zhStage = zh && zh.modules.length > 0 ? zh : undefined;
+      const stageTitle = zhStage ? zhStage.title : stage.title;
+      const stageNotice = zhStage ? (zhStage.notice ?? stage.notice) : stage.notice;
       const [attempts, decisions, grants] = await Promise.all([
         store.listAttempts(), store.listDecisions(), readGrants(),
       ]);
@@ -118,7 +120,7 @@ export function useStageData(): StageState {
         const bundles: Record<string, ModuleBundle | undefined> = {};
         stage.modules.forEach((m, i) => { bundles[m.slug] = loaded[i]; });
         const visible: StageEntry[] = stage.modules.map((m) => ({ slug: m.slug, title: titleOf(m.slug, m.title), ...(m.reviewed ? {} : { unreviewed: true }) }));
-        if (live) setState({ status: 'ready', data: { stage: { ...stage, title: stageTitle }, visible, contentLocale, bundles, grants, unlocked: stage.modules.map((m) => m.slug), attempts, decisions } });
+        if (live) setState({ status: 'ready', data: { stage: { ...stage, title: stageTitle, ...(stageNotice ? { notice: stageNotice } : {}) }, visible, contentLocale, bundles, grants, unlocked: stage.modules.map((m) => m.slug), attempts, decisions } });
         return;
       }
       const prefix: string[] = [];
@@ -144,7 +146,7 @@ export function useStageData(): StageState {
         }
         visible.push(entry);
       });
-      if (live) setState({ status: 'ready', data: { stage: { ...stage, title: stageTitle }, visible, contentLocale, bundles, grants, unlocked, attempts, decisions } });
+      if (live) setState({ status: 'ready', data: { stage: { ...stage, title: stageTitle, ...(stageNotice ? { notice: stageNotice } : {}) }, visible, contentLocale, bundles, grants, unlocked, attempts, decisions } });
     })().catch(() => live && setState({ status: 'error', reload }));
     return () => { live = false; };
   }, [stageName, store, readGrants, readOpenStages, isSupervisor, tick, reload, locationKey, locale]);

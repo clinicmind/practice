@@ -1,6 +1,6 @@
 # 交接文件
 
-最後更新：2026-11-22。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
+最後更新：2026-11-23（分支 `claude/eft-m1`，尚未合併）。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
 
 ## 1. 現況
 
@@ -17,7 +17,8 @@
 | 階段 3 Task 1：去識別化掃描器 | 完成 | 142 個測試 |
 | 階段 3 Task 2：報告撰寫介面 | 完成並上線（2026-11-22）。介面預設完全隱藏（`reportsEnabled` 預設關），正式網站不會改變。提交經注入的 `ReportSubmitter`，預設回「報告功能尚未開放」；沒有後端 | 單元測試＋端到端（用打開開關的另一個建置和假後端） |
 | 階段 3 Task 3–6：資料表、Edge Function、Drive、評閱、保存期限 | 未開始 | — |
-| 階段 4–6：AI 回饋、EFT、DBT | 設計規格已定。EFT 和 DBT 的貫穿個案有草稿（`content/CLIENT_EFT.md`、`content/CLIENT_DBT.md`），待擁有人確認 | — |
+| 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。在分支 `claude/eft-m1`，尚未合併。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
+| 階段 4、6：AI 回饋、DBT | 設計規格已定。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
 
 最後一次完整測試（2026-11-22，整合 `claude/stage-admin` 和 `claude/report-compose` 之後，已上線）：`npm run check` 439＋142 個通過；`npm run e2e` 30 個通過、4 個跳過（同一批需要服務金鑰的測試）。用真實內容確認：首頁 8 個階段、舊網址自動轉址、正式建置沒有報告連結，`/reports/new` 顯示找不到頁面。
 
@@ -28,7 +29,9 @@
 2. 手動檢查學生隔離：用兩個電郵各開一個學生帳號，各做一題，確認互相看不到對方的作答，督導看得到兩人。
 3. 全班使用前，在 Supabase 設定自己的 SMTP。內建電郵服務每小時只能發很少的信。
 4. 在 Supabase 的 SQL Editor 開一個新的查詢分頁，**只貼 `supabase/migrations/0004_cohort_stages.sql`** 並執行。不急：目前只有一個階段，程式不會讀這張表（有測試；督導的階段區塊在只有一個階段時也不讀）。但要在第二個階段（EFT）的內容上線之前做，否則雲端模式的學生打開階段清單會看到載入錯誤。
-5. 回答兩份個案設定草稿中的「需你決定」：`content/CLIENT_EFT.md`（Client R）和 `content/CLIENT_DBT.md`（Client J）。回答之前，不寫這兩個階段的走讀和練習題。
+5. 回答 `content/CLIENT_DBT.md`（Client J）的「需你決定」。回答之前，不寫 DBT 階段的走讀和練習題。`content/CLIENT_EFT.md` 已於 2026-11-23 確認。
+6. 審核 EFT 模組 1（`content/en/stages/eft/`、`content/zh-Hant/stages/eft/`），並確認譯名（`docs/plans/2026-11-15-zh-hant.md`「EFT 階段用語」）。孝道和對亡者說話那一層，目前只留在個人經驗層次，是顧問代選的預設，審核時可改。擁有人是否受過 EFT 訓練還沒回答；EFT 的介入做錯會有害，建議另找受過訓練的同行覆核。審核通過後，先取得擁有人明確同意才登記 `content/REVIEW.md`。
+7. EFT 內容上線前，先套用 `0004_cohort_stages.sql`（第 4 項）。登記 EFT 模組 1 的那一刻，正式網站才會有第二個階段。
 
 ## 3. 已知的缺口（如實列出）
 
@@ -90,6 +93,15 @@
 - 「一位個案，十六次會談，八個階段」那句 lede 只在 foundations 顯示。這句裡的「階段」其實指模組，和新的「階段」（course stage）用詞重疊。改動這句要先問擁有人（已審核的介面文字）。
 - 測試夾具 `tests/fixtures/content/multi/`（foundations＋`demo`）由 `npx tsx tests/fixtures/generate.ts` 產生。這個指令會重寫全部夾具；執行後看 `git status` 確認舊夾具沒有變動。
 
+**草稿階段（2026-11-23）**
+- 建置時，非 foundations 的階段要有至少一個「英文已審核」的模組才會輸出：否則 `stages.json` 沒有它，也沒有該階段的任何檔案。兩種語言一起決定（以英文為準）。目的：正式 Supabase 還沒有 `cohort_stages`，只要出現第二個階段，雲端模式的學生就會讀那張表並看到載入錯誤。
+- 草稿階段仍然會被驗證，內容錯誤照樣令建置失敗。`INCLUDE_UNREVIEWED=1`（作者預覽）會輸出所有階段。
+- 結果：督導在正式建置也看不到未審核階段。要預覽，用作者預覽建置。
+- 驗證：單元測試比較「有草稿階段」和「沒有」的輸出逐位元組相同；用改動前後的程式建置真實內容，`diff -r` 沒有差異；端到端用真實內容建兩個版本（`e2e/build-variants.sh`）：正常建置沒有 EFT，加了測試用審核列則階段和模組 1 正常顯示。
+- 階段可以有 `notice`（`stage.yaml`，選填），顯示在階段頁頂部。EFT 用它放喪親與父子關係的內容提示。標籤文字在 i18n 的 `eft.noticeLabel`。
+- 技能代碼和模組 slug 規則照舊：EFT 模組 slug 以 `eft-` 開頭。
+- 測試夾具 `tests/fixtures/content/draft-stage/`（foundations＋未審核的 `demo`）也由 `generate.ts` 產生。
+
 **環境**
 - 這個雲端環境的網路是白名單制。名為「ClinicMind」的環境已開放正式的 Supabase 網址。其他網址被擋時，用環境工具提出申請。
 - Playwright 和 Chromium 已預裝，直接用。
@@ -109,8 +121,9 @@
    - Edge Function 怎樣部署。擁有人不會用命令列。先確認能否在 Supabase 介面的 Edge Function 編輯器貼上程式碼；每個函式要做成單一檔案才可行。
    - Google Drive 授權。規格 §8.5 選了 OAuth `drive.file`。擁有人要在 Google Cloud 建立 OAuth 用戶端，並取得 refresh token。先寫出逐步指引，並做冒煙測試。行不通就停下來，和擁有人商量改用「正文存資料庫，每日備份到 Drive」。
    - `reports_enabled` 預設關。擁有人已確認實習單位容許上傳去識別化的報告，保存期限是學期結束後 90 天。
-3. **階段 4–6。** 設計規格在 `docs/specs/2026-11-15-stage4-6-design.md`。每個階段先寫實作計畫，再動工。階段 4 要花錢，先給擁有人成本估算。
-4. **專案 1（收入產品）** 在另一個 repo `clinicmind/clinicmind`，看它的 `docs/roadmap/STATUS.md`。
+3. **階段 5 模組 2–6。** 模組 1 的結構是範本：每個模組 2 項技能、30 題（每級 10 題、每技能每級 5 題）、示範回應、1–2 個走讀會談、3 個反思。弧線在 `content/CLIENT_EFT.md` 第 5 節。每個模組完成後交擁有人審核，不要自行登記。
+4. **階段 4、6。** 設計規格在 `docs/specs/2026-11-15-stage4-6-design.md`。每個階段先寫實作計畫，再動工。階段 4 要花錢，先給擁有人成本估算。
+5. **專案 1（收入產品）** 在另一個 repo `clinicmind/clinicmind`，看它的 `docs/roadmap/STATUS.md`。
 
 **報告撰寫介面（階段 3 Task 2）**
 - 每個命中會引述命中的文字（`<q>`），學生不用數字元。這段文字只在學生的瀏覽器顯示，不會送出或儲存。
@@ -134,3 +147,4 @@
 | `docs/plans/2026-11-15-practice-phase{1,2,3}.md` | 各階段實作計畫（1、2 已完成，留作參考） |
 | `docs/plans/2026-11-15-zh-hant.md` | 翻譯規則和用語表 |
 | `content/CLIENT_M.md` | Client M 的設定和 8 個模組的療程弧線 |
+| `content/CLIENT_EFT.md` | Client R（EFT 階段）的設定、六個模組的弧線，以及擁有人 2026-11-23 的決定 |

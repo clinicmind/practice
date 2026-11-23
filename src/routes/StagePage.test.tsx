@@ -71,6 +71,7 @@ describe('unreviewed modules', () => {
 });
 
 describe('stage notice', () => {
+  afterEach(() => localStorage.clear());
   test('a stage with a notice shows it above the module list, and a stage without one does not', async () => {
     const { mkdtempSync, cpSync, readFileSync, writeFileSync } = await import('node:fs');
     const { tmpdir } = await import('node:os');
@@ -82,6 +83,8 @@ describe('stage notice', () => {
     cpSync(src, dir, { recursive: true });
     const f = join(dir, 'en/stages/demo/stage.yaml');
     writeFileSync(f, stringify({ ...parse(readFileSync(f, 'utf8')), notice: 'This stage touches on loss. Pause whenever you need to.' }));
+    const fz = join(dir, 'zh-Hant/stages/demo/stage.yaml');
+    writeFileSync(fz, stringify({ ...parse(readFileSync(fz, 'utf8')), notice: '這個階段涉及喪失。需要時可以隨時暫停。' }));
     const out = mkdtempSync(join(tmpdir(), 'notice-out-'));
     for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: dir, outDir: out, locale });
     serve(out);
@@ -89,6 +92,27 @@ describe('stage notice', () => {
     const note = await screen.findByText(/This stage touches on loss/);
     expect(note.closest('aside')).toHaveAccessibleName(en.eft.noticeLabel);
     expect(screen.getByRole('link', { name: /Demo intro/ })).toBeVisible();
+  });
+
+  test('in Traditional Chinese the notice is the Chinese one', async () => {
+    const { mkdtempSync, cpSync, readFileSync, writeFileSync } = await import('node:fs');
+    const { tmpdir } = await import('node:os');
+    const { join } = await import('node:path');
+    const { parse, stringify } = await import('yaml');
+    const { buildContent } = await import('../../scripts/build-content');
+    const dir = mkdtempSync(join(tmpdir(), 'notice-zh-'));
+    cpSync(join(__dirname, '..', '..', 'tests', 'fixtures', 'content', 'multi'), dir, { recursive: true });
+    for (const [loc, text] of [['en', 'English notice.'], ['zh-Hant', '中文提示。']] as const) {
+      const f = join(dir, loc, 'stages/demo/stage.yaml');
+      writeFileSync(f, stringify({ ...parse(readFileSync(f, 'utf8')), notice: text }));
+    }
+    const out = mkdtempSync(join(tmpdir(), 'notice-zh-out-'));
+    for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: dir, outDir: out, locale });
+    serve(out);
+    localStorage.setItem('cm.practice.locale', 'zh-Hant');
+    renderCloud('/s/demo', as(SUPERVISOR));
+    expect(await screen.findByText('中文提示。')).toBeVisible();
+    expect(screen.queryByText('English notice.')).not.toBeInTheDocument();
   });
 
   test('the foundations page has no notice block', async () => {
