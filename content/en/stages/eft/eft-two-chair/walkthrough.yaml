@@ -1,0 +1,243 @@
+sessions:
+  - id: eft-two-chair-s6
+    title: "Session 6: 'Useless'"
+    turns:
+      - id: eft-two-chair-s6-t01
+        speaker: therapist
+        text: "Hello, R. How was the week?"
+      - id: eft-two-chair-s6-t02
+        speaker: client
+        text: "Same. Marking. (pause) Thursday again, though. Midnight. I got a whole stack wrong against my own answer key, and I called myself... well. 'Useless.' 'Lazy.' 'Can't even get this right.' I say it out loud now, apparently. My wife heard me from the hallway."
+      - id: eft-two-chair-s6-d1
+        type: choice
+        prompt: "R describes the voice again, and says his wife heard it. How do you respond?"
+        options:
+          - id: a
+            text: "That voice sounds very harsh. Have you thought about being kinder to yourself?"
+            fit: weak
+            note: "It is advice, and it judges the voice. R told you in session two that the voice is how things get done. He will defend it, and he will hear that you think he is doing something wrong."
+          - id: b
+            text: "A voice that says 'useless' and 'lazy', and you at the table, taking it. Both of you were there on Thursday."
+            fit: strong
+            note: "It reflects both sides without taking a side: the one who speaks and the one who hears. You hold the split in mind, and you say nothing about it being a problem."
+          - id: c
+            text: "What did your wife say when she heard you?"
+            fit: workable
+            note: "It is a natural question, and the answer may matter. It moves the session to the marriage and away from the two parts. You can come back to it."
+        actual: "A voice that says 'useless' and 'lazy', and you at the table, taking it. Both of you were there on Thursday."
+        rationale: "The marker is a self-critical split: a harsh voice and a part that takes it. You hear it in your head and reflect both halves, so that R can hear that you do not see only a problem. You have not yet offered any task."
+      - id: eft-two-chair-s6-t03
+        speaker: client
+        text: "(shrugs) It's not a problem. It's a method. Without it I'd get nothing done. (pause) But my wife said it sounded like I hated someone."
+      - id: eft-two-chair-s6-d2
+        type: choice
+        prompt: "The marker is clear. R is curious about what his wife heard. You decide to offer the two-chair task. What do you say?"
+        options:
+          - id: a
+            text: "I'd like you to sit in that chair, be the critic, and tell the empty chair what it says."
+            fit: weak
+            note: "It is an instruction. It gives no purpose and no way out. A client who has been asking 'where is the method' may hear it as an exercise he is expected to do."
+          - id: b
+            text: "Your wife heard something real: a voice that talks to you harshly, and a part of you that takes it. There is a way of working we could use, with two chairs. You'd sit in one and speak as the voice to the other chair, then switch and answer as the one who hears it. It can feel odd. The aim isn't to silence the voice, only to hear both. Would you like to try it, or would you rather not?"
+            fit: strong
+            note: "It joins what his wife said to what you noticed, says what the task is and what it is for, admits that it may feel odd, and ends with a real choice. It does not promise that the voice will go."
+          - id: c
+            text: "What do you think the voice is for? Tell me more about what it does for you."
+            fit: workable
+            note: "It is respectful curiosity about the voice, and R will answer. It keeps you exploring, and the marker will still be there later. It does not yet offer the work."
+        actual: "Your wife heard something real: a voice that talks to you harshly, and a part of you that takes it. There is a way of working we could use, with two chairs. You'd sit in one and speak as the voice to the other chair, then switch and answer as the one who hears it. It can feel odd. The aim isn't to silence the voice, only to hear both. Would you like to try it, or would you rather not?"
+        rationale: "Every time you offer a chair task, you say what it is, what it is for, and that the client can say no. This matters most for a client who is not used to talking about feelings."
+      - id: eft-two-chair-s6-t04
+        speaker: client
+        text: "(short laugh) Talk to a chair. (pause) No. Sorry. I'd feel ridiculous. I'm a teacher. It would feel like a staff training day."
+      - id: eft-two-chair-s6-d3
+        type: choice
+        prompt: "R says no. How do you respond?"
+        options:
+          - id: a
+            text: "Many people feel that at first, and it usually passes after a minute. Shall we just try it for a minute?"
+            fit: weak
+            note: "It offers again over a clear no. R said it plainly. If you push, he learns that his no only counts until you ask twice."
+          - id: b
+            text: "That's fine. We won't do it. Thank you for telling me straight. We can keep talking about the voice without the chairs."
+            fit: strong
+            note: "It accepts the no at once, thanks him, and keeps the work going in another way. He learns that no is safe."
+          - id: c
+            text: "Can I ask what feels ridiculous about it? I'd like to understand."
+            fit: workable
+            note: "The curiosity is honest. It also asks R to explain his no, and it can turn into a negotiation. Some clients will like being asked. This one may feel pressed."
+        actual: "That's fine. We won't do it. Thank you for telling me straight. We can keep talking about the voice without the chairs."
+        rationale: "A refusal is not a failure of the session. It is information, and it is also the client using his own say. Your acceptance is part of the treatment: R is learning that he can say no here and nothing bad follows."
+      - id: eft-two-chair-s6-t05
+        speaker: client
+        text: "(pause) Thanks. (pause) It's not that I think it's silly. Well, a bit. It's that if I say it out loud to someone... it's worse than when I just think it."
+      - id: eft-two-chair-s6-d4
+        type: free
+        prompt: "R has just told you something about the voice: it is worse when it is said out loud. Write one response that stays with that and does not bring the chairs back."
+        actual: "Hearing it out loud makes it more real. And you'd rather not do that in front of a chair. That makes sense to me."
+        rationale: "You take what he said seriously. It is the first thing he has told you about what the voice does to him. You do not use it as a way back to the task. The choice stays with him."
+      - id: eft-two-chair-s6-t06
+        speaker: client
+        text: "(pause) ...Maybe not never. Just not today."
+      - id: eft-two-chair-s6-t07
+        speaker: therapist
+        text: "Not today is fine. It stays on the table, and you decide."
+    notes:
+      goals: "No change. R still describes the voice as a method. His wife's remark is new, and he repeated it, which suggests it reached him."
+      alliance: "Bond: he said no plainly and you accepted it, and he told you more afterwards. Tasks: he now knows what the chair work is and that the choice is his. Goals: not yet agreed. Do not raise the chairs again unless he does."
+      formulation_update: "Marker: a self-critical split. The critical voice is described as useful. The part that hears it has not yet spoken. R says the voice is worse when said aloud, which may matter later. I did not interpret the voice."
+  - id: eft-two-chair-s8
+    title: "Session 8: 'Lie down'"
+    turns:
+      - id: eft-two-chair-s8-t01
+        speaker: client
+        text: "(sits down before you speak) I've been thinking about the chair thing. You said it was my choice. (pause) Ten minutes. If it's stupid, I stop."
+      - id: eft-two-chair-s8-d1
+        type: choice
+        prompt: "R says he wants to try, for ten minutes, and that he will stop if it is stupid. How do you respond?"
+        options:
+          - id: a
+            text: "Great. Let's get started. I'll set up the chairs."
+            fit: weak
+            note: "He gave you his terms. You skipped them. He is saying yes with conditions, and the conditions are the safety. Say them back."
+          - id: b
+            text: "Ten minutes, and you can stop at any point. If it doesn't feel right, say so and we stop. It's to hear the voice clearly, and to hear the one who takes it. Shall we go ahead?"
+            fit: strong
+            note: "It repeats his terms, restates what the task is for in a sentence, and asks once more. He has already said yes, and the check is brief."
+          - id: c
+            text: "I'm glad you thought about it. What made you change your mind?"
+            fit: workable
+            note: "It is warm and curious. It also asks him to justify a yes that he has only just managed to give, and it delays the work he came to do."
+        actual: "Ten minutes, and you can stop at any point. If it doesn't feel right, say so and we stop. It's to hear the voice clearly, and to hear the one who takes it. Shall we go ahead?"
+        rationale: "Even when the client brings the idea, you say what the task is for and that he can stop. His own condition, 'if it's stupid, I stop', is a good one. You honour it."
+      - id: eft-two-chair-s8-t02
+        speaker: client
+        text: "(nods) Go on."
+      - id: eft-two-chair-s8-d2
+        type: free
+        prompt: "R has agreed. Write what you say to set up the chairs and invite him to begin as the critic."
+        actual: "Let's put two chairs facing each other. Sit in this one. Here you're the voice that says 'useless' and 'lazy'. Look at the other chair, and imagine yourself sitting there. Tell him what you say to him, the way you say it."
+        rationale: "You give one step at a time. You say who he is in this chair and whom he speaks to. 'The way you say it' asks for his words and his tone, and not a description. You leave the content to him."
+      - id: eft-two-chair-s8-t03
+        speaker: client
+        text: "(in the first chair, stiffly, looking at the floor) You should... try harder. You need to focus. You're not doing enough."
+      - id: eft-two-chair-s8-d3
+        type: choice
+        prompt: "R, as the critic, is speaking in general terms and looking at the floor. What do you say?"
+        options:
+          - id: a
+            text: "Good. Now move to the other chair and answer."
+            fit: weak
+            note: "The critic has barely appeared. If he moves now, the other chair will answer something vague, and it will be easy to agree with."
+          - id: b
+            text: "Tell him what you actually say. The words you use at midnight. And say it to him, not about him."
+            fit: strong
+            note: "It asks for specific words and for the voice to be directed at the other chair. The critic has to be vivid before the other side has anything real to answer."
+          - id: c
+            text: "What are you afraid will happen if he doesn't try harder?"
+            fit: workable
+            note: "The critic's fear is worth reaching, and you will ask about it later. Asked now, the critic has not yet been heard, so the question asks him to explain himself in the abstract."
+        actual: "Tell him what you actually say. The words you use at midnight. And say it to him, not about him."
+        rationale: "Heightening the critic means making it specific, direct and felt. A critic that stays vague is easy to agree with and hard to meet. You do not add anything. You invite his real words."
+      - id: eft-two-chair-s8-t04
+        speaker: client
+        text: "(looks at the other chair, sharper) Useless. Lazy. One wrong answer and you're asleep at the wheel. Where's your attention? Careless. You can't be trusted to get anything right."
+      - id: eft-two-chair-s8-d4
+        type: choice
+        prompt: "The critic is now specific and direct. It is time for the other side to be heard. What do you say?"
+        options:
+          - id: a
+            text: "Now sit in the other chair and answer him."
+            fit: weak
+            note: "'Answer him' invites an argument or a rebuttal. R is good at reasoning, and the answer will come from his head."
+          - id: b
+            text: "Come over to this chair, and be him. You've just heard all of that. What's it like to hear it, in here?"
+            fit: strong
+            note: "It tells him who he is in this chair and asks what it is like to hear it, which is an experience and not an argument."
+          - id: c
+            text: "Let's pause. How did it feel to say that as the critic?"
+            fit: workable
+            note: "It is a fair question, and the critic's side matters. It breaks the flow, and it keeps R in his head at the moment when the other chair is about to speak."
+        actual: "Come over to this chair, and be him. You've just heard all of that. What's it like to hear it, in here?"
+        rationale: "Moving to the other chair is a task move, so you say it clearly. The question is about what he feels as the one who hears the critic, and not about what he thinks of the critic."
+      - id: eft-two-chair-s8-t05
+        speaker: client
+        text: "(after the move, after a pause) Well. He's right. I should have caught the mistake. I'm not going to argue. (pause) He's always right, that's the thing."
+      - id: eft-two-chair-s8-d5
+        type: free
+        prompt: "In the second chair, R agrees with the critic. Write what you say to help him notice what happens in him when he hears it, and to speak to the critic."
+        actual: "You agree with him. And you said 'he's always right'. What happens in you, in here, when you hear him say all that? Tell him."
+        rationale: "You do not argue with the agreement, because that would put you on the side of the self. You give back his words and ask about the experience. 'Tell him' keeps the speech directed at the other chair."
+      - id: eft-two-chair-s8-t06
+        speaker: client
+        text: "(long pause) ...It's... I want to lie down. When he talks like that. I just want to lie down on the floor and not move."
+      - id: eft-two-chair-s8-d6
+        type: choice
+        prompt: "R has said, for the first time, how the critic's voice affects him. What do you say?"
+        options:
+          - id: a
+            text: "It sounds like you give up when he talks like that. Is that something you do in other places?"
+            fit: weak
+            note: "It makes a pattern out of what he has only just found, and it asks him to think about other places. He moves from the felt experience to analysis."
+          - id: b
+            text: "You want to lie down and not move. Tell him that. 'When you talk like that, I...'"
+            fit: strong
+            note: "It keeps his own words, and it offers the beginning of a sentence addressed to the critic. It does not say what the feeling is."
+          - id: c
+            text: "Where do you feel that wanting, in your body?"
+            fit: workable
+            note: "It is a good question in another task. Here the movement is toward speaking to the critic, and a body question turns him inward and away from the other chair."
+        actual: "You want to lie down and not move. Tell him that. 'When you talk like that, I...'"
+        rationale: "This is the first time the criticised part says something other than agreement. Heightening it means helping it be said directly to the critic. The sentence opener is offered once and left open."
+      - id: eft-two-chair-s8-t07
+        speaker: client
+        text: "(to the empty chair, low) When you talk like that... I just want to lie down. I don't do anything. I go quiet. I stop trying."
+      - id: eft-two-chair-s8-t08
+        speaker: therapist
+        text: "Stay there for a moment. (pause) Now, if you're willing, move back to the first chair, and be the voice again. You've just heard that."
+      - id: eft-two-chair-s8-t09
+        speaker: client
+        text: "(in the first chair, after a pause) Well. That's exactly the problem. If you lie down, nothing gets done. Someone has to push."
+      - id: eft-two-chair-s8-d7
+        type: choice
+        prompt: "The critic says someone has to push. What do you say to the critic?"
+        options:
+          - id: a
+            text: "That's an unkind thing to say to someone who is hurting."
+            fit: weak
+            note: "You have taken the side of the criticised part and spoken against the critic. The critic will defend itself, and R, in the critic's chair, will feel judged."
+          - id: b
+            text: "Someone has to push. What are you afraid will happen if no one does?"
+            fit: strong
+            note: "It accepts the critic's job, in its own words, and asks for the fear under it. The critic usually has a worry, and it is worth hearing."
+          - id: c
+            text: "Say more about what 'nothing gets done' looks like."
+            fit: workable
+            note: "It asks the critic to be more specific, which is useful. It stays on the surface of the critic's argument, and the fear comes later."
+        actual: "Someone has to push. What are you afraid will happen if no one does?"
+        rationale: "You do not argue with the critic. A critic that is heard often shows the worry it has been carrying. This is also how the critic may soften later: it is heard, and so it needs to shout less."
+      - id: eft-two-chair-s8-t10
+        speaker: client
+        text: "(long pause) He'd end up... nothing. A man who doesn't push ends up nothing. (pause, quieter) Nobody respects that."
+      - id: eft-two-chair-s8-d8
+        type: choice
+        prompt: "Ten minutes are up. R said he would stop. What do you do?"
+        options:
+          - id: a
+            text: "Well done, that was very powerful. Same time next week."
+            fit: weak
+            note: "It praises him and ends. It does not bring him out of the role, and it does not ask how he is."
+          - id: b
+            text: "Let's stop there, as we agreed. Stand up, shake out your arms, and come back to your own chair. How are you now? What was that like?"
+            fit: strong
+            note: "It keeps the time he set. It helps him step out of the chairs in a physical way, and it asks about him, not the critic."
+          - id: c
+            text: "Shall we do one more switch, to hear what he says back to the critic?"
+            fit: workable
+            note: "It is the natural next step in the task. R set ten minutes, and you offered to stay beyond them. He may agree to be polite."
+        actual: "Let's stop there, as we agreed. Stand up, shake out your arms, and come back to your own chair. How are you now? What was that like?"
+        rationale: "Closing the task is part of the task. You keep to the time he set, and you help him step out of the chairs. He should end the work knowing that the chairs stop when he decides."
+    notes:
+      goals: "No change. R stayed to the end of the ten minutes he set."
+      alliance: "Bond: he chose to try, and he told you something he had not told anyone ('I want to lie down'). Tasks: he kept control by setting the time and the stop. Check what it was like at the start of session nine."
+      formulation_update: "The critic is fluent, and its language is exact ('careless', 'can't be trusted'). The criticised part first agreed, then said it wants to lie down and stop trying. The critic's fear: that without pushing, he will become nothing and nobody will respect him. I did not say who the voice sounds like. If R makes that link, follow him."

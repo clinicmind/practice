@@ -1,0 +1,40 @@
+slug: eft-transformation
+version: 1.0.0
+title: "Puzzling reactions, and changing emotion with emotion"
+intro: >-
+  In emotion-focused therapy (EFT), the marker for systematic evocative
+  unfolding is a puzzling reaction. The client describes a reaction that he or
+  she does not understand: "I don't know why I reacted like that", "it was out
+  of proportion". The reaction is usually recent and tied to one moment, and the
+  puzzlement is real. The client is not complaining or defending. The matching
+  task is systematic evocative unfolding. You help the client rebuild the scene
+  slowly, in the present tense: where he is, who is there, what he sees and
+  hears. Then you stay with the moment of the reaction: what he notices in his
+  body, what he feels like doing, what he says. Last, you help him find what the
+  moment meant to him, in his own words. You do not interpret, and you do not
+  supply the meaning. Do not offer the task when the client already understands
+  the reaction, when the client is overwhelmed, when the client says no, when
+  time is short, or when the scene involves serious harm and you have not been
+  trained and supervised for that work. If a client seems at risk, put the task
+  aside, follow your placement's protocol, and speak with your supervisor. This
+  module also shows how the stage fits together. EFT works by changing emotion
+  with emotion: a painful, stuck feeling is not argued away, and a different
+  feeling, often a primary adaptive one such as grief or anger, is reached and
+  felt, and gives the client new ground to stand on. Your case formulation is
+  your own working picture, in the four types of emotion and the unmet need. You
+  offer it to the client in plain words and as a guess. In this module Client R,
+  in session thirteen, rebuilds the Sunday morning when his son spilled the
+  milk, and in session sixteen, the last, you see what has changed and what has
+  only begun. You practise two skills: rebuilding the scene, and bridging to
+  meaning, which means helping the client connect the reaction to what the moment
+  meant, in his or her own words.
+skills:
+  - scene-rebuilding
+  - meaning-bridge
+reflection_prompts:
+  - id: eft-transformation-r1
+    text: "R found that the sentence he shouted was his father's. Think of a reaction of your own that surprised you. If you replayed it slowly, what do you think you might find?"
+  - id: eft-transformation-r2
+    text: "In session thirteen the meaning came from R, and you only asked. Notice when you want to explain a client's reaction to him or her. What does that give you, and what does it take away from the client?"
+  - id: eft-transformation-r3
+    text: "Write R's case in your own words, using the four types of emotion from module two: what is secondary, what is primary maladaptive, what is primary adaptive, and what unmet need sits under them. Then write how you would say it to R in plain words, without those terms."

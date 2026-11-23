@@ -1,0 +1,120 @@
+eft-empty-chair-e01:
+  model_response: "Yes. Take a moment and picture her sitting there. How is she sitting, and what is she doing? When you're ready, say the first thing that comes."
+  why: "It asks for the picture first, then for a first word. It does not tell him what she is like."
+  avoid: "'Say what you always wanted to say to her.' It skips the picture."
+eft-empty-chair-e02:
+  model_response: "That's all right. Maybe start with a place you remember him. Where was he, in a moment that you recall? Let him sit there, in that chair."
+  why: "It gives a way in through a memory, and the picture stays his. It does not say what he sees."
+  avoid: "'Just imagine harder.' It makes the difficulty his fault."
+eft-empty-chair-e03:
+  model_response: "Her back to you, at the stove. Stay with that for a moment. What do you notice about her, standing there?"
+  why: "It keeps his image and invites him to look further. It adds nothing."
+  avoid: "'Why was her back to you?' It asks for an explanation."
+eft-empty-chair-e04:
+  model_response: "That look. Describe it for me. What is in his face, when he looks at you like that?"
+  why: "It keeps 'that look' and asks him to put it into words."
+  avoid: "'Is it disappointment?' It names the look for him."
+eft-empty-chair-e05:
+  model_response: "Take a moment to look at her. Then say whatever you'd say first. It doesn't have to be the right thing."
+  why: "It sets a slow pace, takes the pressure off the start, and does not suggest words."
+  avoid: "'Tell her you're angry.' It tells her what to feel."
+eft-empty-chair-e06:
+  model_response: "You looked for him every time. What did you want, when you looked? Tell him."
+  why: "It keeps the 'looked for you' and asks for the want, in words to the father."
+  avoid: "'That must have hurt.' It talks about the feeling and does not invite him to say it to the father."
+eft-empty-chair-e07:
+  model_response: "A burden. What did you need from her instead? Say it to her."
+  why: "It reflects her word and moves from the complaint to the need."
+  avoid: "'Why do you think she made you feel that?' It asks for an explanation."
+eft-empty-chair-e08:
+  model_response: "No goodbye. What would you have wanted to say to him, or to hear from him? Tell him now."
+  why: "It stays with the missing goodbye and asks for the want, in either direction."
+  avoid: "'He probably didn't know how to say it.' It explains the other person."
+eft-empty-chair-e09:
+  model_response: "Angry. Stay with that. What is the anger about, when you look at her? Tell her."
+  why: "It stays with the anger and asks what it says. It does not move him away."
+  avoid: "'Try not to be angry.' It moves him away from the feeling."
+eft-empty-chair-e10:
+  model_response: "You wanted him to be proud of you. Say that to him in your own words, all of it. 'I wanted you to...'"
+  why: "The need is already there. You help him say it in full and directly."
+  avoid: "'He probably was proud of you.' It reassures and takes the need away."
+eft-empty-chair-m01:
+  model_response: "Would you be willing to sit in her chair for a moment, and be her? It would be your picture of her, not her. You don't have to."
+  why: "It asks, says the words are his imagining, and gives an exit."
+  avoid: "'Switch chairs. Be her.' An order, with no purpose and no choice."
+eft-empty-chair-m02:
+  model_response: "Stay as him a moment. How is he sitting? How is he looking at his son? Say what he'd say, the way he'd say it."
+  why: "It asks for posture, look and voice, so the father becomes more real, and it adds nothing."
+  avoid: "'What does he really feel?' It asks the client to explain the father."
+eft-empty-chair-m03:
+  model_response: "Stay as her. 'I did my best.' Say it again, the way she'd say it. What is in her face, when she says it?"
+  why: "It repeats her line, asks for tone and look, and lets the mother be as the client sees her."
+  avoid: "'Do you really think she did her best?' It judges the mother and leaves the role."
+eft-empty-chair-m04:
+  model_response: "She looked tired. Stay as her. What is it like for her, to be looked at by her son now?"
+  why: "The mother, in the client's picture, has shifted. You follow it, and you do not decide what it means."
+  avoid: "'So she does care.' It decides the meaning."
+eft-empty-chair-m05:
+  model_response: "He'd just look at you. Show me. If you like, sit in his chair and give me that look."
+  why: "It uses his words and gives him a way of showing instead of describing. 'If you like' keeps it his choice."
+  avoid: "'What would that look mean?' It asks for interpretation."
+eft-empty-chair-m06:
+  model_response: "Anything, and nothing came. Tell him. 'I needed you to say...' What did you most need him to say?"
+  why: "It keeps her 'anything' and asks for the specific words, to him."
+  avoid: "'He wasn't able to.' It explains the other person."
+eft-empty-chair-m07:
+  model_response: "You're sad that he never knew you. Tell him what you wanted him to know."
+  why: "It reflects the sadness and moves to what he wished he could have said, in direct words."
+  avoid: "'Do you think he'd have understood?' It asks him to guess."
+eft-empty-chair-m08:
+  model_response: "Something. Stay with that. 'I wanted...' See what comes, and it's fine if it's not clear."
+  why: "It accepts the vagueness and offers a sentence starter. It does not push for a clear answer."
+  avoid: "'Was it love? Attention?' It offers a menu."
+eft-empty-chair-m09:
+  model_response: "You wanted him to notice you. Part of you says you shouldn't need that, and you did need it. Say it to him: 'I needed you to notice me.'"
+  why: "It reflects both without arguing, and invites the need in direct words."
+  avoid: "'Everyone needs that.' It generalises and takes the moment away."
+eft-empty-chair-m10:
+  model_response: "You want her to say she's sorry. Tell her what you want her to say, and what it would mean to you to hear it."
+  why: "It stays with the want, and does not promise that she will say it."
+  avoid: "'Maybe she will.' It promises something that the exercise cannot give."
+eft-empty-chair-h01:
+  model_response: "It's true that she can't answer. This is a way of saying what hasn't been said, and nothing more. You can say no, and we can do something else."
+  why: "It agrees with what is true, says what the task is and is not, and leaves the choice with him."
+  avoid: "'It works even if they're gone.' It argues, and it promises."
+eft-empty-chair-h02:
+  model_response: "You don't have to look at him. You can turn the chair, close your eyes, or stop. It's up to you."
+  why: "It responds at once and gives control back. It offers three ways out."
+  avoid: "'You can do it, look at him.' It pushes."
+eft-empty-chair-h03:
+  model_response: "It feels wrong to speak like this to your father, even now. Take whatever pace you want, and we can stop at any point."
+  why: "It reflects what he said and does not discuss the custom. The choice is his."
+  avoid: "'Your father would want you to speak openly.' It argues and gives a rule."
+eft-empty-chair-h04:
+  model_response: "Thank you for trying. We won't go there again. Come back to yourself for a moment. How are you now?"
+  why: "It honours the no and checks on her. It does not ask her to explain."
+  avoid: "'It's good, it means you got close to her.' It praises what hurt."
+eft-empty-chair-h05:
+  model_response: "Okay, we stop. Look around the room, and feel your feet on the floor. I'm here. We'll go at whatever pace you need."
+  why: "It stops at once and steadies him. It adds no question."
+  avoid: "'Let it come, it will pass.' It overrides."
+eft-empty-chair-h06:
+  model_response: "Part of you feels you should be past this. We don't have to decide anything about forgiving, now or later. What do you feel as you say that?"
+  why: "It holds her 'should' without agreeing or arguing, and it invites her experience."
+  avoid: "'Forgiveness can be freeing.' It steers toward it."
+eft-empty-chair-h07:
+  model_response: "No one is asking you to. We can just let that be true. What is it like to say it?"
+  why: "It does not argue and gives no pressure. It asks about the experience."
+  avoid: "'It might help to try.' It steers the opposite way, but it is still steering."
+eft-empty-chair-h08:
+  model_response: "He can't give it to you. That's true. Saying it isn't to get it from him. It's so that you hear it said. We can go on, or stop here. What do you want?"
+  why: "It agrees that he cannot give it, says honestly what saying it is for, and leaves the choice."
+  avoid: "'He might hear you from wherever he is.' It makes a promise of its own."
+eft-empty-chair-h09:
+  model_response: "It's hard to say the soft thing. You can keep going, or you can leave it here. Your choice."
+  why: "It acknowledges the step back and the tears, treats both as natural, and leaves the choice."
+  avoid: "'It's not silly. Don't stop.' It argues and pushes."
+eft-empty-chair-h10:
+  model_response: "You miss her. Stay with that for a moment, if you can. There's no hurry."
+  why: "It stays with the grief that arrived and adds nothing."
+  avoid: "'That's a healthy feeling.' It labels it."

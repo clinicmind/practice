@@ -1,6 +1,6 @@
 # 交接文件
 
-最後更新：2026-11-23。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
+最後更新：2026-11-23（分支 `claude/eft-m4-m6` 加入 EFT 模組 4–6）。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
 
 ## 1. 現況
 
@@ -18,7 +18,7 @@
 | 階段 3 Task 2：報告撰寫介面 | 完成並上線（2026-11-22）。介面預設完全隱藏（`reportsEnabled` 預設關），正式網站不會改變。提交經注入的 `ReportSubmitter`，預設回「報告功能尚未開放」；沒有後端 | 單元測試＋端到端（用打開開關的另一個建置和假後端） |
 | 階段 3 Task 3–4（本文件「報告後端」）：資料表、Edge Function `reports`、Drive、真實 `ReportSubmitter` | 程式完成，已合併上線（2026-11-23），但**從未連上真實的 Supabase 或 Google**，`0005_reports.sql` 未套用。`reportsEnabled` 仍預設關；正式建置的行為不變 | 單元測試（模擬 `fetch`、行程內 Postgres）。冒煙測試見 `docs/SETUP-reports.md` 第 4 節，尚未做 |
 | 階段 3 督導評閱、保存期限（`0006`）、督導後台的 Drive 連線狀態 | 程式完成，在分支 `claude/reports-review`，**未合併、未上線**。`reportsEnabled` 關閉時正式網站看不到（路由不存在、沒有連結、不呼叫後端）。`0006` 未套用。規準各級描述是草稿，未經擁有人審核 | 單元測試＋pglite 權限測試＋端到端（正式建置 `/supervisor/reports` 是找不到頁面）。沒連過真實 Supabase／Google |
-| 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。模組 2 `eft-emotion-types`、模組 3 `eft-focusing` 的內容也已寫完、未登記。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
+| 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。模組 2 `eft-emotion-types`、模組 3 `eft-focusing` 的內容也已寫完、未登記。模組 4 `eft-two-chair`、5 `eft-empty-chair`、6 `eft-transformation` 的英文和繁中也已寫完、未登記（分支 `claude/eft-m4-m6`，**尚未合併**到部署分支；`npm run check` 564＋142、`npm run e2e` 39 過 4 跳過）。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
 | 階段 4、6：AI 回饋、DBT | 設計規格已定。AI 回饋的成本估算（成本腳本 19 個單元測試；定價 2026-11-23 讀官方定價頁）和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`，沒有實作、沒有呼叫付費 API。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
 
 最後一次完整測試（2026-11-23，整合 `claude/eft-m1`、`claude/eft-m2-m3`、`claude/reports-backend`、`claude/ai-feedback-cost` 之後，已上線）：`npm run check` 564＋142 個通過；`npm run e2e` 39 個通過、4 個跳過（同一批需要服務金鑰的測試）。正式建置只含 `foundations` 階段，沒有 EFT，沒有報告連結。新的 `0005_reports.sql` 權限規則已逐行覆核。
@@ -110,6 +110,12 @@
 - 開子 session 做獨立工作是可行的（階段 1、2、雙語都這樣做）。子 session 遇到用量上限會直接失敗，要重新送一次訊息。它們完成後不一定會通知，要主動查看。
 
 ## 6. 下一步（按次序）
+
+**EFT 模組 4–6 待審（分支 `claude/eft-m4-m6`，2026-11-23）**
+- 範圍：`content/{en,zh-Hant}/stages/eft/` 下三個新模組、兩個 `stage.yaml`、兩個測試（EFT 模組清單；總題數 420）、`docs/plans/2026-11-15-zh-hant.md` 新增用語。沒有改 `src/`、`supabase/`、`content/REVIEW.md`。
+- 結構同模組 1–3：每模組 2 項技能、30 題、示範回應、2 個走讀會談（模組 4：第 6、8 次；5：第 10、12 次；6：第 13、16 次）、3 個反思。個案弧線照 `CLIENT_EFT.md`；R 在第 6 次對椅子說不，治療師接受。
+- 審核人要特別看的臨床問題見交付報告：技能譯名、「強化」、椅子工作的簡介和不適用情況、第 12 次的父親回應、孝道只留在個人經驗層次。
+- 審核通過後，取得擁有人明確同意，才登記 `content/REVIEW.md`，並先套用 `0004_cohort_stages.sql`。
 
 0. **多階段支援還欠三件事，階段 5（EFT）內容上線前要補：**
    - ✅ 督導介面開放／關閉階段：班級頁每個班級有「階段」區塊（`StagesPanel`），每個非 foundations 階段一個 checkbox；開放＝新增 `cohort_stages` 列，關閉＝刪除。只有 foundations 時顯示一句說明，不讀 `cohort_stages`。介面文字在 `stageAdmin` 鍵底下。

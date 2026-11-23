@@ -1,0 +1,240 @@
+sessions:
+  - id: eft-transformation-s13
+    title: "Session 13: 'The milk'"
+    turns:
+      - id: eft-transformation-s13-t01
+        speaker: client
+        text: "(sits down heavily) Sunday breakfast. My son knocked over his milk. Not even a full glass. And I shouted. I mean properly shouted, the neighbours might have heard. He just froze. (pause) And I don't understand it. It was milk. I don't understand why it was that big."
+      - id: eft-transformation-s13-d1
+        type: choice
+        prompt: "R describes a shout that surprised him, and says he does not understand it. How do you respond?"
+        options:
+          - id: a
+            text: "It's natural to lose your temper when you're tired. Were you tired on Sunday?"
+            fit: weak
+            note: "It explains the reaction away, and it may be true. R said he does not understand, and you have closed the question before he has looked at it."
+          - id: b
+            text: "A glass of milk, and a shout that surprised you. You'd like to understand it. I'd like to go through that moment slowly with you, bit by bit, as if you were back at the table. You can say no, and we can stop at any time. Would you like to try?"
+            fit: strong
+            note: "It reflects the puzzlement, says what the task is, and gives a real choice. A client who wants to understand is likely to say yes."
+          - id: c
+            text: "What went through your mind when it spilled?"
+            fit: workable
+            note: "It is a good question. R will probably say 'nothing', and you will have started with his thoughts and not with the scene."
+        actual: "A glass of milk, and a shout that surprised you. You'd like to understand it. I'd like to go through that moment slowly with you, bit by bit, as if you were back at the table. You can say no, and we can stop at any time. Would you like to try?"
+        rationale: "The marker is a puzzling reaction: recent, tied to one moment, and the client is truly puzzled. You say what you will do and why, and you make it easy to say no."
+      - id: eft-transformation-s13-t02
+        speaker: client
+        text: "(shrugs) Alright. Go on."
+      - id: eft-transformation-s13-d2
+        type: free
+        prompt: "R has agreed. Write the first thing you say to take him back to the moment, in the present tense."
+        actual: "Let's go back to Sunday morning. You're at the table. Where are you sitting, and what's in front of you?"
+        rationale: "You use the present tense and ask for one concrete thing. 'Where are you sitting' is easy to answer, and it starts the scene without asking for any feeling."
+      - id: eft-transformation-s13-t03
+        speaker: client
+        text: "Kitchen. I'm at my usual place, by the window. Toast. The radio's on, low. My son's across from me. My wife is at the counter, with her back to us."
+      - id: eft-transformation-s13-d3
+        type: choice
+        prompt: "R has set the scene. What do you say next?"
+        options:
+          - id: a
+            text: "And then the milk spilled. What did you feel?"
+            fit: weak
+            note: "It jumps to the reaction and asks for a feeling. The scene is only just built. R will answer from memory, not from the table."
+          - id: b
+            text: "You're at the table by the window. Toast, the radio low, your son across from you. What happens next, in the order you see it?"
+            fit: strong
+            note: "It repeats his picture, in his words, and asks him to go on in the order that it happened. The scene stays alive."
+          - id: c
+            text: "What were you thinking about just before the milk spilled?"
+            fit: workable
+            note: "It asks about the moment before, which can matter. It asks for thoughts, though, and R is quick to give thoughts."
+        actual: "You're at the table by the window. Toast, the radio low, your son across from you. What happens next, in the order you see it?"
+        rationale: "Scene rebuilding is slow on purpose. The more of the room R can see and hear, the more of the reaction will come with it."
+      - id: eft-transformation-s13-t04
+        speaker: client
+        text: "He's reaching for the jam. His elbow catches the glass. I watch it go over. White on the table, on his sleeve, on the floor. (pause) And I'm up. I'm on my feet."
+      - id: eft-transformation-s13-d4
+        type: free
+        prompt: "R has said he is on his feet. Write one short response that slows him down at this moment and asks what he notices."
+        actual: "You're on your feet. Stay right there for a moment. What do you notice, in your body and in the room?"
+        rationale: "This is the moment of the reaction. You slow him down and ask for what he notices, not why. His body and the room hold the detail that explains it."
+      - id: eft-transformation-s13-t05
+        speaker: client
+        text: "My face is hot. My jaw. (pause) He's gone completely still. He's looking at the table, not at me. (pause) And I hear myself. (very quiet) 'Can't you do anything properly?' (long pause) 'Can't you do anything properly.' (looks up) I know that sentence."
+      - id: eft-transformation-s13-d5
+        type: choice
+        prompt: "R says he knows that sentence. What do you say?"
+        options:
+          - id: a
+            text: "That sounds like your father's voice. You've turned into him, haven't you?"
+            fit: weak
+            note: "It tells him the meaning and adds a harsh verdict. He may agree and feel shame, or he may reject it. Either way, it is your finding and not his."
+          - id: b
+            text: "You know that sentence. Take a moment with it. Where do you know it from?"
+            fit: strong
+            note: "It stays with what he said, gives him time, and asks an open question. If the answer is his father, it will be his."
+          - id: c
+            text: "How did it feel in your body, hearing yourself say it?"
+            fit: workable
+            note: "It stays with the experience, and that is useful. He has just made a recognition, and the question moves away from it."
+        actual: "You know that sentence. Take a moment with it. Where do you know it from?"
+        rationale: "The bridge to meaning begins with the client's own recognition. You do not say whose voice it is. You make room for him to say."
+      - id: eft-transformation-s13-t06
+        speaker: client
+        text: "(long pause) My father. At the table. I knocked a bowl of soup off when I was nine. He didn't shout. He never shouted. He said that. Quietly. 'Can't you do anything properly.' (small laugh; the voice thins) And then we ate in silence."
+      - id: eft-transformation-s13-d6
+        type: choice
+        prompt: "R has found a memory and the sentence. What do you say?"
+        options:
+          - id: a
+            text: "So you were repeating what your father did to you. That explains it."
+            fit: weak
+            note: "It closes the question with an explanation. It also turns R into a case. He did not say he was repeating anything."
+          - id: b
+            text: "You were nine, at the table, with the soup on the floor. And on Sunday your son was at the table with the milk. What's it like to see those two side by side?"
+            fit: strong
+            note: "It puts both scenes in his words and invites him to look. It is an invitation and not a conclusion, and R can say what it means."
+          - id: c
+            text: "What did the nine-year-old feel when he heard that?"
+            fit: workable
+            note: "It goes into the old scene, which may be worth doing later. It leaves the Sunday reaction behind before he has linked the two."
+        actual: "You were nine, at the table, with the soup on the floor. And on Sunday your son was at the table with the milk. What's it like to see those two side by side?"
+        rationale: "A meaning bridge puts two pieces next to each other and lets the client find the link. You use only what R gave you, and you ask what it is like, not what it means."
+      - id: eft-transformation-s13-t07
+        speaker: client
+        text: "(slowly) When the milk went over, I wasn't angry at him. I was nine. I was waiting for the sentence. (pause) And then I said it. Before it could come from anyone else."
+      - id: eft-transformation-s13-d7
+        type: free
+        prompt: "R has just made the link, and his hands are not steady. Write one or two sentences that stay with what he found, without interpreting, explaining or fixing it."
+        actual: "You were nine again, waiting for the sentence, and what came out was the sentence. Take a moment with that."
+        rationale: "You give his words back, in order, and leave room. The meaning is his. If you explain it, it becomes yours."
+      - id: eft-transformation-s13-t08
+        speaker: client
+        text: "(after a while) I frightened him. (pause) That's what I did. I made him frightened of me."
+      - id: eft-transformation-s13-d8
+        type: choice
+        prompt: "R is shaken, and there are about ten minutes left. What do you do?"
+        options:
+          - id: a
+            text: "This is a real breakthrough. Let's use the time to explore what your father's role in all of this was."
+            fit: weak
+            note: "It praises the finding and goes on exploring. R is shaken, and the guilt he has just voiced needs room."
+          - id: b
+            text: "That's hard to see. And you saw it. Let's slow down. How are you, right now? And what would help for the rest of today?"
+            fit: strong
+            note: "It acknowledges the guilt without softening or deepening it, checks on him, and keeps control of the pace with him."
+          - id: c
+            text: "Let's use the rest of the time to think about what you could do differently with your son next time."
+            fit: workable
+            note: "It is practical, and it is useful later. Right now it moves him to solutions while he is still shaken."
+        actual: "That's hard to see. And you saw it. Let's slow down. How are you, right now? And what would help for the rest of today?"
+        rationale: "A discovery can bring guilt. You do not argue with it and you do not make it bigger. You slow down and you take care of him."
+    notes:
+      goals: "No change in the goal he named, 'to be less short-tempered'. He now understands part of it, and he was not given the understanding."
+      alliance: "Bond: he stayed in a painful scene and said what he found. Tasks: he accepted the slow replay. Check next time how the week went with his son, and his guilt."
+      formulation_update: "The shout at his son is secondary anger. Under it, a nine-year-old waiting for the sentence, which is the primary maladaptive shame (the sentence says he is not good enough). R found the link. The adaptive grief and anger from the chair work have not been brought into this scene yet. I did not name any of this to him."
+  - id: eft-transformation-s16
+    title: "Session 16: 'The last session'"
+    turns:
+      - id: eft-transformation-s16-t01
+        speaker: therapist
+        text: "Hello, R. This is our last session. How are you?"
+      - id: eft-transformation-s16-t02
+        speaker: client
+        text: "(sits) Good. Better. (pause) I'm trying not to say 'fine'. (small smile) Tuesday. Cereal this time. He knocked the bowl. I felt it come up, the heat. And I heard it coming. The sentence. I put my hands flat on the table. I said, 'It's all right. Get a cloth.' My voice was shaking. But that's what I said."
+      - id: eft-transformation-s16-d1
+        type: choice
+        prompt: "R tells you about Tuesday. What do you say?"
+        options:
+          - id: a
+            text: "That's wonderful. You've really mastered it."
+            fit: weak
+            note: "It praises and declares mastery. The voice is still there, and R may feel he will fail if it comes back."
+          - id: b
+            text: "You heard the sentence coming, and you put your hands flat on the table. What was that moment like?"
+            fit: strong
+            note: "It keeps his own details and asks about the experience. It lets him tell you how the change happened."
+          - id: c
+            text: "What do you think made it possible this time?"
+            fit: workable
+            note: "It is a reasonable question and he will give a reason. The felt moment will come second."
+        actual: "You heard the sentence coming, and you put your hands flat on the table. What was that moment like?"
+        rationale: "Change outside the session is what the work is for. You do not name it as progress. You ask him to tell you what it was like, because that is where you will hear what changed."
+      - id: eft-transformation-s16-t03
+        speaker: client
+        text: "(pause) Like standing at the edge. I could feel both. The boy at the table, and the one shouting. And I thought, 'Not today.' (pause) I wouldn't call it calm. It's more that I knew who was talking."
+      - id: eft-transformation-s16-d2
+        type: free
+        prompt: "R says he 'knew who was talking'. Write one response that helps him say, in his own words, what is different now. Do not tell him the answer."
+        actual: "You knew who was talking. What does it mean for you, to know that?"
+        rationale: "This is a meaning bridge for the change. You use his words and ask what it means. The answer will be better in his language than in yours."
+      - id: eft-transformation-s16-t04
+        speaker: client
+        text: "(slowly) That it's old. It's an old voice. It's not about the milk, and it's not about him. (pause) And I don't have to obey it. I'm not saying I won't. But I don't have to."
+      - id: eft-transformation-s16-t05
+        speaker: client
+        text: "The voice at midnight, over the marking, it's still there. Last week I said to it, 'That's enough. I've heard you.' Out loud. In the car. (laughs) It went quiet, for a minute."
+      - id: eft-transformation-s16-d3
+        type: choice
+        prompt: "R tells you he answered the critical voice. What do you say?"
+        options:
+          - id: a
+            text: "That's great progress. If you keep doing that, the voice will go away."
+            fit: weak
+            note: "It promises that the voice will go. It may not, and R will take that as failure if it comes back."
+          - id: b
+            text: "You told the voice 'That's enough'. What was it like to say that to it?"
+            fit: strong
+            note: "It repeats his words and asks about the experience. It lets him say what saying it did."
+          - id: c
+            text: "What did you want the voice to know?"
+            fit: workable
+            note: "It continues the dialogue with the voice, and a good answer may come. It takes him a step away from what he just did."
+        actual: "You told the voice 'That's enough'. What was it like to say that to it?"
+        rationale: "R answered the critic as the part that is criticised may answer. You do not praise it. You ask for the experience, which will show what the change feels like."
+      - id: eft-transformation-s16-t06
+        speaker: client
+        text: "(pause) Like I was on my own side. For a second. It's strange. I didn't know I could do that."
+      - id: eft-transformation-s16-t07
+        speaker: client
+        text: "(looks at you) So where are we? Is it fixed?"
+      - id: eft-transformation-s16-d4
+        type: free
+        prompt: "R asks, 'Is it fixed?' Write a short, honest answer in plain words. Do not use technical terms, and do not promise an outcome. Say what has changed and what has only begun, and give R the last word."
+        actual: "Some of it has changed. You catch the shouting sooner, and you can hear the voice and answer it. Some of it has only begun: the sadness about your father, which you've only just let in. And the voice is still there. It isn't finished, and that isn't a failure. What do you make of that?"
+        rationale: "This is your formulation, said in plain words and offered as a guess. It is honest about partial change, it names what is unfinished, and it avoids labels. The last question gives R the last word."
+      - id: eft-transformation-s16-t08
+        speaker: client
+        text: "(nods) That sounds right. (pause) I miss him, you know. More than I thought. I didn't expect that."
+      - id: eft-transformation-s16-d5
+        type: choice
+        prompt: "R says he misses his father, more than he expected. What do you say?"
+        options:
+          - id: a
+            text: "That's the grief coming through. It's a healthy sign."
+            fit: weak
+            note: "It labels the feeling and rates it. He said something simple and true, and you made it a result."
+          - id: b
+            text: "You miss him, more than you expected. That doesn't have to be sorted out. It can just be there."
+            fit: strong
+            note: "It keeps his words and takes the pressure off. It tells him that the feeling is allowed to stay unfinished."
+          - id: c
+            text: "Would you like to say more about missing him, or leave it for now?"
+            fit: workable
+            note: "It offers a choice. In the last session it may open something that there is no time to close."
+        actual: "You miss him, more than you expected. That doesn't have to be sorted out. It can just be there."
+        rationale: "The grief is only beginning. The end of therapy is not the end of it, and you do not need to finish it today."
+      - id: eft-transformation-s16-d6
+        type: free
+        prompt: "It is time to end. Write a short closing that acknowledges R's work, says that he is welcome to come back, and does not promise that he is 'fixed'."
+        actual: "You came wanting methods, and you did something harder. You looked at the milk, the voice and your father. It isn't finished, and you know where to find these feelings now. If you want to come back, you're welcome."
+        rationale: "A good ending names the work in the client's own terms, tells the truth about what remains, and leaves the door open."
+      - id: eft-transformation-s16-t09
+        speaker: client
+        text: "(stands, smiles) I never did get my breathing exercises. (pause) I think I'm all right with that."
+    notes:
+      goals: "Partly met. The shouting is much less, and R can hear it coming. Not met: the voice at midnight has not gone, and he does not expect it to."
+      alliance: "Bond: strong. Tasks: he came wanting methods and ended by saying he is all right without them. Goals: agreed for the ending, and the door is open."
+      formulation_update: "Outcome: partial improvement. Secondary anger toward his son is much reduced. Primary maladaptive shame ('not good enough', in his father's sentence) is recognised and answered ('That's enough. I've heard you'), and not removed. Primary adaptive grief for his father has begun. The unmet need, to be told 'well done', cannot now be met by his father, and R has begun to meet it himself ('on my own side'). Not forgiven, and not sought."

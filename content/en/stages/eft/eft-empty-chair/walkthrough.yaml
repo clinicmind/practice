@@ -1,0 +1,328 @@
+sessions:
+  - id: eft-empty-chair-s10
+    title: "Session 10: 'He's in the chair'"
+    turns:
+      - id: eft-empty-chair-s10-t01
+        speaker: client
+        text: "(sits) I've been thinking about what I said last week. About the things I didn't say to him. (pause) It doesn't matter, though. He's gone. There's no point."
+      - id: eft-empty-chair-s10-d1
+        type: choice
+        prompt: "R says there are things he never said to his father, and that there is no point now. The marker is present. How do you respond?"
+        options:
+          - id: a
+            text: "It does matter. You should say those things. Let's put him in that chair and you can tell him."
+            fit: weak
+            note: "It argues with 'no point' and tells R what he should do. It gives no purpose and no way out."
+          - id: b
+            text: "You have things you never said to him, and you've thought about them all week. There's a way of working where you imagine him in that chair and say them to him. It can't change him. It's a way of saying what hasn't been said, and seeing what comes. It's up to you. Would you like to try, or would you rather leave it?"
+            fit: strong
+            note: "It reflects both sides, says what the task is and what it is not for, and ends with a real choice. 'It can't change him' answers the 'no point' without arguing."
+          - id: c
+            text: "What would you have said to him, if you could?"
+            fit: workable
+            note: "It is a warm, natural question and he may answer. It invites him to talk about the unsaid, and it does not yet offer the task."
+        actual: "You have things you never said to him, and you've thought about them all week. There's a way of working where you imagine him in that chair and say them to him. It can't change him. It's a way of saying what hasn't been said, and seeing what comes. It's up to you. Would you like to try, or would you rather leave it?"
+        rationale: "A client who says 'there's no point' is often telling you that he doubts it will do anything. You do not argue, and you say honestly what the task can and cannot do. The aim is not to change the other, and the client must hear that."
+      - id: eft-empty-chair-s10-t02
+        speaker: client
+        text: "(pause) Alright. But not long. And I'm not going to shout at an empty chair."
+      - id: eft-empty-chair-s10-t03
+        speaker: therapist
+        text: "Not long, and no shouting. You choose what you say, and we can stop whenever you want."
+      - id: eft-empty-chair-s10-d2
+        type: free
+        prompt: "R has agreed. Write what you say to help him bring his father into the empty chair. Do not tell him what his father is like."
+        actual: "Take a moment and picture him in that chair. Where is he sitting, and what is he doing? What is his face like when he looks at you?"
+        rationale: "You ask for a position, an action and a look, all from R's own picture. You do not describe the father or suggest how he is. The more the father is R's, the more real the task will be."
+      - id: eft-empty-chair-s10-t04
+        speaker: client
+        text: "(eyes closed, then open) In his armchair. The one by the window. He's got the newspaper. He doesn't look up."
+      - id: eft-empty-chair-s10-d3
+        type: choice
+        prompt: "R has pictured his father in the chair, with the newspaper, not looking up. What do you say?"
+        options:
+          - id: a
+            text: "Okay. Now tell him what you want to say."
+            fit: weak
+            note: "It moves to speech before the father is present. R has only just seen him, and he has told you the first thing: he doesn't look up. You skipped it."
+          - id: b
+            text: "He's got the newspaper, and he doesn't look up. Just look at him for a moment. When you're ready, say whatever comes first."
+            fit: strong
+            note: "It keeps R's picture, lets him stay with the detail that matters, and does not hurry. 'Whatever comes first' lets the start be his."
+          - id: c
+            text: "Is that how he was when he was alive, with the newspaper?"
+            fit: workable
+            note: "It is a fair question about the memory. It turns him toward a report and away from the chair."
+        actual: "He's got the newspaper, and he doesn't look up. Just look at him for a moment. When you're ready, say whatever comes first."
+        rationale: "Evoking the other works from the client's picture. The father not looking up is already the heart of it, and you leave it alone."
+      - id: eft-empty-chair-s10-t05
+        speaker: client
+        text: "(to the chair, stiffly) Dad. (clears throat) I wanted to tell you the funeral went well. Everyone came. The food was fine. I paid for everything. It was all done properly."
+      - id: eft-empty-chair-s10-d4
+        type: choice
+        prompt: "R is reporting to his father in a polite, formal way. What do you say?"
+        options:
+          - id: a
+            text: "You seem to be avoiding what you really feel. Can you tell him what you really feel?"
+            fit: weak
+            note: "It names his style as avoidance and challenges it. R will feel caught, and he is likely to close down."
+          - id: b
+            text: "You did everything properly. Tell him what it was like for you, doing all of that."
+            fit: strong
+            note: "It accepts what he said, and it asks for his experience, directed at the father. It does not call the politeness a defence."
+          - id: c
+            text: "What would you like him to say back, when you tell him that?"
+            fit: workable
+            note: "It brings the father's reply in early. R has not yet said anything of his own, so the father's answer may be only a repeat of the old distance."
+        actual: "You did everything properly. Tell him what it was like for you, doing all of that."
+        rationale: "Duty and politeness are where R starts, and they are real. You do not argue with them. You ask one question that moves from the report to his experience."
+      - id: eft-empty-chair-s10-t06
+        speaker: client
+        text: "(pause) It was... a lot. (clears throat) Somebody had to do it. (quieter) I didn't cry. I thought you'd... I don't know what I thought."
+      - id: eft-empty-chair-s10-d5
+        type: free
+        prompt: "R began a sentence about what he thought his father would do, and stopped. Write one short response that keeps him speaking to his father, and does not finish the sentence for him."
+        actual: "You thought he'd... Say it to him. 'I thought you'd...'"
+        rationale: "You use his unfinished words and offer the opening once. You do not guess the ending. The words that follow will be R's."
+      - id: eft-empty-chair-s10-t07
+        speaker: client
+        text: "(to the chair) I thought you'd say... (stops) You'd say something. Just once. (stops) No. You wouldn't have."
+      - id: eft-empty-chair-s10-d6
+        type: choice
+        prompt: "R has said 'you wouldn't have', and he is quiet. You would like to hear his father's response. What do you say?"
+        options:
+          - id: a
+            text: "Let's switch. Sit in his chair and be him. What does he say?"
+            fit: weak
+            note: "It does not ask, and it does not say that the answer is R's own picture. A client who has barely begun may feel pushed into becoming the person he is hurt by."
+          - id: b
+            text: "Would you be willing to sit in his chair and be him, just for a moment, and hear what you just said? Whatever comes will be your picture of him, not him. You don't have to."
+            fit: strong
+            note: "It asks, names the exit, and says what the father's words would be: R's picture. That protects R and keeps the exercise honest."
+          - id: c
+            text: "What do you imagine he would say to that?"
+            fit: workable
+            note: "It reaches the father's reply without the move. It keeps R in his own chair, which is gentler, and the father is less present."
+        actual: "Would you be willing to sit in his chair and be him, just for a moment, and hear what you just said? Whatever comes will be your picture of him, not him. You don't have to."
+        rationale: "Speaking as the other is the part of the task most likely to feel strange or painful. You ask, you say the words are the client's own picture, and you say he can decline."
+      - id: eft-empty-chair-s10-t08
+        speaker: client
+        text: "(pause, then moves to the other chair and sits very upright; the voice is flat and clipped) What's this about. I've told you. You were fed. You were clothed. You had a good education. What more is there."
+      - id: eft-empty-chair-s10-d7
+        type: choice
+        prompt: "R is now speaking as his father. What do you say to him?"
+        options:
+          - id: a
+            text: "Dad, do you hear how that sounds to your son?"
+            fit: weak
+            note: "You address the father as if he were real and confront him. The therapist ends up fighting R's father, and R will feel that he has to defend or to join you."
+          - id: b
+            text: "Stay as him a moment. How is he looking at his son right now? Say it once more, the way he would say it."
+            fit: strong
+            note: "It keeps R in the role, asks for the look and the voice, and does not interpret. The father becomes more present, and R learns what he sees."
+          - id: c
+            text: "Now go back to your own chair and answer him."
+            fit: workable
+            note: "It moves the task on, and it is probably the next step. The father has said only one line, and he is still thin."
+        actual: "Stay as him a moment. How is he looking at his son right now? Say it once more, the way he would say it."
+        rationale: "Evoking the other means helping the client enact the person in voice and posture. You are not trying to make the father change. You help R see and hear what he carries."
+      - id: eft-empty-chair-s10-t09
+        speaker: client
+        text: "(as his father, a little flatter) Nothing more. What more is there. (a small pause; the voice thins) I don't know what you want from me."
+      - id: eft-empty-chair-s10-t10
+        speaker: therapist
+        text: "Come back to your own chair when you're ready. (R moves.) What was that like, being him?"
+      - id: eft-empty-chair-s10-t11
+        speaker: client
+        text: "(exhales) Strange. It was easy. Too easy. (pause) And then he said 'I don't know what you want from me', and I didn't know either."
+      - id: eft-empty-chair-s10-d8
+        type: choice
+        prompt: "It is near the end of the session. R has found that he does not know what he wants from his father. What do you say?"
+        options:
+          - id: a
+            text: "That's a big insight. What do you want from him?"
+            fit: weak
+            note: "It praises him, and it asks him to answer at once a question that he has just said he cannot answer. He may produce a quick answer to please you."
+          - id: b
+            text: "That sentence stayed with you. We don't have to answer it today. How are you now, in your own chair?"
+            fit: strong
+            note: "It keeps what he found without pushing it further, and it checks on him. The question stays open for next time."
+          - id: c
+            text: "Shall we go back to the chair and ask him?"
+            fit: workable
+            note: "It is the next step in the task, and R has been willing. It is late in the session, and a short time may leave him with an open feeling."
+        actual: "That sentence stayed with you. We don't have to answer it today. How are you now, in your own chair?"
+        rationale: "You do not rush the discovery. The need R cannot yet name is the work of the next session. Closing the chairs gently, with a check on how he is, is part of the task."
+    notes:
+      goals: "No change. R said yes with conditions (not long, no shouting) and kept control. He found that he does not know what he wants from his father."
+      alliance: "Bond: he stayed with an uncomfortable task. Tasks: he now has an experience of the chairs, and he chose to enact his father. Check how it sits with him next time."
+      formulation_update: "Unfinished business with his father. He started with duty and politeness (the funeral, the arrangements). His father, as R imagines him, is flat and dismissive ('What more is there'). The need is not yet named. I did not interpret and did not push toward feeling."
+  - id: eft-empty-chair-s12
+    title: "Session 12: 'Once'"
+    turns:
+      - id: eft-empty-chair-s12-t01
+        speaker: client
+        text: "(sits) I thought about it all week. What he said, in that voice. 'What more is there.' (pause) I've been angry all week. Not at my son. At him."
+      - id: eft-empty-chair-s12-d1
+        type: choice
+        prompt: "R says he has been angry at his father all week. How do you respond?"
+        options:
+          - id: a
+            text: "That's progress. Anger is healthy. Let's put him in the chair and let it out."
+            fit: weak
+            note: "It praises the anger and sets the plan. R has not asked for the chairs, and he may feel he is expected to be angry."
+          - id: b
+            text: "You've been angry at him all week, and not at your son. Would you like to go back to the chair today, or start somewhere else? Either is fine."
+            fit: strong
+            note: "It reflects what he said, including the shift away from his son. It offers the task again, with a clear alternative."
+          - id: c
+            text: "How did it feel to be angry at him?"
+            fit: workable
+            note: "It is a good question and may deepen the anger. It does not yet ask whether he wants the chairs."
+        actual: "You've been angry at him all week, and not at your son. Would you like to go back to the chair today, or start somewhere else? Either is fine."
+        rationale: "Each time you offer the chair, you say what it is, and you make it a choice. R may say yes, and he may say not today. Both are fine."
+      - id: eft-empty-chair-s12-t02
+        speaker: client
+        text: "(pause) The chair. I want to say it properly this time."
+      - id: eft-empty-chair-s12-d2
+        type: free
+        prompt: "R wants to say it 'properly'. Write what you say to bring his father back into the chair."
+        actual: "Take a moment to bring him back. Where is he sitting? Look at him, and tell me when he's there."
+        rationale: "It lets R build the picture, as before, and does not say what the father is doing. 'Tell me when he's there' gives R the pace."
+      - id: eft-empty-chair-s12-t03
+        speaker: client
+        text: "He's there. Same chair. The paper's down this time. He's looking at me."
+      - id: eft-empty-chair-s12-t04
+        speaker: client
+        text: "(to the chair, voice rising) You never said it. Not once. Thirty-eight years. Ninety-five in maths, and you asked where the other five went. I came every Sunday when you were ill, and we talked about the weather. The weather! (stops) You were dying, and we talked about the weather."
+      - id: eft-empty-chair-s12-d3
+        type: choice
+        prompt: "R's anger has come out. It is clear, and it is also a complaint about what his father did. What do you say?"
+        options:
+          - id: a
+            text: "That must have been so frustrating. You have every right to be angry."
+            fit: weak
+            note: "It takes sides, and it speaks about the anger. The anger is real and does not need your permission. It closes the door on what is under it."
+          - id: b
+            text: "Stay with that. The weather, when you wanted something else. What did you want from him, those Sundays? Tell him."
+            fit: strong
+            note: "It stays with the anger and asks what the anger is about. The need is under it, and R will say it to his father."
+          - id: c
+            text: "Say more about how angry you are."
+            fit: workable
+            note: "It lets the anger grow. That has value. It does not yet reach what he wanted."
+        actual: "Stay with that. The weather, when you wanted something else. What did you want from him, those Sundays? Tell him."
+        rationale: "Anger can be a healthy response to not being seen. You let it be, and then you help it say what it is for. A need said directly is different from a complaint."
+      - id: eft-empty-chair-s12-t05
+        speaker: client
+        text: "(quieter, a long pause) I wanted... (clears throat) I wanted you to tell me. That it was fine. That I'd done alright."
+      - id: eft-empty-chair-s12-d4
+        type: free
+        prompt: "R has begun to say what he wanted, and he cleared his throat. Write one short response that helps him say it directly to his father, in his own words."
+        actual: "Take your time. You wanted him to tell you that you'd done alright. Say that to him directly."
+        rationale: "It acknowledges the throat-clearing without comment, repeats his words, and sends them to his father. It says nothing about what the feeling is."
+      - id: eft-empty-chair-s12-t06
+        speaker: client
+        text: "(tears in his eyes; to the chair) I wanted you to say 'well done'. That's all. Just 'well done'. Once. (his voice breaks) I'd have carried that around for years."
+      - id: eft-empty-chair-s12-t07
+        speaker: client
+        text: "(he cries quietly for a while)"
+      - id: eft-empty-chair-s12-d5
+        type: choice
+        prompt: "R is crying quietly in the chair. What do you do?"
+        options:
+          - id: a
+            text: "(handing a tissue) It's all right. It's good to let it out. You're doing really well."
+            fit: weak
+            note: "It reassures him and rates his crying. He may feel watched or praised. It ends the moment sooner than he would."
+          - id: b
+            text: "(after a silence) I'm here. There's no hurry."
+            fit: strong
+            note: "It lets the silence be, and it tells him he is not alone and need not hurry. Few words are best."
+          - id: c
+            text: "What are you feeling right now?"
+            fit: workable
+            note: "It is an honest question, and R may answer. It asks him to name the feeling, which can pull him out of it."
+        actual: "(after a silence) I'm here. There's no hurry."
+        rationale: "Grief that arrives in the session does not need to be managed. Your task is to stay and to say very little. This is the first time R has cried for his father."
+      - id: eft-empty-chair-s12-t08
+        speaker: client
+        text: "(wipes his eyes) That's the first time. At the funeral, nothing. (pause) I'm sorry."
+      - id: eft-empty-chair-s12-t09
+        speaker: therapist
+        text: "There's nothing to be sorry for. Take your time."
+      - id: eft-empty-chair-s12-d6
+        type: choice
+        prompt: "R is quieter now. You wonder whether to invite him to hear his father's answer. What do you say?"
+        options:
+          - id: a
+            text: "Now go over there and be him. Let him answer you."
+            fit: weak
+            note: "It is an order. R has only just stopped crying, and he is not asked whether he wants to hear his father."
+          - id: b
+            text: "If you want, you could sit in his chair and say what he'd say back, as you imagine it. Or we can stay here. Which would you like?"
+            fit: strong
+            note: "It offers the switch and the alternative of staying. It marks the reply as R's own imagining."
+          - id: c
+            text: "What do you imagine he would say back?"
+            fit: workable
+            note: "It reaches the reply without the move. It is gentle, and the father stays more distant."
+        actual: "If you want, you could sit in his chair and say what he'd say back, as you imagine it. Or we can stay here. Which would you like?"
+        rationale: "The father's reply can open something or close something. You never decide in advance what it should be, and you let R choose whether to go there."
+      - id: eft-empty-chair-s12-t10
+        speaker: client
+        text: "(pause) Let me try. (He moves. After a long silence, as his father, slowly) I didn't... We didn't say things like that. In my house. Nobody said anything like that to me."
+      - id: eft-empty-chair-s12-d7
+        type: choice
+        prompt: "R, as his father, has said that nobody said things like that to him. What do you say?"
+        options:
+          - id: a
+            text: "So you can see now that you were wrong?"
+            fit: weak
+            note: "It pushes the father to admit fault. It turns the task into getting an apology, and it steers toward a repair that R did not ask for."
+          - id: b
+            text: "Stay as him a moment. What is it like for him, hearing his son say that?"
+            fit: strong
+            note: "It stays in the role, and it asks about the father's experience as R imagines it. It does not decide what the father feels or what R should conclude."
+          - id: c
+            text: "Come back to your own chair now."
+            fit: workable
+            note: "It is reasonable, and the father has said something new. R may have more to find in the role."
+        actual: "Stay as him a moment. What is it like for him, hearing his son say that?"
+        rationale: "You are exploring the father as R imagines him, not trying to produce a change in him. You do not ask for an apology."
+      - id: eft-empty-chair-s12-t11
+        speaker: client
+        text: "(as his father, very quietly) I don't know. (pause) I didn't know how."
+      - id: eft-empty-chair-s12-t12
+        speaker: client
+        text: "(back in his own chair, after a long silence) Maybe he couldn't. (pause) That doesn't make it... It doesn't make it all right."
+      - id: eft-empty-chair-s12-d8
+        type: choice
+        prompt: "R says maybe his father couldn't, and that it does not make it all right. What do you say?"
+        options:
+          - id: a
+            text: "It's a big step to understand him. Do you think you could forgive him now?"
+            fit: weak
+            note: "It rewards the understanding and asks for the next step. R did not ask to forgive, and he said that it is not all right. You are steering him."
+          - id: b
+            text: "Maybe he couldn't, and you needed it anyway. Both are true. You don't have to decide anything about him today."
+            fit: strong
+            note: "It holds both parts of what R said and takes pressure off. It does not push toward forgiving or against it."
+          - id: c
+            text: "How does it feel to hear him say 'I didn't know how'?"
+            fit: workable
+            note: "It is a natural question. It invites more processing of the father's softening, and R may feel he should be moved by it."
+        actual: "Maybe he couldn't, and you needed it anyway. Both are true. You don't have to decide anything about him today."
+        rationale: "The father's softening, as R imagines it, does not turn the task into forgiveness. You keep both sides and let the decision stay open."
+      - id: eft-empty-chair-s12-t13
+        speaker: client
+        text: "(nods slowly) Both. (pause) I'm still angry. (pause) And I miss him. I didn't think I would."
+      - id: eft-empty-chair-s12-d9
+        type: free
+        prompt: "The session is nearly over. Write one or two sentences that close the chair work and check how R is, without summing up for him."
+        actual: "Let's stop the chairs there. You can stand up if you like. How are you, in your own chair, right now?"
+        rationale: "You close the task in a simple way and ask about him, not about the father. You do not name what he has done, and you do not make a lesson out of it."
+    notes:
+      goals: "No change. The aim of this work was never to resolve the father. R said 'I'm still angry' and 'I miss him', and both are allowed to stay."
+      alliance: "Bond: he cried in front of you for the first time. Tasks: he chose to go back to the chair and chose to enact his father. Check, next time, how the week was after this."
+      formulation_update: "Primary adaptive anger and grief toward his father. The unmet need, said directly: to be told he had done alright ('well done', once). His father, as he imagines him, 'didn't know how'. R did not forgive and did not say that he would. I did not look for it. The shame and the critical voice have not gone, and the two-chair work may come back."

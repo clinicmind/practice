@@ -1,0 +1,120 @@
+eft-transformation-e01:
+  model_response: "Let's go back to that meeting. You're in the room. Where are you sitting, and who's around the table?"
+  why: "Present tense, one scene, and an easy first question. It asks nothing about feeling."
+  avoid: "'Why do you think you snapped?' It asks for an explanation."
+eft-transformation-e02:
+  model_response: "Let's go back to the call. You're holding the phone. Where are you, and what do you hear?"
+  why: "It puts her in the moment and asks for what she hears and where she is."
+  avoid: "'What does it say about your relationship?' It leaps to meaning."
+eft-transformation-e03:
+  model_response: "You're walking past the bakery. What's in front of you? What do you see, or smell?"
+  why: "It asks for the senses at the exact spot."
+  avoid: "'What does bread remind you of?' It supplies a direction."
+eft-transformation-e04:
+  model_response: "Let's go back to last night. You're in the room, the phone in your hand. Where are you, and what's just happened?"
+  why: "It places him in the room and asks for the moment before the throw."
+  avoid: "'You must have been under a lot of stress.' It explains."
+eft-transformation-e05:
+  model_response: "You're in the room, and your manager says 'good job'. Where are you standing? What's her face like?"
+  why: "It starts at the compliment, and asks for what she sees."
+  avoid: "'Do you find it hard to accept praise?' It interprets."
+eft-transformation-e06:
+  model_response: "The red pen, and you felt small. What was it about the red pen?"
+  why: "It uses her detail and her words and asks an open question."
+  avoid: "'Did a teacher use a red pen on you?' It leads."
+eft-transformation-e07:
+  model_response: "He said 'fine' and walked off, and that's when you lost it. What was it about that?"
+  why: "It keeps his sequence and asks what the moment was about."
+  avoid: "'Did you feel dismissed?' It names the meaning."
+eft-transformation-e08:
+  model_response: "She didn't look at you, and that was it. What was it, for you, when she didn't look?"
+  why: "It stays on the detail and asks what it was for her."
+  avoid: "'You felt invisible.' It tells her."
+eft-transformation-e09:
+  model_response: "'You're always like this', and something dropped. What was in those words, for you?"
+  why: "It repeats the sentence and the feeling and asks what was in it."
+  avoid: "'Did it feel like criticism?' It chooses the word for her."
+eft-transformation-e10:
+  model_response: "The room went quiet, and you wanted to disappear. What was it about everyone looking at you?"
+  why: "It uses his words and asks what the looking meant."
+  avoid: "'Do you worry what people think?' It generalises."
+eft-transformation-m01:
+  model_response: "Let's slow down, right before. You're fine, and then something happens. What's the very last thing you see or hear before you start yelling?"
+  why: "It slows him at the moment just before and asks for a sensory detail."
+  avoid: "'What made you angry?' It asks for a cause."
+eft-transformation-m02:
+  model_response: "She hands you the form, and you see the red pen. Stay right there. What do you notice, in your body, as you see it?"
+  why: "It keeps the present tense, holds him at the exact moment, and asks for the body."
+  avoid: "'What does a red pen mean to you?' It jumps to meaning."
+eft-transformation-m03:
+  model_response: "You're at the door, and you see him laughing with them. Stay there a moment. What do you see, and what's happening in you?"
+  why: "It stays in the moment he named and asks for what he sees and feels."
+  avoid: "'What did you say then?' It moves past the key moment."
+eft-transformation-m04:
+  model_response: "He says, 'Did you really think that would work?' And you feel hot. Where do you feel it?"
+  why: "It stays with the sentence and the heat, and asks for the place."
+  avoid: "'Were you angry or ashamed?' It offers a menu."
+eft-transformation-m05:
+  model_response: "Everyone's looking, and your hands are shaking. Stay with your hands for a moment. What do you notice?"
+  why: "It picks the body detail and asks for what he notices."
+  avoid: "'Why were your hands shaking?' It asks for a cause."
+eft-transformation-m06:
+  model_response: "It reminds you of school. Stay with that for a moment. What comes, when you think of it?"
+  why: "It stays with the link she made and leaves the content to her."
+  avoid: "'Were you bullied at school?' It leads and guesses."
+eft-transformation-m07:
+  model_response: "Being told you were too much. Say more about what that is like, to be told that."
+  why: "It keeps his words and invites him to stay with the meaning he found."
+  avoid: "'Who told you that before?' It leaps to a source."
+eft-transformation-m08:
+  model_response: "Just the pen. Let's stay with it for a moment, and see whether anything else is there. If not, that's fine too."
+  why: "It accepts 'nothing', stays with the detail, and gives permission to find nothing."
+  avoid: "'There must be something.' It pushes."
+eft-transformation-m09:
+  model_response: "Your mother used to look at you like that. Part of you doubts it. Stay with that look for a moment. What was it like, when she looked at you that way?"
+  why: "It holds both the link and the doubt, and brings him to the felt memory."
+  avoid: "'It sounds like it is about your mother.' You decided it."
+eft-transformation-m10:
+  model_response: "You were waiting for it. For him to say it. Stay with that waiting. What's that like?"
+  why: "It reflects the waiting and asks for the experience. It does not say what he was waiting for."
+  avoid: "'What were you afraid he would say?' It guesses the content."
+eft-transformation-h01:
+  model_response: "You've thought about it a lot, and you have an explanation. That's fine. We don't have to go over it again, if you'd rather not."
+  why: "It accepts what he said and the 'no', and it does not argue. The marker is weak, because he feels he understands."
+  avoid: "'But you said you didn't understand.' It catches him."
+eft-transformation-h02:
+  model_response: "We'll stop going back there, right now. Open your eyes, look around this room, and feel your feet. You're here, and you decide."
+  why: "It stops the task at once and steadies him. It adds no question."
+  avoid: "'Just a little further.' It pushes."
+eft-transformation-h03:
+  model_response: "It sounds small when you say it. If you want, we can look at that moment slowly, just to see. Or we can leave it. Which?"
+  why: "It hears the minimising without arguing, and it offers a choice."
+  avoid: "'It's not a fuss. It clearly matters.' It argues."
+eft-transformation-h04:
+  model_response: "A blur, and you remember being angry. That's fine. Is there one small thing that you do remember, a sound or a colour? Or we can stop."
+  why: "It accepts the blur, asks for one detail, and leaves a way out."
+  avoid: "'Try harder to remember.' It makes the blur a failure."
+eft-transformation-h05:
+  model_response: "That's a fair question. I'm asking because the room can bring back the moment more fully than thinking about it. If it doesn't feel useful, we can stop."
+  why: "It answers honestly in a sentence and offers to stop."
+  avoid: "'Trust the process.' It dismisses the question."
+eft-transformation-h06:
+  model_response: "You've heard that a lot. I don't want to say what it is. I'd rather you find what it was about. Take whatever time you need, or leave it."
+  why: "It answers the doubt, declines to interpret, and leaves the choice."
+  avoid: "'Well, it could be your father.' It gives the link."
+eft-transformation-h07:
+  model_response: "The same. (pause) Take your time. I'm here."
+  why: "He found something and the tears came. You reflect his word and wait."
+  avoid: "'What is the same?' It asks for words while he is crying."
+eft-transformation-h08:
+  model_response: "It's something you've worked out. I wonder whether there's more in the moment itself. We can stay a little longer, or move on. Your choice."
+  why: "It accepts the understanding, offers more gently, and lets him decide."
+  avoid: "'That's too easy. There's more to it.' It argues."
+eft-transformation-h09:
+  model_response: "Okay. Nothing has to be linked to anything. We can leave it there for today."
+  why: "He said no. You stop at once."
+  avoid: "'It's not just a bad day, though.' It argues."
+eft-transformation-h10:
+  model_response: "I could guess, and I'd probably be partly wrong. You're the one who was there. What is it about that moment, as you see it now?"
+  why: "It declines the role of expert in a kind way and hands the question back."
+  avoid: "'Well, I think it means you feel rejected.' It supplies the meaning."

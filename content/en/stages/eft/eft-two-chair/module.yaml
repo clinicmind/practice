@@ -1,0 +1,35 @@
+slug: eft-two-chair
+version: 1.0.0
+title: "Two-chair dialogue for a self-critical split"
+intro: >-
+  In emotion-focused therapy (EFT), the marker for two-chair work is a
+  self-critical split. The client is of two minds. One part criticises, blames
+  or pushes, and the other part takes it, shrinks or gives up. Typical signs are
+  "I should", "I'm so useless", a harsh tone toward oneself, and a change in the
+  voice or the body when the client talks about himself or herself. The matching
+  task is two-chair dialogue. The client sits in one chair as the critic and
+  speaks to the other chair. Then the client moves to the other chair and
+  answers as the part that is criticised. You guide each move. The aim is not to
+  defeat the critic. The aim is for the criticised part to feel its own hurt and
+  say what it needs, so that the critic may soften in its own time. Always say
+  what the task is and what it is for, and make it easy to say no. If the client
+  says no, accept it, and keep the door open. Do not offer the task when the
+  client is overwhelmed, when the client does not yet trust you, when the client
+  has said no, when the client is only weighing a decision and is not harsh with
+  himself or herself, or when time is short. If a client seems at risk, put the
+  task aside, follow your placement's protocol, and speak with your supervisor.
+  In this module Client R tells you, in session six, how he talks to himself
+  when he marks late at night, and says no to the chairs. In session eight he
+  chooses to try. You practise two skills: setting up the chairs, and
+  heightening, which means helping each voice become more specific, more direct
+  and more felt, without leading it.
+skills:
+  - chair-setup
+  - heightening
+reflection_prompts:
+  - id: eft-two-chair-r1
+    text: "R said no to the chairs in session six and chose to try them in session eight. What do you think made the difference? What might have happened if you had asked again in the same session?"
+  - id: eft-two-chair-r2
+    text: "The critic's chair came easily to R, and the other chair was hard. Think of a time you were hard on yourself. What did the critic say, and what did the part that heard it want to do?"
+  - id: eft-two-chair-r3
+    text: "Some critics become cruel instead of specific. Write down what you would watch for in the client's voice and body, and what you would do if the critic turned cruel."

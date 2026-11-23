@@ -416,7 +416,7 @@ describe('the real course content', () => {
     for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: CONTENT, outDir: out, locale, includeUnreviewed: true });
     for (const loc of ['en', 'zh-Hant']) {
       const idx = JSON.parse(readFileSync(join(out, loc, 'eft/index.json'), 'utf8'));
-      expect(idx.modules.map((m: any) => m.slug)).toEqual(['eft-attunement', 'eft-emotion-types', 'eft-focusing']);
+      expect(idx.modules.map((m: any) => m.slug)).toEqual(['eft-attunement', 'eft-emotion-types', 'eft-focusing', 'eft-two-chair', 'eft-empty-chair', 'eft-transformation']);
       expect(existsSync(join(out, loc, 'eft/eft-attunement/module.json'))).toBe(true);
     }
   });

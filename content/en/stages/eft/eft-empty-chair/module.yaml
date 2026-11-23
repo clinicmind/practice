@@ -1,0 +1,39 @@
+slug: eft-empty-chair
+version: 1.0.0
+title: "Empty-chair work for unfinished business"
+intro: >-
+  In emotion-focused therapy (EFT), the marker for empty-chair work is
+  unfinished business. The client carries a feeling toward an important person
+  that has never been resolved, and it is still sore when the client speaks of
+  that person. Typical signs are "I never told him", "there's so much I didn't
+  say", a lingering resentment or longing, and a sudden closing down: a cleared
+  throat, a joke, a change of subject. The other person may be alive or dead.
+  The matching task is empty-chair work. The client imagines the other person in
+  an empty chair and speaks to that person. If it helps, the client then moves to
+  the other chair and speaks as the other person, as the client imagines him or
+  her, and then goes back. The aim is not to forgive, to reconcile, or to change
+  the other person. The aim is for the client to say what has not been said,
+  feel what is there, and say what he or she needed. Whether to forgive is the
+  client's decision, and you do not steer toward it or away from it. Say what the
+  task is and what it is for, and make it easy to say no. Do not offer it when
+  the client is overwhelmed, when you do not yet have a steady relationship, when
+  the client has said no, when there is no marker, or when the relationship
+  involved serious harm and you have not been trained and supervised for that
+  work. If a client seems at risk, put the task aside, follow your placement's
+  protocol, and speak with your supervisor. If the client brings up family duty or
+  custom, reflect it as you would anything else, and do not turn the session into
+  a discussion of it. In this module Client R, in sessions ten and twelve, speaks
+  to his late father. You practise two skills: evoking the other, which means
+  helping the client make the other person present enough to speak to, and need
+  expression, which means helping the client say what he or she needed or needs,
+  in direct words.
+skills:
+  - evoking-the-other
+  - need-expression
+reflection_prompts:
+  - id: eft-empty-chair-r1
+    text: "In session twelve R said, 'Maybe he couldn't. That doesn't make it all right.' Where might you be tempted to steer a client toward understanding or forgiveness? Whom would it serve, the client or you?"
+  - id: eft-empty-chair-r2
+    text: "Empty-chair work asks the client to say, 'I needed you to...' Imagine saying that to someone in your own life. What happens in you, and what would you do to stop it?"
+  - id: eft-empty-chair-r3
+    text: "Write down three signs that a client should not do empty-chair work yet, even though 'things I never said' is present. What would you do instead in each case?"

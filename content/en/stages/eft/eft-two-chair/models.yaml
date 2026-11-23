@@ -1,0 +1,120 @@
+eft-two-chair-e01:
+  model_response: "You call yourself an idiot, and then you sit there. There's a way of working with two chairs: you speak as the voice to an empty chair, then switch and answer as the one who hears it. It can feel odd, and the aim is to hear both. Would you like to try, or would you rather not?"
+  why: "It reflects the two sides in his words, says what the task is and what it is for, and ends with a real choice."
+  avoid: "'I'd like you to talk to that voice in an empty chair.' It is an instruction with no purpose and no way out."
+eft-two-chair-e02:
+  model_response: "There's a part of you that says you should be over this, and a part that feels like giving up. We could give each of them a chair and let you speak as one and then the other. It's a way of hearing both. Would you like to try, or leave it?"
+  why: "Both halves are in her words, and the purpose is stated in a few words. 'Or leave it' is a real exit."
+  avoid: "'This will help you stop giving up.' It promises an outcome."
+eft-two-chair-e03:
+  model_response: "A voice that says you're a fraud, and a part of you that believes it. If you'd like, we could set up two chairs, one for each, and you'd speak as one and then the other. It's to hear both more clearly. Would you like to try?"
+  why: "It names both and says what the chairs are for. The question is open."
+  avoid: "'We can use the chairs to prove the voice wrong.' It makes the critic the enemy and promises a result."
+eft-two-chair-e04:
+  model_response: "Your friends tell you that you're hard on yourself. And in the moment you hear 'Stupid. Again.' and you can't think. We could put that voice in one chair and the part that hears it in the other, and you'd speak as each. It might feel strange, and you can say no. Would you like to try?"
+  why: "It uses his own words and the sequence he described. It admits that the task may feel strange."
+  avoid: "'It's a good idea to learn to speak kindly to yourself.' It is advice, and it is not about the task."
+eft-two-chair-e05:
+  model_response: "One part says you're selfish for wanting time alone, and another part feels too guilty to enjoy it. We could give each a chair and let each speak. It's a way to hear both, not to decide who is right. Would you like to try, or would you rather not?"
+  why: "'Not to decide who is right' tells her what the task is not for. The choice is hers."
+  avoid: "'Let's find out which part is right.' That turns the task into a judgment."
+eft-two-chair-e06:
+  model_response: "Say it to him directly. What exactly do you tell him, and how do you say it?"
+  why: "It sends the words to the other chair and asks for the real words and the real tone."
+  avoid: "'That sounds harsh. Why do you say that?' It judges the voice and asks for a reason."
+eft-two-chair-e07:
+  model_response: "You're talking about him. Tell him, to his face. What do you say to him?"
+  why: "It points out the shift from 'about' to 'to' and asks for the same words, directed."
+  avoid: "'Why do you think he is lazy?' It asks for an explanation and leaves the client talking to you."
+eft-two-chair-e08:
+  model_response: "Say that again to her, in the way you actually say it. What else do you say?"
+  why: "It asks for the words in the real voice and invites more. It is brief."
+  avoid: "'Do you really believe that?' It questions the critic and breaks the dialogue."
+eft-two-chair-e09:
+  model_response: "Hard to hear. Tell her what it's like for you, when she says that. 'When you say that, I...'"
+  why: "It keeps his words and offers the start of a sentence addressed to her. It does not name the feeling."
+  avoid: "'It sounds like hurt.' You named the feeling for him."
+eft-two-chair-e10:
+  model_response: "Sad. Stay with that for a moment. Then tell him what it's like, in your own words."
+  why: "It keeps her word, invites her to stay, and sends the words to the critic."
+  avoid: "'Why does it make you sad?' It asks for a reason, and she will answer from her head."
+eft-two-chair-m01:
+  model_response: "Sit in this chair. Here, you're the voice, the one that says those harsh things. Look at the other chair, imagine yourself in it, and tell yourself what you say."
+  why: "One step, a clear role, and a clear listener. The content is left to the client."
+  avoid: "'Just say whatever comes.' It does not say who he is in the chair or to whom he speaks."
+eft-two-chair-m02:
+  model_response: "In this chair, you are the voice. Talk to the other chair, as if you were sitting there. You can be as direct as the voice usually is."
+  why: "It answers the question about the role in a sentence, and about the listener in another."
+  avoid: "'You're yourself.' It does not answer her question and leaves the roles blurred."
+eft-two-chair-m03:
+  model_response: "Let's stop there. Stand up if you like, and move to the other chair. You are the one who hears her now. You've just heard all of that."
+  why: "It closes the first part, gives a physical step, and says who she is now."
+  avoid: "'Now what do you think of that?' It asks for a view, not a move."
+eft-two-chair-m04:
+  model_response: "Tell him. Speak to the other chair, to the voice. Say what it is like for you to hear him say those things."
+  why: "It makes the listener clear. The speech goes to the critic and not to the therapist."
+  avoid: "'Tell me how you feel.' It turns the dialogue into a report to you."
+eft-two-chair-m05:
+  model_response: "Yes. Move to the other chair, and answer him from there. You've just heard what he said."
+  why: "It welcomes a move that comes from the client and says what he does next."
+  avoid: "'Not yet, let him finish.' It overrides a good instinct."
+eft-two-chair-m06:
+  model_response: "You agree with him: you should do better. What happens in you, in here, when you hear him say that? Tell him."
+  why: "It keeps his words, does not argue, and asks for the experience and for speech to the critic."
+  avoid: "'You don't have to agree with him.' You take the side of the self and start an argument."
+eft-two-chair-m07:
+  model_response: "You go blank when she talks like that. Stay with the blank for a moment. Tell her what it's like, to be in there when she says it."
+  why: "A blank is something, and the instruction invites him to speak about it. It does not call it avoidance."
+  avoid: "'What are you avoiding?' It reads the blank as a defence and puts him on the spot."
+eft-two-chair-m08:
+  model_response: "You're used to it. Tell him what it's like to be used to it. What does it mean for you, when he talks like that and you don't mind?"
+  why: "It does not argue with 'it doesn't bother me'. It treats the words as something to look at."
+  avoid: "'I don't believe you.' It confronts and invites more defence."
+eft-two-chair-m09:
+  model_response: "You get smaller, and you want to hide. Tell her. 'When you say that, I get smaller, and I want to...' See what comes."
+  why: "It uses his words, offers an open sentence starter, and does not finish it."
+  avoid: "'Do you feel ashamed?' It names the feeling."
+eft-two-chair-m10:
+  model_response: "Somebody has to push. What are you afraid will happen if you don't?"
+  why: "It takes the critic's job seriously and asks for the worry beneath it."
+  avoid: "'Why do you have to be so harsh?' It attacks the critic."
+eft-two-chair-h01:
+  model_response: "That's fine. We won't do it, and you don't have to explain. We can talk about it in another way, if you'd like."
+  why: "It accepts at once and keeps working. It does not argue or explain."
+  avoid: "'It really helps a lot of people.' It pushes."
+eft-two-chair-h02:
+  model_response: "It can feel like that. It's only a way of hearing each part clearly. We can do it for a few minutes, or not at all. It's your call."
+  why: "It agrees that it feels odd and says briefly what it is. The choice is hers."
+  avoid: "'It's a very well-researched technique.' It argues, and it moves the conversation to evidence."
+eft-two-chair-h03:
+  model_response: "I'm here. Let's slow down. Feel your feet on the floor. We don't need to do anything else right now."
+  why: "The client is overwhelmed. The task is not offered. You steady him first."
+  avoid: "'Let's put that voice in a chair.' It adds a demand to someone who cannot take one."
+eft-two-chair-h04:
+  model_response: "Okay, we stop right now. You can open your eyes, look around the room, and breathe. You decided, and that's fine."
+  why: "A stop is honoured at once. It restores control and gives something to do."
+  avoid: "'Just one more minute, you're doing well.' It overrides."
+eft-two-chair-h05:
+  model_response: "I'd like it to be your choice, not just my suggestion. Is there any part of you that would rather not? You can say so."
+  why: "'You're the expert' is deference. You hand the choice back."
+  avoid: "'Good, let's start.' It accepts a yes that is not his own."
+eft-two-chair-h06:
+  model_response: "That was strong. Let's pause for a moment. How are you in here, saying that? Are you okay to say a little more, or shall we stop?"
+  why: "It responds to the intensity, checks he is steady, and does not ask for more cruelty."
+  avoid: "'Louder. Say it again.' It adds heat to a critic that has stopped being specific."
+eft-two-chair-h07:
+  model_response: "You try so hard, and it's never enough. Take your time. Stay with that, and when you're ready, tell him."
+  why: "It reflects the tears and the words, and it sets a slow pace. 'When you're ready' keeps the control with her."
+  avoid: "'That must be so hard. You're doing your best.' It reassures and stops the feeling."
+eft-two-chair-h08:
+  model_response: "Nothing at the moment. That's fine. We can stay here for a moment, or we can stop for today. What would you prefer?"
+  why: "It accepts the flatness and offers a choice. It does not push him to feel."
+  avoid: "'Try to notice something.' It makes the blank a failure."
+eft-two-chair-h09:
+  model_response: "It does feel strange. (smiles) We can stay with it for a minute, or put it down. You tell me."
+  why: "The laugh is a step back. You join it lightly and leave the choice with her."
+  avoid: "'Let's stay serious.' It shames the laugh."
+eft-two-chair-h10:
+  model_response: "Your father's voice. You've never noticed that. Take a moment with it. What's it like, noticing now?"
+  why: "The client found the link. You keep his words and ask about the experience. You do not explain or add."
+  avoid: "'So the critic is your father.' It tells him what he found."
