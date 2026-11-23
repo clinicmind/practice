@@ -101,7 +101,7 @@ describe('ai_usage', () => {
   });
   test('has no text column', async () => {
     const cols = (await rows(admin, `select column_name from information_schema.columns where table_name = 'ai_usage'`)).map((r) => r.column_name as string);
-    expect(cols.sort()).toEqual(['cache_read_tokens', 'cache_write_tokens', 'cohort_id', 'cost_usd', 'counted', 'created_at', 'id', 'input_tokens', 'kind', 'model', 'outcome', 'output_tokens', 'prompt_version', 'user_id']);
+    expect(cols.sort()).toEqual(['cache_read_tokens', 'cache_write_tokens', 'cohort_id', 'cost_usd', 'counted', 'created_at', 'id', 'input_tokens', 'kind', 'model', 'outcome', 'output_tokens', 'prompt_version', 'subject_id', 'user_id']);
     // The only text-typed columns are short labels, each bounded by a check constraint.
     const text = (await rows(admin, `select column_name from information_schema.columns where table_name = 'ai_usage' and data_type in ('text','character varying','json','jsonb')`)).map((r) => r.column_name as string);
     expect(text.sort()).toEqual(['kind', 'model', 'outcome', 'prompt_version']);

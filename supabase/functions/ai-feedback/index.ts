@@ -4357,6 +4357,39 @@ function claimAction(existing, now) {
   return age >= PENDING_STALE_MS ? "reclaim" : "in_progress";
 }
 
+// packages/ai-feedback/src/reportPrompt.ts
+var REPORT_DIMENSIONS = ["picture", "formulation", "link", "process", "self", "ethics"];
+var ScoreSchema = external_exports.number().int().min(1).max(4);
+var DimensionEnum = external_exports.enum(REPORT_DIMENSIONS);
+var ReportOutputSchema = external_exports.object({
+  scores: external_exports.object({ picture: ScoreSchema, formulation: ScoreSchema, link: ScoreSchema, process: ScoreSchema, self: ScoreSchema, ethics: ScoreSchema }).strict(),
+  comments: external_exports.string().refine((s) => s.trim() !== ""),
+  notes: external_exports.array(external_exports.object({ dimension: DimensionEnum, quote: external_exports.string().min(1) }).strict())
+}).strict();
+var REPORT_JSON_SCHEMA = {
+  type: "object",
+  properties: {
+    scores: {
+      type: "object",
+      properties: Object.fromEntries(REPORT_DIMENSIONS.map((d) => [d, { type: "integer" }])),
+      required: [...REPORT_DIMENSIONS],
+      additionalProperties: false
+    },
+    comments: { type: "string" },
+    notes: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: { dimension: { type: "string", enum: [...REPORT_DIMENSIONS] }, quote: { type: "string" } },
+        required: ["dimension", "quote"],
+        additionalProperties: false
+      }
+    }
+  },
+  required: ["scores", "comments", "notes"],
+  additionalProperties: false
+};
+
 // supabase/functions/ai-feedback/src/content.ts
 var DRILL_ID = /^(.+)-[emh]\d+$/;
 var SLUG = /^[a-z0-9][a-z0-9-]*$/;

@@ -231,7 +231,7 @@ async function route(req: Request, env: Env, deps: Deps): Promise<Response> {
   }
 }
 
-function monthStart(t: Date): string {
+export function monthStart(t: Date): string {
   return new Date(Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), 1)).toISOString();
 }
 
@@ -239,7 +239,7 @@ function monthStart(t: Date): string {
  * The month's spending, every row, page by page. Reading only the first page would under-count and let spending
  * continue past the limit, so too many pages is reported as "unknown" (null) and the request is refused.
  */
-async function sumSpending(asService: (p: string, i?: RequestInit) => Promise<Response>, since: string): Promise<number | null> {
+export async function sumSpending(asService: (p: string, i?: RequestInit) => Promise<Response>, since: string): Promise<number | null> {
   let total = 0;
   for (let page = 0; page < MAX_PAGES; page++) {
     const r = await asService(`ai_usage?created_at=gte.${encodeURIComponent(since)}&select=cost_usd&order=id.asc&limit=${PAGE}&offset=${page * PAGE}`);

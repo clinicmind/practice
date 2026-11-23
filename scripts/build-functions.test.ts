@@ -5,10 +5,11 @@ import { pathToFileURL } from 'node:url';
 import { describe, expect, test } from 'vitest';
 import YAML from 'yaml';
 import { scan, scanHigh } from '../packages/deid/src';
-import { AI_FEEDBACK_OUT, bundleAiFeedbackFunction, bundleReportsFunction, REPORTS_OUT } from './build-functions';
-import { buildPracticeRequest, checkOutput, guardInput } from '../packages/ai-feedback/src';
+import { AI_FEEDBACK_OUT, bundleAiFeedbackFunction, bundleReportDraftFunction, bundleReportsFunction, REPORT_DRAFT_OUT, REPORTS_OUT } from './build-functions';
+import { buildPracticeRequest, buildReportRequest, checkOutput, checkReportOutput, guardInput, guardReport, REPORT_DIMENSIONS, type Rubric } from '../packages/ai-feedback/src';
 import { ENV as AI_ENV, FakeBackend as AiBackend, FakeLlm, ATT_A } from '../supabase/functions/ai-feedback/test/fakeBackend';
 import { ENV, FakeBackend } from '../supabase/functions/reports/test/fakeBackend';
+import { ENV as DRAFT_ENV, FakeBackend as DraftBackend, FakeLlm as DraftLlm, R_A, MARK } from '../supabase/functions/ai-report-draft/test/fakeBackend';
 
 // The Edge Function is pasted into the Supabase web page as ONE file, so the scanner is bundled into it.
 // These tests make sure the pasted file is current, is really one file, and scans exactly like the original.
@@ -148,6 +149,72 @@ describe('the bundled ai-feedback Edge Function', () => {
     for (const c of Object.values(be2.cohorts)) c.ai_enabled = false;
     const llm2 = new FakeLlm();
     const off = await b.handleRequest(new Request('https://x.test/f', { method: 'POST', headers: { Authorization: 'Bearer tok-A' }, body: JSON.stringify({ action: 'practice', attempt_id: ATT_A }) }), AI_ENV, { fetchFn: be2.fetch as typeof fetch, llm: llm2, nonce: () => 'n01abcdef0123456789abcd' });
+    expect(off.status).toBe(403);
+    expect(llm2.calls).toHaveLength(0);
+    expect(be2.outsideSupabase()).toEqual([]);
+  });
+});
+
+describe('the bundled ai-report-draft Edge Function', () => {
+  type DraftBundle = {
+    handleRequest: (r: Request, e: Record<string, string>, d: { fetchFn: typeof fetch; llm: DraftLlm; nonce: () => string }) => Promise<Response>;
+    checkReportOutput: typeof checkReportOutput; guardReport: typeof guardReport; buildReportRequest: typeof buildReportRequest;
+  };
+  const loadDraft = async (): Promise<DraftBundle> => (await import(/* @vite-ignore */ pathToFileURL(REPORT_DRAFT_OUT).href)) as DraftBundle;
+  const src = () => readFileSync(REPORT_DRAFT_OUT, 'utf8');
+
+  test('the committed file is what the build produces now (run `npm run functions` if this fails)', async () => {
+    expect(src()).toBe(await bundleReportDraftFunction());
+  });
+  test('it says it is generated and must not be edited by hand', () => {
+    expect(src().split('\n').slice(0, 3).join('\n')).toMatch(/由程式產生，不要手改/);
+  });
+  test('it is a single file: no imports or requires left', () => {
+    expect(src()).not.toMatch(/^\s*import\s.+from\s/m);
+    expect(src()).not.toMatch(/\brequire\(/);
+    expect(src()).not.toMatch(/\bimport\(/);
+    expect(src()).not.toMatch(/node:/);
+  });
+  test('it starts a server only when running inside Deno', () => {
+    expect(src()).toMatch(/typeof Deno !== "undefined"/);
+  });
+  test('it holds no key, and only the Anthropic and Google web addresses', () => {
+    expect(src()).not.toMatch(/sk-ant-/i);
+    expect(src()).not.toMatch(/service[-_ ]?role[-_ ]?key-fiction|anon-key-fiction|client-secret-fiction/);
+    expect([...new Set(src().match(/https?:\/\/[^\s"'`)<>\\]+/g) ?? [])].sort()).toEqual([
+      'https://api.anthropic.com/v1/messages', 'https://oauth2.googleapis.com/token', 'https://www.googleapis.com/drive/v3', 'https://www.googleapis.com/upload/drive/v3',
+    ]);
+    expect([...new Set([...src().matchAll(/\b(SUPABASE_[A-Z_]+|SITE_URL|ANTHROPIC_API_KEY|GOOGLE_[A-Z_]+)\b/g)].map((m) => m[1]))].sort()).toEqual([
+      'ANTHROPIC_API_KEY', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'GOOGLE_REFRESH_TOKEN', 'SITE_URL', 'SUPABASE_ANON_KEY', 'SUPABASE_SERVICE_ROLE_KEY', 'SUPABASE_URL',
+    ]);
+  });
+  test('it never writes to the console', () => {
+    expect(src()).not.toMatch(/\bconsole\./);
+  });
+
+  const rubric = Object.fromEntries(REPORT_DIMENSIONS.map((d) => [d, { name: d, levels: ['a', 'b', 'c', 'd'] }])) as Rubric;
+  const out = { scores: { picture: 3, formulation: 2, link: 3, process: 4, self: 2, ethics: 3 }, comments: 'ok', notes: [{ dimension: 'self', quote: 'alpha beta' }] };
+  test('the bundled checks give the same answers as the original', async () => {
+    const b = await loadDraft();
+    const cases: unknown[] = [out, { ...out, scores: { ...out.scores, self: 5 } }, { ...out, notes: [{ dimension: 'self', quote: 'gamma' }] }, { ...out, comments: '字'.repeat(3001) }, { ...out, comments: ' ' }, { ...out, extra: 1 }, null, 'x', []];
+    for (const c of cases) expect(b.checkReportOutput(c, 'alpha   beta here')).toEqual(checkReportOutput(c, 'alpha   beta here'));
+    for (const t of ['x'.repeat(199), 'x'.repeat(200), 'x'.repeat(30_000), 'x'.repeat(30_001), 'x'.repeat(200) + 'REPORT_TEXT']) expect(b.guardReport(t, 'n1')).toEqual(guardReport(t, 'n1'));
+    const p = { locale: 'zh-Hant', rubric, reportText: 'report', nonce: 'a1b2c3d4e5f60718' } as const;
+    expect(b.buildReportRequest(p)).toEqual(buildReportRequest(p));
+  });
+  test('the bundled function itself makes a draft through fakes, stays shut when the switch is off, and keeps the report out of what it stores', async () => {
+    const b = await loadDraft();
+    const be = new DraftBackend();
+    const llm = new DraftLlm();
+    const post = (back: DraftBackend, l: DraftLlm) => b.handleRequest(new Request('https://x.test/f', { method: 'POST', headers: { Authorization: 'Bearer tok-S1' }, body: JSON.stringify({ action: 'draft', report_id: R_A }) }), DRAFT_ENV, { fetchFn: back.fetch as typeof fetch, llm: l, nonce: () => 'n01abcdef0123456789abcd' });
+    expect((await post(be, llm)).status).toBe(200);
+    expect(llm.calls).toHaveLength(1);
+    expect(be.feedback).toHaveLength(1);
+    expect(JSON.stringify(be.feedback) + JSON.stringify(be.usage)).not.toContain(MARK);
+    const be2 = new DraftBackend();
+    for (const c of Object.values(be2.cohorts)) c.ai_enabled = false;
+    const llm2 = new DraftLlm();
+    const off = await post(be2, llm2);
     expect(off.status).toBe(403);
     expect(llm2.calls).toHaveLength(0);
     expect(be2.outsideSupabase()).toEqual([]);
