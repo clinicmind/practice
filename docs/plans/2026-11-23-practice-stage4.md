@@ -164,7 +164,7 @@ test('setup-all.sql is in step with migrations', …);   // 既有測試
   - `met === true` 但 `evidence === ''` → 通過但標記 `unsupported`（回傳在 `value` 之外的 `warnings`），因為「做到」卻指不出原文是弱證據。**這項是設計判斷，T14 的結果要看它是否常出現。**
   - `concern !== 'none'` 時，`criteria` 和 `suggestion` 仍要通過格式驗證，但呼叫端不顯示它們（Task 6）。
 
-- [ ] **Step 1: 寫失敗的測試**
+- [x] **Step 1: 寫失敗的測試**
 
 ```ts
 test.each(validOutputs)('accepts %#', …);
@@ -181,8 +181,8 @@ test('a model output that contains the student text twice is fine; one that adds
 test('module has no DOM or Node imports', …);
 ```
 
-- [ ] **Step 2–4:** FAIL → 實作 → PASS（`npx vitest run packages/ai-feedback`；把這個套件併入 `npm run check`，照 `packages/deid` 的做法）
-- [ ] **Step 5:** commit `feat(ai): output schema and evidence check`
+- [x] **Step 2–4:** FAIL → 實作 → PASS（`npx vitest run packages/ai-feedback`；把這個套件併入 `npm run check`，照 `packages/deid` 的做法）
+- [x] **Step 5:** commit `feat(ai): output schema and evidence check`
 
 **驗收：** 測試全過；`npm run check` 包含新套件；沒有 DOM／Node 依賴。**被擋住：** 無。
 
@@ -195,16 +195,16 @@ test('module has no DOM or Node imports', …);
 
 這是規格的上線關卡 3。**讀官方文件，不憑記憶。** 不呼叫任何 API。
 
-- [ ] **Step 1:** 讀 Anthropic 當時的：商業條款（Commercial Terms）、隱私說明中關於 API 輸入輸出的保存與訓練使用、零資料保存（ZDR）的資格與申請方式、資料處理附錄（DPA）、資料所在地（`inference_geo`；成本文件已記美國境內推論加價 10%）、Haiku 5.5 和 Sonnet 5.5 各自有沒有額外的保存要求（skill 記載 Fable／Mythos 要求 30 天保存；Haiku／Sonnet 要核對）。用 WebFetch 讀官方頁面，記下網址和讀取日期。
-- [ ] **Step 2:** 寫文件，用「是什麼／對我們的意思／擁有人要決定什麼」的格式，回答：
+- [x] **Step 1:** 讀 Anthropic 當時的：商業條款（Commercial Terms）、隱私說明中關於 API 輸入輸出的保存與訓練使用、零資料保存（ZDR）的資格與申請方式、資料處理附錄（DPA）、資料所在地（`inference_geo`；成本文件已記美國境內推論加價 10%）、Haiku 5.5 和 Sonnet 5.5 各自有沒有額外的保存要求（skill 記載 Fable／Mythos 要求 30 天保存；Haiku／Sonnet 要核對）。用 WebFetch 讀官方頁面，記下網址和讀取日期。
+- [x] **Step 2:** 寫文件，用「是什麼／對我們的意思／擁有人要決定什麼」的格式，回答：
   1. 學生作答（虛構內容除外，真實使用時是敏感資料）送給 API 後，被保存多久？誰看得到？
   2. 是否用於訓練？能否確認不用？
   3. 能否申請 ZDR？條件？會不會讓某個模型不可用？
   4. 資料送到哪個區域？
   5. 學生對此要知道什麼？（介面要不要加一句說明、同意書要不要改。**這是給擁有人和實習單位的問題，不是我能代答的。**）
   6. 報告草稿（T12）會把報告全文送出去。報告雖已去識別化掃描，但掃描會漏（HANDOFF 第 3 節）。結論要單獨寫報告這一項。
-- [ ] **Step 3:** 結論只寫事實和待決定項，不替擁有人接受條款。
-- [ ] **Step 4:** commit `docs: ai feedback data terms review`
+- [x] **Step 3:** 結論只寫事實和待決定項，不替擁有人接受條款。
+- [x] **Step 4:** commit `docs: ai feedback data terms review`
 
 **驗收：** 文件有網址、讀取日期、逐題回答；沒有讀到的項目明寫「未核對」。擁有人讀過並回答 D3 之前，T14 起的任何真實呼叫不可進行。**被擋住：** 無（讀公開文件）。若網路白名單擋住 Anthropic 網站，用環境工具提出申請，不繞路。
 
@@ -232,7 +232,7 @@ test('module has no DOM or Node imports', …);
   - 先檢查 `stop_reason`；`refusal` 回 `stopReason: 'refusal'`、`text: null`。
   - **C1 實驗（不呼叫 API）：** 確認 `npm:@anthropic-ai/sdk` 能不能在 esbuild 單一檔案打包後，貼進 Supabase 編輯器（讀 Supabase 當時的 Edge Function 文件；`docs/SETUP-reports.md` 已有貼上做法）。可以就用 SDK 的 `messages.create`（或 `parse`）；不行就用 `fetch` 直打 `POST /v1/messages`（標頭 `x-api-key`、`anthropic-version`、`content-type`），並在檔案頂部說明原因。兩種都只寫這一個檔案，其他程式只認 `LlmClient`。
 
-- [ ] **Step 1: 寫失敗的測試**
+- [x] **Step 1: 寫失敗的測試**
 
 ```ts
 test('the first two content blocks are identical across two different students answering the same drill', …);   // 快取前綴穩定
@@ -250,8 +250,8 @@ test('the API key never appears in an error message or thrown value', …);
 test('model ids are exactly claude-haiku-5-5 and claude-sonnet-5-5', …);
 ```
 
-- [ ] **Step 2–4:** FAIL → 實作 → PASS。測試用假 `fetch`，**沒有任何真實請求**。
-- [ ] **Step 5:** commit `feat(ai): prompt, input guard and Anthropic client`
+- [x] **Step 2–4:** FAIL → 實作 → PASS。測試用假 `fetch`，**沒有任何真實請求**。
+- [x] **Step 5:** commit `feat(ai): prompt, input guard and Anthropic client`
 
 **驗收：** 測試全過；`grep -r "api.anthropic.com" --include=*.ts` 只出現在 `anthropic.ts`；提示文字交擁有人過目（附在給擁有人的下一次報告）。**被擋住：** 無（真實呼叫在 T16）。
 
@@ -271,7 +271,7 @@ test('model ids are exactly claude-haiku-5-5 and claude-sonnet-5-5', …);
 - `budgetState(spent, limit, warnAt): 'ok'|'warn'|'exhausted'`。
 - 冪等協定（文字寫在函式檔頂部，T6 實作）：先 `insert ai_feedback (attempt_id, status='pending')`；衝突時讀既有列：`done` → 回傳已存結果；`pending` 且建立不到 2 分鐘 → 回 409 `in_progress`；`pending` 超過 2 分鐘 → 視為前一次崩潰，刪除後重新聲明。呼叫失敗或輸出被丟棄 → 刪除 `pending` 列（讓學生可重試）。
 
-- [ ] **Step 1: 寫失敗的測試**
+- [x] **Step 1: 寫失敗的測試**
 
 ```ts
 test('costUsd matches the cost document’s per-request figure within 5% for the mid scenario', …);   // 約 US$0.00032
@@ -286,8 +286,8 @@ test('budgetState thresholds at 80% and 100%', …);
 test('a prompt over 100,000 tokens is refused rather than priced at the high rate', …);
 ```
 
-- [ ] **Step 2–4:** FAIL → 實作 → PASS
-- [ ] **Step 5:** commit `feat(ai): limits, budget and cost`
+- [x] **Step 2–4:** FAIL → 實作 → PASS
+- [x] **Step 5:** commit `feat(ai): limits, budget and cost`
 
 **驗收：** 測試全過；`costUsd` 和 `scripts/estimate-ai-cost.ts` 的同一組輸入結果一致（寫一個對照測試，不複製公式，直接 import 或交叉驗證）。**被擋住：** 無（D1 只影響真實的 `monthly_limit_usd` 值）。
 
