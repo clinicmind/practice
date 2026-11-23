@@ -118,7 +118,7 @@
 - RLS：學生讀自己作答的 `ai_feedback`（`status = 'done'`）；督導讀本班的；**沒有任何 insert／update／delete policy**（只有 service role 寫）。`ai_usage`：督導讀本班的列（為了成本檢視）；學生不可讀。`ai_budget`：督導可讀，無寫入 policy。anon 全撤銷。
 - 新 view `ai_disagreements`（`security_invoker = true`）：每個 `done` 的 `ai_feedback` 展開成 3 條標準，列出 `user_id`、`item_id`、`criterion_index`、`self_met`、`ai_met`，只留 `self_met <> ai_met`。給 Task 9。view 不含作答文字，也不含 `evidence`。
 
-- [ ] **Step 1: 寫失敗的測試**（用既有 pglite 測試台 `supabase/tests/harness.ts`）
+- [x] **Step 1: 寫失敗的測試**（用既有 pglite 測試台 `supabase/tests/harness.ts`）
 
 ```ts
 test('ai_enabled defaults to false and a supervisor cannot change it through the app', …);
@@ -135,10 +135,10 @@ test('feedback draft (author_id null) is invisible to the student; invisible eve
 test('setup-all.sql is in step with migrations', …);   // 既有測試
 ```
 
-- [ ] **Step 2:** `npx vitest run supabase/tests/aiFeedback.test.ts` → FAIL
-- [ ] **Step 3:** 寫 migration；重新產生 `setup-all.sql`
-- [ ] **Step 4:** → PASS；`npm run check` 全過
-- [ ] **Step 5:** commit `feat(db): ai feedback tables, switch and permissions`
+- [x] **Step 2:** `npx vitest run supabase/tests/aiFeedback.test.ts` → FAIL
+- [x] **Step 3:** 寫 migration；重新產生 `setup-all.sql`
+- [x] **Step 4:** → PASS；`npm run check` 全過
+- [x] **Step 5:** commit `feat(db): ai feedback tables, switch and permissions`
 
 **驗收：** 上列測試全過；對照既有 `0005_reports.sql` 的權限寫法逐行覆核；`ai_enabled` 預設 false 且 app 內沒有任何路徑能改。給擁有人的一句話：這份 migration 要**只貼這一份**到 SQL Editor，且要在階段 4 函式上線前套用。**被擋住：** 無。
 
@@ -320,7 +320,7 @@ test('a prompt over 100,000 tokens is refused rather than priced at the high rat
   13. 回應：`concern = none` → `ok`；否則 `concern`（不含建議）。
 - 學生自評和 AI 的不一致，由 view `ai_disagreements` 計算，函式不處理。
 
-- [ ] **Step 1: 寫失敗的測試**（全用假 LLM 和假後端）
+- [x] **Step 1: 寫失敗的測試**（全用假 LLM 和假後端）
 
 ```ts
 test('ai_enabled false: returns ai_disabled and makes zero outbound requests of any kind except the auth and profile reads', …);
@@ -347,8 +347,8 @@ test('the request sent to the LLM contains no user id, attempt id, display name 
 test('CORS preflight and a GET are handled like in reports', …);
 ```
 
-- [ ] **Step 2–4:** FAIL → 實作 → PASS
-- [ ] **Step 5:** commit `feat(ai): ai-feedback edge function`
+- [x] **Step 2–4:** FAIL → 實作 → PASS
+- [x] **Step 5:** commit `feat(ai): ai-feedback edge function`
 
 **驗收：** 測試全過；用 `rg "console\." supabase/functions/ai-feedback/src` 確認沒有記錄內容的日誌；`ai_enabled = false` 路徑有「零對外請求」的測試。**被擋住：** 無。
 
@@ -360,7 +360,7 @@ test('CORS preflight and a GET are handled like in reports', …);
 - Modify: `scripts/build-functions.ts`、`scripts/build-functions.test.ts`、`package.json`（`npm run functions` 兩個函式都產生）
 - Create（產生）: `supabase/functions/ai-feedback/index.ts`
 
-- [ ] **Step 1: 寫失敗的測試**（沿用 `reports` 的三項）
+- [x] **Step 1: 寫失敗的測試**（沿用 `reports` 的三項）
 
 ```ts
 test('the generated ai-feedback/index.ts is up to date with the sources', …);
@@ -369,10 +369,16 @@ test('the bundled schema/evidence check behaves like the original on the same 20
 test('the bundle contains no API key, no real URL other than the Anthropic endpoint and Supabase env names', …);
 ```
 
-- [ ] **Step 2–4:** FAIL → 改 `build-functions.ts`（第二個 entry）→ PASS；`npm run functions` 後 `git diff` 只有新檔
-- [ ] **Step 5:** commit `build: bundle ai-feedback function`
+- [x] **Step 2–4:** FAIL → 改 `build-functions.ts`（第二個 entry）→ PASS；`npm run functions` 後 `git diff` 只有新檔
+- [x] **Step 5:** commit `build: bundle ai-feedback function`
 
 **驗收：** `npm run check` 全過；`reports/index.ts` 沒有任何位元組變動（`git diff --stat` 為證）。擁有人貼的是產生的檔案。**被擋住：** 無。
+
+**實作紀錄（T1、T6、T7，2026-11-23，分支 `claude/stage4-t1-t6`）：**
+- T1：`0007_ai_feedback.sql`。測試 22 項（`supabase/tests/aiFeedback.test.ts`）。`ai_usage.user_id`／`cohort_id` 用 `on delete set null`，刪帳號不影響月總額。`ai_feedback` 加了 `check ((status='done') = (output is not null))`。學生讀 `ai_usage` 得到空集合（有 select 權限、policy 擋掉），不是丟錯。`ai_disagreements` 另含 `attempt_id` 欄（不含文字）。
+- T6：和計畫的差異：(1) `get` 動作沒有結果時回 200 `{status:'none'}`；(2) 含分隔標記的輸入回 400 `input_rejected`（計畫沒列代碼）；(3) 月花費是**逐頁加總**（PostgREST 每頁最多 1000 列，只讀第一頁會少算，等於預算失效）；超過 100 頁或任何讀取失敗＝拒絕；(4) 「同題今日次數」＝這位學生同題在 24 小時內已 `done` 的回饋數（`ai_usage` 沒有題目欄，所以不在那裡數）；(5) 用量寫入失敗時**不儲存也不顯示結果**（花了錢卻沒紀錄比重試更糟）；(6) 中文版內容尚未發布時退回英文（和學生畫面一致）；(7) 新動作 `eval` 屬 T11，**未做**。
+- T7：`npm run functions` 現在產生兩個檔案。`ai-feedback/index.ts` 約 148 KB（含 zod，約 4,600 行）。`reports/index.ts` 位元組不變。`tsconfig.json` 排除這個產生檔（和 `reports/index.ts` 一樣）。貼進 Supabase 編輯器的大小上限**未證實**（C1 的老問題），擁有人貼的時候要先試。
+- `ai_enabled` 關閉時網站不變：`scripts/ai-off.test.ts`（網站程式碼不引用新程式碼）＋函式「零對外請求」測試＋用基線提交 `e186682` 和現在各建置一次，`diff -rq dist` 無差異。
 
 ---
 
