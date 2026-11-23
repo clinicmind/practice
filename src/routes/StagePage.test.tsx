@@ -69,3 +69,32 @@ describe('unreviewed modules', () => {
     await waitFor(() => expect(screen.queryByText(en.common.loading)).toBeNull());
   });
 });
+
+describe('stage notice', () => {
+  test('a stage with a notice shows it above the module list, and a stage without one does not', async () => {
+    const { mkdtempSync, cpSync, readFileSync, writeFileSync } = await import('node:fs');
+    const { tmpdir } = await import('node:os');
+    const { join } = await import('node:path');
+    const { parse, stringify } = await import('yaml');
+    const { buildContent } = await import('../../scripts/build-content');
+    const src = join(__dirname, '..', '..', 'tests', 'fixtures', 'content', 'multi');
+    const dir = mkdtempSync(join(tmpdir(), 'notice-'));
+    cpSync(src, dir, { recursive: true });
+    const f = join(dir, 'en/stages/demo/stage.yaml');
+    writeFileSync(f, stringify({ ...parse(readFileSync(f, 'utf8')), notice: 'This stage touches on loss. Pause whenever you need to.' }));
+    const out = mkdtempSync(join(tmpdir(), 'notice-out-'));
+    for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: dir, outDir: out, locale });
+    serve(out);
+    renderCloud('/s/demo', as(SUPERVISOR));
+    const note = await screen.findByText(/This stage touches on loss/);
+    expect(note.closest('aside')).toHaveAccessibleName(en.eft.noticeLabel);
+    expect(screen.getByRole('link', { name: /Demo intro/ })).toBeVisible();
+  });
+
+  test('the foundations page has no notice block', async () => {
+    serve(await buildFixture('multi'));
+    renderCloud('/s/foundations', as(SUPERVISOR));
+    await screen.findByRole('link', { name: /Intake \(fixture\)/ });
+    expect(document.querySelector('aside')).toBeNull();
+  });
+});

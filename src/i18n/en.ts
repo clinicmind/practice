@@ -71,6 +71,9 @@ const enStrings = {
     loadError: 'Could not load this session. Check your connection and try again.',
     answered: 'Answered',
   },
+  eft: {
+    noticeLabel: 'Before you begin',
+  },
   notice: {
     storeReset:
       'Your saved progress could not be read, so this device started fresh. A backup of the old data was kept in your browser.',

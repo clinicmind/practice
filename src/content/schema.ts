@@ -153,6 +153,8 @@ export type ModuleBundle = z.infer<typeof ModuleBundleSchema>;
 export const StageIndexSchema = z.object({
   stage: text,
   title: text,
+  /** A short note shown at the top of the stage page (for example a content notice). */
+  notice: text.optional(),
   modules: z.array(z.object({ slug: text, title: text, reviewed: z.boolean() })),
 });
 export type StageIndex = z.infer<typeof StageIndexSchema>;
@@ -163,7 +165,7 @@ export type StageListItem = z.infer<typeof StageListSchema>[number];
 
 /** stage.yaml as authored: ordered module slugs. */
 export const StageFileSchema = z
-  .object({ stage: text, title: text, modules: z.array(text) })
+  .object({ stage: text, title: text, notice: text.optional(), modules: z.array(text) })
   .strict();
 
 export const DrillsFileSchema = z.array(DrillSchema);

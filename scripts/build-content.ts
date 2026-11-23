@@ -240,13 +240,14 @@ function buildStage(
 
   // zh-Hant may be absent, partial or complete; English is the reference for structure.
   const stageFile = join(stageDir, 'stage.yaml');
-  let enStage: { title: string; modules: string[] } | undefined;
+  let enStage: { title: string; notice?: string; modules: string[] } | undefined;
   if (!isEn && existsSync(join(enStageDir, 'stage.yaml'))) {
     enStage = load(join(enStageDir, 'stage.yaml'), 'stage.yaml', StageFileSchema, []);
   }
 
   const stageLabel = stage === DEFAULT_STAGE ? 'stage.yaml' : `${stage}/stage.yaml`;
   let stageTitle = stage === DEFAULT_STAGE ? 'Foundations' : stage;
+  let stageNotice: string | undefined;
   let slugs: string[] = [];
   const checkStageName = (file: { stage: string } | undefined) => {
     if (file && file.stage !== stage) errs.push(`${tag}${stageLabel}: stage "${file.stage}" does not match directory "${stage}"`);
@@ -259,6 +260,7 @@ function buildStage(
     const file = load(stageFile, stageLabel, StageFileSchema, errs);
     checkStageName(file);
     stageTitle = file?.title ?? stageTitle;
+    stageNotice = file?.notice;
     slugs = file?.modules ?? [];
     if (new Set(slugs).size !== slugs.length) errs.push(`${stageLabel}: duplicate module slug`);
   } else {
@@ -266,11 +268,13 @@ function buildStage(
       const file = load(stageFile, `${tag}${stageLabel}`, StageFileSchema, errs);
       checkStageName(file);
       stageTitle = file?.title ?? stageTitle;
+      stageNotice = file?.notice ?? enStage?.notice;
       for (const m of file?.modules ?? []) {
         if (enStage && !enStage.modules.includes(m)) errs.push(`${tag}${stageLabel}: module "${m}" does not exist in English`);
       }
     } else if (enStage) {
       stageTitle = enStage.title;
+      stageNotice = enStage.notice;
     }
     // Course order is English's. A module counts as present when its directory has files.
     const present = (slug: string) => existsSync(join(stageDir, slug)) && readdirSync(join(stageDir, slug)).length > 0;
@@ -284,7 +288,7 @@ function buildStage(
     }
   }
 
-  const index: StageIndex = { stage, title: stageTitle, modules: [] };
+  const index: StageIndex = { stage, title: stageTitle, ...(stageNotice ? { notice: stageNotice } : {}), modules: [] };
   const emit: StageResult['emit'] = [];
 
   for (const slug of slugs) {

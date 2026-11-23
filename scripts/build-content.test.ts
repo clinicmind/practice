@@ -421,3 +421,39 @@ describe('the real course content', () => {
     }
   });
 });
+
+describe('stage notice', () => {
+  const MULTI = join(__dirname, '..', 'tests', 'fixtures', 'content', 'multi');
+  function withNotice(zhToo: boolean): string {
+    const dir = mkdtempSync(join(tmpdir(), 'notice-'));
+    cpSync(MULTI, dir, { recursive: true });
+    const set = (loc: string, text: string) => {
+      const f = join(dir, loc, 'stages/demo/stage.yaml');
+      writeFileSync(f, stringify({ ...parse(readFileSync(f, 'utf8')), notice: text }));
+    };
+    set('en', 'English notice.');
+    if (zhToo) set('zh-Hant', '中文提示。');
+    return dir;
+  }
+
+  test('a notice in stage.yaml reaches the stage index, per language', async () => {
+    const dir = withNotice(true);
+    await buildContent({ contentDir: dir, outDir, locale: 'en' });
+    await buildContent({ contentDir: dir, outDir, locale: 'zh-Hant' });
+    expect(readJson('en/demo/index.json').notice).toBe('English notice.');
+    expect(readJson('zh-Hant/demo/index.json').notice).toBe('中文提示。');
+  });
+
+  test('a stage without a notice has no notice key at all (existing output is unchanged)', async () => {
+    await buildContent({ contentDir: MULTI, outDir, locale: 'en' });
+    expect('notice' in readJson('en/demo/index.json')).toBe(false);
+    expect('notice' in readJson('en/foundations/index.json')).toBe(false);
+  });
+
+  test('an empty notice is rejected', async () => {
+    const dir = withNotice(false);
+    const f = join(dir, 'en/stages/demo/stage.yaml');
+    writeFileSync(f, stringify({ ...parse(readFileSync(f, 'utf8')), notice: ' ' }));
+    await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/notice/);
+  });
+});

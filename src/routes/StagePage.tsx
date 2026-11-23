@@ -21,6 +21,7 @@ export function StagePage() {
     <div>
       <h1>{data.stage.title}</h1>
       {data.stage.stage === DEFAULT_STAGE && <p className="lede">{s.stage.lede}</p>}
+      {data.stage.notice && <aside className="stage-note" aria-label={s.eft.noticeLabel}><p>{data.stage.notice}</p></aside>}
       {notice && <p role="status" className="notice">{notice}</p>}
       {data.visible.length === 0 ? (
         <p>{s.stage.empty}</p>

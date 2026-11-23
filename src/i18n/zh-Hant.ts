@@ -63,6 +63,9 @@ export const zhHant: Strings = {
     loadError: '無法載入這次會談。請檢查網路連線後再試。',
     answered: '已回答',
   },
+  eft: {
+    noticeLabel: '開始之前',
+  },
   notice: {
     storeReset:
       '無法讀取你儲存的進度，所以這部裝置從頭開始。舊資料的備份仍保留在你的瀏覽器中。',
