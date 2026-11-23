@@ -48,7 +48,7 @@
   level: easy
   skill: deepening
   context: "早期的會談。任務：寫一句回應，留在感受上，並邀請個案向底下可能有的東西走一步。"
-  client: "我對自己吼了姊姊很內疚。我一直在重想這件事。"
+  client: "我為了吼了姊姊而內疚。我一直在重想這件事。"
   criteria: *dp_easy
 - id: eft-emotion-types-e08
   level: easy
