@@ -1,6 +1,6 @@
 # 交接文件
 
-最後更新：2026-11-22。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
+最後更新：2026-11-23。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
 
 ## 1. 現況
 
@@ -17,7 +17,7 @@
 | 階段 3 Task 1：去識別化掃描器 | 完成 | 142 個測試 |
 | 階段 3 Task 2：報告撰寫介面 | 完成並上線（2026-11-22）。介面預設完全隱藏（`reportsEnabled` 預設關），正式網站不會改變。提交經注入的 `ReportSubmitter`，預設回「報告功能尚未開放」；沒有後端 | 單元測試＋端到端（用打開開關的另一個建置和假後端） |
 | 階段 3 Task 3–6：資料表、Edge Function、Drive、評閱、保存期限 | 未開始 | — |
-| 階段 4–6：AI 回饋、EFT、DBT | 設計規格已定。EFT 和 DBT 的貫穿個案有草稿（`content/CLIENT_EFT.md`、`content/CLIENT_DBT.md`），待擁有人確認 | — |
+| 階段 4–6：AI 回饋、EFT、DBT | 設計規格已定。EFT 和 DBT 的貫穿個案有草稿（`content/CLIENT_EFT.md`、`content/CLIENT_DBT.md`），待擁有人確認。階段 4 的成本估算和一致性檢驗**設計**已寫好（2026-11-23，分支 `claude/ai-feedback-cost`，未合併），沒有任何實作、沒有呼叫付費 API | 成本腳本 19 個單元測試；定價 2026-11-23 讀官方定價頁；一致性檢驗只有設計，未執行 |
 
 最後一次完整測試（2026-11-22，整合 `claude/stage-admin` 和 `claude/report-compose` 之後，已上線）：`npm run check` 439＋142 個通過；`npm run e2e` 30 個通過、4 個跳過（同一批需要服務金鑰的測試）。用真實內容確認：首頁 8 個階段、舊網址自動轉址、正式建置沒有報告連結，`/reports/new` 顯示找不到頁面。
 
@@ -109,7 +109,7 @@
    - Edge Function 怎樣部署。擁有人不會用命令列。先確認能否在 Supabase 介面的 Edge Function 編輯器貼上程式碼；每個函式要做成單一檔案才可行。
    - Google Drive 授權。規格 §8.5 選了 OAuth `drive.file`。擁有人要在 Google Cloud 建立 OAuth 用戶端，並取得 refresh token。先寫出逐步指引，並做冒煙測試。行不通就停下來，和擁有人商量改用「正文存資料庫，每日備份到 Drive」。
    - `reports_enabled` 預設關。擁有人已確認實習單位容許上傳去識別化的報告，保存期限是學期結束後 90 天。
-3. **階段 4–6。** 設計規格在 `docs/specs/2026-11-15-stage4-6-design.md`。每個階段先寫實作計畫，再動工。階段 4 要花錢，先給擁有人成本估算。
+3. **階段 4–6。** 設計規格在 `docs/specs/2026-11-15-stage4-6-design.md`。每個階段先寫實作計畫，再動工。階段 4 要花錢：成本估算已寫（`docs/plans/2026-11-23-ai-feedback-cost.md`，整班 30 人全課程約 US$3／12／45，低／中／高），等擁有人決定月預算上限和 API 帳號由誰付費（該文件第 7 節）。一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-consistency.md`，執行前要擁有人批准、金鑰、並同意第 8 節的補強門檻。資料保存條款尚未核對。
 4. **專案 1（收入產品）** 在另一個 repo `clinicmind/clinicmind`，看它的 `docs/roadmap/STATUS.md`。
 
 **報告撰寫介面（階段 3 Task 2）**
@@ -133,4 +133,6 @@
 | `docs/specs/2026-11-15-stage4-6-design.md` | AI 回饋、EFT、DBT 的設計規格 |
 | `docs/plans/2026-11-15-practice-phase{1,2,3}.md` | 各階段實作計畫（1、2 已完成，留作參考） |
 | `docs/plans/2026-11-15-zh-hant.md` | 翻譯規則和用語表 |
+| `docs/plans/2026-11-23-ai-feedback-cost.md` | 階段 4 成本估算（離線腳本 `scripts/estimate-ai-cost.ts`，`npx tsx scripts/estimate-ai-cost.ts`） |
+| `docs/plans/2026-11-23-ai-feedback-consistency.md` | 階段 4 一致性檢驗設計（未執行） |
 | `content/CLIENT_M.md` | Client M 的設定和 8 個模組的療程弧線 |
