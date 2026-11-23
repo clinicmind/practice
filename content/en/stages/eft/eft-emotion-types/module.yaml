@@ -1,0 +1,31 @@
+slug: eft-emotion-types
+version: 1.0.0
+title: "Telling emotions apart"
+intro: >-
+  In emotion-focused therapy (EFT), emotions are sorted by what they do, not
+  only by what they are called. A primary adaptive emotion is a direct, present
+  response to a situation, and it points to what the person needs: sadness at a
+  loss, anger at being treated unfairly. A primary maladaptive emotion is an old,
+  familiar feeling that has become a fixed reaction and no longer guides the
+  person: for example, a shame that says "I am not enough" and appears whatever
+  is happening. A secondary emotion is a reaction to another feeling or to a
+  thought, and it often covers what is underneath: irritation over hurt, or
+  guilt after anger. An instrumental emotion is shown mainly for its effect on
+  other people. In this module Client R tells you he has been "a bit irritated",
+  and over two sessions you hear what sits under it. You practise two skills:
+  telling the types apart, and deepening, which means helping the client take one
+  step from the surface feeling toward what is underneath. The types are
+  working guesses in your own head. You do not tell them to the client as
+  labels. Deepen only at the client's pace. Do not deepen when the client is
+  overwhelmed, when the client has said no, or when the relationship is not yet
+  steady enough. In those moments, slow down and steady the client first.
+skills:
+  - emotion-differentiation
+  - deepening
+reflection_prompts:
+  - id: eft-emotion-types-r1
+    text: "Think of a client whose main feeling was anger or irritation. What might have been under it? What did you see or hear that made you think so, and what would have told you that you were wrong?"
+  - id: eft-emotion-types-r2
+    text: "R joked right after he touched something painful. Describe one way you step back from a painful feeling in your own life. How would you want a therapist to respond to you at that moment?"
+  - id: eft-emotion-types-r3
+    text: "Sorting an emotion into a type is a guess. Write down one case where you were sure about a type and later found you were wrong. What did you do with the client in the meantime?"

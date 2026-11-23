@@ -1,0 +1,206 @@
+# 30 drills: 10 per level, 5 per skill per level.
+# Marker drills: the marker is "unclear felt sense". Some clients show it clearly and some do not.
+
+- id: eft-focusing-e01
+  level: easy
+  skill: marker-identification
+  context: "Early session. Task: say whether you hear the marker 'unclear felt sense' (yes or no), and give the sign."
+  client: "There's something in my stomach. I can't say what it is. It's just there."
+  criteria: &mk_easy
+    - "It gives a clear answer about whether the marker 'unclear felt sense' is present: yes or no."
+    - "It points to a specific sign in the client's words or manner, or to the lack of one."
+    - "It is brief and worded as a working view."
+- id: eft-focusing-e02
+  level: easy
+  skill: marker-identification
+  context: "Early session. Task: say whether you hear the marker, and give the sign."
+  client: "I'm so sad about my gran. I miss her every day. I know exactly what it is."
+  criteria: *mk_easy
+- id: eft-focusing-e03
+  level: easy
+  skill: marker-identification
+  context: "Early session. Task: say whether you hear the marker, and give the sign."
+  client: "It's like a fog in my head. Something's off. I can't put my finger on it."
+  criteria: *mk_easy
+- id: eft-focusing-e04
+  level: easy
+  skill: marker-identification
+  context: "Early session. Task: say whether you hear the marker, and give the sign."
+  client: "I'm furious with my boss. Furious. He did it again."
+  criteria: *mk_easy
+- id: eft-focusing-e05
+  level: easy
+  skill: marker-identification
+  context: "Early session. Task: say whether you hear the marker, and give the sign."
+  client: "There's a tight feeling in my chest when I think about next month. I don't know what it's about."
+  criteria: *mk_easy
+
+- id: eft-focusing-e06
+  level: easy
+  skill: focusing-guidance
+  context: "Early session. The marker is present. Task: write one or two sentences that invite the client to attend to the feeling."
+  client: "There's something in my stomach. I can't say what."
+  criteria: &fg_easy
+    - "It invites the client to attend to the body sensation or inner place, as an invitation and not an order."
+    - "It is one or two short sentences. It does not name, explain or interpret the feeling."
+    - "It leaves room: it sets no pace and asks nothing that needs a quick answer."
+- id: eft-focusing-e07
+  level: easy
+  skill: focusing-guidance
+  context: "Early session. The marker is present. Task: write one or two sentences that invite the client to attend to the feeling."
+  client: "It's like a fog in my head. Something's off."
+  criteria: *fg_easy
+- id: eft-focusing-e08
+  level: easy
+  skill: focusing-guidance
+  context: "Early session. The marker is present. Task: write one or two sentences that invite the client to attend to the feeling."
+  client: "I feel a tightness in my throat when I think about Friday."
+  criteria: *fg_easy
+- id: eft-focusing-e09
+  level: easy
+  skill: focusing-guidance
+  context: "Early session. The marker is present. Task: write one or two sentences that invite the client to attend to the feeling."
+  client: "There's a feeling in my chest. It comes when I think about home."
+  criteria: *fg_easy
+- id: eft-focusing-e10
+  level: easy
+  skill: focusing-guidance
+  context: "Early session. The marker is present. Task: write one or two sentences that invite the client to attend to the feeling."
+  client: "I'm uneasy. I don't know. It's here somewhere."
+  criteria: *fg_easy
+
+- id: eft-focusing-m01
+  level: medium
+  skill: marker-identification
+  context: "Middle of therapy. Task: say whether the marker is present, give the sign, and say what you would do first, before offering to slow down."
+  client: "I don't know. Something. I've been off all week. (rubs chest) Can we just talk about work?"
+  criteria: &mk_medium
+    - "It gives a clear answer about the marker and points to a specific sign."
+    - "It says what you would do first, such as reflect, check readiness or follow the client's request, before offering the task, or why another response fits better."
+    - "It is brief and worded as a working view."
+- id: eft-focusing-m02
+  level: medium
+  skill: marker-identification
+  context: "Middle of therapy. Task: say whether the marker is present, give the sign, and say what you would do first."
+  client: "It's strange. Whenever I think about the move I get this... knot. It goes when I talk about the house."
+  criteria: *mk_medium
+- id: eft-focusing-m03
+  level: medium
+  skill: marker-identification
+  context: "Middle of therapy. Task: say whether the marker is present, give the sign, and say what you would do first."
+  client: "I feel something when I see her photo. I can't say what. And then I feel silly for not knowing."
+  criteria: *mk_medium
+- id: eft-focusing-m04
+  level: medium
+  skill: marker-identification
+  context: "Middle of therapy. Task: say whether the marker is present, give the sign, and say what you would do first."
+  client: "I've been feeling weird since Tuesday. I think it's about the meeting. Or maybe not. Maybe it's my sister. I don't know."
+  criteria: *mk_medium
+- id: eft-focusing-m05
+  level: medium
+  skill: marker-identification
+  context: "Middle of therapy. Task: say whether the marker is present, give the sign, and say what you would do first."
+  client: "It's a heaviness. I know it's grief about my job. I just need to get through it."
+  criteria: *mk_medium
+
+- id: eft-focusing-m06
+  level: medium
+  skill: focusing-guidance
+  context: "The client has been attending to a place in his chest. Task: write one or two sentences that help him check the word he found."
+  client: "(after a pause) It's like a stone. A small stone."
+  criteria: &fg_medium
+    - "It uses the client's own word or image, unchanged, and offers no replacement word."
+    - "It invites the client to check the word against the feeling, and allows the word to change or be wrong."
+    - "It is short, with no interpretation."
+- id: eft-focusing-m07
+  level: medium
+  skill: focusing-guidance
+  context: "The client is searching for a word. Task: write one or two sentences that help her check it."
+  client: "It's kind of... tight. No, not tight. Tense? Tight."
+  criteria: *fg_medium
+- id: eft-focusing-m08
+  level: medium
+  skill: focusing-guidance
+  context: "The client has been quiet for a while. Task: write one or two sentences that help him check the image."
+  client: "It feels like a closed door."
+  criteria: *fg_medium
+- id: eft-focusing-m09
+  level: medium
+  skill: focusing-guidance
+  context: "The client is searching for a word. Task: write one or two sentences that help her check it."
+  client: "I think the word is 'empty'. But that's not quite right."
+  criteria: *fg_medium
+- id: eft-focusing-m10
+  level: medium
+  skill: focusing-guidance
+  context: "The client has been attending to a feeling in his shoulders. Task: write one or two sentences that help him check the image."
+  client: "It's like a weight. Actually, it's pressing from outside, not from inside."
+  criteria: *fg_medium
+
+- id: eft-focusing-h01
+  level: hard
+  skill: marker-identification
+  context: "Early session. Task: say what points toward the marker and what argues against offering the task now. Decide: offer now, wait, or respond another way."
+  client: "There's something in my chest and I can't breathe and I don't know what's happening, please..."
+  criteria: &mk_hard
+    - "It names what points toward an unclear felt sense and what argues against offering the task now."
+    - "It decides: offer now, wait, or respond another way, and it gives the reason."
+    - "It is brief and worded as a working view."
+- id: eft-focusing-h02
+  level: hard
+  skill: marker-identification
+  context: "Middle of therapy. Task: say what points toward the marker and what argues against offering the task now. Decide."
+  client: "I've got a feeling, it's all in my stomach. Don't make me look at it, okay? I'll deal with it myself."
+  criteria: *mk_hard
+- id: eft-focusing-h03
+  level: hard
+  skill: marker-identification
+  context: "Middle of therapy. The client is laughing. Task: say what points toward the marker and what argues against offering the task now. Decide."
+  client: "There's a weird feeling. Probably nothing. (laughs) You'd say it's about my mother, wouldn't you? Everyone would."
+  criteria: *mk_hard
+- id: eft-focusing-h04
+  level: hard
+  skill: marker-identification
+  context: "Middle of therapy. Task: say what points toward the marker and what argues against offering the task now. Decide."
+  client: "I don't know what this is. I've tried to work it out for weeks. I've read about it. I think it's something to do with attachment."
+  criteria: *mk_hard
+- id: eft-focusing-h05
+  level: hard
+  skill: marker-identification
+  context: "Ten minutes before the end of the session. Task: say what points toward the marker and what argues against offering the task now. Decide."
+  client: "I feel weird. (looks at the clock) We only have ten minutes left, right?"
+  criteria: *mk_hard
+
+- id: eft-focusing-h06
+  level: hard
+  skill: focusing-guidance
+  context: "The client has been trying to attend to a feeling. Task: write one or two sentences. Respond to what just happened before guiding further."
+  client: "I'm trying to feel it, but there's nothing. Maybe I'm doing it wrong."
+  criteria: &fg_hard
+    - "It responds to what the client just said or did (blank, getting bigger, asking for the answer, explaining, stopping) before guiding further."
+    - "It keeps the client in control: the client can slow down, step back or stop, and you do not push on."
+    - "It is short, and it does not name or explain the feeling."
+- id: eft-focusing-h07
+  level: hard
+  skill: focusing-guidance
+  context: "The client has been attending to a feeling in her stomach. Task: write one or two sentences. Respond to what just happened before guiding further."
+  client: "It's getting bigger. I don't like it. I want it to stop."
+  criteria: *fg_hard
+- id: eft-focusing-h08
+  level: hard
+  skill: focusing-guidance
+  context: "The client has been attending to a feeling in his chest. Task: write one or two sentences. Respond to what just happened before guiding further."
+  client: "Can you just tell me what it is? You're the expert."
+  criteria: *fg_hard
+- id: eft-focusing-h09
+  level: hard
+  skill: focusing-guidance
+  context: "The client has been attending to a feeling in her throat. Task: write one or two sentences. Respond to what just happened before guiding further."
+  client: "I think it's probably stress from work. That makes sense. Anyway."
+  criteria: *fg_hard
+- id: eft-focusing-h10
+  level: hard
+  skill: focusing-guidance
+  context: "After a long silence. Task: write one or two sentences. Respond to what just happened before guiding further."
+  client: "I don't want to do this anymore."
+  criteria: *fg_hard

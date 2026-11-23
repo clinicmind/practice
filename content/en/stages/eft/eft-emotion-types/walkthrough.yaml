@@ -1,0 +1,178 @@
+sessions:
+  - id: eft-emotion-types-s3
+    title: "Session 3: 'I just get irritated'"
+    turns:
+      - id: eft-emotion-types-s3-t01
+        speaker: therapist
+        text: "Good to see you, R. How has the week been?"
+      - id: eft-emotion-types-s3-t02
+        speaker: client
+        text: "Fine. Busy. Marking all week. I got irritated a few times. That's all."
+      - id: eft-emotion-types-s3-d1
+        type: choice
+        prompt: "R says he was irritated 'a few times, that's all'. How do you respond?"
+        options:
+          - id: a
+            text: "Irritability is common when you're overloaded. Maybe we could look at ways to manage your workload."
+            fit: weak
+            note: "It explains the irritation and moves to a fix. R asked for methods, so this will feel welcome, and that is the risk. You have left the feeling before you have heard it."
+          - id: b
+            text: "A few times. Tell me about the last one. Where were you, and what was happening just before?"
+            fit: strong
+            note: "The irritation is on the surface, and it is the easiest feeling for R to bring. You follow it into one real moment instead of talking about irritation in general. A concrete scene is where the feeling underneath can show itself."
+          - id: c
+            text: "What do you think the irritation was about?"
+            fit: workable
+            note: "It is a fair question. It asks R to think his way to an answer, and he is good at that. You will get a reason, and probably not the feeling."
+        actual: "A few times. Tell me about the last one. Where were you, and what was happening just before?"
+        rationale: "Irritation is often a secondary emotion. You do not know yet what it covers, so you do not guess. You ask for one scene. Notice that R minimised ('that's all'). Do not argue with that. Just stay curious about what he is willing to tell you."
+      - id: eft-emotion-types-s3-t03
+        speaker: client
+        text: "Tuesday night. My son wouldn't eat. I'd cooked, I was tired, he pushed the plate away. I raised my voice. He went quiet. (clears throat) Then I felt bad. Anyway."
+      - id: eft-emotion-types-s3-d2
+        type: free
+        prompt: "R has told you he raised his voice, his son went quiet, and then he felt bad. Write one response that stays with that moment. Do not explain it and do not fix it."
+        actual: "Your voice went up, he went quiet, and something dropped in you when he did."
+        rationale: "The response stays inside the scene and uses R's own order of events. It names the 'drop' as a tentative guess, in few words, so R can correct it. It does not say 'you feel guilty', which would hand him a label, and it does not suggest what he should do next. Notice what he did after he said 'felt bad': he said 'anyway' and cleared his throat. He is signalling that he wants to move on."
+      - id: eft-emotion-types-s3-t04
+        speaker: client
+        text: "(pause) I don't like it when he goes quiet. I know that quiet. (short laugh) It's nothing."
+      - id: eft-emotion-types-s3-d3
+        type: choice
+        prompt: "R says he knows that quiet, and then says it is nothing. What do you do?"
+        options:
+          - id: a
+            text: "What does it look like? Was it like that in your own family?"
+            fit: weak
+            note: "You may be right that this goes back to his own childhood. Saying so now goes past his 'it's nothing', and it takes the lead from him. He may answer, and he may close down."
+          - id: b
+            text: "Seeing him go quiet is hard for you. We can stay with that for a moment or leave it. Which would you prefer?"
+            fit: strong
+            note: "It acknowledges what he said without arguing with 'it's nothing'. It gives him the choice. A client who is not used to talking about feelings needs to know that he is the one deciding how far to go."
+          - id: c
+            text: "It doesn't sound like nothing. You stopped in the middle of that sentence."
+            fit: workable
+            note: "You noticed something real. Pointing at it directly, so soon after he waved it away, can feel like being caught. Some clients would like it. R may not."
+        actual: "Seeing him go quiet is hard for you. We can stay with that for a moment or leave it. Which would you prefer?"
+        rationale: "Deepening works only when the client is coming with you. Asking whether to stay is not weakness. It is how you find out. If R says 'leave it', you leave it, and the door stays open."
+      - id: eft-emotion-types-s3-t05
+        speaker: client
+        text: "(pause) ...Stay, I guess. (pause) It's like I see myself. Sitting at that table."
+      - id: eft-emotion-types-s3-t06
+        speaker: therapist
+        text: "You see yourself at that table."
+      - id: eft-emotion-types-s3-t07
+        speaker: client
+        text: "Not eating. Waiting for it to be over. (clears throat) But I shouldn't take it out on him. He's six."
+      - id: eft-emotion-types-s3-d4
+        type: choice
+        prompt: "R has given you three things: irritation, feeling bad about it, and a boy at a table. He has just said 'I shouldn't'. Which do you follow?"
+        options:
+          - id: a
+            text: "You're right, he's only six. What could you do differently next time?"
+            fit: weak
+            note: "It agrees with the 'should' and goes straight to a solution. That teaches R that the feeling is a problem to manage. The boy at the table is left behind."
+          - id: b
+            text: "Irritation first, and then feeling bad. The part that caught my attention is the boy at the table. Is it all right to go back there for a moment?"
+            fit: strong
+            note: "In your head you sort: irritation is secondary, 'I shouldn't' is a self-critical thought, and the table is nearest to something that belongs to R himself. You follow that one, and you ask first."
+          - id: c
+            text: "You sound hard on yourself about it. Where do you think that comes from?"
+            fit: workable
+            note: "The self-criticism is real, and you will return to it. The question asks for an explanation of where it comes from, and R will supply one in his head. The scene at the table is more alive."
+        actual: "Irritation first, and then feeling bad. The part that caught my attention is the boy at the table. Is it all right to go back there for a moment?"
+        rationale: "Telling the types apart is silent work. R hears none of the labels. He hears you stay with the thing that matters most, and he hears you ask permission. The irritation and the guilt are real. They are also on the way to something."
+      - id: eft-emotion-types-s3-t08
+        speaker: client
+        text: "(pause, quieter) Hm. The table. Yeah."
+    notes:
+      goals: "R wanted 'a few methods' for his temper. No change yet. He agreed to stay with one scene when asked."
+      alliance: "Bond: he stayed when given the choice, which is a good sign. Tasks: he still expects methods, and the work today was not methods. Say so openly in a coming session. Goals: not yet agreed."
+      formulation_update: "Working idea, to be tested: the irritation with his son is secondary. It follows his son going quiet, which puts R back in a childhood scene (a table, waiting for it to be over). Self-criticism ('I shouldn't') comes right after. The primary feeling is not yet named, and I do not name it for him."
+  - id: eft-emotion-types-s4
+    title: "Session 4: 'Where did the other five go?'"
+    turns:
+      - id: eft-emotion-types-s4-t01
+        speaker: therapist
+        text: "Last week you went back to the table. What was that like afterwards?"
+      - id: eft-emotion-types-s4-t02
+        speaker: client
+        text: "I thought about it on and off. Mostly in the car. (pause) I remembered my report card. Form three. Ninety-five in maths. My father looked at it for a long time."
+      - id: eft-emotion-types-s4-t03
+        speaker: therapist
+        text: "A long time."
+      - id: eft-emotion-types-s4-t04
+        speaker: client
+        text: "Then he said, 'Where did the other five go?' (short laugh) Classic. I still tell that story at dinner parties."
+      - id: eft-emotion-types-s4-d1
+        type: choice
+        prompt: "R tells the story as a funny one. He started with 'a long time', and he looked away as he said it. What do you do?"
+        options:
+          - id: a
+            text: "(smiling) That's a good one. What did you say back?"
+            fit: weak
+            note: "You join the joke. R will enjoy that, and the moment will pass. He may take it as a sign that you also prefer this story as a funny one."
+          - id: b
+            text: "You tell it as a funny story. But you started with the long look."
+            fit: strong
+            note: "It reflects both sides, the way he tells it and what he remembered first, without taking a side. It leaves him free to say what the long look was."
+          - id: c
+            text: "That sounds like it hurt."
+            fit: workable
+            note: "It may be true, and you will probably say something like it later. Said now, it names a feeling that R has not said. He may feel found out, and he may joke again."
+        actual: "You tell it as a funny story. But you started with the long look."
+        rationale: "Jokes and clearing the throat are ways R steps back from feeling. They are not enemies. Reflecting the contrast lets him know you saw both the story and the look, and you have not chosen one."
+      - id: eft-emotion-types-s4-t05
+        speaker: client
+        text: "(quiet) The long look. Yes. I was waiting. For him to... (clears throat) Well. He wasn't wrong, I suppose. I could have done better on the paper. There were careless mistakes."
+      - id: eft-emotion-types-s4-d2
+        type: choice
+        prompt: "R says his father wasn't wrong. You sense something under that, maybe shame, but you are not sure. What do you do?"
+        options:
+          - id: a
+            text: "It sounds like you felt ashamed."
+            fit: weak
+            note: "You may even be right. Saying the word first tells R what he feels, and he did not get there himself. A man who keeps feelings at a distance may agree with the word and feel nothing."
+          - id: b
+            text: "You were waiting for something, and then you heard about the five. What was it like for the boy, hearing that?"
+            fit: strong
+            note: "It keeps the scene alive and asks about his experience, not his explanation. It does not name the feeling. It leaves room for R to find his own word, which will be worth more than yours."
+          - id: c
+            text: "You're giving him a lot of credit. What did you want him to say?"
+            fit: workable
+            note: "The need underneath, to be told he did well, is real, and you will reach it. Asked now, it skips the painful part: what it was like to be told the opposite."
+        actual: "You were waiting for something, and then you heard about the five. What was it like for the boy, hearing that?"
+        rationale: "In your head you sorted a possible primary maladaptive emotion, shame, beneath the secondary self-defence ('he wasn't wrong'). You held that as a guess. You did not say it. You asked about the experience and let R find the word."
+      - id: eft-emotion-types-s4-t06
+        speaker: client
+        text: "(long pause, quietly) Like I'd got it wrong. Again. Like there was something wrong with me that I couldn't see. (pause, then brightly) Anyway, I turned out fine, haha. Teacher, mortgage, the lot."
+      - id: eft-emotion-types-s4-d3
+        type: free
+        prompt: "R said something painful and then made a joke straight away. Write one response that acknowledges both what he said and the step back, and does not push him back in."
+        actual: "That wasn't easy to say, and it makes sense to step back from it. We can go at your pace."
+        rationale: "The response honours the courage in what he said and treats the joke as a reasonable move, not a failure. It makes no demand. It tells R that the pace is his. Next time he comes close, he knows what will happen."
+      - id: eft-emotion-types-s4-t07
+        speaker: client
+        text: "(exhales) Yeah. (pause) I haven't said that to anyone. 'Something wrong with me.'"
+      - id: eft-emotion-types-s4-d4
+        type: choice
+        prompt: "It is near the end of the session. You want to offer R a picture of what you heard today. What do you say?"
+        options:
+          - id: a
+            text: "What you're describing is shame. It's very common in people who grew up with strict parents."
+            fit: weak
+            note: "It hands R a label, and it generalises. He may feel understood for a moment and then feel like a case. It also tells him what he feels."
+          - id: b
+            text: "Today we heard some of what's under the irritation: a boy who felt there was something wrong with him. I don't know yet whether that fits. How does it sit with you?"
+            fit: strong
+            note: "It offers a picture as a guess and says that you do not know. It uses his words. It gives him the last word."
+          - id: c
+            text: "We covered a lot today. How was it to talk about all this?"
+            fit: workable
+            note: "A check on how the session felt is a good habit. This version gives R no picture to hold on to, so he leaves with a feeling and no shape for it."
+        actual: "Today we heard some of what's under the irritation: a boy who felt there was something wrong with him. I don't know yet whether that fits. How does it sit with you?"
+        rationale: "The picture is a working hypothesis, and it belongs to both of you. If R says 'no, that's not it', you want to know."
+    notes:
+      goals: "No change in goals. R still frames the work as 'learning methods'. He told you something he had told no one."
+      alliance: "Bond: he trusted you with something and then joked to recover. You let the joke stand and did not push. Keep doing that. Tasks: the work looks nothing like methods, and R has not objected. Check this openly soon."
+      formulation_update: "First contact with what looks like primary maladaptive shame ('something wrong with me'), formed in front of his father around achievement. Interrupted by a joke, as the sign of how he handles it. Irritation and 'I shouldn't' are secondary. The primary adaptive feelings, sadness and anger at not being seen, have not appeared. Do not search for them."

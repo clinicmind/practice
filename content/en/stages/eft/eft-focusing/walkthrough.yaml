@@ -1,0 +1,91 @@
+sessions:
+  - id: eft-focusing-s5
+    title: "Session 5: 'There's something'"
+    turns:
+      - id: eft-focusing-s5-t01
+        speaker: therapist
+        text: "Hello, R. How are you today?"
+      - id: eft-focusing-s5-t02
+        speaker: client
+        text: "(exhales) Alright. Marking, mostly. (pause) There's something. I don't know. Since Sunday."
+      - id: eft-focusing-s5-d1
+        type: choice
+        prompt: "R says there is 'something' since Sunday, and he does not know what. How do you respond?"
+        options:
+          - id: a
+            text: "Is it more like worry, or more like sadness?"
+            fit: weak
+            note: "You offer him a menu. He may pick one, and the pick will be an idea about the feeling, not the feeling. It is also the opposite of what he said: he does not know."
+          - id: b
+            text: "Something since Sunday, and you can't say yet what it is. Would you like to slow down and stay with it for a minute? If you'd rather not, that's fine."
+            fit: strong
+            note: "It repeats what he said, explains in one sentence what you are proposing, and gives him a clear way to say no. A client who has so far asked for methods should be told what the task is for."
+          - id: c
+            text: "What happened on Sunday?"
+            fit: workable
+            note: "It is a natural question and the answer may help. But it turns him to events and explanations, which he does easily. The unclear sense may be easier to reach before the story."
+        actual: "Something since Sunday, and you can't say yet what it is. Would you like to slow down and stay with it for a minute? If you'd rather not, that's fine."
+        rationale: "'Something' and 'I don't know' are the signs of an unclear felt sense. The task is gentle, but it asks R to turn inward, which is unfamiliar to him. So you say what you are doing and why, and you make saying no easy. If he says no, you follow him."
+      - id: eft-focusing-s5-t03
+        speaker: client
+        text: "(pause) Alright. (pause) It's here. (puts a hand on his chest) Sort of a lump. I don't know."
+      - id: eft-focusing-s5-d2
+        type: free
+        prompt: "R has put his hand on his chest. Write what you say next to invite him to stay with that place. Do not name the feeling."
+        actual: "Take your time. Just stay with that place in your chest, and notice what it's like."
+        rationale: "You use his place, 'your chest', and leave the rest to him. You say nothing about what the feeling might be. 'Notice what it's like' invites a quality, not a reason. 'Take your time' sets a slow pace. Fewer words are better here."
+      - id: eft-focusing-s5-t04
+        speaker: client
+        text: "(long pause, about thirty seconds) It's not sharp. It's... dull. Pressing. Like something sitting there."
+      - id: eft-focusing-s5-d3
+        type: choice
+        prompt: "R has described the feeling as dull, pressing, 'something sitting there'. What do you say?"
+        options:
+          - id: a
+            text: "It sounds like anxiety. Does that fit?"
+            fit: weak
+            note: "You have given him a word, and it came from you. If he accepts it, he will have a name that you chose. If he rejects it, he may lose the thread."
+          - id: b
+            text: "Dull. Pressing. Something sitting there. Stay with that, and see if a word or a picture comes that fits it. There's no hurry."
+            fit: strong
+            note: "It gives back his own words, in his order, and invites him to look for a word of his own. 'There's no hurry' tells him the silence is welcome."
+          - id: c
+            text: "What do you think is making it press?"
+            fit: workable
+            note: "It looks for a cause. It might produce a good answer, and it takes R out of the felt experience and back to analysis."
+        actual: "Dull. Pressing. Something sitting there. Stay with that, and see if a word or a picture comes that fits it. There's no hurry."
+        rationale: "Finding a word that fits is called getting a handle on the feeling. The word has to be the client's, or it will not feel true to him. Your task is to keep the space open and not to hurry him."
+      - id: eft-focusing-s5-t05
+        speaker: client
+        text: "(pause) Heavy. (pause) It's heavy. Not a lump. Heavy."
+      - id: eft-focusing-s5-t06
+        speaker: therapist
+        text: "Heavy."
+      - id: eft-focusing-s5-t07
+        speaker: client
+        text: "(nods slowly) Yes. That's it. Heavy. (pause) I didn't know that was the word."
+      - id: eft-focusing-s5-t08
+        speaker: client
+        text: "(after a while, looking up) So what is it? Do you know?"
+      - id: eft-focusing-s5-d4
+        type: choice
+        prompt: "R found the word 'heavy' and asks you what it is. What do you say?"
+        options:
+          - id: a
+            text: "It could be grief. Heaviness often goes with grief."
+            fit: weak
+            note: "It may even be true. But you would be closing something that has only just opened, and giving a name to a feeling R has not found himself. He may adopt your word and stop looking."
+          - id: b
+            text: "I don't know. We don't have to know yet. It's heavy, and it's real. We can come back to it."
+            fit: strong
+            note: "It is honest and keeps the feeling as R found it. It tells him that not knowing is acceptable and that you will stay with him. It does not push toward an answer."
+          - id: c
+            text: "What do you think it is?"
+            fit: workable
+            note: "It hands the question back, which respects him. At this moment it also asks him to leave the felt sense and go to his head."
+        actual: "I don't know. We don't have to know yet. It's heavy, and it's real. We can come back to it."
+        rationale: "In EFT the meaning comes from the client, and often takes more than one session. Your job is to protect what he found. Note that the therapist is honest here. Saying 'I don't know' is not a failure."
+    notes:
+      goals: "No change. R did not ask for methods today. He stayed with the work when offered a choice."
+      alliance: "Bond: he agreed to slow down, and he asked 'do you know?', which shows some trust. Tasks: he accepted a task he had not asked for, after you explained it. Check whether it was useful to him next time."
+      formulation_update: "An unclear felt sense in the chest, since Sunday. The word 'heavy' fits for him. Meaning not yet known. I did not guess. Keep it as a handle for coming sessions."
