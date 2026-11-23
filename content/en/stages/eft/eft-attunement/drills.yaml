@@ -1,0 +1,205 @@
+# 30 drills: 10 per level, 5 per skill per level.
+
+- id: eft-attunement-e01
+  level: easy
+  skill: empathic-exploration
+  context: "Early session. The client is describing his evenings."
+  client: "I get home and the flat is quiet. I just stand in the hallway for a while. I don't know why."
+  criteria: &ee_easy
+    - "It stays with what the client just said, using his or her own words or detail. It does not change the subject."
+    - "It is offered as a guess the client can correct, for example 'it sounds as if' or 'maybe'."
+    - "It leaves room to say more. It contains no advice, explanation or reassurance."
+- id: eft-attunement-e02
+  level: easy
+  skill: empathic-exploration
+  context: "Early session."
+  client: "My sister keeps asking if I'm okay. I tell her I'm fine. But I don't think I am."
+  criteria: *ee_easy
+- id: eft-attunement-e03
+  level: easy
+  skill: empathic-exploration
+  context: "Early session."
+  client: "I've been marking papers until midnight every night this month. Nobody asked me to. I just can't seem to stop."
+  criteria: *ee_easy
+- id: eft-attunement-e04
+  level: easy
+  skill: empathic-exploration
+  context: "Early session."
+  client: "My son asked me why I was shouting. I didn't have an answer."
+  criteria: *ee_easy
+- id: eft-attunement-e05
+  level: easy
+  skill: empathic-exploration
+  context: "Early session."
+  client: "Everyone says I should take a break. I wouldn't know what to do with one."
+  criteria: *ee_easy
+
+- id: eft-attunement-e06
+  level: easy
+  skill: evocative-reflection
+  context: "Early session. The client touches his chest as he speaks."
+  client: "It's like there's a stone in my chest. Not sharp. Just there."
+  criteria: &er_easy
+    - "It puts the experience in concrete words, such as a sensation, an image or an action, and not only a feeling label."
+    - "It is built from the client's own words and details. It adds no new story or event."
+    - "It is one or two short sentences, offered tentatively, with no question or advice."
+- id: eft-attunement-e07
+  level: easy
+  skill: evocative-reflection
+  context: "Early session."
+  client: "When he said that, everything just went quiet inside."
+  criteria: *er_easy
+- id: eft-attunement-e08
+  level: easy
+  skill: evocative-reflection
+  context: "Early session."
+  client: "I walked out of the meeting and my hands were shaking. I didn't even know I was angry."
+  criteria: *er_easy
+- id: eft-attunement-e09
+  level: easy
+  skill: evocative-reflection
+  context: "Early session."
+  client: "At night the house feels too big."
+  criteria: *er_easy
+- id: eft-attunement-e10
+  level: easy
+  skill: evocative-reflection
+  context: "Early session."
+  client: "When the results came, I just stared at the page. It didn't feel like it was about me."
+  criteria: *er_easy
+
+- id: eft-attunement-m01
+  level: medium
+  skill: empathic-exploration
+  context: "Second session. The client describes a family dinner in a flat voice."
+  client: "It was fine. Everyone talked. I mostly listened. It's always like that."
+  criteria: &ee_medium
+    - "It catches something at the edge of what the client said, such as what is implied, held back or divided, and gives it back without pushing."
+    - "It respects how the client put it. It does not argue with a minimising word or correct it."
+    - "It is tentative and short, and it ends open. It contains no advice and no explanation of why."
+- id: eft-attunement-m02
+  level: medium
+  skill: empathic-exploration
+  context: "Second session."
+  client: "I know I shouldn't be this upset about a spilled drink at work. It's ridiculous."
+  criteria: *ee_medium
+- id: eft-attunement-m03
+  level: medium
+  skill: empathic-exploration
+  context: "Second session."
+  client: "Part of me wants to leave this job. Another part says I'd be throwing away twelve years."
+  criteria: *ee_medium
+- id: eft-attunement-m04
+  level: medium
+  skill: empathic-exploration
+  context: "Second session. The client stops speaking, then goes on."
+  client: "My wife says I never tell her anything. I say there's nothing to tell. (pause) That's not exactly true."
+  criteria: *ee_medium
+- id: eft-attunement-m05
+  level: medium
+  skill: empathic-exploration
+  context: "Second session."
+  client: "She raised me, I suppose. She worked hard. We weren't close, but that's how it was."
+  criteria: *ee_medium
+
+- id: eft-attunement-m06
+  level: medium
+  skill: evocative-reflection
+  context: "Second session. The client's shoulders have risen."
+  client: "Every time the phone rings I tense up. I know it's silly."
+  criteria: &er_medium
+    - "It makes the moment vivid with a concrete detail of body, image or action that the client gave or clearly implied."
+    - "It captures what the moment is like for the client, and not only what happens."
+    - "It stays close to what the client showed. It does not name a deeper feeling the client has not hinted at, and it asks no question."
+- id: eft-attunement-m07
+  level: medium
+  skill: evocative-reflection
+  context: "Second session."
+  client: "I smile at everyone at school. By Thursday my face hurts."
+  criteria: *er_medium
+- id: eft-attunement-m08
+  level: medium
+  skill: evocative-reflection
+  context: "Second session."
+  client: "I finished the thesis. Everyone's congratulating me. I just feel... flat."
+  criteria: *er_medium
+- id: eft-attunement-m09
+  level: medium
+  skill: evocative-reflection
+  context: "Second session."
+  client: "She hugged me and I just stood there, like a plank."
+  criteria: *er_medium
+- id: eft-attunement-m10
+  level: medium
+  skill: evocative-reflection
+  context: "Second session."
+  client: "At the end of the day I sit in the car for ten minutes before I go in."
+  criteria: *er_medium
+
+- id: eft-attunement-h01
+  level: hard
+  skill: empathic-exploration
+  context: "Third session. You have just asked how he felt during the argument."
+  client: "Feelings. Okay. Look, I'm a practical person. Can you just tell me what to do about it?"
+  criteria: &ee_hard
+    - "It respects what the client has just said or asked, for example a refusal, a joke or a request. It does not argue, defend the approach or explain why feelings matter."
+    - "It still stays with the client's experience, for example the pressure he is under, his guardedness or what is just under the surface. It does not switch to advice or teaching."
+    - "It is short, and it leaves the client a way to go on, including going on lightly or saying no."
+- id: eft-attunement-h02
+  level: hard
+  skill: empathic-exploration
+  context: "Third session. The client's eyes have just filled. Then he laughs."
+  client: "(laughs) You're going to make me cry now, aren't you? Don't."
+  criteria: *ee_hard
+- id: eft-attunement-h03
+  level: hard
+  skill: empathic-exploration
+  context: "Third session."
+  client: "I've been fine for years. Nothing's changed. I don't know why my wife made me come."
+  criteria: *ee_hard
+- id: eft-attunement-h04
+  level: hard
+  skill: empathic-exploration
+  context: "Third session."
+  client: "Look, it's just stress. Everybody's got stress. There's nothing deeper."
+  criteria: *ee_hard
+- id: eft-attunement-h05
+  level: hard
+  skill: empathic-exploration
+  context: "Third session. You asked about the last week at school. He looks at the window for a while."
+  client: "(long silence) ...Nothing. It's nothing."
+  criteria: *ee_hard
+
+- id: eft-attunement-h06
+  level: hard
+  skill: evocative-reflection
+  context: "Third session. The client describes a painful week in a brisk, joking tone."
+  client: "Oh, the usual. Everything fell apart on Tuesday, but hey, at least the coffee was good."
+  criteria: &er_hard
+    - "It is concrete or vivid, but only to the level of intensity the client has allowed. It does not push toward a deeper feeling."
+    - "Where the client is guarded or joking, it can reflect that, and it does not call it avoidance or resistance."
+    - "It is short and tentative, and the client can answer lightly or not at all."
+- id: eft-attunement-h07
+  level: hard
+  skill: evocative-reflection
+  context: "Third session. The client's eyes are red. He wipes them quickly."
+  client: "I don't do crying. Never have."
+  criteria: *er_hard
+- id: eft-attunement-h08
+  level: hard
+  skill: evocative-reflection
+  context: "Third session."
+  client: "My students think I'm the strict one. I like that. Nobody messes with me."
+  criteria: *er_hard
+- id: eft-attunement-h09
+  level: hard
+  skill: evocative-reflection
+  context: "Third session."
+  client: "Sunday nights I do the lesson plans. It's the best part of the week. (small pause) Quiet."
+  criteria: *er_hard
+- id: eft-attunement-h10
+  level: hard
+  skill: evocative-reflection
+  context: "Third session."
+  client: "I told my wife, it's fine, I'm just tired. She gave me this look. I hate that look."
+  criteria: *er_hard

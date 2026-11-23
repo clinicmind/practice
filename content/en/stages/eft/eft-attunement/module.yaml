@@ -1,0 +1,28 @@
+slug: eft-attunement
+version: 1.0.0
+title: "Attunement and empathic exploration"
+intro: >-
+  Emotion-Focused Therapy starts from the client's moment-by-moment experience.
+  Empathic attunement means staying close to that experience and checking, again
+  and again and tentatively, whether you have it right. Unlike the tasks later in
+  this stage, it does not wait for a marker. You use it in every session, and
+  everything else rests on it. Empathic exploration is not the same as teaching a
+  technique or collecting information. It follows the edge of what the client can
+  just about say, and invites more. In this module you meet Client R, a 38-year-old
+  secondary school teacher whose wife suggested he come. He says he has been
+  short-tempered and would like some methods. You practise two skills: empathic
+  exploration, and evocative reflection, which puts the experience into concrete,
+  vivid words. Know when not to use them. Do not use vivid language to push a
+  client toward more feeling than he has shown. When a client asks for something
+  practical, answer the request and stay attuned. Do not argue for the value of
+  feelings.
+skills:
+  - empathic-exploration
+  - evocative-reflection
+reflection_prompts:
+  - id: eft-attunement-r1
+    text: "R opens by asking for methods. What would be hard for you in staying with his request instead of explaining why feelings matter? Where in your own training did you learn to want to explain?"
+  - id: eft-attunement-r2
+    text: "Find one of your evocative reflections. Was it at the level of intensity the client had shown? If it went further, what made you reach for more?"
+  - id: eft-attunement-r3
+    text: "Think of a client who talks about feelings in a brisk, practical way. After ten minutes with you, what would you want that client to have noticed about being with you?"

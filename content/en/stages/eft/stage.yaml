@@ -1,0 +1,5 @@
+stage: eft
+title: "Emotion-Focused Therapy"
+notice: "This stage follows a client whose father has died and who never felt his father's approval. If the material touches your own experience of loss or of a difficult parent, you can pause at any point and talk it over with your supervisor."
+modules:
+  - eft-attunement

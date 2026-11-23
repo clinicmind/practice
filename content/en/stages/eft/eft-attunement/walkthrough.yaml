@@ -1,0 +1,184 @@
+sessions:
+  - id: eft-attunement-s1
+    title: "Session 1: 'I just need some methods'"
+    turns:
+      - id: eft-attunement-s1-t01
+        speaker: therapist
+        text: "Come in, R, please sit anywhere. Thank you for coming. I'd like to begin by hearing what brought you here, in your own words."
+      - id: eft-attunement-s1-t02
+        speaker: client
+        text: "My wife thought I should come. I've been short-tempered lately. I snapped at my son over nothing. I figure there are methods for this. Breathing, anger management, that kind of thing. I just want some tools."
+      - id: eft-attunement-s1-d1
+        type: choice
+        prompt: "R asks for methods in his first minute. What do you say?"
+        options:
+          - id: a
+            text: "There are some good techniques for temper. Before I teach you any, I'd like to understand more, so that I choose the right one."
+            fit: workable
+            note: "It takes the request seriously and it is honest that you will not start with techniques. But it treats his request as a step on the way to something else, and it promises a technique before you know what you would teach."
+          - id: b
+            text: "You've come wanting something you can use, and that's a fair thing to ask for. To make it fit you, I'd like to hear about the last time it happened. What was that moment like for you?"
+            fit: strong
+            note: "It accepts his request without agreeing to a method, and it gives a reason for asking that he can see for himself. The question points at his experience of one moment, not at his feelings in general."
+          - id: c
+            text: "Methods can help, but in my experience lasting change comes from understanding the feelings underneath the anger."
+            fit: weak
+            note: "It may be what you believe. Said in the first minute, it argues with what he asked for and tells him that he has misunderstood therapy. A client who wants distance will take more of it."
+        actual: "You've come wanting something you can use, and that's a fair thing to ask for. To make it fit you, I'd like to hear about the last time it happened. What was that moment like for you?"
+        rationale: "You do not have to win the argument about what therapy is. A client who asks for tools is telling you how he hopes to be helped. Take that seriously, and offer a way in that starts from his own experience."
+      - id: eft-attunement-s1-t03
+        speaker: client
+        text: "Last week. My son knocked his school bag off the chair, and I... Look, it's not a big deal. He's six. I raised my voice and he went quiet. That's the part that gets me."
+      - id: eft-attunement-s1-d2
+        type: choice
+        prompt: "R says the part that gets him is that his son went quiet. What do you say?"
+        options:
+          - id: a
+            text: "He went quiet, and that's the part you can't shake."
+            fit: strong
+            note: "It uses his own pointer. He told you where it hurts, and you give it back in nearly his words. It names no feeling for him and asks nothing."
+          - id: b
+            text: "That sounds like guilt. You wish you hadn't raised your voice."
+            fit: workable
+            note: "It may well be right. But he has not said 'guilt', and a label like that can close the moment. What he pointed to was the quiet."
+          - id: c
+            text: "What do you think triggers the shouting? Tiredness, work stress, something else?"
+            fit: weak
+            note: "It moves straight from his most alive sentence to a search for causes. He asked for methods, so he may follow you gladly. You will have a list of causes and nothing of the quiet."
+        actual: "He went quiet, and that's the part you can't shake."
+        rationale: "When a client says 'that's the part that gets me', he has told you where the edge of his experience is. Stay on it. There will be time for causes later."
+      - id: eft-attunement-s1-t04
+        speaker: client
+        text: "Yeah. (pause) Anyway. That's why I thought, if I had a few techniques, I could catch it before it happens."
+      - id: eft-attunement-s1-d3
+        type: free
+        prompt: "R has gone back to asking for techniques, right after a moment of contact. Write one response that keeps both the request and what he just showed you."
+        actual: "You want to catch it before it happens, so that he never has to go quiet like that. We'll work on that together. And I'd like to keep that moment with your son close by, because it seems to matter to you."
+        rationale: "It is not a choice between his request and his experience. You say yes to what he wants, and you do not drop the moment he nearly showed you. You also do not point out that he retreated. That would tell him that he is being watched. Notice that he came to the edge by himself."
+      - id: eft-attunement-s1-t05
+        speaker: client
+        text: "(shrugs) Fine. Sure. What else do you need from me?"
+      - id: eft-attunement-s1-t06
+        speaker: therapist
+        text: "Tell me about an ordinary evening at home, if you like. Whatever comes to mind."
+      - id: eft-attunement-s1-t07
+        speaker: client
+        text: "Nothing special. I get in, my wife's put our son to bed already. I eat something. The flat's a bit... empty, I guess. Doesn't matter. It's just the evenings."
+      - id: eft-attunement-s1-d4
+        type: choice
+        prompt: "R mentions that the flat feels empty, and says it doesn't matter. What do you do?"
+        options:
+          - id: a
+            text: "Empty is the word that came to you, even if you wouldn't call it important. I'd like to hear more about it, if you're willing."
+            fit: strong
+            note: "It keeps his word and does not argue with 'doesn't matter'. It makes the invitation his to accept or decline."
+          - id: b
+            text: "It sounds like a lonely time of the day for you."
+            fit: workable
+            note: "Gentle, and a fair guess. But 'lonely' is your word. He has not offered it, and a client who plays down his experience may simply say 'not really'."
+          - id: c
+            text: "Has it affected your sleep, your appetite, your concentration at work?"
+            fit: weak
+            note: "A checklist. There is a time for those questions, but asked here they tell him that his word was not enough, and they turn a quiet disclosure into a symptom."
+        actual: "Empty is the word that came to you, even if you wouldn't call it important. I'd like to hear more about it, if you're willing."
+        rationale: "A client who plays things down is often showing you exactly where to look. You do not have to push. The invitation is enough, and it is his to decline."
+      - id: eft-attunement-s1-t08
+        speaker: client
+        text: "(pause) Quiet. That's all. The TV's on but I'm not watching it. (clears throat) Anyway."
+      - id: eft-attunement-s1-t09
+        speaker: therapist
+        text: "The TV on, and you not watching it. We can leave it there for today. We're nearly at time. What was it like to talk about this?"
+      - id: eft-attunement-s1-t10
+        speaker: client
+        text: "Not as bad as I expected. I still want the tools, though."
+      - id: eft-attunement-s1-t11
+        speaker: therapist
+        text: "Then we'll keep that on the list. And if it's all right with you, I'd like us to keep an eye on those evenings, too."
+    notes:
+      goals: "R's stated goal: tools to control his temper. Not yet shared between the two of you. A possible direction: to understand what happens in the moments before and after he raises his voice."
+      alliance: "Bond: cautious. He tested whether you would take his request seriously. Tasks: he expects methods and you have not yet explained how you work. Do not explain at length yet. Goals: his goal is clear. Yours is not yet part of it."
+      formulation_update: "First observations, to hold lightly. Irritability, regret afterwards, evenings that feel empty. He goes back to technique when contact comes close. Nothing yet about family or history."
+  - id: eft-attunement-s2
+    title: "Session 2: 'The breathing thing worked once'"
+    turns:
+      - id: eft-attunement-s2-t01
+        speaker: therapist
+        text: "Hello, R. How has the week been?"
+      - id: eft-attunement-s2-t02
+        speaker: client
+        text: "Okay. I tried the breathing thing I found online. It worked once. (pause) Then on Thursday it didn't."
+      - id: eft-attunement-s2-d1
+        type: choice
+        prompt: "R tried a technique. It worked once, and then not. What do you say?"
+        options:
+          - id: a
+            text: "Good that you tried it. Let's look at why it didn't work on Thursday, and adjust."
+            fit: workable
+            note: "Reasonable, and it respects his wish for methods. But it makes the technique the subject and Thursday a failure of the technique. What happened to him on Thursday is the more interesting thing."
+          - id: b
+            text: "You gave it a real try, and Thursday was different. What was Thursday like?"
+            fit: strong
+            note: "It credits him for trying, and moves to what happened to him, not to what the technique did."
+          - id: c
+            text: "Breathing exercises aren't really what we do here. We work with feelings."
+            fit: weak
+            note: "It dismisses something he did in good faith, and it sets the approach against what he came for."
+        actual: "You gave it a real try, and Thursday was different. What was Thursday like?"
+        rationale: "His report is a gift: a recent, concrete moment. Credit the effort without defending or attacking the technique, and ask about the moment."
+      - id: eft-attunement-s2-t03
+        speaker: client
+        text: "Thursday... I was doing the last of the marking at the kitchen table. Midnight, about. I'd got one answer wrong on my own answer key, and I swore at myself. Under my breath. 'Useless. Can't even get this right.' (small laugh)"
+      - id: eft-attunement-s2-d2
+        type: free
+        prompt: "R has told you what he said to himself, and laughed. Write one empathic response. Stay with what he told you. Do not interpret it, and do not ask what it means."
+        actual: "Midnight, alone in the kitchen, one wrong answer, and that word came out about yourself. And then you laughed."
+        rationale: "It gives back the scene as he gave it, in concrete pieces, and it includes the laugh without saying what the laugh means. It does not label the voice and does not tell him it is harsh. He told you in his own way that it is."
+      - id: eft-attunement-s2-t04
+        speaker: client
+        text: "(the laugh fades) Well. It's what you do. You push yourself. How else do you get anything done?"
+      - id: eft-attunement-s2-d3
+        type: choice
+        prompt: "R defends the harsh voice. What do you say?"
+        options:
+          - id: a
+            text: "That voice does a job for you. It's how things get done."
+            fit: strong
+            note: "It does not agree that he is useless, and it does not argue with the voice. It says what he just said it does for him, and so it keeps him in the conversation."
+          - id: b
+            text: "Do you think talking to yourself like that is helpful? Would you say it to your son?"
+            fit: weak
+            note: "A challenge, with a guilt-inducing comparison. It turns a first look at the voice into a verdict on him as a father."
+          - id: c
+            text: "Lots of people are hard on themselves. It's very common."
+            fit: workable
+            note: "True, and meant kindly. It also closes the subject by turning his own experience into something everybody has."
+        actual: "That voice does a job for you. It's how things get done."
+        rationale: "It is early. Your aim is to understand how this is for him, not to change it. Later in this stage, when a client's self-criticism shows the marker for it, there is a task for it. That is not the work of this session."
+      - id: eft-attunement-s2-t05
+        speaker: client
+        text: "(shrugs) That's just how I was brought up. You don't get anywhere being soft on yourself. (pause) So what exactly are we doing here? Where's the method?"
+      - id: eft-attunement-s2-d4
+        type: choice
+        prompt: "R asks directly what the method is. How do you answer?"
+        options:
+          - id: a
+            text: "Fair question. We slow down on moments like Thursday night, and I help you notice what's happening inside you as it happens. Often it's that noticing that changes what you do next. You decide how far we go, and we can stop at any time."
+            fit: strong
+            note: "It answers honestly and briefly, in terms he can use. It tells him where the method lies and puts him in control of the pace."
+          - id: b
+            text: "The method is the relationship itself. Just trust the process."
+            fit: weak
+            note: "It sounds like an answer and tells him nothing. A client who asks for tools is asking to know what he is agreeing to."
+          - id: c
+            text: "We'll build up some techniques over time, but first we need to understand what's behind the anger."
+            fit: workable
+            note: "Partly honest. But it promises techniques you may not teach, and 'behind the anger' tells him that the anger is only a symptom."
+        actual: "Fair question. We slow down on moments like Thursday night, and I help you notice what's happening inside you as it happens. Often it's that noticing that changes what you do next. You decide how far we go, and we can stop at any time."
+        rationale: "You owe a client an explanation of how you work, in plain words, once he asks. Keep it short, and keep the choice with him. Attunement does not mean saying nothing about your method."
+      - id: eft-attunement-s2-t06
+        speaker: client
+        text: "Hm. (pause) All right. I'll give it a few more weeks."
+    notes:
+      goals: "Still his goal: tools. A first overlap with yours: noticing what happens in the moments that go wrong, like Thursday night. Not yet put into words together."
+      alliance: "Bond: a little warmer. He told you about Thursday and about the voice, and he let you ask about method. Tasks: you have explained how you work, in brief. Watch for 'I'll give it a few more weeks': it is permission, not agreement."
+      formulation_update: "Self-critical voice noted: 'useless', defended as necessary. 'How I was brought up' is an opening, not yet explored. Do not take it up before he does. Keep in mind the empty evenings from session one."

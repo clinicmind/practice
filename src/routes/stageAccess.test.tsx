@@ -20,6 +20,7 @@ const SUPERVISOR: ProfileRow = { id: 'sup', role: 'supervisor', display_name: 'D
 let multi = '';
 let single = '';
 let demoUnreviewed = '';
+let demoUnreviewedPreview = '';
 beforeAll(async () => {
   multi = await buildFixture('multi');
   single = await buildFixture('ok-reviewed');
@@ -30,6 +31,9 @@ beforeAll(async () => {
   writeFileSync(join(dir, 'REVIEW.md'), review);
   demoUnreviewed = mkdtempSync(join(tmpdir(), 'out-demo-unreviewed-'));
   for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: dir, outDir: demoUnreviewed, locale });
+  // The authoring preview ships such a stage. The app must still hide it from students and show it to supervisors.
+  demoUnreviewedPreview = mkdtempSync(join(tmpdir(), 'out-demo-unreviewed-preview-'));
+  for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: dir, outDir: demoUnreviewedPreview, locale, includeUnreviewed: true });
 });
 afterEach(() => vi.unstubAllGlobals());
 beforeEach(() => { sessionStorage.clear(); localStorage.clear(); });
@@ -166,17 +170,24 @@ describe('the home page', () => {
   });
 
   test('a stage with nothing reviewed is hidden from students, so one stage means the plain home page', async () => {
-    serve(demoUnreviewed);
+    serve(demoUnreviewedPreview);
     renderCloud('/', cloud(STUDENT, [{ cohort_id: 'c1', stage: 'demo' }]));
     expect(await screen.findByRole('heading', { level: 1, name: 'Foundations (fixture)' })).toBeVisible();
     expect(screen.queryByText(en.stage.listHeading)).not.toBeInTheDocument();
   });
 
-  test('a supervisor sees the stage that is not reviewed yet, marked', async () => {
-    serve(demoUnreviewed);
+  test('in a preview build a supervisor sees the stage that is not reviewed yet, marked', async () => {
+    serve(demoUnreviewedPreview);
     renderCloud('/', cloud(SUPERVISOR));
     const row = (await screen.findByText(/Demo stage \(fixture\)/)).closest('li')!;
     expect(within(row).getByText(en.stage.unreviewed)).toBeVisible();
+  });
+
+  test('in the normal build a stage with nothing reviewed is not shipped at all, even to a supervisor', async () => {
+    serve(demoUnreviewed);
+    renderCloud('/', cloud(SUPERVISOR));
+    expect(await screen.findByRole('heading', { level: 1, name: 'Foundations (fixture)' })).toBeVisible();
+    expect(screen.queryByText(/Demo stage/)).not.toBeInTheDocument();
   });
 
   test('the stage list follows the interface language', async () => {
