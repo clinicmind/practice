@@ -21,7 +21,7 @@
 | 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。模組 2 `eft-emotion-types`、模組 3 `eft-focusing` 的內容也已寫完、未登記。模組 4 `eft-two-chair`、5 `eft-empty-chair`、6 `eft-transformation` 的英文和繁中也已寫完、未登記（分支 `claude/eft-m4-m6`，**尚未合併**到部署分支；`npm run check` 564＋142、`npm run e2e` 39 過 4 跳過）。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
 | 階段 4、6：AI 回饋、DBT | 設計規格已定。AI 回饋的成本估算（成本腳本 19 個單元測試；定價 2026-11-23 讀官方定價頁）和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`，沒有實作、沒有呼叫付費 API。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
 
-最後一次完整測試（2026-11-23 第二次整合：`claude/reports-review`、`claude/eft-m4-m6`、`claude/eft-m1-m3-qa`、`claude/stage4-logic`，已上線）：`npm run check` 646＋142＋87 個通過；`npm run e2e` 40 個通過、4 個跳過（同一批需要服務金鑰的測試）。正式建置只含 `foundations` 階段。`0006_retention.sql` 權限規則已逐行覆核。EFT 模組 1–3 預審報告在 `docs/reviews/2026-11-23-eft-m1-m3-prereview.md`。
+最後一次完整測試（2026-11-23 第三次整合：`claude/eft-qa-2`、`claude/stage4-t1-t6`，已上線）：`npm run check` 725＋142＋87 個通過；`npm run e2e` 40 個通過、4 個跳過（同一批需要服務金鑰的測試）。正式建置只含 `foundations` 階段。`0006`、`0007` 的權限規則已逐行覆核（`0007`：學生讀不到 `cohorts`，所以讀不到 `ai_usage`、`ai_budget`；`ai_feedback` 只隨可見的作答顯示）。EFT 預審報告：`docs/reviews/2026-11-23-eft-m1-m3-prereview.md`、`2026-11-23-eft-m4-m6-prereview.md`；兩份的機械性問題和「示範未達自己標準」都已修正，臨床判斷留給擁有人。
 
 ## 2. 擁有人還沒做完的事
 
