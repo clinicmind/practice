@@ -15,5 +15,5 @@
     "types": ["vitest/globals", "node", "@testing-library/jest-dom"]
   },
   "include": ["src", "packages/ai-feedback", "supabase", "scripts", "tests", "e2e", "vite.config.ts", "playwright.config.ts"],
-  "exclude": ["supabase/functions/reports/index.ts"]
+  "exclude": ["supabase/functions/reports/index.ts", "supabase/functions/ai-feedback/index.ts"]
 }
