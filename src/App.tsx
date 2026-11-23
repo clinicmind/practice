@@ -20,6 +20,8 @@ import { ReportsPage } from './routes/reports/ReportsPage';
 import { ReflectPage } from './routes/ReflectPage';
 import { StagePage } from './routes/StagePage';
 import { CohortPage } from './routes/supervisor/CohortPage';
+import { ReportReviewPage } from './routes/supervisor/ReportReviewPage';
+import { ReportsListPage } from './routes/supervisor/ReportsListPage';
 import { StudentPage } from './routes/supervisor/StudentPage';
 import { WalkthroughPage } from './routes/WalkthroughPage';
 import { DEFAULT_STAGE } from './stages';
@@ -73,6 +75,8 @@ function AppRoutes({ store, wasReset, backend, storage }: {
             {reports && <Route path="/reports/new" element={<NewReportPage />} />}
             {reports && <Route path="/reports/:id" element={<ReportPage />} />}
             <Route path="/supervisor" element={<RequireSupervisor><CohortPage /></RequireSupervisor>} />
+            {reports && <Route path="/supervisor/reports" element={<RequireSupervisor><ReportsListPage /></RequireSupervisor>} />}
+            {reports && <Route path="/supervisor/reports/:id" element={<RequireSupervisor><ReportReviewPage /></RequireSupervisor>} />}
             <Route path="/supervisor/students/:id" element={<RequireSupervisor><StudentPage /></RequireSupervisor>} />
             <Route path="*" element={<NotFound />} />
           </Route>

@@ -15,6 +15,7 @@ const MAX_BODY = 30_000;
 const MAX_TITLE = 100;
 const MAX_PER_DAY = 5;
 const KEEP_DAYS = 90;
+const PURGE_BATCH = 50; // one request stays well inside the function's time limit; the button can be pressed again
 const MAX_REQUEST_BYTES = 200_000; // 30,000 characters is at most about 120,000 bytes in UTF-8, plus the JSON around it
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -58,7 +59,7 @@ async function route(req: Request, env: Env, fetchFn: FetchFn, now: () => Date):
     return fail(400, 'bad_request');
   }
   const action = input.action;
-  if (action !== 'submit' && action !== 'get' && action !== 'delete') return fail(400, 'bad_request');
+  if (action !== 'submit' && action !== 'get' && action !== 'delete' && action !== 'purge' && action !== 'drive_status') return fail(400, 'bad_request');
 
   // Who is asking. Auth answers for the token itself; nothing in the token is trusted before that.
   const who = await fetchFn(`${url}/auth/v1/user`, { headers: { apikey: anon, Authorization: `Bearer ${token}` } });
@@ -75,7 +76,62 @@ async function route(req: Request, env: Env, fetchFn: FetchFn, now: () => Date):
   const drive = createDrive(env, fetchFn);
 
   if (action === 'submit') return submit();
-  return existing(action);
+  if (action === 'purge') return purge();
+  if (action === 'drive_status') return driveStatus();
+  return existing(action as 'get' | 'delete');
+
+  async function isSupervisor(): Promise<boolean | null> {
+    const prof = await asService(`profiles?id=eq.${userId}&select=role`);
+    if (!prof.ok) return null;
+    return ((await prof.json()) as { role: string }[])[0]?.role === 'supervisor';
+  }
+
+  /**
+   * Deletes the reports that are past their date, for the calling supervisor's cohorts only: which rows
+   * come back is decided by row level security on the caller's own token. File first, then the row, so a
+   * failure leaves a row that the next purge finishes, never a file nobody can find.
+   */
+  async function purge(): Promise<Response> {
+    const sup = await isSupervisor();
+    if (sup === null) return fail(500, 'server_error');
+    if (!sup) return fail(403, 'not_allowed');
+    const today = now().toISOString().slice(0, 10);
+    const found = await asUser(`reports?delete_after=lt.${today}&select=id,drive_file_id&order=delete_after.asc,id.asc&limit=${PURGE_BATCH + 1}`);
+    if (!found.ok) return fail(500, 'server_error');
+    const rows = (await found.json()) as { id: string; drive_file_id: string }[];
+    const batch = rows.slice(0, PURGE_BATCH);
+    let purged = 0, failed = 0;
+    let driveError: string | null = null;
+    for (const row of batch) {
+      try {
+        await drive.deleteFile(row.drive_file_id);
+      } catch (e) {
+        if (!(e instanceof DriveError)) throw e;
+        driveError = DRIVE_STATUS[e.kind]!; // the link is down; every other file would fail the same way
+        break;
+      }
+      const del = await asService(`reports?id=eq.${row.id}`, { method: 'DELETE' }).catch(() => null);
+      if (!del?.ok) { failed++; continue; }
+      await audit('purge_report', row.id);
+      purged++;
+    }
+    return reply(200, { purged, failed, more: rows.length > PURGE_BATCH, driveError });
+  }
+
+  /** Whether the saved Google authorisation still works. The answer is the content, so it is always a 200. */
+  async function driveStatus(): Promise<Response> {
+    const sup = await isSupervisor();
+    if (sup === null) return fail(500, 'server_error');
+    if (!sup) return fail(403, 'not_allowed');
+    if (!env.GOOGLE_CLIENT_ID || !env.GOOGLE_CLIENT_SECRET || !env.GOOGLE_REFRESH_TOKEN) return reply(200, { status: 'not_configured' });
+    try {
+      await drive.check();
+      return reply(200, { status: 'ok' });
+    } catch (e) {
+      if (e instanceof DriveError) return reply(200, { status: e.kind });
+      throw e;
+    }
+  }
 
   async function submit(): Promise<Response> {
     const title = typeof input.title === 'string' ? input.title.trim() : null;

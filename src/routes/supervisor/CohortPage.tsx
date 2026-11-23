@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { DriveStatusPanel } from '../../components/DriveStatusPanel';
 import { useT } from '../../i18n';
+import { useReportsEnabled } from '../../reports/ReportsContext';
 import { isMissingTable } from '../../progress/storeError';
 import { DEFAULT_STAGE } from '../../stages';
 import { loadCourse, type CohortInfo, type Course, type CourseStage, type StudentSummary } from '../../supervisor/api';
@@ -236,6 +238,7 @@ export function CohortPage() {
   const s = useT();
   const t = s.supervisor;
   const api = useSupervisorApi();
+  const reportsOn = useReportsEnabled();
   const [state, setState] = useState<State>({ status: 'loading' });
   const [tick, setTick] = useState(0);
   const reload = useCallback(() => setTick((n) => n + 1), []);
@@ -262,6 +265,12 @@ export function CohortPage() {
   return (
     <div>
       <h1>{t.heading}</h1>
+      {reportsOn && (
+        <>
+          <p><Link to="/supervisor/reports">{s.reportsReview.link}</Link></p>
+          <DriveStatusPanel />
+        </>
+      )}
       {cohorts.length === 0 ? (
         <section aria-labelledby="create-h">
           <h2 id="create-h">{t.createHeading}</h2>

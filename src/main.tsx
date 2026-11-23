@@ -37,6 +37,7 @@ async function start() {
         url: import.meta.env.VITE_SUPABASE_URL,
         anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY,
         getToken: async () => (await sb.auth.getSession()).data.session?.access_token ?? null,
+        getUserId: async () => (await sb.auth.getSession()).data.session?.user.id ?? null,
       });
     }
   }

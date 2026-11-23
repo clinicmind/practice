@@ -7,6 +7,7 @@ const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')
 const S1 = id(1), S2 = id(2), A = id(11), B = id(12), X = id(21);
 const C1 = id(101), C2 = id(102);
 const RA = id(201), RB = id(202), RX = id(203);
+const FULL = '{"picture":3,"formulation":2,"link":3,"process":4,"self":2,"ethics":3}'; // 0006: a released review has all six scores
 
 let db: TestDb;
 let admin: Client;
@@ -91,7 +92,7 @@ describe('feedback', () => {
   let FB_DRAFT: string, FB_RELEASED: string, FB_RB: string;
   beforeAll(async () => {
     const ins = async (report: string, status: string) =>
-      (await rows(admin, `insert into feedback (report_id, author_id, scores, comments, status, released_at) values ($1,$2,'{"picture":3}','fictional comment',$3, case when $3='released' then now() end) returning id`, [report, S1, status]))[0]!.id as string;
+      (await rows(admin, `insert into feedback (report_id, author_id, scores, comments, status, released_at) values ($1,$2,'${FULL}','fictional comment',$3, case when $3='released' then now() end) returning id`, [report, S1, status]))[0]!.id as string;
     FB_DRAFT = await ins(RA, 'draft');
     FB_RELEASED = await ins(RA, 'released');
     FB_RB = await ins(RB, 'released');

@@ -1,5 +1,5 @@
 import { scanHigh } from '../../packages/deid/src';
-import type { ReportsApi } from './ReportsContext';
+import { defaultReportsApi, type ReportsApi } from './ReportsContext';
 
 /**
  * Stand-in for the real backend, used only by the end-to-end build (VITE_REPORTS_FAKE_API=true).
@@ -10,6 +10,7 @@ export const FAKE_API_MARKER = 'e2e-fake-reports-api';
 export function createFakeApi(): ReportsApi {
   const store = new Map<string, { title: string; body: string }>();
   return {
+    ...defaultReportsApi, // no supervisor in the stand-in: review is covered by unit tests
     async submit({ title, body }) {
       const high = scanHigh(body);
       if (high.length > 0) return { ok: false, status: 422, findings: high.map(({ rule, start, end }) => ({ rule, start, end })) };
