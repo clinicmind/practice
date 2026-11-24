@@ -1,0 +1,34 @@
+slug: dbt-commitment
+version: 1.0.0
+title: "Commitment strategies"
+intro: >-
+  In DBT, a client changes what she does only if she has agreed to try. Commitment
+  strategies help her get there without being pushed. You use them when a client
+  is of two minds about a target or about the treatment itself, for example when
+  she wants the pain to stop and wants to keep the thing that stops it fast.
+  This module teaches two. Commitment eliciting helps the client say, in her own
+  words, what she wants and what she would be willing to try. You ask about the
+  gains and costs of changing and of staying the same, you ask for a small first
+  step before a large one, and sometimes you ask for more than she will give so
+  that a smaller step feels easy. The devil's advocate argues gently for the
+  other side, and the client argues back for change. You use the devil's
+  advocate only when the client has said she is leaning toward change, when the
+  relationship is steady, and when you can say plainly that you are doing it.
+  Whatever you do, the client keeps her freedom to choose, and you say so. Do
+  not use these skills to win an argument or to get a promise she does not want.
+  A promise of that kind is worth little and can cost you the relationship. Stop
+  the devil's advocate as soon as she seems hurt, and go back to validation.
+  In this module you follow Client J, who wants the pain to stop and says she
+  will not give up blocking people. This stage does not cover how to assess or
+  respond to life-threatening behaviour. Learn that in supervision, following
+  your placement's protocol.
+skills:
+  - commitment-eliciting
+  - devils-advocate
+reflection_prompts:
+  - id: dbt-commitment-r1
+    text: "J says she will not give up blocking people. What do you want to say to her? Which of those words would sound like an argument to her, and which would sound like curiosity?"
+  - id: dbt-commitment-r2
+    text: "In session four J promised to stop blocking people entirely, and then took it back. Think of a time you promised too much. What would have helped you make a smaller promise?"
+  - id: dbt-commitment-r3
+    text: "The devil's advocate depends on a steady relationship. What would tell you in the moment that it is too early, or that you have gone too far?"

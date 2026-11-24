@@ -422,6 +422,52 @@ describe('the real course content', () => {
   });
 });
 
+describe('the DBT stage (modules 1-3)', () => {
+  const CONTENT = join(__dirname, '..', 'content');
+  const reviewRows = readFileSync(join(CONTENT, 'REVIEW.md'), 'utf8');
+  const SLUGS = ['dbt-validation', 'dbt-commitment', 'dbt-chain'];
+
+  test('while no dbt-* module is registered in REVIEW.md, the default build has no DBT stage', async () => {
+    const out = mkdtempSync(join(tmpdir(), 'real-'));
+    for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: CONTENT, outDir: out, locale });
+    const dbtReviewed = /^\|\s*dbt-/m.test(reviewRows);
+    for (const loc of ['en', 'zh-Hant']) {
+      const stages = JSON.parse(readFileSync(join(out, loc, 'stages.json'), 'utf8')).map((s: any) => s.stage);
+      expect(stages.includes('dbt')).toBe(dbtReviewed);
+      if (!dbtReviewed) expect(existsSync(join(out, loc, 'dbt'))).toBe(false);
+    }
+  });
+
+  test('the DBT stage is authored and valid in both languages, with the scope notice (authoring preview)', async () => {
+    const out = mkdtempSync(join(tmpdir(), 'real-'));
+    for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: CONTENT, outDir: out, locale, includeUnreviewed: true });
+    for (const loc of ['en', 'zh-Hant']) {
+      const idx = JSON.parse(readFileSync(join(out, loc, 'dbt/index.json'), 'utf8'));
+      expect(idx.modules.map((m: any) => m.slug)).toEqual(SLUGS);
+      expect(idx.notice).toMatch(/\S/);
+      for (const slug of SLUGS) expect(existsSync(join(out, loc, 'dbt', slug, 'module.json'))).toBe(true);
+    }
+  });
+
+  test('each DBT module has 30 drills (10 per level, 5 per skill per level), 2 skills and 3 reflections, in both languages', async () => {
+    const out = mkdtempSync(join(tmpdir(), 'real-'));
+    for (const locale of ['en', 'zh-Hant'] as const) await buildContent({ contentDir: CONTENT, outDir: out, locale, includeUnreviewed: true });
+    for (const loc of ['en', 'zh-Hant']) {
+      for (const slug of SLUGS) {
+        const mod = JSON.parse(readFileSync(join(out, loc, 'dbt', slug, 'module.json'), 'utf8'));
+        expect(mod.meta.skills).toHaveLength(2);
+        expect(mod.meta.reflection_prompts).toHaveLength(3);
+        expect(mod.drills).toHaveLength(30);
+        for (const level of ['easy', 'medium', 'hard']) {
+          for (const skill of mod.meta.skills) {
+            expect(mod.drills.filter((d: any) => d.level === level && d.skill === skill)).toHaveLength(5);
+          }
+        }
+      }
+    }
+  });
+});
+
 describe('stage notice', () => {
   const MULTI = join(__dirname, '..', 'tests', 'fixtures', 'content', 'multi');
   function withNotice(zhToo: boolean): string {

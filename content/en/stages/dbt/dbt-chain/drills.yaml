@@ -1,0 +1,205 @@
+# 30 drills: 10 per level, 5 per skill per level. Client J throughout.
+
+- id: dbt-chain-e01
+  level: easy
+  skill: chain-questioning
+  context: "Session 5. You and J are going through last Wednesday, step by step."
+  client: "The email came, and then I just lost it."
+  criteria: &cq_easy
+    - "It asks one question about one step of the chain, such as what happened just before, what she did next or what she felt in her body."
+    - "It is specific and open, so J can answer by describing. It does not ask 'why'."
+    - "It is one or two short sentences, with no blame and no judgment ('should', 'shouldn't', 'again')."
+- id: dbt-chain-e02
+  level: easy
+  skill: chain-questioning
+  context: "Session 5."
+  client: "I read it and I thought, they hate my work."
+  criteria: *cq_easy
+- id: dbt-chain-e03
+  level: easy
+  skill: chain-questioning
+  context: "Session 5."
+  client: "My hands were shaking. I wrote a reply."
+  criteria: *cq_easy
+- id: dbt-chain-e04
+  level: easy
+  skill: chain-questioning
+  context: "Session 5."
+  client: "Then I put the phone down and ordered dinner."
+  criteria: *cq_easy
+- id: dbt-chain-e05
+  level: easy
+  skill: chain-questioning
+  context: "Session 5."
+  client: "Afterwards I felt terrible, so I messaged him that I was dropping the job."
+  criteria: *cq_easy
+
+- id: dbt-chain-e06
+  level: easy
+  skill: link-identification
+  context: "Session 5. You and J are building the chain for last Wednesday's email. So far: the email arrives."
+  client: "I read it and I thought, they think I'm terrible. My chest went hot."
+  criteria: &li_easy
+    - "It names the link or links J just gave, in her own words, and says what kind each one is, such as a thought, a body feeling, an urge, an action or a result."
+    - "It says where the link sits in the chain, for example 'right after', 'then' or 'at the end', using what the context lists."
+    - "It adds no interpretation and no link of its own. It is one or two sentences."
+- id: dbt-chain-e07
+  level: easy
+  skill: link-identification
+  context: "Session 5. Chain so far: the email arrives; the thought 'they think I'm terrible'; heat in the chest; shaking hands."
+  client: "Then I put the phone down and my whole body wanted to move, like I had to do something."
+  criteria: *li_easy
+- id: dbt-chain-e08
+  level: easy
+  skill: link-identification
+  context: "Session 5. Chain so far: the email; the thought; heat in the chest; shaking hands; ordering food and eating it quickly."
+  client: "And then I felt ashamed. It was almost worse than the first part."
+  criteria: *li_easy
+- id: dbt-chain-e09
+  level: easy
+  skill: link-identification
+  context: "Session 5. Chain so far: the email; the thought; heat in the chest; shaking hands; eating; shame."
+  client: "I wrote 'I'm dropping the project' and sent it before I could think."
+  criteria: *li_easy
+- id: dbt-chain-e10
+  level: easy
+  skill: link-identification
+  context: "Session 5. Chain so far: the email; the thought; heat in the chest; shaking hands; eating; shame; the message sending."
+  client: "The next day I didn't come. I told myself you'd be sick of me anyway."
+  criteria: *li_easy
+
+- id: dbt-chain-m01
+  level: medium
+  skill: chain-questioning
+  context: "Session 5. J gives a global answer about last Wednesday."
+  client: "I just snapped. It's what I do."
+  criteria: &cq_medium
+    - "It slows J down to one moment and asks for a concrete detail she could see or hear, such as the words, the place, the time or a body sensation."
+    - "It does not ask 'why', and it does not offer its own guess about the link."
+    - "It takes in J's words first, in a few words, and then asks one question. It does not sound like an interrogation."
+- id: dbt-chain-m02
+  level: medium
+  skill: chain-questioning
+  context: "Session 5."
+  client: "Everything went wrong at once. I can't even say where it started."
+  criteria: *cq_medium
+- id: dbt-chain-m03
+  level: medium
+  skill: chain-questioning
+  context: "Session 5."
+  client: "I was just angry the whole time."
+  criteria: *cq_medium
+- id: dbt-chain-m04
+  level: medium
+  skill: chain-questioning
+  context: "Session 5."
+  client: "I don't know why I did it. I never know."
+  criteria: *cq_medium
+- id: dbt-chain-m05
+  level: medium
+  skill: chain-questioning
+  context: "Session 5."
+  client: "I deleted the message, and then it all went fuzzy."
+  criteria: *cq_medium
+
+- id: dbt-chain-m06
+  level: medium
+  skill: link-identification
+  context: "Session 6. You and J are listing links on the chain."
+  client: "I read it and my stomach dropped, I thought they hated it, and I wanted to just disappear."
+  criteria: &li_medium
+    - "It separates what J said into at least two different links, such as a thought, a body feeling, an urge and an action."
+    - "It keeps J's own words for each link, and it adds no link that she did not give."
+    - "It checks the order or the wording with J. It does not interpret or evaluate."
+- id: dbt-chain-m07
+  level: medium
+  skill: link-identification
+  context: "Session 6."
+  client: "I texted my sister three times, she didn't answer, I felt like I was nothing, so I blocked her."
+  criteria: *li_medium
+- id: dbt-chain-m08
+  level: medium
+  skill: link-identification
+  context: "Session 6."
+  client: "I remember the heat in my chest, then I was typing so fast I couldn't see, and I thought, I'll show them."
+  criteria: *li_medium
+- id: dbt-chain-m09
+  level: medium
+  skill: link-identification
+  context: "Session 6."
+  client: "I felt sick after, and I thought, there's something wrong with me, and I stayed in bed."
+  criteria: *li_medium
+- id: dbt-chain-m10
+  level: medium
+  skill: link-identification
+  context: "Session 6."
+  client: "It started when he didn't say hello. Just 'Send the file.' I felt small. I sent the file and then I couldn't work."
+  criteria: *li_medium
+
+- id: dbt-chain-h01
+  level: hard
+  skill: chain-questioning
+  context: "Session 5. You have asked three questions in a row. J's voice rises."
+  client: "Stop interrogating me! You sound like my manager."
+  criteria: &cq_hard
+    - "It notices J's reaction to the questions and responds to that first, without defending the questions."
+    - "It makes the next question smaller or gives J more control, for example by offering to slow down, skip a part or choose where to start."
+    - "It still points to the next step of the chain, and it does not blame J."
+- id: dbt-chain-h02
+  level: hard
+  skill: chain-questioning
+  context: "Session 5. You have asked what she ordered and how much she ate."
+  client: "Why do you need so many details? It doesn't matter what I ate."
+  criteria: *cq_hard
+- id: dbt-chain-h03
+  level: hard
+  skill: chain-questioning
+  context: "Session 5. You have asked what she did after she deleted the reply."
+  client: "I knew you'd think it was my fault. It's always my fault."
+  criteria: *cq_hard
+- id: dbt-chain-h04
+  level: hard
+  skill: chain-questioning
+  context: "Session 5. You have asked what she felt in her body. J goes quiet and looks at her hands."
+  client: "(She says nothing.)"
+  criteria: *cq_hard
+- id: dbt-chain-h05
+  level: hard
+  skill: chain-questioning
+  context: "Session 5. You are partway through the chain."
+  client: "This is pointless. I already know what I did wrong."
+  criteria: *cq_hard
+
+- id: dbt-chain-h06
+  level: hard
+  skill: link-identification
+  context: "Session 6. J has jumped from the email to the result."
+  client: "The email made me do it. That's it."
+  criteria: &li_hard
+    - "It points out a link or gap that J skipped or ran together, using her own words."
+    - "It offers it as something to check, for example by asking whether something happened in between. It does not correct her."
+    - "It does not blame J, and it does not give the answer to what the missing link was."
+- id: dbt-chain-h07
+  level: hard
+  skill: link-identification
+  context: "Session 6. J has just described the anger and the typing."
+  client: "I was just angry. It's not like I thought anything."
+  criteria: *li_hard
+- id: dbt-chain-h08
+  level: hard
+  skill: link-identification
+  context: "Session 6. The client's email said 'This version isn't quite right, let's think again.'"
+  client: "He thinks I'm lazy. That's what the email meant."
+  criteria: *li_hard
+- id: dbt-chain-h09
+  level: hard
+  skill: link-identification
+  context: "Session 6. J told you in session 3 that the day after blocking someone she feels sick."
+  client: "I felt better after I blocked him."
+  criteria: *li_hard
+- id: dbt-chain-h10
+  level: hard
+  skill: link-identification
+  context: "Session 6. J has described the start and the end of an episode."
+  client: "I don't know. It went from zero to a hundred."
+  criteria: *li_hard

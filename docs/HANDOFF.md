@@ -1,6 +1,6 @@
 # 交接文件
 
-最後更新：2026-11-23（分支 `claude/eft-m4-m6` 加入 EFT 模組 4–6）。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
+最後更新：2026-11-24（分支 `claude/dbt-m1-m3` 加入 DBT 模組 1–3；EFT 模組 4–6 的分支是 `claude/eft-m4-m6`）。由上一個 session 寫給接手的 session。每完成一個里程碑就更新這一頁。
 
 ## 1. 現況
 
@@ -19,9 +19,12 @@
 | 階段 3 Task 3–4（本文件「報告後端」）：資料表、Edge Function `reports`、Drive、真實 `ReportSubmitter` | 程式完成，已合併上線（2026-11-23），但**從未連上真實的 Supabase 或 Google**，`0005_reports.sql` 未套用。`reportsEnabled` 仍預設關；正式建置的行為不變 | 單元測試（模擬 `fetch`、行程內 Postgres）。冒煙測試見 `docs/SETUP-reports.md` 第 4 節，尚未做 |
 | 階段 3 督導評閱、保存期限（`0006`）、督導後台的 Drive 連線狀態 | 程式完成並合併上線（2026-11-23），但未啟用。`reportsEnabled` 關閉時正式網站看不到（路由不存在、沒有連結、不呼叫後端）。`0006` 未套用。規準各級描述是草稿，未經擁有人審核 | 單元測試＋pglite 權限測試＋端到端（正式建置 `/supervisor/reports` 是找不到頁面）。沒連過真實 Supabase／Google |
 | 階段 5（EFT）模組 1 `eft-attunement`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核。模組 2 `eft-emotion-types`、模組 3 `eft-focusing` 的內容也已寫完、未登記。模組 4 `eft-two-chair`、5 `eft-empty-chair`、6 `eft-transformation` 的英文和繁中也已寫完、未登記（分支 `claude/eft-m4-m6`，**尚未合併**到部署分支；`npm run check` 564＋142、`npm run e2e` 39 過 4 跳過）。建置機制讓它在審核前不出現在正式網站（見第 5 節「草稿階段」） | 單元測試＋端到端（用真實內容、測試用審核設定） |
-| 階段 4、6：AI 回饋、DBT | 設計規格已定。AI 回饋的成本估算（成本腳本 19 個單元測試；定價 2026-11-23 讀官方定價頁）和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`，沒有實作、沒有呼叫付費 API。DBT 的貫穿個案有草稿（`content/CLIENT_DBT.md`），待擁有人確認。EFT 的個案 Client R 已確認（2026-11-23） | — |
+| 階段 6（DBT）模組 1 `dbt-validation`、2 `dbt-commitment`、3 `dbt-chain`，英文和繁中 | 內容寫完，**未登記 `content/REVIEW.md`**，等擁有人審核（分支 `claude/dbt-m1-m3`，**尚未合併**到部署分支）。Client J 已於 2026-11-24 確認。階段和三個模組的簡介都寫明危及生命行為不在範圍內。建置機制讓它在審核前不出現在正式網站。預審報告 `docs/reviews/2026-11-24-dbt-m1-m3-prereview.md`。`npm run check` 906＋142＋106；`npm run e2e` 52 過 4 跳過 | 單元測試＋端到端（用真實內容、測試用審核設定）。模組 4–6 還沒寫 |
+| 階段 4：AI 回饋 | 設計規格已定。AI 回饋的成本估算（成本腳本 19 個單元測試；定價 2026-11-23 讀官方定價頁）和一致性檢驗設計在 `docs/plans/2026-11-23-ai-feedback-*.md`，沒有實作、沒有呼叫付費 API。DBT 的個案 Client J 和 EFT 的 Client R 都已確認 | — |
 
 最後一次完整測試（2026-11-23 第四次整合：`claude/stage4-backend2`、`claude/stage4-ui`，已上線）：`npm run check` 903＋142＋106 個通過；`npm run e2e` 52 個通過、4 個跳過（同一批需要服務金鑰的測試）。正式建置只含 `foundations` 階段；AI 介面只在 `VITE_AI_ENABLED` 的建置中載入，正式建置不發出任何 AI 請求（端到端測試）。`0005`–`0008` 的權限規則已逐行覆核。正式專案目前只套用了 `0001`–`0003`；監督後台讀 `cohorts` 用 `select *`，所以缺少新欄位不會出錯。EFT 預審報告：`docs/reviews/2026-11-23-eft-m1-m3-prereview.md`、`2026-11-23-eft-m4-m6-prereview.md`。階段 4 已完成 T1–T13（只用假 LLM），T14–T17 等擁有人決定（計畫第 0 節）。
+
+2026-11-24 在分支 `claude/dbt-m1-m3`：`npm run check` 906＋142＋106 個通過（新增 3 個 DBT 建置測試）；`npm run e2e` 52 個通過、4 個跳過（基線相同）。正式建置（`npm run content`）只輸出 `foundations`。DBT 沒有專門的端到端測試，也沒有在真實瀏覽器內看過畫面。
 
 ## 2. 擁有人還沒做完的事
 
@@ -30,7 +33,8 @@
 2. 手動檢查學生隔離（逐步核對表在 `docs/SETUP-class.md`，2026-11-23；同一文件也有 SMTP 設定和開班流程）：用兩個電郵各開一個學生帳號，各做一題，確認互相看不到對方的作答，督導看得到兩人。
 3. 全班使用前，在 Supabase 設定自己的 SMTP。內建電郵服務每小時只能發很少的信。
 4. 在 Supabase 的 SQL Editor 開一個新的查詢分頁，**只貼 `supabase/migrations/0004_cohort_stages.sql`** 並執行。不急：目前只有一個階段，程式不會讀這張表（有測試；督導的階段區塊在只有一個階段時也不讀）。但要在第二個階段（EFT）的內容上線之前做，否則雲端模式的學生打開階段清單會看到載入錯誤。
-5. 回答 `content/CLIENT_DBT.md`（Client J）的「需你決定」。回答之前，不寫 DBT 階段的走讀和練習題。`content/CLIENT_EFT.md` 已於 2026-11-23 確認。
+5. ~~回答 `content/CLIENT_DBT.md`（Client J）的「需你決定」~~：已於 2026-11-24 回答（照顧問建議）。`content/CLIENT_EFT.md` 已於 2026-11-23 確認。
+5a. 審核 DBT 模組 1–3（`content/{en,zh-Hant}/stages/dbt/`），特別看預審報告 `docs/reviews/2026-11-24-dbt-m1-m3-prereview.md` 摘要的 6 點：魔鬼代言人的措辭、認可的層次是否要補完整、「以退為進」沒有單獨練習、模組 3 走讀的失誤與修復、風險問題只示範怎樣問、六個技能譯名。審核通過後，先取得擁有人明確同意，才登記 `content/REVIEW.md`。DBT 的策略做錯會傷到關係，建議有受過 DBT 訓練的人在場。
 6. 審核 EFT 模組 1（`content/en/stages/eft/`、`content/zh-Hant/stages/eft/`），並確認譯名（`docs/plans/2026-11-15-zh-hant.md`「EFT 階段用語」）。孝道和對亡者說話那一層，目前只留在個人經驗層次，是顧問代選的預設，審核時可改。擁有人是否受過 EFT 訓練還沒回答；EFT 的介入做錯會有害，建議另找受過訓練的同行覆核。審核通過後，先取得擁有人明確同意才登記 `content/REVIEW.md`。
 7. EFT 內容上線前，先套用 `0004_cohort_stages.sql`（第 4 項）。登記 EFT 模組 1 的那一刻，正式網站才會有第二個階段。
 
@@ -111,6 +115,14 @@
 
 ## 6. 下一步（按次序）
 
+**DBT 模組 1–3 待審（分支 `claude/dbt-m1-m3`，2026-11-24）**
+- 範圍：`content/{en,zh-Hant}/stages/dbt/`（`stage.yaml` 含範圍聲明 notice、三個模組各四個檔）、`content/CLIENT_DBT.md`（狀態改為已確認，第 8 節是擁有人的決定）、兩個測試（`scripts/build-content.test.ts` 新增 DBT 區塊；`scripts/estimate-ai-cost.test.ts` 總題數 420→510）、`docs/plans/2026-11-15-zh-hant.md`（DBT 用語，待確認）、預審報告。沒有改 `src/`、`supabase/`、`packages/`、`content/REVIEW.md`。
+- 結構同 EFT：每模組 2 項技能、30 題（每級 10 題，每技能每級 5 題）、示範回應、2 個走讀會談（模組 1：第 1、2 次；2：第 3、4 次；3：第 5、6 次）、3 個反思。技能代碼：`dbt-validation-levels`／`biosocial-explanation`、`commitment-eliciting`／`devils-advocate`、`chain-questioning`／`link-identification`。
+- 正式建置沒有 DBT（沒有已審核模組的階段不輸出；有測試）。要預覽：`INCLUDE_UNREVIEWED=1 npm run content`。
+- 模組 4（`dbt-solutions`，兩項技能由擁有人定：「情緒強烈時先停下來」和「說出需要而不是指控」）、5、6 還沒寫。模組 3 的備註列了鏈條上的四個介入點，模組 4 接著用：想法「他們覺得我很糟」；發抖之後、打字之前；叫餐前想動的衝動；傳出訊息之前。其中想法那一個，J 還沒有自己找到。
+- 走讀的寫法：J 的目標行為不危及生命。第 1 次會談治療師平穩問了自傷和自殺念頭，J 答沒有，之後不再提。
+- 審核通過後，取得擁有人明確同意，才登記 `content/REVIEW.md`，並先套用 `0004_cohort_stages.sql`。
+
 **EFT 模組 4–6 待審（分支 `claude/eft-m4-m6`，2026-11-23）**
 - 範圍：`content/{en,zh-Hant}/stages/eft/` 下三個新模組、兩個 `stage.yaml`、兩個測試（EFT 模組清單；總題數 420）、`docs/plans/2026-11-15-zh-hant.md` 新增用語。沒有改 `src/`、`supabase/`、`content/REVIEW.md`。
 - 結構同模組 1–3：每模組 2 項技能、30 題、示範回應、2 個走讀會談（模組 4：第 6、8 次；5：第 10、12 次；6：第 13、16 次）、3 個反思。個案弧線照 `CLIENT_EFT.md`；R 在第 6 次對椅子說不，治療師接受。
@@ -171,3 +183,5 @@
 | `docs/plans/2026-11-23-ai-feedback-consistency.md` | 階段 4 一致性檢驗設計（未執行） |
 | `content/CLIENT_M.md` | Client M 的設定和 8 個模組的療程弧線 |
 | `content/CLIENT_EFT.md` | Client R（EFT 階段）的設定、六個模組的弧線，以及擁有人 2026-11-23 的決定 |
+| `content/CLIENT_DBT.md` | Client J（DBT 階段）的設定、六個模組的弧線，以及擁有人 2026-11-24 的決定 |
+| `docs/reviews/` | EFT 和 DBT 內容的預審報告（預審不等於審核） |

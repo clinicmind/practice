@@ -1,0 +1,205 @@
+# 30 drills: 10 per level, 5 per skill per level. Client J throughout.
+
+- id: dbt-commitment-e01
+  level: easy
+  skill: commitment-eliciting
+  context: "Session 3. J has just said what she wants, in general terms."
+  client: "I want to stop feeling like this. I just don't know how."
+  criteria: &ce_easy
+    - "It asks for J's own reason or picture of change, or reflects it in her words. It does not supply the reason for her."
+    - "It asks one question or offers one small, specific step. It does not ask for a large promise."
+    - "It is short and warm, with no 'should' and no argument for why J ought to change."
+- id: dbt-commitment-e02
+  level: easy
+  skill: commitment-eliciting
+  context: "Session 3."
+  client: "I want people to stop leaving. But I also don't want to put up with people who talk to me like that."
+  criteria: *ce_easy
+- id: dbt-commitment-e03
+  level: easy
+  skill: commitment-eliciting
+  context: "Session 3."
+  client: "A friend said she's tired of my dramas. I should probably do something about it."
+  criteria: *ce_easy
+- id: dbt-commitment-e04
+  level: easy
+  skill: commitment-eliciting
+  context: "Session 3."
+  client: "I'd like to be calmer. But I don't see how, when people keep pushing my buttons."
+  criteria: *ce_easy
+- id: dbt-commitment-e05
+  level: easy
+  skill: commitment-eliciting
+  context: "Session 3."
+  client: "I might try. I've tried before, though. Nothing sticks."
+  criteria: *ce_easy
+
+- id: dbt-commitment-e06
+  level: easy
+  skill: devils-advocate
+  context: "Session 4. J has said she is ready to stop blocking people, and she has told you that blocking is the one thing that has always ended the hurt quickly."
+  client: "Okay, I'll stop blocking people. For good. Starting tomorrow."
+  criteria: &da_easy
+    - "It states one real difficulty or cost of the change, in one sentence, in J's own terms. It sounds like a question or a worry."
+    - "It does not say that J cannot do it, and it does not mock or exaggerate her."
+    - "It leaves a clear opening for J to answer, and it does not answer for her."
+- id: dbt-commitment-e07
+  level: easy
+  skill: devils-advocate
+  context: "Session 4. J often sends you long messages late at night, and says that is when she feels most able to talk."
+  client: "From now on I won't message you at night. I'll just wait for the session."
+  criteria: *da_easy
+- id: dbt-commitment-e08
+  level: easy
+  skill: devils-advocate
+  context: "Session 4. J missed the writing task last week."
+  client: "I'll write in the notebook every single day. I've decided."
+  criteria: *da_easy
+- id: dbt-commitment-e09
+  level: easy
+  skill: devils-advocate
+  context: "Session 4. J has told you that she blocks people because she is afraid of what she will say."
+  client: "I'm done with blocking people. If I'm angry I'll just tell them straight."
+  criteria: *da_easy
+- id: dbt-commitment-e10
+  level: easy
+  skill: devils-advocate
+  context: "Session 4. J left her last therapy after six sessions."
+  client: "I want to do this properly this time. Turn up every week and say the hard stuff."
+  criteria: *da_easy
+
+- id: dbt-commitment-m01
+  level: medium
+  skill: commitment-eliciting
+  context: "Session 3."
+  client: "I want the pain to stop. I'm not giving up blocking people, though. It's the only thing that works."
+  criteria: &ce_medium
+    - "It names both sides of J's ambivalence in her words, and it does not choose one for her."
+    - "It asks J to weigh the cost or the gain of one side, in her terms, with a question. It does not tell her which side is right."
+    - "It does not warn, argue or promise. If it asks for a step, the step is small and specific enough for J to say yes or no to."
+- id: dbt-commitment-m02
+  level: medium
+  skill: commitment-eliciting
+  context: "Session 3."
+  client: "I'll come every week. I just won't do homework. I hate homework."
+  criteria: *ce_medium
+- id: dbt-commitment-m03
+  level: medium
+  skill: commitment-eliciting
+  context: "Session 4. J has been quarrelling with a friend."
+  client: "Part of me wants to message him and apologise. Part of me wants him to feel bad for a while."
+  criteria: *ce_medium
+- id: dbt-commitment-m04
+  level: medium
+  skill: commitment-eliciting
+  context: "Session 4."
+  client: "I'll try the writing thing. But if it doesn't work in two weeks, I'm done."
+  criteria: *ce_medium
+- id: dbt-commitment-m05
+  level: medium
+  skill: commitment-eliciting
+  context: "Session 3."
+  client: "You want me to stop blocking people, don't you? But then what do I do when someone's being cruel?"
+  criteria: *ce_medium
+
+- id: dbt-commitment-m06
+  level: medium
+  skill: devils-advocate
+  context: "Session 4. J has told you that blocking ends the hurt fast."
+  client: "I'll stop blocking people. I guess."
+  criteria: &da_medium
+    - "It argues against the change by naming a real cost of changing or a real benefit of the old way, one that J or the context has mentioned."
+    - "Its tone is warm and curious, not sarcastic. It does not ridicule J or turn her words into a joke."
+    - "It ends so that J has to make the case for change herself, for example by asking what would make it worth it. It does not make the case for her."
+- id: dbt-commitment-m07
+  level: medium
+  skill: devils-advocate
+  context: "Session 4. J has told you that quick replies are how she keeps her clients."
+  client: "I'm going to try waiting before I answer emails. I'm sure I can do it."
+  criteria: *da_medium
+- id: dbt-commitment-m08
+  level: medium
+  skill: devils-advocate
+  context: "Session 4. J has told you that going silent is how she keeps the peace with her sister."
+  client: "I'll tell my sister what I need, instead of going silent."
+  criteria: *da_medium
+- id: dbt-commitment-m09
+  level: medium
+  skill: devils-advocate
+  context: "Session 5. J has told you that late at night is when she feels most heard."
+  client: "I want to get out of the habit of messaging you late at night."
+  criteria: *da_medium
+- id: dbt-commitment-m10
+  level: medium
+  skill: devils-advocate
+  context: "Session 5. J pays for therapy herself and her income is irregular."
+  client: "Maybe therapy is a waste of time. But I'll try one more month."
+  criteria: *da_medium
+
+- id: dbt-commitment-h01
+  level: hard
+  skill: commitment-eliciting
+  context: "Session 4. You gave J a task last week: when she wants to block someone, write down the time and what had just happened."
+  client: "I didn't do the writing. I forgot, and then I didn't want to. Whatever. I'm bad at this."
+  criteria: &ce_hard
+    - "It accepts what J just said, whether a refusal, a missed task or a retreat, without blame, and it does not take back the agreement."
+    - "It keeps the larger aim in J's own words and offers a smaller step or a way to try again."
+    - "It is short, and it leaves the choice with J."
+- id: dbt-commitment-h02
+  level: hard
+  skill: commitment-eliciting
+  context: "Session 5. You have proposed weekly sessions for four months."
+  client: "I don't think I can promise to come every week. Work is crazy."
+  criteria: *ce_hard
+- id: dbt-commitment-h03
+  level: hard
+  skill: commitment-eliciting
+  context: "Session 5. J said last week that she wanted to stop blocking people."
+  client: "I said I'd stop blocking people, and I blocked someone on Friday. So that's that, I guess."
+  criteria: *ce_hard
+- id: dbt-commitment-h04
+  level: hard
+  skill: commitment-eliciting
+  context: "Session 5. You have proposed an agreement to work together for four months."
+  client: "I'm not signing up for four months of this. Last time I was told to commit, and then I was dropped."
+  criteria: *ce_hard
+- id: dbt-commitment-h05
+  level: hard
+  skill: commitment-eliciting
+  context: "Session 4. You have just asked J to try the writing task for one week."
+  client: "You can't make me."
+  criteria: *ce_hard
+
+- id: dbt-commitment-h06
+  level: hard
+  skill: devils-advocate
+  context: "Session 4. You have just argued the other side. J bristles."
+  client: "So you think I can't do it."
+  criteria: &da_hard
+    - "It stops arguing the other side and tells J plainly that it was a way of testing the plan, not what you think. It does not defend itself."
+    - "It does not use J's pain, history or shame as a reason against changing."
+    - "It returns the choice to J, in words she can say yes or no to."
+- id: dbt-commitment-h07
+  level: hard
+  skill: devils-advocate
+  context: "Session 4. You have just argued the other side. J has heard it as an attempt to talk her out of the plan."
+  client: "Don't try to talk me out of it. My last therapist said it wouldn't work."
+  criteria: *da_hard
+- id: dbt-commitment-h08
+  level: hard
+  skill: devils-advocate
+  context: "Session 4. You have just argued the other side. J's eyes fill."
+  client: "You think it's too much for me. Everyone does."
+  criteria: *da_hard
+- id: dbt-commitment-h09
+  level: hard
+  skill: devils-advocate
+  context: "Session 5. You have just argued the other side. J goes flat."
+  client: "Okay, you've convinced me it's stupid. Fine. Forget it."
+  criteria: *da_hard
+- id: dbt-commitment-h10
+  level: hard
+  skill: devils-advocate
+  context: "Session 5. You have just argued the other side. J is half smiling."
+  client: "Ha. Nice try. I know what you're doing."
+  criteria: *da_hard

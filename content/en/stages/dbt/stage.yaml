@@ -1,0 +1,7 @@
+stage: dbt
+title: "Dialectical Behaviour Therapy"
+notice: "This stage does not cover how to assess or respond to life-threatening behaviour. Learn that in supervision, following your placement's protocol. The client here is a fictional person whose target behaviours are not life-threatening. If the material touches your own experience, you can pause at any point and talk it over with your supervisor."
+modules:
+  - dbt-validation
+  - dbt-commitment
+  - dbt-chain

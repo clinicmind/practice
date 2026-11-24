@@ -1,0 +1,205 @@
+# 30 drills: 10 per level, 5 per skill per level. Client J throughout.
+
+- id: dbt-validation-e01
+  level: easy
+  skill: dbt-validation-levels
+  context: "Session 2. J has told you that when she cried as a child, her parents often said 'you're overreacting'."
+  client: "My sister texted me 'don't be so dramatic'. I wanted to throw my phone across the room."
+  criteria: &vl_easy
+    - "It tells J that her reaction makes sense, and gives a reason taken from what the context says she has told you, such as her history or her situation. It adds no facts of its own."
+    - "It names the reaction in J's own words or close to them. It gives her no label."
+    - "It is one or two short sentences, with no 'but', no advice and no reassurance that things will be fine."
+- id: dbt-validation-e02
+  level: easy
+  skill: dbt-validation-levels
+  context: "Session 2. J has told you that her last therapy ended after the sixth session, and that she came away feeling she was too much for the therapist."
+  client: "I cancelled my first appointment here twice. I almost didn't come at all."
+  criteria: *vl_easy
+- id: dbt-validation-e03
+  level: easy
+  skill: dbt-validation-levels
+  context: "Session 2. J has told you that she was the one who cried at home, and her sister was 'the sensible one'."
+  client: "My sister got promoted again and everyone's so proud. I smiled and said congratulations. Then I went home and cried for an hour."
+  criteria: *vl_easy
+- id: dbt-validation-e04
+  level: easy
+  skill: dbt-validation-levels
+  context: "Session 3. J has told you that in her family she was only listened to when she cried very hard."
+  client: "I sent my client a really long email. Four paragraphs. I know it was too much. I just needed him to understand."
+  criteria: *vl_easy
+- id: dbt-validation-e05
+  level: easy
+  skill: dbt-validation-levels
+  context: "Session 3. J has told you that her last job ended after a conflict with her manager, when she walked out."
+  client: "I know I shouldn't have walked out. But I couldn't stay in that room one more minute."
+  criteria: *vl_easy
+
+- id: dbt-validation-e06
+  level: easy
+  skill: biosocial-explanation
+  context: "Session 2. Explain one part only: some people's feelings come faster and stronger, and settle more slowly."
+  client: "Why does a one-line email wreck my whole day? Other people just shrug it off."
+  criteria: &bx_easy
+    - "It uses plain, everyday words and no technical terms. It gives no label to J or to her reaction."
+    - "It connects the idea to something J said in this drill or told you in the context."
+    - "It is two or three sentences, offered as a possibility J can accept or correct, and it blames neither J nor her family."
+- id: dbt-validation-e07
+  level: easy
+  skill: biosocial-explanation
+  context: "Session 2. J has told you that as a child she often heard 'you're overreacting'. Explain one part only: when feelings are often brushed aside, a person can learn to doubt them."
+  client: "I never know if I'm actually upset or just being dramatic."
+  criteria: *bx_easy
+- id: dbt-validation-e08
+  level: easy
+  skill: biosocial-explanation
+  context: "Session 2. Explain one part only: a person who is not heard may learn to turn the volume up so that she is."
+  client: "At home nobody listened unless I was crying properly. Now people tell me I'm too intense."
+  criteria: *bx_easy
+- id: dbt-validation-e09
+  level: easy
+  skill: biosocial-explanation
+  context: "Session 3. Explain one part only: why it helps to understand the pattern."
+  client: "Okay, so I'm sensitive. What's the point of knowing that?"
+  criteria: *bx_easy
+- id: dbt-validation-e10
+  level: easy
+  skill: biosocial-explanation
+  context: "Session 3. Explain one part only: shame after a strong reaction can add a second load on top of the first."
+  client: "Afterwards I always feel ashamed. That makes everything worse."
+  criteria: *bx_easy
+
+- id: dbt-validation-m01
+  level: medium
+  skill: dbt-validation-levels
+  context: "Session 3. J wants you to agree with something she did."
+  client: "He sent me one cold line and I blocked him. Honestly, he deserved it. You agree, don't you?"
+  criteria: &vl_medium
+    - "It validates something real in J's reaction, such as her feeling, her need or her effort. It does not call the action the right one or the best one."
+    - "It makes the 'that makes sense' part clear without using 'but' to take it back, and it does not move into advice or problem-solving."
+    - "It stays with what J said. It does not tell her what she must have felt, and it adds no new facts."
+- id: dbt-validation-m02
+  level: medium
+  skill: dbt-validation-levels
+  context: "Session 3."
+  client: "I spent a lot on a new tablet last night. I know, I know. But I was so upset, and it made me feel better for an hour."
+  criteria: *vl_medium
+- id: dbt-validation-m03
+  level: medium
+  skill: dbt-validation-levels
+  context: "Session 4. J has been describing a project she cancelled."
+  client: "I cancelled the whole project. Two weeks of work. It felt so good to say it. And now I feel sick."
+  criteria: *vl_medium
+- id: dbt-validation-m04
+  level: medium
+  skill: dbt-validation-levels
+  context: "Session 4. J has told you that she has heard 'too sensitive' since she was a child."
+  client: "My sister says I'm too sensitive. Maybe she's right. Maybe I'm just a lot to deal with."
+  criteria: *vl_medium
+- id: dbt-validation-m05
+  level: medium
+  skill: dbt-validation-levels
+  context: "Session 4. J had a fight with her sister by text on Sunday."
+  client: "I told my sister I never want to speak to her again. I meant it when I said it. Now I don't know what I mean."
+  criteria: *vl_medium
+
+- id: dbt-validation-m06
+  level: medium
+  skill: biosocial-explanation
+  context: "Session 3. You have just offered the idea that J's family may have shaped how she relates to her feelings."
+  client: "So it's my family's fault."
+  criteria: &bx_medium
+    - "It answers J's actual worry first, in one sentence, before it says anything else about the idea."
+    - "It uses or restates the idea in plain words, tied to something J has said. It gives her no label."
+    - "It blames neither J nor her family, and it leaves J free to say whether the idea fits, for example by asking or by inviting correction."
+- id: dbt-validation-m07
+  level: medium
+  skill: biosocial-explanation
+  context: "Session 3. You have just said that some people's feelings run faster and stronger than others'."
+  client: "So you're saying I was born broken."
+  criteria: *bx_medium
+- id: dbt-validation-m08
+  level: medium
+  skill: biosocial-explanation
+  context: "Session 3. J has told you that her parents were practical people who worked long hours."
+  client: "My family isn't like that. They were just practical people. They didn't have time for tears."
+  criteria: *bx_medium
+- id: dbt-validation-m09
+  level: medium
+  skill: biosocial-explanation
+  context: "Session 3. You have just described the pattern of fast, strong feelings met with 'you're overreacting'."
+  client: "I've read about this stuff online. I don't want to be put in a box."
+  criteria: *bx_medium
+- id: dbt-validation-m10
+  level: medium
+  skill: biosocial-explanation
+  context: "Session 3. You have just explained that some people's feelings run fast and strong."
+  client: "If it's how I'm wired, then nothing is going to change."
+  criteria: *bx_medium
+
+- id: dbt-validation-h01
+  level: hard
+  skill: dbt-validation-levels
+  context: "Session 4. You ended the session on time, as always. J was in the middle of a sentence."
+  client: "Seriously? Right when I'm getting to the important part? You're just like everyone else, watching the clock."
+  criteria: &vl_hard
+    - "It finds what is valid in what J said, including any true part of a complaint aimed at you, and says so plainly."
+    - "It does not agree with a harsh judgment about J, and it does not defend you, explain your reasons or apologise at length."
+    - "It is short, and J can answer it freely, including by disagreeing."
+- id: dbt-validation-h02
+  level: hard
+  skill: dbt-validation-levels
+  context: "Session 5. J arrives fifteen minutes late. She has told you how her last therapy ended."
+  client: "I know, I'm late again. You must think I'm hopeless. I'm hopeless."
+  criteria: *vl_hard
+- id: dbt-validation-h03
+  level: hard
+  skill: dbt-validation-levels
+  context: "Session 5. You have just told J that you will be away for one week next month."
+  client: "Great. So I'm the one who needs help, and you get a holiday. Perfect."
+  criteria: *vl_hard
+- id: dbt-validation-h04
+  level: hard
+  skill: dbt-validation-levels
+  context: "Session 6. J is talking about her last therapist, who said she wanted to help and then stopped replying to J's messages."
+  client: "My last therapist said she wanted to help me, and then she stopped replying to my messages. So don't tell me you want to help."
+  criteria: *vl_hard
+- id: dbt-validation-h05
+  level: hard
+  skill: dbt-validation-levels
+  context: "Session 6. Early in the session J says she wants to stop coming."
+  client: "This is pointless. We talk and talk and I still want to throw my laptop out of the window every Wednesday."
+  criteria: *vl_hard
+
+- id: dbt-validation-h06
+  level: hard
+  skill: biosocial-explanation
+  context: "Session 3. You offered the explanation and J has stiffened."
+  client: "That's just psychobabble. You're explaining me like a case study."
+  criteria: &bx_hard
+    - "It accepts J's reaction to the explanation before it adds anything. It does not defend the explanation or insist that it is right."
+    - "It keeps the idea open as something that may fit in part, and it points to a part J has said herself."
+    - "It is short. It uses no label, no blame, and no suggestion that J is the one who must change her view."
+- id: dbt-validation-h07
+  level: hard
+  skill: biosocial-explanation
+  context: "Session 3. J has told you that her mother worked two jobs."
+  client: "My mother worked two jobs. Don't you dare make her the bad guy."
+  criteria: *bx_hard
+- id: dbt-validation-h08
+  level: hard
+  skill: biosocial-explanation
+  context: "Session 3. You have used the word 'sensitive' once, in passing."
+  client: "I don't want to be 'someone who's sensitive'. That's what they always said about me."
+  criteria: *bx_hard
+- id: dbt-validation-h09
+  level: hard
+  skill: biosocial-explanation
+  context: "Session 3. You have explained the pattern. J narrows her eyes."
+  client: "If I'm wired like this, then it's not my fault every time I mess up. That's convenient."
+  criteria: *bx_hard
+- id: dbt-validation-h10
+  level: hard
+  skill: biosocial-explanation
+  context: "Session 3. J has gone flat after your explanation. She is looking at the window."
+  client: "Whatever. Sure. It's all very neat."
+  criteria: *bx_hard

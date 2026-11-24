@@ -1,0 +1,7 @@
+stage: dbt
+title: "辯證行為治療"
+notice: "這個階段不涵蓋危及生命行為的評估和處理。這部分要在督導下，按實習機構的守則學習。這裡的個案是虛構的人，她的目標行為不危及生命。練習時如果觸動了你自己的經驗，你可以隨時暫停，找督導談一談。"
+modules:
+  - dbt-validation
+  - dbt-commitment
+  - dbt-chain

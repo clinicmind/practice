@@ -1,0 +1,175 @@
+sessions:
+  - id: dbt-commitment-s3
+    title: "Session 3: 'I want it to stop, but I'm keeping the block button'"
+    turns:
+      - id: dbt-commitment-s3-t01
+        speaker: therapist
+        text: "Hello, J. Over the last two weeks you've told me about the six sessions, the four jobs, and how you grew up. Today I'd like us to talk about what you want from this therapy. Where would you like to start?"
+      - id: dbt-commitment-s3-t02
+        speaker: client
+        text: "I want to stop feeling like this. All the time, like I'm one email away from blowing up my own life."
+      - id: dbt-commitment-s3-d1
+        type: choice
+        prompt: "J says she wants to stop feeling like this. What do you say?"
+        options:
+          - id: a
+            text: "'One email away from blowing up your own life.' If you stopped feeling like that, what would be different in a week?"
+            fit: strong
+            note: "It keeps her own image and asks for her own picture of change. The goal that comes out of it will be hers."
+          - id: b
+            text: "Good. Our work together will teach you skills to regulate your emotions, so that you stop reacting that way."
+            fit: weak
+            note: "It promises a result, it uses jargon, and it makes her reactions the problem in her first minute of talking about goals."
+          - id: c
+            text: "Let's write that down as a goal: 'stop feeling like this'. What is the most important thing to change first?"
+            fit: workable
+            note: "It is organised and it takes her seriously. But 'stop feeling like this' is not yet a goal she can work toward, and asking for the first priority skips her own picture."
+        actual: "'One email away from blowing up your own life.' If you stopped feeling like that, what would be different in a week?"
+        rationale: "A commitment starts from what the client wants. Ask for her picture of change before you suggest anything. What she says becomes the goal, in her words."
+      - id: dbt-commitment-s3-t03
+        speaker: client
+        text: "I'd have clients who like me. No fights with my sister. I wouldn't hide in my flat afterwards. (pause) But I'm not giving up the block button. Don't ask me to. It's the only thing that has ever stopped it."
+      - id: dbt-commitment-s3-d2
+        type: choice
+        prompt: "J has said what she wants, and that she will not give up blocking. How do you respond?"
+        options:
+          - id: a
+            text: "Blocking people is one of the things that keeps this cycle going, so we'll need to work on it."
+            fit: weak
+            note: "It may be true. Said now, it is an argument, and she has just said that she will not give this up. She will dig in."
+          - id: b
+            text: "I'm not asking you to give up anything today. Blocking has stopped it fast, and that matters. It also seems to sit next to the clients and the sister you want. Can we look at both?"
+            fit: strong
+            note: "It respects what blocking does for her and says plainly that you are not taking it. It puts blocking and her wishes in one frame, and asks her to look at both."
+          - id: c
+            text: "That's your choice, and I'll respect it. What else would you like to work on?"
+            fit: workable
+            note: "It respects her. But it drops the connection between blocking and what she wants, and she may take it to mean that nothing needs to change."
+        actual: "I'm not asking you to give up anything today. Blocking has stopped it fast, and that matters. It also seems to sit next to the clients and the sister you want. Can we look at both?"
+        rationale: "Say what blocking does for her, and say that you are not taking it away today. Then put it next to what she wants. The ambivalence is the work. You do not need to settle it in this session."
+      - id: dbt-commitment-s3-t04
+        speaker: client
+        text: "(arms crossed) Fine. Look."
+      - id: dbt-commitment-s3-d3
+        type: free
+        prompt: "Write one question that invites J to look at what blocking costs her, in her own terms. Do not tell her what it costs."
+        actual: "When you've blocked someone in the middle of a fight, what's it like the next day?"
+        rationale: "She will tell you the cost more convincingly than you can. A question about 'the next day' is specific, and it does not tell her what she should find."
+      - id: dbt-commitment-s3-t05
+        speaker: client
+        text: "The next day... I feel sick. Like I've set fire to something. And then I can't unblock them because that would be humiliating. I lost two clients like that."
+      - id: dbt-commitment-s3-d4
+        type: choice
+        prompt: "J has just told you what blocking costs her. What do you say?"
+        options:
+          - id: a
+            text: "You feel sick the next day, and two clients are gone. That's a real cost. Would you try one small thing, to find out more? The next time you want to block someone, write down the time and what had just happened. You don't have to stop yourself."
+            fit: strong
+            note: "It reflects what she said without adding to it, and asks for one small step that she can say yes to. It says clearly that she does not have to stop blocking."
+          - id: b
+            text: "So blocking costs more than it gives you. Wouldn't you agree it's worth trying to stop?"
+            fit: workable
+            note: "It uses her words to make your argument, and the question has only one polite answer. She may say yes and not mean it."
+          - id: c
+            text: "Then let's agree that you will stop blocking people from now on."
+            fit: weak
+            note: "It asks for a large promise right after she has said she will not give this up. She will refuse, or agree and break it, and both leave you worse off."
+        actual: "You feel sick the next day, and two clients are gone. That's a real cost. Would you try one small thing, to find out more? The next time you want to block someone, write down the time and what had just happened. You don't have to stop yourself."
+        rationale: "A small first step makes it easier to say yes, and it does not take away what blocking does for her. The writing also gives you the material for the next module."
+      - id: dbt-commitment-s3-t06
+        speaker: client
+        text: "(shrugs) Write it down. That's it? ...Okay. I can do that."
+      - id: dbt-commitment-s3-t07
+        speaker: therapist
+        text: "That's it. Only that. Thank you for being willing to try it."
+    notes:
+      goals: "J's goal, in her words: clients who like her, no fights with her sister, not hiding in her flat. Agreed step: write down the time and what had just happened, the next time she wants to block someone. She has not agreed to stop blocking."
+      alliance: "Bond: she crossed her arms, then told me what blocking costs. Tasks: one small step, accepted. Goals: hers are clear. Mine, to reduce blocking, is not yet part of the agreement, and I have not pretended that it is."
+      formulation_update: "Blocking ends the hurt fast and costs her the next day: feeling sick, two lost clients, and no way back without humiliation. She has described the cost herself. Do not repeat it back to her as an argument."
+  - id: dbt-commitment-s4
+    title: "Session 4: 'From now on'"
+    turns:
+      - id: dbt-commitment-s4-t01
+        speaker: therapist
+        text: "Hello, J. How did the writing go?"
+      - id: dbt-commitment-s4-t02
+        speaker: client
+        text: "I wrote it down once. On Thursday. I didn't block him in the end. (pause) But I forgot the rest of the week. So I failed."
+      - id: dbt-commitment-s4-d1
+        type: choice
+        prompt: "J did the task once and says she failed. What do you say?"
+        options:
+          - id: a
+            text: "Once is more than none, and Thursday is exactly what I hoped to see. What happened on Thursday, when you didn't block him?"
+            fit: strong
+            note: "It does not accept 'failed'. It points to the one time that worked, and it asks about that time, which is where the useful information is."
+          - id: b
+            text: "That's okay. Everyone forgets. Just try harder next week."
+            fit: weak
+            note: "It is meant kindly. 'Try harder' tells her that she did not try hard enough, and she has heard that before."
+          - id: c
+            text: "Once is a start. What got in the way on the other days?"
+            fit: workable
+            note: "It credits her, and the question is reasonable. But it goes to what went wrong first, and the best information is in what went right."
+        actual: "Once is more than none, and Thursday is exactly what I hoped to see. What happened on Thursday, when you didn't block him?"
+        rationale: "When a client calls a partial success a failure, you do not argue and you do not comfort. You show her where the evidence is."
+      - id: dbt-commitment-s4-t03
+        speaker: client
+        text: "I went for a walk. Then I wasn't as angry. (pause) Okay. You know what? From now on I'll just stop blocking people. All of it. No more. I'm done."
+      - id: dbt-commitment-s4-d2
+        type: choice
+        prompt: "J suddenly promises to stop blocking people altogether, for good. You suspect it is more than she can keep. What do you say?"
+        options:
+          - id: a
+            text: "That's a big promise, and blocking has been the one thing that ends the hurt fast. Are you sure you want to give it up completely, even in a really bad moment?"
+            fit: strong
+            note: "It is the devil's advocate, offered gently. It names the real benefit of blocking, in her terms, and asks a real question. It does not say that she cannot."
+          - id: b
+            text: "That's wonderful! I'm so proud of you."
+            fit: weak
+            note: "It rewards a promise that she cannot keep. When she breaks it, the pride becomes shame, and shame is what follows the blocking already."
+          - id: c
+            text: "That's ambitious. Maybe we should start by cutting down, not stopping completely."
+            fit: workable
+            note: "It is sensible. But you have made the case against her promise for her, and she may hear it as 'you don't think I can'."
+        actual: "That's a big promise, and blocking has been the one thing that ends the hurt fast. Are you sure you want to give it up completely, even in a really bad moment?"
+        rationale: "She has leapt from 'no' to 'always'. The devil's advocate lets her argue the other side herself. It works here because the relationship is steady and she has just done something that went well."
+      - id: dbt-commitment-s4-t04
+        speaker: client
+        text: "(a pause) ...No. Not in a really bad moment. If someone is cruel to me, I'm not going to sit there."
+      - id: dbt-commitment-s4-d3
+        type: choice
+        prompt: "J has pulled back from her promise. How do you respond?"
+        options:
+          - id: a
+            text: "That's honest, and it tells us something real. Protecting yourself from cruelty stays. What would you be willing to try in the moments that aren't that bad?"
+            fit: strong
+            note: "It does not call her retreat a failure. It confirms what she wants to keep, and it asks for the part that she can change."
+          - id: b
+            text: "So you weren't serious. I thought you wanted to change."
+            fit: weak
+            note: "It blames her for being honest. She will say yes next time to avoid it, and mean no."
+          - id: c
+            text: "Okay, so blocking stays as an option for now."
+            fit: workable
+            note: "It accepts her honesty, which is good. But it closes the conversation without a step, and you have lost what she said she might do."
+        actual: "That's honest, and it tells us something real. Protecting yourself from cruelty stays. What would you be willing to try in the moments that aren't that bad?"
+        rationale: "A client who tests her own promise has told you where the line is. Use it. The smaller commitment is the one she will keep."
+      - id: dbt-commitment-s4-t05
+        speaker: client
+        text: "Like when someone sends a cold email. Not when someone's cruel. I could wait on those."
+      - id: dbt-commitment-s4-d4
+        type: free
+        prompt: "J has named a part she is willing to try: waiting when a message is cold and not cruel. Write one or two sentences that ask her to commit to exactly this and that make clear the choice is hers."
+        actual: "So the plan would be: when a message is cold and not cruel, you wait before you block. Would you like to try that for the next two weeks? It's your decision, and we can change it any time."
+        rationale: "It repeats her own boundary in her own words. It names a time, so that it can be reviewed. It says that the choice is hers, which is part of what makes it hold."
+      - id: dbt-commitment-s4-t06
+        speaker: client
+        text: "Two weeks. Yes. (pause) It's my choice?"
+      - id: dbt-commitment-s4-t07
+        speaker: therapist
+        text: "It is. And thank you for telling me honestly where your line is."
+    notes:
+      goals: "Agreed for two weeks: when a message is cold and not cruel, she waits before blocking. Blocking when someone is cruel stays. The writing step continues."
+      alliance: "Bond: she tested her own promise and told me the truth. The devil's advocate worked because the relationship was steady today and because I asked rather than told. I would not use it on a day when she arrives hurt. Tasks: a time-limited commitment she chose."
+      formulation_update: "She moves fast from 'no' to 'always'. The pattern may show up elsewhere: big promises, then collapse. A smaller commitment from the start is safer. A walk on Thursday helped, and she did not name it as a skill. Mention it later without turning it into an assignment."

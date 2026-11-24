@@ -1,0 +1,120 @@
+dbt-commitment-e01:
+  model_response: "If you stopped feeling like this, what would be the first thing you'd notice in your day?"
+  why: "It asks for her own picture of change, in her words, and leaves it open. It does not say what she should want."
+  avoid: "'You need to learn to regulate your emotions.' It supplies a goal in jargon, and it makes her the problem."
+dbt-commitment-e02:
+  model_response: "You want people to stay, and you want to be treated well. What would it look like if both were true?"
+  why: "It keeps both wishes in her words, and it asks for a picture, not a choice. It does not tell her which to give up."
+  avoid: "'You can't have both. People leave when someone is hard to deal with.' It is an argument, and it says the thing she is most afraid of."
+dbt-commitment-e03:
+  model_response: "You're thinking about doing something about it. What would you want for that friendship, for yourself?"
+  why: "It picks up her own movement toward change, and it asks what she wants, not what the friend wants."
+  avoid: "'Your friend has a point. You should think about how you affect people.' It sides with the friend and tells J what to want."
+dbt-commitment-e04:
+  model_response: "You'd like to be calmer. Would you be willing to notice, just this week, one moment when a button got pushed, and jot down what happened? Nothing more than that."
+  why: "It reflects her wish, 'calmer', and asks for one small thing that she can say yes or no to. It does not ask her to change anything yet."
+  avoid: "'Let's make a plan so that nothing pushes your buttons.' It asks for a big promise, and it promises something no one can deliver."
+dbt-commitment-e05:
+  model_response: "You've tried before and you're here again. What helped, even for a day?"
+  why: "It turns 'nothing sticks' into a question about what did help, so the reasons come from her. It credits the fact that she came back."
+  avoid: "'This time will be different, I promise.' It promises, and she has heard promises before."
+dbt-commitment-e06:
+  model_response: "That's a big change, and blocking is the one thing that has always ended the hurt quickly. Are you sure you want to give it up completely?"
+  why: "It names the real cost, that blocking works fast, in her own terms. It asks, and it leaves the answer to her."
+  avoid: "'You'll never manage that. You've tried before.' It says she cannot, and it uses her history against her."
+dbt-commitment-e07:
+  model_response: "Never at night is a big promise, because night is when you can talk most easily. Is that one you want to make?"
+  why: "It names the cost she told you about, that night is when she can talk, and it asks whether she wants to pay it."
+  avoid: "'You'll need to stop the late messages anyway.' It makes the decision for her."
+dbt-commitment-e08:
+  model_response: "Every single day is a big promise. Would a smaller one be easier to keep?"
+  why: "It names the difficulty in her words, 'every single day', and it asks. She can answer that she wants every day."
+  avoid: "'You said that last week too.' It uses a missed task against her."
+dbt-commitment-e09:
+  model_response: "Telling people straight might start the very fight you've been avoiding by blocking them. Are you ready to risk that?"
+  why: "It names a real risk of the change, in her own terms. It does not say that she will fail."
+  avoid: "'You'll probably say something you regret.' It predicts her failure from her fear."
+dbt-commitment-e10:
+  model_response: "It will get hard here sometimes. Are you sure you want to take that on?"
+  why: "It names a real difficulty in plain words, and it leaves the answer to her."
+  avoid: "'Last time you gave up after six sessions. Why would this time be different?' It uses her history as a weapon."
+dbt-commitment-m01:
+  model_response: "You want the pain to stop, and blocking is the one thing that has worked. What does blocking cost you the next day?"
+  why: "It keeps both of her sides, in her words, and asks one question about the cost. It leaves her to say what the cost is."
+  avoid: "'Blocking just keeps the pain going. It's the problem.' It argues for change and chooses the side for her."
+dbt-commitment-m02:
+  model_response: "Coming every week is a yes, and homework is a no. What would make a small piece of it worth doing, even once?"
+  why: "It names her yes and her no, and it asks what would make a small piece worth doing. It does not lecture about homework."
+  avoid: "'Therapy doesn't work without homework.' It is a warning, and it ends the conversation about the no."
+dbt-commitment-m03:
+  model_response: "One part of you wants to repair it, and one part wants him to feel it. Picture next Friday: which would you be glad you'd done?"
+  why: "It keeps both parts, in her words, and moves the question to next Friday, so she weighs them herself."
+  avoid: "'Apologising is clearly the mature choice.' It chooses a side and calls the other one immature."
+dbt-commitment-m04:
+  model_response: "Two weeks of trying is a real yes, and so is 'if it doesn't work, I'm done'. What would count as it working, for you?"
+  why: "It treats both halves as real and asks what 'working' would mean to her, so the test is hers."
+  avoid: "'Two weeks isn't enough to know. Give it at least two months.' It argues with her terms and asks for a larger promise."
+dbt-commitment-m05:
+  model_response: "You want protection from cruelty, and I'm not asking you to give that up. What would protection look like that you wouldn't regret the next day?"
+  why: "It names what she is afraid to lose and says plainly that you are not taking it. The question asks for her version of safety."
+  avoid: "'You'd be surprised how few people are really cruel.' It argues with her experience."
+dbt-commitment-m06:
+  model_response: "You said 'I guess'. Blocking ends the hurt fast, and that's real. What would make it worth giving up?"
+  why: "It gives the old behaviour its real benefit, and it picks up her 'I guess'. The question asks her to name the reason."
+  avoid: "'Good. I'm glad you're making the right decision.' It makes the case for her, and it rewards 'I guess'."
+dbt-commitment-m07:
+  model_response: "Quick replies are how you keep clients, and waiting could cost you some of that. What would make waiting worth it?"
+  why: "It names the cost she told you about, in her terms, and asks her for the reason."
+  avoid: "'Waiting is always better than replying in anger.' It makes the case for her, and it ignores the cost."
+dbt-commitment-m08:
+  model_response: "Going silent keeps things from blowing up, and you've said that matters to you. Saying what you need could start the argument you've been avoiding. What would make that risk worth it?"
+  why: "It gives the silence its benefit and names the risk of the new way. The question hands the reason to her."
+  avoid: "'Silence just builds resentment, so speaking up is healthier.' It argues for change and talks down the old way."
+dbt-commitment-m09:
+  model_response: "Late at night is when you feel most heard. What would you get from waiting for the session that's worth giving that up?"
+  why: "It names what she would lose, in her words, and asks what she would gain. It does not say that the late messages are a problem."
+  avoid: "'The late messages aren't sustainable.' It judges the habit and makes her defend it."
+dbt-commitment-m10:
+  model_response: "It's money and time for something that may not work. What would make another month worth it?"
+  why: "It names the real cost, money and time, and asks her for the reason to continue. It does not sell therapy."
+  avoid: "'Therapy takes time. Give it a chance.' It argues for therapy, which is the case she should be making."
+dbt-commitment-h01:
+  model_response: "You forgot, and then you didn't want to. That happens, and it doesn't cancel what you want. What would make a smaller version of the writing doable this week?"
+  why: "It accepts the missed task without blame, and it does not take up 'bad at this'. It asks for a smaller version and leaves it to her."
+  avoid: "'Everyone can do this if they try. Just set a reminder.' It makes her the one at fault, and it gives advice she did not ask for."
+dbt-commitment-h02:
+  model_response: "That's honest, and I'd rather hear it than have you say yes and drop out. You want to come, and every week is too much right now. How many sessions could you say yes to for the next month?"
+  why: "It accepts the no as information, keeps her wish to come, and asks for a smaller yes in a number she can choose. It does not argue about work."
+  avoid: "'Therapy needs commitment, so we'll have to find the time.' It repeats the demand, and the likely answer is a yes she doesn't mean."
+dbt-commitment-h03:
+  model_response: "You said you wanted to stop blocking people, and Friday doesn't cancel that. Telling me about it matters. What happened just before you did it?"
+  why: "It does not take back the agreement and does not blame. It values that she told you, and it asks the first question of the next step."
+  avoid: "'So you broke your word.' It scores the lapse, and she will stop telling you."
+dbt-commitment-h04:
+  model_response: "That makes sense after last time. We don't have to decide on four months today. Would you be willing to agree to four sessions, and then look together at whether it's worth going on?"
+  why: "It validates the wariness with her own reason. It makes the commitment smaller and leaves the later decision to her."
+  avoid: "'I'm not going to drop you. You can trust me.' It asks her to take your word, which is what last time taught her not to do."
+dbt-commitment-h05:
+  model_response: "No, I can't, and I wouldn't want to. It's your choice. If a smaller step would feel more like yours, tell me what it would be."
+  why: "It agrees with the true thing she said, hands the choice back and asks her to design the step."
+  avoid: "'I'm not trying to make you. I'm trying to help you.' It defends you, and it says nothing about what she said."
+dbt-commitment-h06:
+  model_response: "No. I think you can, and I was making the hard case so you could hear yourself answer it. If that didn't help, I'll stop. What's your answer to it?"
+  why: "It says plainly what it was doing and what you believe. It offers to stop, and then it returns the question."
+  avoid: "'I never said you couldn't.' It defends you, and it leaves her feeling that she misheard."
+dbt-commitment-h07:
+  model_response: "I'm not trying to talk you out of it. I raised the doubts because I want your yes to be your own. Would you rather I skip that and just listen to your reasons?"
+  why: "It says what the doubts were for and offers to stop. Her reaction tells you to be careful, and this respects it."
+  avoid: "'That therapist was wrong, and I'm different.' It criticises someone you have never met, and it asks for trust you haven't earned."
+dbt-commitment-h08:
+  model_response: "I'm sorry that came across as 'too much for you'. I don't think that. Would you tell me your reasons for wanting to change?"
+  why: "It names what she heard, apologises and says what is not true. It then asks for her reasons, which are hers to give or not."
+  avoid: "'Of course I don't think that. Let's not read too much into it.' It brushes off what she heard."
+dbt-commitment-h09:
+  model_response: "I haven't convinced myself of that, and I don't want you to drop it because I asked a hard question. Do you want to forget it, or go back to what you said you wanted?"
+  why: "It undoes the effect of the hard question and puts two clear choices in front of her."
+  avoid: "'You're giving up too easily.' It blames her for the effect of your question."
+dbt-commitment-h10:
+  model_response: "You caught me. I was making the hard case on purpose. Now I'd like to hear your side of it, in your own words. Would you give it to me?"
+  why: "It admits what it did without embarrassment, and it does not make a joke of her. It then hands the floor back."
+  avoid: "'No, I'm not doing anything. I'm just asking.' It denies what she has seen, and she will stop trusting your questions."

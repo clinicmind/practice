@@ -1,0 +1,172 @@
+sessions:
+  - id: dbt-chain-s5
+    title: "Session 5: 'Like a crime scene'"
+    turns:
+      - id: dbt-chain-s5-t01
+        speaker: therapist
+        text: "Hello, J. Last week you told me about Wednesday's email. If you're willing, I'd like to go through it step by step, slowly, like watching a film frame by frame. We can stop at any time."
+      - id: dbt-chain-s5-t02
+        speaker: client
+        text: "Fine. The client wrote, 'This version isn't quite right, let's think again.' No hello, no name at the end. And I lost it."
+      - id: dbt-chain-s5-d1
+        type: choice
+        prompt: "J begins the chain. What do you ask?"
+        options:
+          - id: a
+            text: "The email arrives. What was the first thing you noticed, in your mind or in your body?"
+            fit: strong
+            note: "It stays on one step and asks for what she noticed. It names two places to look, mind and body, and leaves her to choose."
+          - id: b
+            text: "What made you lose it?"
+            fit: weak
+            note: "It asks for a reason, and the answer will be a verdict on herself. It also skips the steps in between."
+          - id: c
+            text: "Tell me everything from the start, and don't leave anything out."
+            fit: workable
+            note: "It is thorough. But it asks for a long, unstructured telling, and 'don't leave anything out' can feel like being put on trial."
+        actual: "The email arrives. What was the first thing you noticed, in your mind or in your body?"
+        rationale: "A chain is built one link at a time. Ask about one step, in plain words. Avoid 'why', because it asks her to defend herself before she has described anything."
+      - id: dbt-chain-s5-t03
+        speaker: client
+        text: "I thought: they think I'm terrible. My chest went hot and my hands started shaking. I typed a huge reply and deleted it."
+      - id: dbt-chain-s5-d2
+        type: choice
+        prompt: "J has given you a thought, heat in her chest, shaking, and a long reply that she deleted. What do you say?"
+        options:
+          - id: a
+            text: "So: the thought 'they think I'm terrible', the heat in your chest, the shaking, then the long reply you deleted. What happened right after you deleted it?"
+            fit: strong
+            note: "It puts her links in order, in her words, and moves to the next one. She can hear that the chain is being built from what she said."
+          - id: b
+            text: "That sounds really intense. How did you handle it?"
+            fit: workable
+            note: "It is kind. But 'how did you handle it' is wide, and she may answer with a summary and skip the steps."
+          - id: c
+            text: "Do you think the client meant it that way? 'Let's think again' might have been neutral."
+            fit: weak
+            note: "It challenges her thought before the chain has been built. She will hear 'you were wrong', and she will stop telling you things."
+        actual: "So: the thought 'they think I'm terrible', the heat in your chest, the shaking, then the long reply you deleted. What happened right after you deleted it?"
+        rationale: "Saying the links back keeps the order straight and shows her you are listening. It also gives her a chance to correct you. Dispute nothing yet. The thought is a link, not an error."
+      - id: dbt-chain-s5-t04
+        speaker: client
+        text: "Then I threw the phone on the sofa. I ordered food. I ate it all, very fast. I won't tell you what. (short laugh) Why are we doing this? You make it sound like a crime scene."
+      - id: dbt-chain-s5-t05
+        speaker: therapist
+        text: "I'm only trying to help you, J. This is a standard part of the treatment, and it's important that you cooperate."
+      - id: dbt-chain-s5-t06
+        speaker: client
+        text: "Cooperate. Right. (she looks away) Never mind. I'm done for today."
+      - id: dbt-chain-s5-d3
+        type: choice
+        prompt: "You said 'it's important that you cooperate', and J has gone cold. You see what you did. What do you do?"
+        options:
+          - id: a
+            text: "I'm sorry. That came out as an order. You asked a fair question and I answered like a rule. Would you like me to say what the questions are for, and then you decide whether to carry on?"
+            fit: strong
+            note: "It names what you did, with no excuses, and it says that her question was fair. It then gives her the choice."
+          - id: b
+            text: "I didn't mean it like that. You're very sensitive to how things are said."
+            fit: weak
+            note: "It denies the effect and puts the cause on her. It repeats the very thing that hurt, being told that her reaction is the problem."
+          - id: c
+            text: "Let's take a break, and we can come back to this next week."
+            fit: workable
+            note: "A break may help. Left alone, though, the rupture stays, and she goes away with 'you're like everyone else'."
+        actual: "I'm sorry. That came out as an order. You asked a fair question and I answered like a rule. Would you like me to say what the questions are for, and then you decide whether to carry on?"
+        rationale: "You will sometimes answer badly, and J will notice. A repair says plainly what you did and what it was like for her, without a defence. Then it gives her control. It also shows her what a repair looks like."
+      - id: dbt-chain-s5-t07
+        speaker: client
+        text: "(a breath) ...Yes. Say what they're for."
+      - id: dbt-chain-s5-t08
+        speaker: therapist
+        text: "Each step is a place where something different could happen. I'm not looking for what you did wrong. I'm looking for the points where you could have had a choice. Is that something you'd like to find?"
+      - id: dbt-chain-s5-t09
+        speaker: client
+        text: "(slowly) ...Okay. Where were we. I ate it fast. Then I felt calm for a bit."
+      - id: dbt-chain-s5-d4
+        type: free
+        prompt: "J says she felt calm for a bit. Write one question that moves to the next link without judging the calm."
+        actual: "You felt calm for a little while. What happened when the calm went?"
+        rationale: "The calm is a link, and it is real. Take it as it is. The next link is what came after it, and the question asks for that without a word about whether the eating was a good idea."
+      - id: dbt-chain-s5-t10
+        speaker: client
+        text: "Shame. A lot of it. Then I wrote to the client: 'I'm dropping this project.' And on Thursday I didn't come here."
+      - id: dbt-chain-s5-t11
+        speaker: therapist
+        text: "Thank you. That was hard to say. I have the whole chain now, from the email to Thursday. Next time we'll look at where each piece could have gone another way."
+    notes:
+      goals: "The chain of the Wednesday event is complete: email, thought, heat in the chest, shaking, long reply written and deleted, phone thrown, food ordered and eaten fast, calm for a while, shame, message dropping the project, missed session on Thursday. Next: where each link could change."
+      alliance: "I answered her question with 'it's important that you cooperate' and she withdrew. I repaired it by naming what I did and giving her the choice. She came back. The rupture and repair belong in my notes for supervision."
+      formulation_update: "She hears questions as accusation, which is consistent with her history of being told that her reactions are the problem. Short, specific questions work better than wide ones. 'Why' is out for now."
+  - id: dbt-chain-s6
+    title: "Session 6: 'Where could it have gone differently?'"
+    turns:
+      - id: dbt-chain-s6-t01
+        speaker: therapist
+        text: "Hello, J. Last week we went through the whole of Wednesday. This week I'd like to look at the links one more time, and see where something different could have happened. Is that all right?"
+      - id: dbt-chain-s6-t02
+        speaker: client
+        text: "Okay. It's a lot of links."
+      - id: dbt-chain-s6-d1
+        type: choice
+        prompt: "You have the list: the email, the thought, the heat in the chest, the shaking, typing and deleting, the thrown phone, ordering, eating, calm, shame, the message to the client, the missed session. J says it is a lot of links. What do you say?"
+        options:
+          - id: a
+            text: "It is. Which one, when you look at the list, seems the most possible to change, even by a little?"
+            fit: strong
+            note: "It agrees with her and asks her to choose. The place to intervene will be one she picked, and she is more likely to use it."
+          - id: b
+            text: "The main problem is clearly the thought, 'they think I'm terrible'. Let's work on that first."
+            fit: weak
+            note: "You have chosen for her, and you have named a link as 'the problem'. It may be the wrong one, and she will hear it as a verdict on her thinking."
+          - id: c
+            text: "I see four places where we could step in: the thought, the shaking, the ordering and the message."
+            fit: workable
+            note: "It is useful, and it may even be right. But the list is yours, and she is left to agree."
+        actual: "It is. Which one, when you look at the list, seems the most possible to change, even by a little?"
+        rationale: "Link identification includes the client finding the links that she can reach. She will know better than you where she has some room."
+      - id: dbt-chain-s6-t03
+        speaker: client
+        text: "Right after the shaking. If I could just not have typed. Or the message. The message cost me the client."
+      - id: dbt-chain-s6-d2
+        type: free
+        prompt: "J has found two places herself. Write one or two sentences that confirm what she found, without adding links of your own."
+        actual: "You found two places yourself: just after the shaking, before the typing, and the moment just before you sent the message. Those are real places on this chain."
+        rationale: "You say back her two places in her words and call them real. You add nothing. If a third or fourth place matters, she is more likely to find it herself."
+      - id: dbt-chain-s6-t04
+        speaker: client
+        text: "But the ordering is the part I hate most. Can we start with that?"
+      - id: dbt-chain-s6-d3
+        type: choice
+        prompt: "J asks to start with the ordering and eating, the part she hates most. What do you say?"
+        options:
+          - id: a
+            text: "That's the part that costs you the most, so it makes sense to want to start there. Let's look at what's closest to it: the moment right before you ordered. What was going on in your body then?"
+            fit: strong
+            note: "It validates her choice, and it keeps the work on a link she can reach, the one right before. The question stays concrete."
+          - id: b
+            text: "We can't start there. It comes late in the chain, and it's easier to change earlier links."
+            fit: weak
+            note: "It may be true. It overrules her choice and tells her that what she hates most is not the place to begin."
+          - id: c
+            text: "Sure. Let's start with the eating. How often does that happen in a week?"
+            fit: workable
+            note: "It follows her. But a count moves the work away from the chain and toward numbers, and the question sounds like an audit."
+        actual: "That's the part that costs you the most, so it makes sense to want to start there. Let's look at what's closest to it: the moment right before you ordered. What was going on in your body then?"
+        rationale: "She has told you where the pain is. Honour that, and bring the work to the link just before it. That is where something different could happen."
+      - id: dbt-chain-s6-t05
+        speaker: client
+        text: "(pause) My whole body wanted to move. Like I had to do something with my hands. And I thought, I can't just sit here."
+      - id: dbt-chain-s6-t06
+        speaker: therapist
+        text: "Your whole body wanted to move, and the thought was 'I can't just sit here'. That's an urge, and it comes right before the ordering."
+      - id: dbt-chain-s6-t07
+        speaker: client
+        text: "(quietly) I never thought of it as separate. It was all one thing."
+      - id: dbt-chain-s6-t08
+        speaker: therapist
+        text: "It felt like one thing, and it had steps. That's what we can work with. Next time we'll look at what you could do at some of these places."
+    notes:
+      goals: "J has found three places on the chain herself: after the shaking and before the typing, just before sending the message, and the urge just before the ordering. A fourth, the thought itself, I have noticed and not yet offered. Next: what to try at these places."
+      alliance: "Bond: stronger after the rupture, not weaker. Tasks: she chose where to look. Goals: 'it was all one thing' is the first sign she can see the steps."
+      formulation_update: "Four places where something different could happen: the thought 'they think I'm terrible'; just after the shaking, before the typing; the urge to move just before the ordering; the moment before sending the message. Use these in module 4. Observation, not yet a skill: she can find places herself when the questions are concrete."

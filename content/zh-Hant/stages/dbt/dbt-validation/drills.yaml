@@ -1,0 +1,205 @@
+# 30 題練習：每個級別 10 題，每個級別每項技能 5 題。全部是個案 J。
+
+- id: dbt-validation-e01
+  level: easy
+  skill: dbt-validation-levels
+  context: "第 2 次會談。J 告訴過你，她小時候哭的時候，爸媽常說「你太誇張了」。"
+  client: "我姊姊傳訊息說：「不要那麼戲劇化。」我真想把手機摔到對面去。"
+  criteria: &vl_easy
+    - "告訴 J 她的反應說得通，並且用情境中 J 已告訴你的事當理由，例如她的成長經歷或處境。不自己加入任何事實。"
+    - "用 J 自己的字詞或接近的說法來說出她的反應。不給她貼標籤。"
+    - "一兩句短句，沒有「但是／不過」，沒有建議，也沒有保證事情會好起來。"
+- id: dbt-validation-e02
+  level: easy
+  skill: dbt-validation-levels
+  context: "第 2 次會談。J 告訴過你，她上一段治療在第六次之後結束，她走的時候覺得自己讓治療師招架不住。"
+  client: "我取消了兩次第一次的預約。我差一點就不來了。"
+  criteria: *vl_easy
+- id: dbt-validation-e03
+  level: easy
+  skill: dbt-validation-levels
+  context: "第 2 次會談。J 告訴過你，家裡是她在哭，姊姊是「懂事的那個」。"
+  client: "我姊姊又升職了，大家都好驕傲。我笑著說恭喜。然後回家哭了一個小時。"
+  criteria: *vl_easy
+- id: dbt-validation-e04
+  level: easy
+  skill: dbt-validation-levels
+  context: "第 3 次會談。J 告訴過你，在她家裡，她要哭得很厲害才有人聽。"
+  client: "我寫了一封很長的電郵給客戶。四段。我知道太多了。我只是需要他明白。"
+  criteria: *vl_easy
+- id: dbt-validation-e05
+  level: easy
+  skill: dbt-validation-levels
+  context: "第 3 次會談。J 告訴過你，她上一份工作是在和主管起衝突之後，她走出辦公室而結束的。"
+  client: "我知道我不該走出去。可是我真的在那個房間多待不了一分鐘。"
+  criteria: *vl_easy
+
+- id: dbt-validation-e06
+  level: easy
+  skill: biosocial-explanation
+  context: "第 2 次會談。只解釋其中一個部分：有些人的感受來得比較快、比較強，平復得也比較慢。"
+  client: "為什麼一封只有一句話的電郵，就能毀掉我一整天？別人都聳聳肩就過了。"
+  criteria: &bx_easy
+    - "用平實的日常用語，沒有專業術語。不給 J 或她的反應貼標籤。"
+    - "把這個想法連到 J 在這一題說的話，或情境中她告訴過你的事。"
+    - "兩三句，以一種可能性提出，讓 J 可以接受或糾正，並且不責怪 J，也不責怪她的家人。"
+- id: dbt-validation-e07
+  level: easy
+  skill: biosocial-explanation
+  context: "第 2 次會談。J 告訴過你，她小時候常聽到「你太誇張了」。只解釋其中一個部分：感受常被揮開的人，會學會懷疑自己的感受。"
+  client: "我從來不知道自己是真的難過，還是只是在戲劇化。"
+  criteria: *bx_easy
+- id: dbt-validation-e08
+  level: easy
+  skill: biosocial-explanation
+  context: "第 2 次會談。只解釋其中一個部分：沒有被聽見的人，可能學會把音量調大，好讓人聽見。"
+  client: "在家裡，我要哭得很認真才有人聽。現在別人說我太激烈。"
+  criteria: *bx_easy
+- id: dbt-validation-e09
+  level: easy
+  skill: biosocial-explanation
+  context: "第 3 次會談。只解釋其中一個部分：為什麼了解這個模式會有幫助。"
+  client: "好，所以我很敏感。知道這個有什麼用？"
+  criteria: *bx_easy
+- id: dbt-validation-e10
+  level: easy
+  skill: biosocial-explanation
+  context: "第 3 次會談。只解釋其中一個部分：強烈反應之後的羞愧，可能是壓在第一份負擔上的第二份負擔。"
+  client: "事後我總是覺得很羞愧。那讓一切更糟。"
+  criteria: *bx_easy
+
+- id: dbt-validation-m01
+  level: medium
+  skill: dbt-validation-levels
+  context: "第 3 次會談。J 想要你同意她做過的一件事。"
+  client: "他只傳了冷冰冰的一句，我就把他封鎖了。說真的，他活該。你同意吧？"
+  criteria: &vl_medium
+    - "認可 J 的反應中真實的部分，例如她的感受、需要或努力。不把那個行動說成對的或最好的做法。"
+    - "清楚說出「這說得通」，不用「但是／不過」把它收回去，也不轉去給建議或解決問題。"
+    - "停在 J 說的話上。不替她說她一定有什麼感受，也不加入新的事實。"
+- id: dbt-validation-m02
+  level: medium
+  skill: dbt-validation-levels
+  context: "第 3 次會談。"
+  client: "昨晚我花了很多錢買了一台新的平板電腦。我知道，我知道。可是我當時太難受了，它讓我好過了一個小時。"
+  criteria: *vl_medium
+- id: dbt-validation-m03
+  level: medium
+  skill: dbt-validation-levels
+  context: "第 4 次會談。J 一直在說她取消的一個案子。"
+  client: "我把整個案子取消了。兩個星期的工作。說出口的時候好痛快。現在我覺得想吐。"
+  criteria: *vl_medium
+- id: dbt-validation-m04
+  level: medium
+  skill: dbt-validation-levels
+  context: "第 4 次會談。J 告訴過你，她從小就聽到「太敏感」。"
+  client: "我姊姊說我太敏感。也許她是對的。也許我真的很麻煩。"
+  criteria: *vl_medium
+- id: dbt-validation-m05
+  level: medium
+  skill: dbt-validation-levels
+  context: "第 4 次會談。J 星期日和姊姊在訊息裡吵了一架。"
+  client: "我跟我姊姊說，我再也不想跟她說話了。我說的時候是認真的。現在我不知道我是什麼意思。"
+  criteria: *vl_medium
+
+- id: dbt-validation-m06
+  level: medium
+  skill: biosocial-explanation
+  context: "第 3 次會談。你剛提出一個想法：J 的家人可能影響了她和自己感受的關係。"
+  client: "所以是我家人的錯。"
+  criteria: &bx_medium
+    - "先用一句話回應 J 真正擔心的事，再說這個想法的其他部分。"
+    - "用平實的話使用或重述這個想法，連到 J 說過的事。不給她貼標籤。"
+    - "不責怪 J，也不責怪她的家人，並且讓 J 可以自由說這個想法合不合，例如用提問或邀請她糾正。"
+- id: dbt-validation-m07
+  level: medium
+  skill: biosocial-explanation
+  context: "第 3 次會談。你剛說，有些人的感受比別人跑得更快、更強。"
+  client: "所以你是說我生來就壞掉了。"
+  criteria: *bx_medium
+- id: dbt-validation-m08
+  level: medium
+  skill: biosocial-explanation
+  context: "第 3 次會談。J 告訴過你，她的父母是務實的人，工作時間很長。"
+  client: "我家不是那樣的。他們只是務實的人。他們沒時間理會眼淚。"
+  criteria: *bx_medium
+- id: dbt-validation-m09
+  level: medium
+  skill: biosocial-explanation
+  context: "第 3 次會談。你剛描述了一個模式：快而強的感受，遇到的回應是「你太誇張了」。"
+  client: "這類東西我在網上看過。我不想被塞進一個框框裡。"
+  criteria: *bx_medium
+- id: dbt-validation-m10
+  level: medium
+  skill: biosocial-explanation
+  context: "第 3 次會談。你剛解釋，有些人的感受跑得快而強。"
+  client: "如果我天生就是這樣，那就什麼都不會改變了。"
+  criteria: *bx_medium
+
+- id: dbt-validation-h01
+  level: hard
+  skill: dbt-validation-levels
+  context: "第 4 次會談。你像往常一樣準時結束會談。J 正說到一半。"
+  client: "真的假的？剛好說到重點你就停？你跟其他人一樣，一直在看時鐘。"
+  criteria: &vl_hard
+    - "找出 J 說的話中有道理的部分，包括針對你的抱怨裡真實的那一點，並且直接說出來。"
+    - "不同意對 J 的嚴苛評價，也不替自己辯護、不解釋你的理由、不長篇道歉。"
+    - "簡短，J 可以自由回答，包括不同意。"
+- id: dbt-validation-h02
+  level: hard
+  skill: dbt-validation-levels
+  context: "第 5 次會談。J 遲到了十五分鐘。她告訴過你上一段治療是怎樣結束的。"
+  client: "我知道，我又遲到了。你一定覺得我沒救了。我就是沒救了。"
+  criteria: *vl_hard
+- id: dbt-validation-h03
+  level: hard
+  skill: dbt-validation-levels
+  context: "第 5 次會談。你剛告訴 J，你下個月會離開一個星期。"
+  client: "太好了。需要幫忙的人是我，放假的人是你。真棒。"
+  criteria: *vl_hard
+- id: dbt-validation-h04
+  level: hard
+  skill: dbt-validation-levels
+  context: "第 6 次會談。J 在說她上一位治療師。那位治療師說想幫她，然後不再回覆 J 的訊息。"
+  client: "我上一位治療師說她想幫我，然後她就不回我的訊息了。所以你別跟我說你想幫我。"
+  criteria: *vl_hard
+- id: dbt-validation-h05
+  level: hard
+  skill: dbt-validation-levels
+  context: "第 6 次會談。會談一開始，J 就說想不來了。"
+  client: "這根本沒用。我們一直講一直講，我每個星期三還是想把筆電從窗戶丟出去。"
+  criteria: *vl_hard
+
+- id: dbt-validation-h06
+  level: hard
+  skill: biosocial-explanation
+  context: "第 3 次會談。你提出了解釋，J 的身體僵住了。"
+  client: "這只是一堆心理學的空話。你把我當成個案研究在講。"
+  criteria: &bx_hard
+    - "先接住 J 對這個解釋的反應，再加任何東西。不為解釋辯護，也不堅持它是對的。"
+    - "讓這個想法保持開放，只是可能部分適用，並且指向 J 自己說過的一個部分。"
+    - "簡短。不用標籤，不責怪，也不暗示 J 必須改變她的看法。"
+- id: dbt-validation-h07
+  level: hard
+  skill: biosocial-explanation
+  context: "第 3 次會談。J 告訴過你，她媽媽打兩份工。"
+  client: "我媽媽打兩份工。你敢把她說成壞人試試看。"
+  criteria: *bx_hard
+- id: dbt-validation-h08
+  level: hard
+  skill: biosocial-explanation
+  context: "第 3 次會談。你順口用過一次「敏感」這個詞。"
+  client: "我不想當「很敏感的人」。他們從小到大都這樣說我。"
+  criteria: *bx_hard
+- id: dbt-validation-h09
+  level: hard
+  skill: biosocial-explanation
+  context: "第 3 次會談。你解釋了這個模式，J 瞇起了眼睛。"
+  client: "如果我天生是這樣，那我每次搞砸都不是我的錯。這未免太方便了。"
+  criteria: *bx_hard
+- id: dbt-validation-h10
+  level: hard
+  skill: biosocial-explanation
+  context: "第 3 次會談。聽完你的解釋，J 變得很平淡。她看著窗外。"
+  client: "隨便。好啊。講得很整齊。"
+  criteria: *bx_hard

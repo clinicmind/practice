@@ -1,0 +1,120 @@
+dbt-validation-e01:
+  model_response: "Since you often heard 'you're overreacting' as a child, a text that says 'dramatic' would hit hard, and wanting to throw your phone makes sense."
+  why: "It gives a reason from her own history, and it uses her words, 'throw your phone'. It does not call her dramatic or tell her not to be."
+  avoid: "'Your sister probably didn't mean it that way.' It defends the sister and tells J that she misread the text."
+dbt-validation-e02:
+  model_response: "After how the last therapy ended, it makes sense that you cancelled twice and nearly didn't come at all."
+  why: "It ties the cancelling to what she told you about the last therapy. It does not praise her for coming, which would turn the moment into a report card."
+  avoid: "'I'm glad you came. Don't worry, this will be different.' It promises something you cannot know, and it skips what the doubt was about."
+dbt-validation-e03:
+  model_response: "You've been the one who cried while she was the sensible one, so it makes sense that you smiled for her and then cried for an hour at home."
+  why: "It joins the old roles she described to what happened after the promotion. It uses her words, 'cried for an hour', and it says nothing about jealousy."
+  avoid: "'It sounds like you're jealous of your sister.' It is a label, and J did not say it."
+dbt-validation-e04:
+  model_response: "Growing up, you had to say it big before anyone listened, so it makes sense that you wrote four paragraphs. You just needed him to understand."
+  why: "It does not agree that the email was too much, and it does not say the email was fine. It says that, given her history, wanting to be understood makes sense."
+  avoid: "'Four paragraphs is a lot. Try keeping emails short next time.' It is advice, and it agrees with her harshest word."
+dbt-validation-e05:
+  model_response: "After that conflict with your manager, it makes sense that you couldn't stay in that room one more minute."
+  why: "It validates the part that is valid, the need to leave that room. It does not say that walking out was right or wrong."
+  avoid: "'Walking out was a bad choice, but I understand.' The 'but' takes the understanding back."
+dbt-validation-e06:
+  model_response: "Some people's feelings come up faster and stronger, and take longer to settle. It might be that yours work that way, so one line from a client can set off a lot, and the day carries it afterwards."
+  why: "It says plainly that feelings can differ in speed and strength, and it ties that to her one-line email. 'It might be' lets her correct it."
+  avoid: "'You have high emotional reactivity.' It is a technical term, and it works as a label."
+dbt-validation-e07:
+  model_response: "If your feelings were often called 'overreacting' when you were small, it would be natural to start doubting them. It might be that part of you now asks 'am I just being dramatic?' each time, before you have had a chance to find out what you feel."
+  why: "It connects her doubt to what she told you about her childhood, and it treats the doubt as something learned, not as a flaw."
+  avoid: "'You're probably invalidating yourself.' It uses a technical word, and it blames J for her own doubt."
+dbt-validation-e08:
+  model_response: "If you only got heard when you cried hard, it makes sense that you learned to turn the volume up. It may be a habit that made sense then and has stayed, and now it can get called 'too intense'."
+  why: "It treats the habit as something learned for a reason. It uses her words, 'heard' and 'too intense', and it does not call her intense."
+  avoid: "'Some people look for attention when they feel ignored.' It labels the behaviour and puts the blame on her."
+dbt-validation-e09:
+  model_response: "Knowing that your feelings run fast and strong might help us read your reactions as a pattern that makes sense, and not as proof that something is wrong with you. Then we can look for what helps, one piece at a time."
+  why: "It answers the question she asked, 'what's the point', in plain words. It offers a use for the idea, not a verdict."
+  avoid: "'It's important because it explains why you are the way you are.' It sounds like a label, and J is already wary of being put in a box."
+dbt-validation-e10:
+  model_response: "It might be that the shame comes after a strong reaction and adds a second load on top of the first. If so, the shame is part of the pattern too, and it isn't proof of anything about you."
+  why: "It names the shame as a second layer, not as a flaw in her character. 'It might be' keeps it open."
+  avoid: "'You shouldn't feel ashamed.' It tells her what to feel, and the shame goes on, now with a rule against it."
+dbt-validation-m01:
+  model_response: "A cold line from him, and you wanted him gone from your screen. That makes sense to me. I can't say yet whether blocking him was the best move, and I do see why you did it."
+  why: "It answers 'you agree?' honestly. It says what it can agree with, that the reaction makes sense, and it does not pretend that blocking was best."
+  avoid: "'Yes, he deserved it.' It agrees with the action and gives up your honesty. J will notice when you stop agreeing later."
+dbt-validation-m02:
+  model_response: "You were very upset, and anything that took the edge off for an hour was going to be tempting. That makes sense."
+  why: "It validates the need to feel better, and it says nothing about whether the purchase was wise. That question belongs to a later conversation."
+  avoid: "'It's fine, everyone treats themselves sometimes.' It makes the action ordinary and closes the topic before J has looked at it."
+dbt-validation-m03:
+  model_response: "It felt so good to say it, and now it feels sick. Both are true, and it makes sense that the good feeling didn't last."
+  why: "It keeps both of her feelings and does not choose between them. It does not say whether cancelling was right."
+  avoid: "'You shouldn't have cancelled. Maybe you can still call them.' It goes straight to advice and leaves the sick feeling alone."
+dbt-validation-m04:
+  model_response: "You've heard 'too sensitive' since you were small, so it makes sense that part of you wonders whether she's right."
+  why: "It validates the wondering by tying it to what she was told as a child. It does not say that she is, or is not, 'a lot'."
+  avoid: "'You're not too sensitive at all.' It argues with her, and people have argued about her feelings since childhood."
+dbt-validation-m05:
+  model_response: "You meant it when you said it, and now you aren't sure what you mean. Both of those make sense after a fight like that."
+  why: "It gives back both halves of what she said and puts them side by side. It does not tell her what to do about her sister."
+  avoid: "'You should wait until you're calmer before deciding.' It is advice, and it treats what she said on Sunday as a mistake."
+dbt-validation-m06:
+  model_response: "I don't think it's about fault. They may have been doing their best with a child whose feelings were big and fast, and 'you're overreacting' was the answer they had. Does that match what you remember?"
+  why: "It answers the worry in the first sentence. It then offers the idea as a mismatch, in words she gave you, and asks whether it fits."
+  avoid: "'Well, yes, a family that dismisses a child's feelings does real harm.' It assigns blame, and J will either defend her parents or collapse."
+dbt-validation-m07:
+  model_response: "No, not broken. Some people's feelings simply run faster and stronger, which is a difference and not a defect. Does that sound anything like you?"
+  why: "It answers 'broken' directly, in one plain word, and then gives the idea in her terms. The question lets her say no."
+  avoid: "'Everyone is born with a different temperament.' True, and too general. It answers the theory and not what she was afraid of."
+dbt-validation-m08:
+  model_response: "That fits what you've told me: practical people, with little time. It might still be that a child whose feelings were big learned to keep them small, even in a family where no one meant any harm. Does that ring true, or not?"
+  why: "It accepts what she said about her family first, so it does not argue. The idea is offered as something that can sit next to it."
+  avoid: "'Practical people can still be emotionally neglectful.' It uses a heavy phrase, and she will hear it as an accusation."
+dbt-validation-m09:
+  model_response: "I don't want to put you in a box either. What I'm describing is a pattern in what you told me: feelings that came fast and strong, in a home where the answer was 'you're overreacting'. You can correct any part of it."
+  why: "It agrees with her wish in the first sentence and shows that the idea is built from her own words. 'You can correct any part' hands her the pen."
+  avoid: "'It isn't a box, it's a framework.' It argues with her word, and a framework sounds closer to a box than to a conversation."
+dbt-validation-m10:
+  model_response: "I hear the worry that it can't change. Fast, strong feelings are a starting point and not a sentence. People can learn to ride them. Does that make the idea easier to hold?"
+  why: "It answers the fear that it is fixed, and it separates 'a starting point' from 'a sentence'. It does not promise a result."
+  avoid: "'Of course it can change, you just have to work at it.' It promises, and 'work at it' sounds like another way of saying she isn't trying."
+dbt-validation-h01:
+  model_response: "It was a bad moment to stop, right at the important part. I can see why that felt like being cut off. Does that fit?"
+  why: "It admits what is true, that the end came at a hard moment, and it does not explain the time limit. The closing question lets her say 'no, it's more than that'."
+  avoid: "'We always have to finish on time, so that every client gets the same.' It explains and defends, and it proves her point."
+dbt-validation-h02:
+  model_response: "You're late, and you came in expecting me to think the worst. After how the last therapy ended, that makes sense. I'm glad you're here."
+  why: "It neither argues with 'hopeless' nor agrees with it. It validates the expectation, with a reason from the last therapy, and ends on a simple welcome."
+  avoid: "'You're not hopeless! Everyone is late sometimes.' It argues with her conclusion, and it is the sort of reassurance she has learned not to trust."
+dbt-validation-h03:
+  model_response: "A week without sessions is a real gap, and it makes sense that it lands badly when you're working on something this hard. How does it sit with you?"
+  why: "It admits the true part of her complaint, that for a week she has no session. It does not say where you will be or why."
+  avoid: "'It's not a holiday, I'll be at a conference.' It defends you against a point she was not really making."
+dbt-validation-h04:
+  model_response: "She said she wanted to help, and then the messages went unanswered. Of course it's hard to hear those words again. It makes sense to wait and see."
+  why: "It does not promise that you are different. It validates her caution, using the reason she gave you."
+  avoid: "'I'm not like that. I will always reply.' It is a promise you will not be able to keep, and she is waiting for you to break it."
+dbt-validation-h05:
+  model_response: "Those Wednesdays haven't changed, and it makes sense that you're fed up with talking that hasn't helped."
+  why: "It admits the true part, that the Wednesdays have not changed, and it does not argue that therapy takes time. It validates being fed up, and it does not agree that nothing can help."
+  avoid: "'Change takes time. Let's give it a few more weeks.' It argues for therapy at the moment she is questioning it."
+dbt-validation-h06:
+  model_response: "That did sound like being studied, and I'm sorry it landed that way. Let me say it more simply: you've told me that big feelings and 'you're overreacting' came together in your home. That's all I mean, and you know it better than I do."
+  why: "It accepts the objection and apologises once, briefly. It then drops the theory and keeps only what she told you."
+  avoid: "'It's a well-established model, and it fits many people.' It defends the theory and tells her that she is one case among many."
+dbt-validation-h07:
+  model_response: "I'm not making her the bad guy. She worked two jobs, and it makes sense that you stand up for her. It might be that everyone was stretched, and your feelings had nowhere to go."
+  why: "It says plainly that she is not the villain, and it honours the loyalty. The idea comes in as 'everyone was stretched', which uses the two jobs she gave you."
+  avoid: "'Even loving parents can fail a child emotionally.' It is true in general, and J hears it as 'your mother failed you'."
+dbt-validation-h08:
+  model_response: "I hear that. It's the word they used about you, so I'll drop it. What I mean is only that your feelings come fast and strong, which is about speed and not a flaw. Does 'fast and strong' sit any better?"
+  why: "It accepts her objection to the word and stops using it. It offers a different description of the same idea and asks whether that sits better."
+  avoid: "'I don't mean it as an insult. It's a neutral term.' It defends the word and asks her to hear it differently."
+dbt-validation-h09:
+  model_response: "It's right to be wary of an explanation that turns into an excuse. This doesn't mean nothing is your responsibility. It means that if we understand the pattern, you may have more say in what you do next. Is that closer to how you'd want to use it?"
+  why: "It takes her suspicion as sensible and does not insist that she is wrong. It names a use of the idea that gives her more control, not less."
+  avoid: "'I'm not saying it's an excuse. You're still responsible for your actions.' It argues, and it sounds like a warning."
+dbt-validation-h10:
+  model_response: "It may have gone a bit too neatly. I'd like to know where it doesn't fit. Even one piece would help me."
+  why: "It takes her flat tone as information. It asks for the part that does not fit, which gives her something to push against."
+  avoid: "'You seem to be shutting down. What's going on?' It names her withdrawal for her and puts her on the spot."

@@ -1,0 +1,120 @@
+dbt-chain-e01:
+  model_response: "The email came. What's the first thing you noticed after reading it?"
+  why: "It stays on one step, the moment after the email, and asks for what she noticed. It does not ask her to explain 'losing it'."
+  avoid: "'Why did you lose it?' It asks for a reason, and J's answer will be a verdict on herself."
+dbt-chain-e02:
+  model_response: "You read it, and the thought 'they hate my work' came. What did you notice in your body when that thought came?"
+  why: "It gives back the thought in her words, and then asks about the next kind of link, the body, with one question."
+  avoid: "'Do you really think they hate your work?' It argues with the thought before the chain has even started."
+dbt-chain-e03:
+  model_response: "Your hands were shaking, and you wrote a reply. What did the reply say, as far as you remember?"
+  why: "It follows her order and asks for a description she can give from memory. The words 'as far as you remember' make it easy to say 'I'm not sure'."
+  avoid: "'You shouldn't have written anything while you were that upset. What did you say?' The first sentence is judgment, and the question gets a defence."
+dbt-chain-e04:
+  model_response: "You put the phone down. What happened between putting it down and ordering?"
+  why: "It asks about the gap between two links without asking about what she ordered, which the chain does not need."
+  avoid: "'What did you order, and how much?' It asks for details that do not help the chain, and they invite shame."
+dbt-chain-e05:
+  model_response: "You felt terrible, and then you wrote to him. What did you want to happen when you sent it?"
+  why: "It asks about the urge behind the action, in plain words, and it does not call the message a mistake."
+  avoid: "'Why would you drop a job over one email again?' 'Again' and 'why' turn a question into a charge."
+dbt-chain-e06:
+  model_response: "So right after the email came the thought 'they think I'm terrible', and then the heat in your chest. Is that the order?"
+  why: "It names a thought and a body feeling, in her words, and places both after the email. It adds nothing of its own."
+  avoid: "'That's your core belief about yourself.' It interprets, and it moves the analysis from the chain to her."
+dbt-chain-e07:
+  model_response: "That sounds like an urge: your whole body wanting to move and do something. It came right after the shaking."
+  why: "It names what kind of link this is, an urge, and puts it in order, using her words, 'wanted to move'."
+  avoid: "'You were trying to discharge the tension.' It explains the link in terms she did not use."
+dbt-chain-e08:
+  model_response: "So after the eating came shame, and it felt almost worse than the first part. That's the next link, at the end of the chain so far."
+  why: "It names a feeling, places it at the end, and keeps her phrase, 'worse than the first part'."
+  avoid: "'Shame always follows that kind of behaviour.' It generalises, and it takes her experience away from her."
+dbt-chain-e09:
+  model_response: "That's an action, sending the message, and it came after the shame. You said it happened before you could think."
+  why: "It names an action and places it after the shame. It repeats her own words, 'before I could think', without comment."
+  avoid: "'You sent that to escape the shame.' It adds a reason that she has not given."
+dbt-chain-e10:
+  model_response: "So the next day there are two links: not coming, which is an action, and the thought 'you'd be sick of me anyway'."
+  why: "It separates an action from a thought and uses her words for the thought. It places both on the next day."
+  avoid: "'You were testing whether I would chase you.' It is a guess about her motive, and it turns a link into an accusation."
+dbt-chain-m01:
+  model_response: "You snapped. Let's go back to the moment right before. What had just happened?"
+  why: "It takes her word, 'snapped', and moves to one moment. The question asks for what happened, not why."
+  avoid: "'What is it that makes you snap?' It asks for a pattern when she cannot yet give one moment."
+dbt-chain-m02:
+  model_response: "It felt like everything at once. Let's pick the smallest piece: what were you doing in the minute before it started?"
+  why: "It accepts her 'everything at once' and gives her a smaller place to begin. A minute is easier to recall than a day."
+  avoid: "'Let's start from the beginning and take it slowly.' She has just said that she cannot find the beginning."
+dbt-chain-m03:
+  model_response: "Angry the whole time. Let's look at one stretch of it. What was the anger like in your body when you picked up the phone?"
+  why: "It takes the global word and narrows it to one stretch. It asks for a body detail, which is concrete."
+  avoid: "'What was the anger really about?' It asks for an interpretation, and the chain does not need one yet."
+dbt-chain-m04:
+  model_response: "You don't know yet, and that's fine. What was the very first thing you did after the email?"
+  why: "It accepts 'I don't know' and sets 'why' aside without a lecture. It asks for the first action, which she can describe."
+  avoid: "'Think harder. There must be a reason.' It pushes for a reason, and she will go quiet or make one up."
+dbt-chain-m05:
+  model_response: "You deleted it, and then it got fuzzy. What's the last thing you can remember clearly after deleting it?"
+  why: "It treats the fuzziness as part of the chain, and it asks for the last clear point, which is a place to start."
+  avoid: "'You must remember something. Try.' It treats the fuzz as resistance."
+dbt-chain-m06:
+  model_response: "Let me check I have the links. Your stomach dropped. The thought was 'they hated it'. Then the urge to disappear. Is that the order?"
+  why: "It separates a body feeling, a thought and an urge, uses her words for each, and asks her to check the order."
+  avoid: "'It sounds like you felt rejected.' It replaces three links with one label."
+dbt-chain-m07:
+  model_response: "I'm hearing four links: you texted your sister three times, she didn't answer, you felt like you were nothing, and then you blocked her. Did I miss one?"
+  why: "It separates actions, a result and a feeling, in her order and her words. It asks whether anything is missing."
+  avoid: "'Your sister's silence triggered an abandonment reaction.' It adds a theory, and she did not say 'abandonment'."
+dbt-chain-m08:
+  model_response: "So: heat in your chest, then typing so fast you couldn't see, and the thought 'I'll show them'. Is that the order, or did the thought come first?"
+  why: "It separates body, action and thought, and it honestly asks which came first, because her order was not clear."
+  avoid: "'You were acting out of anger.' It names the whole sequence by one word and skips the links."
+dbt-chain-m09:
+  model_response: "Let me say it back: you felt sick, you thought 'there's something wrong with me', and then you stayed in bed. Is that the right order?"
+  why: "It separates a body feeling, a thought and an action, using her words. It checks the order and does not comment on the thought."
+  avoid: "'That thought isn't true, though.' It disputes the thought before she has finished describing the chain."
+dbt-chain-m10:
+  model_response: "Four links: he wrote 'Send the file' with no hello, you felt small, you sent the file, and then you couldn't work. Did anything happen between 'small' and 'sent'?"
+  why: "It lists the links in her words and asks about the one gap that is visible, between a feeling and an action."
+  avoid: "'So his rudeness made you feel small.' It is her story, and you have turned it into a cause."
+dbt-chain-h01:
+  model_response: "That did sound like an interrogation, and I don't want it to feel that way. Would you like to tell it in your own order, starting wherever you like, while I just listen?"
+  why: "It names what she felt and does not defend the questions. It gives her the lead on pace and order, and it keeps the chain going."
+  avoid: "'I'm only asking so that I can help.' It defends the questions, and it sounds like her manager."
+dbt-chain-h02:
+  model_response: "You're right that I don't need the food. I need to know what you felt just before. We can skip everything else."
+  why: "It agrees with the true part of her point, drops what the chain does not need, and points to the one thing it does. She now has control over the detail."
+  avoid: "'It's important to have the full picture.' It repeats the demand and ignores her point."
+dbt-chain-h03:
+  model_response: "I can hear that it feels like blame, and I'm not looking for fault. I'm looking for the steps, because each one is a place where something different could happen. Can we go through the next one together?"
+  why: "It names the fear of blame without arguing, and gives the purpose of the chain in a sentence. The question asks her permission."
+  avoid: "'I'm not blaming you. Why do you feel that way?' The first sentence is a denial, and the 'why' is another demand."
+dbt-chain-h04:
+  model_response: "That question may have been too much. We can leave it and go to what you did next, if that's easier."
+  why: "It treats the silence as a response and takes the pressure off. It still moves to the next step of the chain."
+  avoid: "'Take your time. I'll wait.' It keeps the question open and leaves her alone with it."
+dbt-chain-h05:
+  model_response: "You already see where it went wrong, and you're tired of going over it. I'm asking for a different reason: to find the step where it could have gone another way. Would you give me ten minutes?"
+  why: "It names her fatigue, and it says what the chain is for, which is not blame. The request is small and has an end."
+  avoid: "'We need to finish this. It's important.' It is an instruction, and she has just said she is tired of being told."
+dbt-chain-h06:
+  model_response: "The email arrived, and then you ordered food. Was there something in between, like a thought or a feeling in your body, that carried you from one to the other?"
+  why: "It gives back the two ends she described and asks whether something lay between them. It names the kinds of link, and it does not say which."
+  avoid: "'Surely you thought something first.' It asserts, and she will deny it."
+dbt-chain-h07:
+  model_response: "You were angry. Sometimes a thought goes by very fast. If you slow the moment down, is there a word or a picture that comes with the anger?"
+  why: "It accepts the anger, tells her that a quick thought is possible, and asks her to slow down. It does not supply the thought."
+  avoid: "'You were angry because you thought they hated you.' It gives the link for her, and she may not recognise it."
+dbt-chain-h08:
+  model_response: "That's how the email landed. The words were 'this version isn't quite right'. Is 'lazy' something you heard in them?"
+  why: "It separates what was written from what she heard, and it asks, so she can see the difference herself."
+  avoid: "'He didn't say you were lazy.' It corrects her, and the correction is a way of saying that she is wrong."
+dbt-chain-h09:
+  model_response: "Earlier you told me you felt sick the next day. Was there a stretch right after blocking him when it did feel better, before the sick feeling came?"
+  why: "It joins two things she said and asks about the order. It treats the relief as real, and it does not say that she contradicted herself."
+  avoid: "'But last time you said you felt sick.' It catches her in a contradiction, and she will stop describing anything."
+dbt-chain-h10:
+  model_response: "Zero to a hundred in a moment. If we slow it down, was there something on the way up, even something small, like a word or a feeling in your body?"
+  why: "It takes her image seriously, and it asks for the small steps on the way up. It names examples without choosing one."
+  avoid: "'It can't have gone from zero to a hundred at once.' It argues with her image and tells her she is wrong."

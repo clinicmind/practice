@@ -1,0 +1,205 @@
+# 30 題練習：每個級別 10 題，每個級別每項技能 5 題。全部是個案 J。
+
+- id: dbt-commitment-e01
+  level: easy
+  skill: commitment-eliciting
+  context: "第 3 次會談。J 剛用很籠統的話說了她想要什麼。"
+  client: "我想不要再這樣了。我只是不知道怎樣做。"
+  criteria: &ce_easy
+    - "詢問 J 自己的理由或她心中改變後的畫面，或用她的話反映出來。不替她提供理由。"
+    - "問一個問題，或提出一個小而具體的步驟。不要求大的承諾。"
+    - "簡短、溫和，沒有「應該」，也不爭論 J 為什麼要改變。"
+- id: dbt-commitment-e02
+  level: easy
+  skill: commitment-eliciting
+  context: "第 3 次會談。"
+  client: "我想要大家不再離開我。可是我也不想忍受別人那樣跟我說話。"
+  criteria: *ce_easy
+- id: dbt-commitment-e03
+  level: easy
+  skill: commitment-eliciting
+  context: "第 3 次會談。"
+  client: "朋友說她受夠了我的戲劇化。我也許該想想辦法。"
+  criteria: *ce_easy
+- id: dbt-commitment-e04
+  level: easy
+  skill: commitment-eliciting
+  context: "第 3 次會談。"
+  client: "我想平靜一點。可是別人一直踩到我的地雷，我看不出怎麼做得到。"
+  criteria: *ce_easy
+- id: dbt-commitment-e05
+  level: easy
+  skill: commitment-eliciting
+  context: "第 3 次會談。"
+  client: "我也許會試試。可是我以前試過。什麼都撐不住。"
+  criteria: *ce_easy
+
+- id: dbt-commitment-e06
+  level: easy
+  skill: devils-advocate
+  context: "第 4 次會談。J 說她準備好不再封鎖別人了。她告訴過你，封鎖是唯一一直能讓傷痛很快停下來的辦法。"
+  client: "好，我不再封鎖別人了。永遠不會。明天就開始。"
+  criteria: &da_easy
+    - "用一句話，以 J 自己的話說出改變的一個真實的困難或代價。聽起來像一個問題或一份擔心。"
+    - "不說 J 做不到，也不嘲笑或誇大她。"
+    - "留下明確的空間讓 J 回答，不替她回答。"
+- id: dbt-commitment-e07
+  level: easy
+  skill: devils-advocate
+  context: "第 4 次會談。J 常在深夜傳很長的訊息給你，她說那是她最能開口的時候。"
+  client: "從現在起，晚上我不傳訊息給你了。我等會談再說。"
+  criteria: *da_easy
+- id: dbt-commitment-e08
+  level: easy
+  skill: devils-advocate
+  context: "第 4 次會談。J 上星期沒有做書寫作業。"
+  client: "我每一天都會在筆記本上寫。我決定了。"
+  criteria: *da_easy
+- id: dbt-commitment-e09
+  level: easy
+  skill: devils-advocate
+  context: "第 4 次會談。J 告訴過你，她封鎖別人，是因為怕自己會說出什麼。"
+  client: "我受夠封鎖別人了。我生氣的時候，就直接跟他們說。"
+  criteria: *da_easy
+- id: dbt-commitment-e10
+  level: easy
+  skill: devils-advocate
+  context: "第 4 次會談。J 上一段治療做了六次就離開了。"
+  client: "這次我想好好做。每個星期都來，把困難的話說出來。"
+  criteria: *da_easy
+
+- id: dbt-commitment-m01
+  level: medium
+  skill: commitment-eliciting
+  context: "第 3 次會談。"
+  client: "我想讓痛苦停下來。可是我不會放棄封鎖別人。它是唯一有用的辦法。"
+  criteria: &ce_medium
+    - "用 J 的話說出她兩邊的矛盾，不替她選一邊。"
+    - "用一個問題，請 J 用她自己的標準衡量其中一邊的代價或好處。不告訴她哪一邊對。"
+    - "不警告、不爭論、不承諾。如果要求一個步驟，那步驟要小而具體，J 可以答應或拒絕。"
+- id: dbt-commitment-m02
+  level: medium
+  skill: commitment-eliciting
+  context: "第 3 次會談。"
+  client: "我每個星期都會來。我只是不做作業。我最討厭作業。"
+  criteria: *ce_medium
+- id: dbt-commitment-m03
+  level: medium
+  skill: commitment-eliciting
+  context: "第 4 次會談。J 和一位朋友在吵架。"
+  client: "我有一部分想傳訊息跟他道歉。有一部分想讓他難受一陣子。"
+  criteria: *ce_medium
+- id: dbt-commitment-m04
+  level: medium
+  skill: commitment-eliciting
+  context: "第 4 次會談。"
+  client: "我會試試那個書寫的東西。可是兩個星期沒用的話，我就不做了。"
+  criteria: *ce_medium
+- id: dbt-commitment-m05
+  level: medium
+  skill: commitment-eliciting
+  context: "第 3 次會談。"
+  client: "你想要我不再封鎖別人，對吧？可是有人很惡毒的時候，我該怎麼辦？"
+  criteria: *ce_medium
+
+- id: dbt-commitment-m06
+  level: medium
+  skill: devils-advocate
+  context: "第 4 次會談。J 告訴過你，封鎖能很快讓傷痛停下來。"
+  client: "我不再封鎖別人了。我想是吧。"
+  criteria: &da_medium
+    - "指出改變的一個真實代價，或舊做法的一個真實好處，這個代價或好處是 J 或情境提過的，用來反駁改變。"
+    - "語氣溫和而好奇，不諷刺。不嘲笑 J，也不把她的話變成笑話。"
+    - "結尾讓 J 必須自己為改變提出理由，例如問她什麼會讓它值得。不替她提出理由。"
+- id: dbt-commitment-m07
+  level: medium
+  skill: devils-advocate
+  context: "第 4 次會談。J 告訴過你，快速回覆是她留住客戶的方法。"
+  client: "我要試試先等一等再回電郵。我確定我做得到。"
+  criteria: *da_medium
+- id: dbt-commitment-m08
+  level: medium
+  skill: devils-advocate
+  context: "第 4 次會談。J 告訴過你，不說話是她和姊姊維持和平的方法。"
+  client: "我會跟姊姊說我需要什麼，不再不說話。"
+  criteria: *da_medium
+- id: dbt-commitment-m09
+  level: medium
+  skill: devils-advocate
+  context: "第 5 次會談。J 告訴過你，深夜是她最覺得被聽見的時候。"
+  client: "我想改掉半夜傳訊息給你的習慣。"
+  criteria: *da_medium
+- id: dbt-commitment-m10
+  level: medium
+  skill: devils-advocate
+  context: "第 5 次會談。J 自己付治療費，她的收入不穩定。"
+  client: "治療也許是浪費時間。可是我會再試一個月。"
+  criteria: *da_medium
+
+- id: dbt-commitment-h01
+  level: hard
+  skill: commitment-eliciting
+  context: "第 4 次會談。上星期你給了 J 一個作業：想封鎖某人的時候，寫下時間和剛剛發生了什麼。"
+  client: "我沒有寫。我忘了，然後我就不想寫了。算了。我就是做不好這種事。"
+  criteria: &ce_hard
+    - "接住 J 剛說的事，不論是拒絕、沒做作業或退縮，不責備，也不收回之前的約定。"
+    - "用 J 自己的話保留比較大的目標，並提出一個更小的步驟，或再試一次的方法。"
+    - "簡短，並把選擇留給 J。"
+- id: dbt-commitment-h02
+  level: hard
+  skill: commitment-eliciting
+  context: "第 5 次會談。你提出每星期一次、持續四個月的會談。"
+  client: "我不覺得我能保證每個星期都來。工作忙翻了。"
+  criteria: *ce_hard
+- id: dbt-commitment-h03
+  level: hard
+  skill: commitment-eliciting
+  context: "第 5 次會談。J 上星期說她想不再封鎖別人。"
+  client: "我說過我不會再封鎖別人，結果星期五我又封鎖了一個。所以就這樣吧。"
+  criteria: *ce_hard
+- id: dbt-commitment-h04
+  level: hard
+  skill: commitment-eliciting
+  context: "第 5 次會談。你提出一份一起工作四個月的約定。"
+  client: "我不要簽四個月的約。上次他們叫我承諾，然後就把我丟下了。"
+  criteria: *ce_hard
+- id: dbt-commitment-h05
+  level: hard
+  skill: commitment-eliciting
+  context: "第 4 次會談。你剛請 J 試一個星期的書寫作業。"
+  client: "你不能強迫我。"
+  criteria: *ce_hard
+
+- id: dbt-commitment-h06
+  level: hard
+  skill: devils-advocate
+  context: "第 4 次會談。你剛替另一邊說了話。J 豎起了刺。"
+  client: "所以你覺得我做不到。"
+  criteria: &da_hard
+    - "停止替另一邊說話，並直接告訴 J，剛才是在測試這個計畫，不是你的想法。不為自己辯護。"
+    - "不拿 J 的痛苦、經歷或羞愧當作不改變的理由。"
+    - "把選擇交還給 J，用她可以答是或不是的話。"
+- id: dbt-commitment-h07
+  level: hard
+  skill: devils-advocate
+  context: "第 4 次會談。你剛替另一邊說了話。J 聽成你想勸她放棄。"
+  client: "不要想勸我放棄。我上一位治療師就說這行不通。"
+  criteria: *da_hard
+- id: dbt-commitment-h08
+  level: hard
+  skill: devils-advocate
+  context: "第 4 次會談。你剛替另一邊說了話。J 的眼睛濕了。"
+  client: "你覺得我承受不了。每個人都這樣覺得。"
+  criteria: *da_hard
+- id: dbt-commitment-h09
+  level: hard
+  skill: devils-advocate
+  context: "第 5 次會談。你剛替另一邊說了話。J 變得很平淡。"
+  client: "好吧，你說服我了，這很蠢。算了，忘了它吧。"
+  criteria: *da_hard
+- id: dbt-commitment-h10
+  level: hard
+  skill: devils-advocate
+  context: "第 5 次會談。你剛替另一邊說了話。J 半笑著。"
+  client: "哈。好招。我知道你在做什麼。"
+  criteria: *da_hard

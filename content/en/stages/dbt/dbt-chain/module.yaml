@@ -1,0 +1,32 @@
+slug: dbt-chain
+version: 1.0.0
+title: "Behaviour chain analysis"
+intro: >-
+  A chain analysis looks at one episode of a target behaviour, step by step, to
+  find where something could have gone differently. You use it soon after the
+  behaviour has happened, once the client agrees that you can look at it
+  together. The chain usually has these kinds of link: what set it off, what the
+  client thought, what she felt in her body, what she wanted to do, what she did,
+  and what happened next, in the moment and afterwards. This module teaches two
+  skills. Chain questioning is asking about one step at a time, in specific words
+  and without blame. Link identification is naming each link in the client's own
+  words and checking the order with her, including links she skipped or ran
+  together. Know when not to use it. Do not start a chain when the client is
+  overwhelmed in the session, or when the wish is to find fault. If she feels
+  interrogated, slow down and say so. Validate as you go. In this module you
+  analyse a Wednesday in which J received a one-line email from a client and, by
+  the evening, had dropped the project and, the next day, missed her session.
+  Details such as what she ate stay out of the chain unless they are needed. The
+  point is where she could have done something different. This stage does not cover how to assess or
+  respond to life-threatening behaviour. Learn that in supervision, following
+  your placement's protocol.
+skills:
+  - chain-questioning
+  - link-identification
+reflection_prompts:
+  - id: dbt-chain-r1
+    text: "In session five the therapist answered J's complaint with 'it's important that you cooperate'. What made that sentence come out? Where in your own training did you learn to say something like it?"
+  - id: dbt-chain-r2
+    text: "Pick one of your chain questions. Could J have heard it as an accusation? What would you ask to make it sound like curiosity?"
+  - id: dbt-chain-r3
+    text: "Think of a time when you went through your own bad moment step by step. Which step was hardest to say aloud? What would have made it easier?"

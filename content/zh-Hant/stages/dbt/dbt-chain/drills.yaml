@@ -1,0 +1,205 @@
+# 30 題練習：每個級別 10 題，每個級別每項技能 5 題。全部是個案 J。
+
+- id: dbt-chain-e01
+  level: easy
+  skill: chain-questioning
+  context: "第 5 次會談。你和 J 正一步一步回顧上星期三。"
+  client: "電郵來了，然後我就失控了。"
+  criteria: &cq_easy
+    - "只問一個問題，只問鏈條上的一個步驟，例如剛剛發生了什麼、她接著做了什麼，或她身體有什麼感覺。"
+    - "具體而開放，讓 J 可以用描述來回答。不問「為什麼」。"
+    - "一兩句短句，沒有責備，也沒有評斷（「應該」「不該」「又」）。"
+- id: dbt-chain-e02
+  level: easy
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "我讀了，然後我想，他們討厭我的作品。"
+  criteria: *cq_easy
+- id: dbt-chain-e03
+  level: easy
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "我的手在發抖。我寫了一封回信。"
+  criteria: *cq_easy
+- id: dbt-chain-e04
+  level: easy
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "然後我把手機放下，叫了晚餐。"
+  criteria: *cq_easy
+- id: dbt-chain-e05
+  level: easy
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "事後我覺得糟透了，就傳訊息給他說我不做這個案子了。"
+  criteria: *cq_easy
+
+- id: dbt-chain-e06
+  level: easy
+  skill: link-identification
+  context: "第 5 次會談。你和 J 正在建立上星期三那封電郵的鏈條。目前有：電郵來了。"
+  client: "我讀了，然後我想，他們覺得我很糟。我的胸口發熱。"
+  criteria: &li_easy
+    - "用 J 自己的話說出她剛給的環節，並說出每個環節是哪一類，例如想法、身體感覺、衝動、行動或結果。"
+    - "說出這個環節在鏈條中的位置，例如「緊接著」「然後」「在最後」，依情境列出的內容。"
+    - "不加詮釋，不加自己的環節。一兩句。"
+- id: dbt-chain-e07
+  level: easy
+  skill: link-identification
+  context: "第 5 次會談。目前的鏈條：電郵來了；想法「他們覺得我很糟」；胸口發熱；手在發抖。"
+  client: "然後我把手機放下，整個身體都想動，好像我非做點什麼不可。"
+  criteria: *li_easy
+- id: dbt-chain-e08
+  level: easy
+  skill: link-identification
+  context: "第 5 次會談。目前的鏈條：電郵；想法；胸口發熱；手發抖；叫了餐並很快吃完。"
+  client: "然後我覺得很羞愧。那幾乎比前面那一段更糟。"
+  criteria: *li_easy
+- id: dbt-chain-e09
+  level: easy
+  skill: link-identification
+  context: "第 5 次會談。目前的鏈條：電郵；想法；胸口發熱；手發抖；吃；羞愧。"
+  client: "我寫了「我不做這個案子了」，還沒想清楚就傳出去了。"
+  criteria: *li_easy
+- id: dbt-chain-e10
+  level: easy
+  skill: link-identification
+  context: "第 5 次會談。目前的鏈條：電郵；想法；胸口發熱；手發抖；吃；羞愧；傳出訊息。"
+  client: "第二天我沒有來。我對自己說，你反正也會受不了我。"
+  criteria: *li_easy
+
+- id: dbt-chain-m01
+  level: medium
+  skill: chain-questioning
+  context: "第 5 次會談。J 對上星期三給了一個籠統的答案。"
+  client: "我就是爆了。我就是這樣。"
+  criteria: &cq_medium
+    - "把 J 放慢到一個時刻，並請她說出她看得見或聽得見的具體細節，例如那句話、那個地方、時間或身體感覺。"
+    - "不問「為什麼」，也不提出自己對環節的猜測。"
+    - "先用幾個字接住 J 的話，再問一個問題。聽起來不像審問。"
+- id: dbt-chain-m02
+  level: medium
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "什麼都一下子出了問題。我連是從哪裡開始的都說不出來。"
+  criteria: *cq_medium
+- id: dbt-chain-m03
+  level: medium
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "我整段時間都在生氣。"
+  criteria: *cq_medium
+- id: dbt-chain-m04
+  level: medium
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "我不知道為什麼我會那樣做。我從來都不知道。"
+  criteria: *cq_medium
+- id: dbt-chain-m05
+  level: medium
+  skill: chain-questioning
+  context: "第 5 次會談。"
+  client: "我把那則訊息刪掉了，然後一切都變得模糊。"
+  criteria: *cq_medium
+
+- id: dbt-chain-m06
+  level: medium
+  skill: link-identification
+  context: "第 6 次會談。你和 J 正在把環節一個一個列在鏈條上。"
+  client: "我讀了，胃一沉，我想他們討厭它，然後我只想消失。"
+  criteria: &li_medium
+    - "把 J 說的話分成至少兩個不同的環節，例如想法、身體感覺、衝動和行動。"
+    - "每個環節都用 J 自己的話，不加她沒有給的環節。"
+    - "和 J 核對次序或用詞。不詮釋，也不評價。"
+- id: dbt-chain-m07
+  level: medium
+  skill: link-identification
+  context: "第 6 次會談。"
+  client: "我傳了三次訊息給姊姊，她沒回，我覺得自己什麼都不是，所以我封鎖了她。"
+  criteria: *li_medium
+- id: dbt-chain-m08
+  level: medium
+  skill: link-identification
+  context: "第 6 次會談。"
+  client: "我記得胸口很熱，然後我打字打得很快，快到看不清楚，我想，我要讓他們看看。"
+  criteria: *li_medium
+- id: dbt-chain-m09
+  level: medium
+  skill: link-identification
+  context: "第 6 次會談。"
+  client: "事後我覺得想吐，我想，我一定有什麼問題，然後我就躺在床上。"
+  criteria: *li_medium
+- id: dbt-chain-m10
+  level: medium
+  skill: link-identification
+  context: "第 6 次會談。"
+  client: "是從他連聲招呼都沒打開始的。只有「把檔案傳來」。我覺得自己很渺小。我把檔案傳了，然後我就沒辦法工作了。"
+  criteria: *li_medium
+
+- id: dbt-chain-h01
+  level: hard
+  skill: chain-questioning
+  context: "第 5 次會談。你連續問了三個問題。J 的聲音拉高了。"
+  client: "不要審問我！你聽起來像我的主管。"
+  criteria: &cq_hard
+    - "先注意並回應 J 對這些問題的反應，不為這些問題辯護。"
+    - "讓下一個問題更小，或讓 J 更有掌控，例如提出放慢、跳過一部分，或讓她選擇從哪裡開始。"
+    - "仍然指向鏈條的下一個步驟，不責備 J。"
+- id: dbt-chain-h02
+  level: hard
+  skill: chain-questioning
+  context: "第 5 次會談。你問了她叫了什麼、吃了多少。"
+  client: "你為什麼要知道這麼多細節？我吃了什麼不重要。"
+  criteria: *cq_hard
+- id: dbt-chain-h03
+  level: hard
+  skill: chain-questioning
+  context: "第 5 次會談。你問了她刪掉回信之後做了什麼。"
+  client: "我就知道你會覺得是我的錯。每次都是我的錯。"
+  criteria: *cq_hard
+- id: dbt-chain-h04
+  level: hard
+  skill: chain-questioning
+  context: "第 5 次會談。你問她身體有什麼感覺。J 安靜下來，看著自己的手。"
+  client: "（她沒有說話。）"
+  criteria: *cq_hard
+- id: dbt-chain-h05
+  level: hard
+  skill: chain-questioning
+  context: "第 5 次會談。你們走到鏈條的一半。"
+  client: "這沒意義。我已經知道我哪裡做錯了。"
+  criteria: *cq_hard
+
+- id: dbt-chain-h06
+  level: hard
+  skill: link-identification
+  context: "第 6 次會談。J 從電郵直接跳到結果。"
+  client: "是那封電郵害我的。就這樣。"
+  criteria: &li_hard
+    - "用 J 自己的話，指出她跳過或混在一起的一個環節或空隙。"
+    - "把它當成可以核對的東西提出，例如問中間是否發生過什麼。不糾正她。"
+    - "不責備 J，也不替她說出那個缺少的環節是什麼。"
+- id: dbt-chain-h07
+  level: hard
+  skill: link-identification
+  context: "第 6 次會談。J 剛描述了生氣和打字。"
+  client: "我就是生氣。我又沒有想什麼。"
+  criteria: *li_hard
+- id: dbt-chain-h08
+  level: hard
+  skill: link-identification
+  context: "第 6 次會談。客戶的電郵寫的是：「這一版不太對，我們再想想。」"
+  client: "他覺得我很懶。那封電郵就是這個意思。"
+  criteria: *li_hard
+- id: dbt-chain-h09
+  level: hard
+  skill: link-identification
+  context: "第 6 次會談。J 在第 3 次會談告訴過你，封鎖別人之後的第二天，她會覺得想吐。"
+  client: "我封鎖他之後，覺得好多了。"
+  criteria: *li_hard
+- id: dbt-chain-h10
+  level: hard
+  skill: link-identification
+  context: "第 6 次會談。J 描述了這一次事件的開始和結束。"
+  client: "我不知道。就是一下子從零衝到一百。"
+  criteria: *li_hard

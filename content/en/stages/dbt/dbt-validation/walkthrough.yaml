@@ -1,0 +1,187 @@
+sessions:
+  - id: dbt-validation-s1
+    title: "Session 1: 'She also found me too much'"
+    turns:
+      - id: dbt-validation-s1-t01
+        speaker: therapist
+        text: "Come in, J, please sit wherever you like. Thank you for coming. I'd like to begin by hearing what brought you here, in your own words."
+      - id: dbt-validation-s1-t02
+        speaker: client
+        text: "I looked at therapists for about a month before I booked. I did therapy last year, six sessions, and then I stopped. I'm not really sure why I'm trying again."
+      - id: dbt-validation-s1-d1
+        type: choice
+        prompt: "J says she is not sure why she is trying again. What do you say?"
+        options:
+          - id: a
+            text: "You weren't sure about trying again, and you came anyway. I'd like to hear what led you here, and whatever you'd like me to know about last time."
+            fit: strong
+            note: "It takes her doubt seriously and notes that she came in spite of it. It invites the story of last time without asking her to explain or defend anything."
+          - id: b
+            text: "It's good that you're giving therapy another chance. What went wrong last time?"
+            fit: workable
+            note: "It is welcoming. But 'what went wrong' asks her to judge the other therapist, or herself, in the first minute."
+          - id: c
+            text: "Lots of people need a few tries to find the right therapist, so don't be discouraged."
+            fit: weak
+            note: "It is kind, and it turns her particular doubt into something everybody has. She was not asking for encouragement."
+        actual: "You weren't sure about trying again, and you came anyway. I'd like to hear what led you here, and whatever you'd like me to know about last time."
+        rationale: "A first validation does not need a technique. It says that her doubt makes sense and that she came in spite of it, and it leaves her in charge of what to tell."
+      - id: dbt-validation-s1-t03
+        speaker: client
+        text: "It was my sister who said I should find someone, after we had a fight. The last therapist told me after the sixth session that I needed to 'work on my reactions' and that she had a waiting list. I don't think she wanted me back. She also found me too much. Everybody does."
+      - id: dbt-validation-s1-d2
+        type: choice
+        prompt: "J says that the last therapist also found her too much, and then 'everybody does'. What do you say?"
+        options:
+          - id: a
+            text: "I'm sure she didn't mean it that way. Therapists often have waiting lists."
+            fit: weak
+            note: "It defends a therapist you have never met, and it tells J that what she heard was a misunderstanding. She has heard that before."
+          - id: b
+            text: "You heard 'too much' after the sixth session, and 'everybody does' tells me you have heard it many times. That's a lot to carry in here today."
+            fit: strong
+            note: "It takes what she heard as real to her. It does not judge the other therapist, and it does not agree that she is too much. It uses her words, 'everybody does', and offers what they imply."
+          - id: c
+            text: "That sounds painful. Do you think there's a pattern in how people respond to you?"
+            fit: workable
+            note: "The first sentence is kind. The question asks her to analyse herself within seconds of being hurt, and she may hear that the pattern is her fault."
+        actual: "You heard 'too much' after the sixth session, and 'everybody does' tells me you have heard it many times. That's a lot to carry in here today."
+        rationale: "This is the first example of validating without agreeing. You do not say that she is too much, and you do not say that she is not. You say that what she heard makes sense of why she is wary."
+      - id: dbt-validation-s1-t04
+        speaker: client
+        text: "(shrugs) I'm not saying I'm innocent. I get loud. I've walked out of four jobs in five years."
+      - id: dbt-validation-s1-t05
+        speaker: therapist
+        text: "I'd like to hear about those, in time. Before we go on, I ask everyone the same question. Have you had thoughts of hurting yourself, or of ending your life?"
+      - id: dbt-validation-s1-t06
+        speaker: client
+        text: "No. Nothing like that. I just want things to stop blowing up."
+      - id: dbt-validation-s1-d3
+        type: free
+        prompt: "J says she wants things to stop blowing up. Write one or two sentences that validate that wish. Do not agree that she has been 'too much', and do not argue with it either."
+        actual: "Wanting things to stop blowing up makes a lot of sense, after four jobs that ended in a fight and a therapy that ended with 'work on your reactions'. I'd like to understand what happens when it blows up, if you're willing."
+        rationale: "It validates the wish with two facts she gave you. It adds a small, honest next step. It does not call her reactions the problem."
+      - id: dbt-validation-s1-t07
+        speaker: client
+        text: "(a pause) Honestly, you're the first person who got it straight away. Nobody says that to me."
+      - id: dbt-validation-s1-d4
+        type: choice
+        prompt: "J says you are the first person who has understood her. How do you respond?"
+        options:
+          - id: a
+            text: "Thank you. I'm glad you feel understood. I'll always be here for you."
+            fit: weak
+            note: "It over-promises on the first day. The first time you fail to understand, J will remember that you said 'always'."
+          - id: b
+            text: "I'm glad it feels that way. I'm sure I'll get things wrong sometimes, and if I do, I'd like you to tell me."
+            fit: strong
+            note: "It accepts her warmth without taking on the role of the person who always understands. It invites her to tell you when you fall short."
+          - id: c
+            text: "I'm glad. Try not to put me on a pedestal, though. I'm just a therapist."
+            fit: workable
+            note: "The warning is honest, and it comes too early. After 'though' she may hear that her first good feeling in a long time was a mistake."
+        actual: "I'm glad it feels that way. I'm sure I'll get things wrong sometimes, and if I do, I'd like you to tell me."
+        rationale: "She may move quickly from 'you get me' to 'you're like everyone else'. You do not need to prevent that. You can make it easier to say out loud."
+      - id: dbt-validation-s1-t08
+        speaker: client
+        text: "(small laugh) Okay. We'll see."
+      - id: dbt-validation-s1-t09
+        speaker: therapist
+        text: "We're nearly at time. Next week I'd like to hear about one of those four jobs, if you'd like to tell me. What was it like to talk today?"
+      - id: dbt-validation-s1-t10
+        speaker: client
+        text: "Weird. Not bad weird."
+    notes:
+      goals: "J's goal: 'I just want things to stop blowing up.' Not yet shared in detail. I asked about thoughts of hurting herself or ending her life, and she said no. This tool does not show what to do with any other answer. Follow your placement's protocol and tell your supervisor."
+      alliance: "Bond: wary and quickly warm. 'The first person who got it' is an early warning to hold lightly. Tasks: none agreed yet. Goals: hers is clear, mine is not yet part of it."
+      formulation_update: "First observations only. She quit four jobs in five years, each after a conflict. The last therapy ended after six sessions with 'work on your reactions'. She hears 'too much' from many people. Nothing yet about her family."
+  - id: dbt-validation-s2
+    title: "Session 2: 'Tell me what's wrong with me'"
+    turns:
+      - id: dbt-validation-s2-t01
+        speaker: therapist
+        text: "Hello, J. Last week you told me about the last therapy and the four jobs. How has the week been?"
+      - id: dbt-validation-s2-t02
+        speaker: client
+        text: "Awful. A client emailed 'this version isn't quite right', and I wanted to tear everything up. Then I was loud with my sister about something else. I don't know why I'm like this."
+      - id: dbt-validation-s2-d1
+        type: choice
+        prompt: "J asks why she is like this. You think the biosocial explanation could help. What do you say first?"
+        options:
+          - id: a
+            text: "There's a reason, and it's a well-known pattern. Let me explain the theory behind this kind of therapy."
+            fit: weak
+            note: "It starts with the theory, not with her. It sounds like a lecture, and it takes the question 'why am I like this' as a request for information, when it is also a worry."
+          - id: b
+            text: "You may have been asking that for a long time. Would it help if I offered one way of making sense of it? You can tell me which parts fit and which don't."
+            fit: strong
+            note: "It asks permission, it keeps the explanation to 'one way', and it hands her the job of checking it. She stays an expert on her own life."
+          - id: c
+            text: "What do you think the reason is?"
+            fit: workable
+            note: "It is respectful. But she has had years to answer that question, and her answer is probably 'I'm broken'. You would be asking her to say it again."
+        actual: "You may have been asking that for a long time. Would it help if I offered one way of making sense of it? You can tell me which parts fit and which don't."
+        rationale: "Ask before you explain. An explanation that she has agreed to hear lands differently from one that arrives uninvited."
+      - id: dbt-validation-s2-t03
+        speaker: client
+        text: "Yes. Please. Tell me what's wrong with me."
+      - id: dbt-validation-s2-d2
+        type: free
+        prompt: "J says, 'Tell me what's wrong with me.' Write the first two or three sentences of your explanation. Use plain words, give no label, and tie it to something J has told you."
+        actual: "I don't think something is wrong with you. From what you've told me, your feelings come fast and strong, and they take a long time to settle. And at home, when you were upset, the answer was often 'you're overreacting'. Those two things together could explain a lot."
+        rationale: "She asked for a verdict. You give her an idea in its place. It has two parts: how fast and strong her feelings run, and what met them. It is offered as 'could', so she can correct it."
+      - id: dbt-validation-s2-t04
+        speaker: client
+        text: "(quietly) My mum used to say 'what's there to cry about?' My sister was the one who didn't make a fuss. (pause) Are you saying it's their fault?"
+      - id: dbt-validation-s2-d3
+        type: choice
+        prompt: "J asks whether it is her family's fault. What do you say?"
+        options:
+          - id: a
+            text: "I'm not saying it's anyone's fault. It sounds as if they wanted the best for you, and they didn't know what to do with feelings that big. Does that sound like them?"
+            fit: strong
+            note: "It answers her worry first and does not choose a villain. It stays with what she told you, and it asks her whether it fits."
+          - id: b
+            text: "In a way, yes. A home that dismisses a child's feelings does lasting damage."
+            fit: weak
+            note: "It may be true in general. It blames her family on thin evidence, and she will either defend them or take the blame onto herself."
+          - id: c
+            text: "What matters is not whose fault it was but what we do now."
+            fit: workable
+            note: "It is sensible and it avoids blame. It also moves away from her question before she has had an answer, and she has just said something hard about her mother."
+        actual: "I'm not saying it's anyone's fault. It sounds as if they wanted the best for you, and they didn't know what to do with feelings that big. Does that sound like them?"
+        rationale: "A biosocial explanation describes a mismatch. It does not assign blame, to J or to her family. Answer the worry she raised, then check the idea with her."
+      - id: dbt-validation-s2-t05
+        speaker: client
+        text: "(a long pause) No, they weren't bad. They were tired. Dad was away a lot. (her eyes fill) Nobody's ever put it like that. It's not that I'm bad. It was a mismatch."
+      - id: dbt-validation-s2-t06
+        speaker: therapist
+        text: "A mismatch. Yes, that's a good way to say it."
+      - id: dbt-validation-s2-t07
+        speaker: client
+        text: "But then, doesn't that mean it's okay when I block people? Because it isn't my fault?"
+      - id: dbt-validation-s2-d4
+        type: choice
+        prompt: "J asks whether the explanation makes blocking people okay. What do you say?"
+        options:
+          - id: a
+            text: "Your reaction makes sense given your history, and that's different from saying nothing can be done. Blocking made sense as a way to end the hurt fast. We can look for other ways that cost you less."
+            fit: strong
+            note: "It keeps validation and change in the same answer, in that order. The reaction makes sense. The action has a price. It does not say that she is to blame, and it does not say that she is helpless."
+          - id: b
+            text: "Right. None of this is your fault, so you shouldn't be hard on yourself."
+            fit: weak
+            note: "It turns the explanation into an excuse. It also treats her as someone who cannot change, which is the opposite of what validation is for."
+          - id: c
+            text: "It's a bit more complicated than that. You are still responsible for what you do."
+            fit: workable
+            note: "It is true, and it comes right after the first time she felt understood. She may hear that she was let off for a moment and is now being told off."
+        actual: "Your reaction makes sense given your history, and that's different from saying nothing can be done. Blocking made sense as a way to end the hurt fast. We can look for other ways that cost you less."
+        rationale: "Validation says that the reaction makes sense. It does not say that the action works. Say the first plainly and the second gently, and keep them in one answer."
+      - id: dbt-validation-s2-t08
+        speaker: client
+        text: "(slowly) 'Cost me less.' Okay. I can live with that."
+    notes:
+      goals: "J's goal is the same, and the explanation has given it a new shape: not 'stop being like this', but 'find ways that cost less'. Not yet written down as a goal."
+      alliance: "Bond: she cried a little and stayed. The idea that it was 'a mismatch' came from her. Tasks: she knows that I will ask about specific moments. Do not promise that this will be easy."
+      formulation_update: "Parents were 'tired', father often away. 'What's there to cry about?' from her mother. Sister the one who 'didn't make a fuss'. Her sense that her feelings are not trustworthy is a thread to follow. Blocking is her fast way to end hurt. Watch whether the relief of being understood turns into 'you're like everyone else' at the first disappointment."

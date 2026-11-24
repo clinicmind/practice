@@ -71,10 +71,10 @@ describe('loadDrillStats', () => {
     expect(s.avgCriteriaTokens).toBeLessThan(s.avgPromptTokens + 1);
   });
 
-  test('real content: 8 foundations + 6 EFT modules x 30 drills in both languages', () => {
+  test('real content: 8 foundations + 6 EFT + 3 DBT modules x 30 drills in both languages', () => {
     for (const locale of ['en', 'zh-Hant'] as const) {
       const s = loadDrillStats(CONTENT, locale);
-      expect(s.drills).toBe(420);
+      expect(s.drills).toBe(510);
       expect(s.avgPromptTokens).toBeGreaterThan(50);
       expect(s.avgPromptTokens).toBeLessThan(1500);
     }

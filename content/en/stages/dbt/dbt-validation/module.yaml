@@ -1,0 +1,37 @@
+slug: dbt-validation
+version: 1.0.0
+title: "Validation and the biosocial explanation"
+intro: >-
+  Dialectical behaviour therapy (DBT) holds two things together: accepting the
+  client as she is, and helping her change. Validation is the accepting side. It
+  tells the client, in words, that her experience makes sense given what she has
+  lived through and what is happening now. Validation is not agreement with her
+  conclusion, and it is not praise for what she did. A response can validate in
+  different ways, and this module calls them levels. Some responses show that you
+  heard her accurately. Some put into words what she did not say. Some show that
+  her reaction makes sense from her history. Some show that almost anyone in her
+  position would react this way today. Choose the level that fits the moment, and
+  say only what is true. Validate what is valid. Do not validate a belief such as
+  "nobody can stand me", and do not call an action effective when it costs her
+  what she wants. The second skill is the biosocial explanation: a short, plain
+  account of why a person's feelings might come fast and strong and settle
+  slowly, and how years of hearing "you're overreacting" could teach her to
+  distrust them. It describes a pattern. It is not a verdict, and it blames
+  neither the client nor her family. In this module you meet Client J, a
+  30-year-old freelance graphic designer who left her last therapy after six
+  sessions and says that therapist also found her too much. Know when not to
+  use these skills. Do not use the explanation to excuse an action or to end a
+  conversation. Do not lecture. Offer it, ask whether it fits, and let her
+  correct it. This stage does not cover how to assess or respond to
+  life-threatening behaviour. Learn that in supervision, following your
+  placement's protocol.
+skills:
+  - dbt-validation-levels
+  - biosocial-explanation
+reflection_prompts:
+  - id: dbt-validation-r1
+    text: "J says her last therapist also found her too much. What would you want to say to defend that therapist, or to promise that you will be different? What would validating J sound like instead?"
+  - id: dbt-validation-r2
+    text: "Find one of your validating responses where you wanted to add 'but'. What did you want to say after the 'but'? Where could it go instead?"
+  - id: dbt-validation-r3
+    text: "Think of a time someone told you your reaction was too much. What did you do with the feeling afterwards? How might that help you hear J?"
