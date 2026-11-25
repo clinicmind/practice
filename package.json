@@ -6,6 +6,7 @@
   "scripts": {
     "content": "tsx scripts/build-content.ts",
     "functions": "tsx scripts/build-functions.ts",
+    "review:workbench": "tsx scripts/build-review-workbench.ts",
     "dev": "npm run content && vite",
     "build": "npm run content && tsc --noEmit && vite build",
     "preview": "vite preview",
