@@ -50,8 +50,12 @@ async function start() {
     // End-to-end builds only, like the reports stand-in above: removed from a normal build at build time.
     const { createFakeAiClient } = await import('./ai/fakeApi');
     // The page may ask for a seeded supervisor session, so the supervisor screens can be driven without Supabase.
-    if (sessionStorage.getItem('e2e-fake-user') === 'sup') {
+    const fakeUser = sessionStorage.getItem('e2e-fake-user');
+    if (fakeUser === 'sup') {
       backend = (await import('./ai/fakeBackend')).createSeededSupervisorBackend();
+      aiClient = createFakeAiClient(async () => null);
+    } else if (fakeUser === 'sup-triage') {
+      backend = (await import('./supervisor/fakeTriageBackend')).createTriageSupervisorBackend();
       aiClient = createFakeAiClient(async () => null);
     }
     aiClient ??= createFakeAiClient(async (id) => (await store.listAttempts()).find((a) => a.id === id)?.response ?? null);
