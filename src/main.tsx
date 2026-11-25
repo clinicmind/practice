@@ -5,6 +5,7 @@ import { App } from './App';
 import { getSupabase, type Backend } from './auth/supabase';
 import { createLocalStore } from './progress/localStore';
 import { aiFlag, type AiFeedbackClient } from './ai/AiContext';
+import { extrasFlag } from './extras/ExtrasContext';
 import { reportsFlag, type ReportsApi } from './reports/ReportsContext';
 import '@fontsource-variable/newsreader/wght.css';
 import '@fontsource-variable/newsreader/wght-italic.css';
@@ -23,6 +24,8 @@ const store = createLocalStore();
 const reportsEnabled = reportsFlag(import.meta.env);
 // AI feedback is off unless the build sets VITE_AI_ENABLED=true. The production build does not.
 const aiEnabled = aiFlag(import.meta.env);
+// The optional student extras are off unless the build sets VITE_PRACTICE_EXTRAS=true. The production build does not.
+const extrasEnabled = extrasFlag(import.meta.env);
 
 async function start() {
   // End-to-end builds only: a stand-in backend, so the screens can be driven without Edge Functions.
@@ -74,7 +77,7 @@ async function start() {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <BrowserRouter>
-        <App store={store} wasReset={store.wasReset} backend={backend} reportsEnabled={reportsEnabled} reportsApi={reportsApi} aiEnabled={aiEnabled} aiClient={aiClient} />
+        <App store={store} wasReset={store.wasReset} backend={backend} reportsEnabled={reportsEnabled} reportsApi={reportsApi} aiEnabled={aiEnabled} aiClient={aiClient} extrasEnabled={extrasEnabled} />
       </BrowserRouter>
     </StrictMode>,
   );

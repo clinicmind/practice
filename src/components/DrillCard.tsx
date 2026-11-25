@@ -1,5 +1,7 @@
 import { Suspense, useEffect, useId, useRef, useState } from 'react';
 import { LazyAiFeedbackPanel } from '../ai/lazy';
+import { useExtrasEnabled } from '../extras/ExtrasContext';
+import { LazyReviseOnce } from '../extras/lazy';
 import type { Drill, Model } from '../content/schema';
 import { useT } from '../i18n';
 import { clearDraft, loadDraft, saveDraft } from '../progress/drafts';
@@ -24,7 +26,10 @@ interface Props {
 export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onNext, onReauth }: Props) {
   const s = useT();
   const t = s.drill;
+  const x = s.practiceExtras;
+  const extras = useExtrasEnabled();
   const uid = useId();
+  const [folded, setFolded] = useState(false);
   const [phase, setPhase] = useState<Phase>('writing');
   const [draft] = useState(() => loadDraft(drill.id));
   const [text, setText] = useState(draft?.response ?? '');
@@ -115,9 +120,18 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
       <p className="muted context">
         <strong>{t.context}:</strong> {drill.context}
       </p>
-      <p id={`${uid}-client`} className="client-line">
-        <span className="visually-hidden">{t.client}: </span>“{drill.client}”
-      </p>
+      {/* On a phone this bar stays at the top while the student types, so the client's words are never hidden by the keyboard. */}
+      <div className={['client-bar', folded && 'folded', phase === 'review' && 'done'].filter(Boolean).join(' ')}>
+        <p id={`${uid}-client`} className="client-line">
+          <span className="visually-hidden">{t.client}: </span>“{drill.client}”
+        </p>
+        <button
+          type="button" className="client-bar-toggle" aria-expanded={!folded} aria-controls={`${uid}-client`}
+          onClick={() => setFolded((v) => !v)}
+        >
+          {folded ? x.clientBar.unfold : x.clientBar.fold}
+        </button>
+      </div>
 
       {phase !== 'review' && (
         <div className="field">
@@ -205,6 +219,14 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
           <h3 ref={reviewRef} tabIndex={-1}>{t.yourResponse}</h3>
           <blockquote>{saved.response}</blockquote>
           <p className={saved.met ? 'verdict met' : 'verdict'}>{saved.met ? t.met : t.notMet}</p>
+          <ul aria-label={x.selfCheck.heading} className="self-check">
+            {drill.criteria.map((c, i) => (
+              <li key={i} className={saved.ticks[i] ? 'on' : undefined}>
+                <span aria-hidden="true">{saved.ticks[i] ? '✓ ' : '○ '}</span>
+                <strong>{saved.ticks[i] ? x.selfCheck.ticked : x.selfCheck.notTicked}:</strong> {c}
+              </li>
+            ))}
+          </ul>
           </div>
           {modelError && (
             <div>
@@ -215,8 +237,8 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
             </div>
           )}
           {model && (
-            <section className="model">
-              <h3>{t.modelHeading}</h3>
+            <section className="model" role="region" aria-labelledby={`${uid}-model`} tabIndex={0}>
+              <h3 id={`${uid}-model`}>{t.modelHeading}</h3>
               <blockquote>{model.model_response}</blockquote>
               <h4>{t.whyHeading}</h4>
               <p>{model.why}</p>
@@ -225,6 +247,11 @@ export function DrillCard({ drill, contentKey, attempts, onSubmit, getModel, onN
             </section>
           )}
           </div>
+          {extras && LazyReviseOnce && model && (
+            <Suspense fallback={null}>
+              <LazyReviseOnce criteria={drill.criteria} firstVersion={saved.response} />
+            </Suspense>
+          )}
           {saved.attemptId && LazyAiFeedbackPanel && (
             <Suspense fallback={null}>
               <LazyAiFeedbackPanel mode="ask" attemptId={saved.attemptId} response={saved.response} criteria={drill.criteria} selfMet={saved.ticks} />
