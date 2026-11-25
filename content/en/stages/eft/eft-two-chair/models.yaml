@@ -43,7 +43,7 @@ eft-two-chair-m01:
   why: "One step, a clear role, and a clear listener. The content is left to the client."
   avoid: "'Just say whatever comes.' It does not say who he is in the chair or to whom he speaks."
 eft-two-chair-m02:
-  model_response: "In this chair, you are the voice. Talk to the other chair, as if you were sitting there. You can be as direct as the voice usually is."
+  model_response: "In this chair, you are the voice. Talk to the other chair, as if you were sitting there; you can be as direct as the voice usually is."
   why: "It answers the question about the role in a sentence, and about the listener in another."
   avoid: "'You're yourself.' It does not answer her question and leaves the roles blurred."
 eft-two-chair-m03:
@@ -51,7 +51,7 @@ eft-two-chair-m03:
   why: "It closes the first part, gives a physical step, and says who she is now."
   avoid: "'Now what do you think of that?' It asks for a view, not a move."
 eft-two-chair-m04:
-  model_response: "Tell him. Speak to the other chair, to the voice. Say what it is like for you to hear him say those things."
+  model_response: "Tell him: speak to the other chair, to the voice. Say what it is like for you to hear him say those things."
   why: "It makes the listener clear. The speech goes to the critic and not to the therapist."
   avoid: "'Tell me how you feel.' It turns the dialogue into a report to you."
 eft-two-chair-m05:

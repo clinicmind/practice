@@ -63,7 +63,7 @@ eft-focusing-m06:
   why: "It keeps the client's image and asks him to check it. It allows the word to be wrong."
   avoid: "'A stone sounds like something hard and stuck.' You added a meaning."
 eft-focusing-m07:
-  model_response: "Tight. See whether 'tight' fits when you check it against the feeling itself. If it's not quite right, that's fine."
+  model_response: "Tight. See whether 'tight' fits when you check it against the feeling itself, and if it's not quite right, that's fine."
   why: "It keeps the word she ended on, and makes it easy to change."
   avoid: "'Tense is probably the better word.' You picked for her."
 eft-focusing-m08:

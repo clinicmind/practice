@@ -48,6 +48,12 @@ main { max-width: 80rem; margin: 0 auto; padding: 1rem; }
 .flags { padding: .5rem .9rem 0; display: flex; flex-direction: column; gap: .3rem; }
 .flag { font-size: .88rem; background: var(--warn-bg); color: var(--warn); border: 1px solid #efcfae; border-radius: .4rem; padding: .25rem .6rem; }
 .flag summary { cursor: pointer; }
+.flag.judge { border-width: 2px; border-color: #d98a2b; font-weight: 600; }
+.prenote { font-size: .82rem; color: var(--muted); background: #f4f4f2; border: 1px solid #e2e2dd; border-radius: .4rem; padding: .2rem .6rem; }
+.prenote summary { cursor: pointer; }
+.prenote blockquote { margin: .3rem 0 .1rem; padding: .2rem .5rem; border-left: 3px solid #ccc; background: #fff; color: var(--muted); }
+.prenote .src { font-size: .75rem; }
+.summary-line { font-size: 1rem; background: var(--warn-bg); border: 1px solid #efcfae; border-radius: .4rem; padding: .4rem .7rem; }
 .flag blockquote { margin: .4rem 0 .2rem; padding: .3rem .6rem; border-left: 3px solid #d9a773; background: #fff; color: var(--ink); font-size: .9rem; }
 .flag .src { color: var(--muted); font-size: .8rem; }
 .hint { font-size: .8rem; color: var(--muted); padding: .3rem .9rem 0; }

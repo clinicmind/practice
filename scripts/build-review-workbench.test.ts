@@ -116,18 +116,73 @@ describe('buildWorkbench', () => {
     expect(card).not.toContain('data-flag=');
   });
 
-  test('links an id mentioned in a pre-review report to that point in the report', () => {
+  const reportCard = (md: string, id = 'demo-intro-e02') => {
     const reviewsDir = tmp();
-    writeFileSync(
-      join(reviewsDir, '2026-01-01-demo-prereview.md'),
-      ['# Demo 預審', '', '## 模組 1：`demo-intro`', '', '- e02：沒有猜測語氣。', ''].join('\n'),
-    );
-    const { html } = build({ stage: 'demo', reviewsDir });
-    const card = html.split('data-id="demo-intro-e02"')[1].split('</article>')[0];
+    writeFileSync(join(reviewsDir, '2026-01-01-demo-prereview.md'), md);
+    const r = build({ stage: 'demo', reviewsDir });
+    return { ...r, card: r.html.split(`data-id="${id}"`)[1].split('</article>')[0] };
+  };
+
+  test('a report line that leaves an id to the owner is a prominent flag with the report text and line', () => {
+    const { card } = reportCard(['# Demo 預審', '', '## 模組 1：`demo-intro`', '', '- e02：沒有猜測語氣。我沒有改，請擁有人確認。', ''].join('\n'));
     expect(card).toContain('data-flag="report-ref"');
+    expect(card).toContain('預審留給你判斷');
     expect(card).toContain('沒有猜測語氣');
     expect(card).toContain('2026-01-01-demo-prereview.md');
     expect(card).toContain('第 5 行');
+    expect(card).toMatch(/^[^>]*data-flagged/);
+  });
+
+  test('a report line that says it was fixed is collapsed, grey, and not flagged', () => {
+    const { card } = reportCard(['# Demo 預審（`demo-intro`）', '', '## 已修正', '', '- 模組 1 e02：加了「也許」。', ''].join('\n'));
+    expect(card).toContain('class="prenote"');
+    expect(card).toContain('預審已修正或只是說明');
+    expect(card).toContain('加了「也許」');
+    expect(card).not.toContain('data-flag="report-ref"');
+    expect(card).not.toContain('預審留給你判斷');
+    expect(card).not.toMatch(/^[^>]*data-flagged/);
+    expect(card).not.toContain('<details class="prenote" open');
+  });
+
+  test('a plain mention (no fix, no request) is also grey and not flagged', () => {
+    const { card } = reportCard(['# Demo 預審', '', '## 模組 1：`demo-intro`', '', '- e02：符合標準。', ''].join('\n'));
+    expect(card).toContain('class="prenote"');
+    expect(card).not.toMatch(/^[^>]*data-flagged/);
+  });
+
+  test('the top shows one summary line: items to judge; automatic warnings; the rest are notes', () => {
+    const md = [
+      '# Demo 預審',
+      '',
+      '## 模組 1：`demo-intro`',
+      '',
+      '- e02：我沒有改，請擁有人確認。',
+      '- e03：沒有改，建議看一下。',
+      '',
+      '## 已修正',
+      '',
+      '- 模組 1 e04：縮短。',
+      '- 模組 1 e05：縮短。',
+      '- 模組 1 e06：縮短。',
+    ].join('\n');
+    const r = reportCard(md);
+    expect(r.judgeItems).toBe(2);
+    expect(r.quietNotes).toBe(3);
+    expect(r.autoItems).toBe(0);
+    expect(r.html).toContain('要你判斷的 2 項；自動預檢警告 0 項；其餘是說明');
+    expect(r.html).toContain('id="summary-line"');
+  });
+
+  test('automatic warnings are counted in the summary line, once per item', () => {
+    const dir = tmp();
+    cpSync(MULTI, dir, { recursive: true });
+    const mf = join(dir, 'en', 'stages', 'demo', 'demo-intro', 'models.yaml');
+    const models = parse(read(mf));
+    models['demo-intro-e01'].model_response = 'Zoloft helped her. Then she stopped. Then more.';
+    writeFileSync(mf, stringify(models));
+    const r = build({ stage: 'demo', contentDir: dir });
+    expect(r.autoItems).toBeGreaterThanOrEqual(1);
+    expect(r.html).toContain(`自動預檢警告 ${r.autoItems} 項`);
   });
 
   test('embeds the data the page script needs: stage, module versions and every item id', () => {

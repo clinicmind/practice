@@ -370,7 +370,7 @@ function buildModule(
   };
   items.unshift(moduleItem);
 
-  const flagCount = items.reduce((n, i) => n + i.flags.length, 0);
+  const flagCount = items.reduce((n, i) => n + loud(i.flags).length, 0);
   const render = (id: string) => renderItem(items.find((i) => i.id === id)!, slug);
 
   const sections: string[] = [];
@@ -399,10 +399,38 @@ function buildModule(
 
 // ---- 顯示 --------------------------------------------------------------------
 
+/** 要擁有人注意的標記：自動預檢警告，和預審報告留給擁有人判斷的項目。其餘（已修正、說明）收合成灰色。 */
+const isQuiet = (f: Flag) => f.kind === 'report-ref' && f.ref?.status !== 'judgment';
+const isAuto = (f: Flag) => f.kind !== 'report-ref';
+const loud = (flags: Flag[]) => flags.filter((f) => !isQuiet(f));
+
+function renderQuiet(flags: Flag[]): string {
+  const quiet = flags.filter(isQuiet);
+  if (!quiet.length) return '';
+  const fixed = quiet.filter((f) => f.ref!.status === 'resolved').length;
+  const label = `預審已修正或只是說明（${quiet.length} 則${fixed ? `，其中 ${fixed} 則報告說已處理` : ''}）`;
+  return (
+    `<details class="prenote"><summary>${label}</summary>` +
+    quiet
+      .map(
+        (f) =>
+          `<blockquote>${escapeHtml(f.ref!.text)}</blockquote><div class="src">${escapeHtml(f.ref!.report)}・第 ${f.ref!.line} 行・${escapeHtml(f.ref!.heading)}・${f.ref!.status === 'resolved' ? '報告說已處理' : '說明'}</div>`,
+      )
+      .join('') +
+    `</details>`
+  );
+}
+
+function renderFlags(flags: Flag[]): string {
+  const l = loud(flags);
+  const q = renderQuiet(flags);
+  return l.length || q ? `<div class="flags">${l.map(renderFlag).join('')}${q}</div>` : '';
+}
+
 function renderFlag(f: Flag): string {
   if (f.kind === 'report-ref' && f.ref) {
     return (
-      `<details class="flag" data-flag="report-ref"><summary>預審報告提到這一項${/已處理|已修正|已完成/.test(f.ref.heading) ? '（報告說已處理）' : ''}（${escapeHtml(f.ref.report)} 第 ${f.ref.line} 行）</summary>` +
+      `<details class="flag judge" data-flag="report-ref" open><summary>預審留給你判斷（${escapeHtml(f.ref.report)} 第 ${f.ref.line} 行）</summary>` +
       `<blockquote>${escapeHtml(f.ref.text)}</blockquote>` +
       `<div class="src">${escapeHtml(f.ref.report)}・第 ${f.ref.line} 行・${escapeHtml(f.ref.heading)}</div></details>`
     );
@@ -420,11 +448,11 @@ function decideBar(slug: string, extra = ''): string {
 }
 
 function renderItem(it: Item, slug: string): string {
-  const flagged = it.flags.length ? ' data-flagged' : '';
+  const flagged = loud(it.flags).length ? ' data-flagged' : '';
   return (
     `<article class="item" data-id="${escapeHtml(it.id)}" data-module="${escapeHtml(slug)}" data-kind="${it.kind}"${flagged}>` +
     `<header><span class="kind">${it.label}${it.sub ? `・${escapeHtml(it.sub)}` : ''}</span><code>${escapeHtml(it.id)}</code></header>` +
-    (it.flags.length ? `<div class="flags">${it.flags.map(renderFlag).join('')}</div>` : '') +
+    renderFlags(it.flags) +
     `<div class="pair"><div class="col" lang="en">${it.cols![0]}</div><div class="col" lang="zh-Hant">${it.cols![1]}</div></div>` +
     decideBar(slug) +
     `</article>`
@@ -439,10 +467,10 @@ function renderModuleCard(it: Item, slug: string, meta: ModuleMeta, en?: ModData
     `<div class="col" lang="zh-Hant">${langTag('zh-Hant')}<p><strong>${escapeHtml(zh?.meta.title ?? '—')}</strong></p><p class="stats">${counts(zh)}</p></div></div>`;
   const copy = `<button type="button" class="copy mod-copy" data-copy-module="${escapeHtml(slug)}">複製這個模組的決定</button>`;
   return (
-    `<article class="item module-item" data-id="${escapeHtml(slug)}" data-module="${escapeHtml(slug)}" data-kind="module"${it.flags.length ? ' data-flagged' : ''}>` +
+    `<article class="item module-item" data-id="${escapeHtml(slug)}" data-module="${escapeHtml(slug)}" data-kind="module"${loud(it.flags).length ? ' data-flagged' : ''}>` +
     `<header><span class="kind">整個模組（${escapeHtml(meta.skills.join('、'))}）・版本 ${escapeHtml(meta.version)}</span><code>${escapeHtml(slug)}</code>` +
     `<span class="stats">預檢標記共 ${flagCount} 個</span></header>` +
-    (it.flags.length ? `<div class="flags">${it.flags.map(renderFlag).join('')}</div>` : '') +
+    renderFlags(it.flags) +
     body +
     `<p class="hint">這一格是對「整個模組」的決定。下面每一項各有自己的按鈕。</p>` +
     decideBar(slug, copy) +
@@ -457,6 +485,10 @@ export interface BuildResult {
   html: string;
   itemCount: number;
   flagCount: number;
+  judgeItems: number;
+  autoItems: number;
+  quietNotes: number;
+  summaryLine: string;
   perModule: { slug: string; items: number; flags: number }[];
 }
 
@@ -527,6 +559,11 @@ export function buildWorkbench(opts: WorkbenchOptions): BuildResult {
     modules: views.map((v) => ({ slug: v.slug, version: v.version, ids: v.items.map((i) => i.id) })),
   };
   const totalFlags = views.reduce((n, v) => n + v.flagCount, 0);
+  const allItems = views.flatMap((v) => v.items);
+  const judgeItems = allItems.filter((i) => i.flags.some((f) => f.kind === 'report-ref' && !isQuiet(f))).length;
+  const autoItems = allItems.filter((i) => i.flags.some(isAuto)).length;
+  const quietNotes = allItems.reduce((n, i) => n + i.flags.filter(isQuiet).length, 0);
+  const summaryLine = `要你判斷的 ${judgeItems} 項；自動預檢警告 ${autoItems} 項；其餘是說明（${quietNotes} 則，已收合）`;
   const itemCount = views.reduce((n, v) => n + v.items.length, 0);
 
   const html = `<!DOCTYPE html>
@@ -553,7 +590,8 @@ export function buildWorkbench(opts: WorkbenchOptions): BuildResult {
 <main>
   <section class="intro">
     <p>每一項左邊是英文，右邊是繁中（手機上改為上下排列）。每項按「同意」或「要修改」，要修改的寫一句備註。</p>
-    <p>⚠ 標記是電腦自動預檢的提示，<strong>不取代你的臨床判斷</strong>：有標記不一定要改，沒標記也不代表沒問題。共 ${totalFlags} 個標記。</p>
+    <p class="summary-line" id="summary-line"><strong>${summaryLine}</strong></p>
+    <p>⚠ 標記是電腦自動預檢的提示，<strong>不取代你的臨床判斷</strong>：有標記不一定要改，沒標記也不代表沒問題。醒目的標記共 ${totalFlags} 個；灰色、收合的是預審已修正或只是說明。</p>
     <p>全部看完後，按上方「複製決定」，到 Claude 的對話框貼上。</p>
     <ul class="navlist">${views
       .map((v) => `<li><a href="#mod-${escapeHtml(v.slug)}">${escapeHtml(v.title.zh || v.title.en)} <span class="n">（<span data-nav-count="${escapeHtml(v.slug)}">0／${v.items.length}</span>）</span></a></li>`)
@@ -577,6 +615,10 @@ ${views
     html,
     itemCount,
     flagCount: totalFlags,
+    judgeItems,
+    autoItems,
+    quietNotes,
+    summaryLine,
     perModule: views.map((v) => ({ slug: v.slug, items: v.items.length, flags: v.flagCount })),
   };
 }
@@ -592,7 +634,7 @@ function main() {
       ...args,
     });
     console.log(`已產生：${r.file}`);
-    console.log(`共 ${r.itemCount} 項，${r.flagCount} 個預檢標記。`);
+    console.log(`共 ${r.itemCount} 項，${r.flagCount} 個醒目標記。${r.summaryLine}`);
     for (const m of r.perModule) console.log(`  ${m.slug}：${m.items} 項，${m.flags} 個標記`);
     console.log('用瀏覽器開這個檔案（雙擊）。');
   } catch (e) {

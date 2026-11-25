@@ -14,11 +14,20 @@ export interface Flag {
   ref?: ReportRef;
 }
 
+/**
+ * 報告提到這一項的性質：
+ * - resolved：報告說已處理或已修正（只是說明）
+ * - judgment：報告把它留給擁有人判斷（沒有處理、請擁有人定、建議）
+ * - note：只是提到，沒有說已處理也沒有要判斷（例如「符合標準」）
+ */
+export type RefStatus = 'resolved' | 'judgment' | 'note';
+
 export interface ReportRef {
   report: string;
   line: number;
   text: string;
   heading: string;
+  status: RefStatus;
 }
 
 type Loc = 'en' | 'zh-Hant';
@@ -53,9 +62,44 @@ export function findForbiddenTerms(text: string): { term: string; category: Term
 
 // ---- 句數 -------------------------------------------------------------------
 
+const QUOTE_PATTERNS: RegExp[] = [
+  /「([^「」]*)」/g,
+  /『([^『』]*)』/g,
+  /“([^“”]*)”/g,
+  /‘([^‘’]*)’(?![A-Za-z])/g,
+  /"([^"]*)"/g,
+  // 英文單引號：前後不是字母，裡面的撇號（she'd）不算結尾
+  /(?<![A-Za-z0-9])'((?:[^']|(?<=[A-Za-z])'(?=[A-Za-z]))*)'(?![A-Za-z0-9])/g,
+];
+const TERMINATORS = /[.!?。！？]/g;
+
+/**
+ * 夾在句子中間的引文（例如：你聽到「笨。又來了。」然後……），引文裡的句號、問號不是句尾。
+ * - 引文裡面的終結符號一律拿掉。
+ * - 引文最後的終結符號：後面還接著同一句的文字（逗號、小寫字、中文字）才拿掉；後面是空白加大寫字或結尾，照舊算句尾。
+ * - 引文放在句首（前面沒有字，或前面剛結束一句）是獨立的一句，不處理。
+ */
+function flattenQuotes(text: string): string {
+  let out = text;
+  for (const re of QUOTE_PATTERNS) {
+    out = out.replace(re, (whole: string, inner: string, offset: number, all: string) => {
+      const before = all.slice(0, offset).trimEnd();
+      if (!before || /[.!?。！？…]["'”’)\]」』]*$/.test(before)) return whole;
+      const open = whole[0];
+      const close = whole[whole.length - 1];
+      const after = all.slice(offset + whole.length);
+      const continues = /^(?:[,;:，；：、]|\s*[a-z]|[\p{Script=Han}])/u.test(after);
+      const body = inner.replace(/\s+$/, '');
+      const flat = continues ? body.replace(TERMINATORS, '') : body.replace(/[.!?。！？]+(?=\s*\S)/g, '');
+      return `${open}${flat}${close}`;
+    });
+  }
+  return out;
+}
+
 /** 數句子。句號、問號、驚嘆號（含中文全形）後面接空白、引號或結尾，才算句尾。 */
 export function countSentences(text: string): number {
-  const cleaned = text
+  const cleaned = flattenQuotes(text)
     .replace(/\b(e\.g|i\.e|etc|vs|Mr|Mrs|Ms|Dr)\./gi, '$1')
     .replace(/\.{2,}|…+/g, '…')
     .trim();
@@ -77,12 +121,29 @@ export function maxSentencesRequested(text: string): number | undefined {
     if (n !== undefined && (best === undefined || n < best)) best = n;
   };
   for (const m of text.matchAll(/\b(?:(?:no more than|at most|up to|a maximum of)\s+)?(a|one|two|three|four|five)(?:\s+(?:or|to)\s+(one|two|three|four|five))?[\s-]+(?:short\s+)?sentences?\b/gi)) {
+    // "in the middle of a sentence" 只是描述情境；「a」要接在 write／say／in 這類字後面才是句數上限。
+    if (m[1].toLowerCase() === 'a' && !m[2]) {
+      const prev = /([A-Za-z]+)\s+$/.exec(text.slice(0, m.index!))?.[1]?.toLowerCase();
+      if (!prev || !['write', 'say', 'reply', 'respond', 'give', 'offer', 'use', 'using', 'in', 'with', 'than', 'most', 'to'].includes(prev)) continue;
+    }
     take(EN_NUM[(m[2] ?? m[1]).toLowerCase()]);
   }
-  for (const m of text.matchAll(/([一二兩三四五])(?:[至到或]([一二兩三四五]))?句/g)) {
+  // 「寫一句回應」的「句」是「一個」的量詞（英文是 one response），不是句數上限；
+  // 「一句簡短的回應」同理。「一句話」「兩句短句」才是句數。
+  for (const m of text.matchAll(/([一二兩三四五])(?:[至到或]([一二兩三四五]))?句(?!回應|簡短的?回應)/g)) {
     take(ZH_NUM[m[2] ?? m[1]]);
   }
   return best;
+}
+
+/**
+ * 評分標準裡的「用一句話回應她的擔心，再說其他的」「in one sentence, before it says anything else」
+ * 只是在規定其中一部分要多短，不是整個回應的句數上限。題目的情境（context）裡寫的「寫一句話」才是上限。
+ */
+export function stripScopedOneSentence(criterion: string): string {
+  return criterion
+    .replace(/,\s*(?:first,\s*)?in (?:a|one) sentence\b/gi, '')
+    .replace(/(?:先)?用[一二兩三四五]句話/g, '');
 }
 
 export function checkModelLength(
@@ -90,7 +151,7 @@ export function checkModelLength(
   modelResponse: string,
   _loc: Loc,
 ): Flag | undefined {
-  const max = maxSentencesRequested([drill.context, ...drill.criteria].join('\n'));
+  const max = maxSentencesRequested([drill.context, ...drill.criteria.map(stripScopedOneSentence)].join('\n'));
   if (max === undefined) return undefined;
   const n = countSentences(modelResponse);
   if (n <= max) return undefined;
@@ -99,7 +160,12 @@ export function checkModelLength(
 
 // ---- 中英結構 ---------------------------------------------------------------
 
-const hasQuestion = (s: string) => /[?？]/.test(s);
+/** 引號裡的問句是個案或第三者的話，不算示範回應自己有問句。 */
+const stripQuoted = (s: string) =>
+  s
+    .replace(/「[^「」]*」|『[^『』]*』|“[^“”]*”|‘[^‘’]*’(?![A-Za-z])|"[^"]*"/g, ' ')
+    .replace(/(?<![A-Za-z0-9])'(?:[^']|(?<=[A-Za-z])'(?=[A-Za-z]))*'(?![A-Za-z0-9])/g, ' ');
+const hasQuestion = (s: string) => /[?？]/.test(stripQuoted(s));
 
 interface DrillSide {
   model_response?: string;
@@ -153,6 +219,31 @@ export function compareDecision(en: DecisionSide | undefined, zh: DecisionSide |
   return out;
 }
 
+// ---- 預審報告：已處理還是留給擁有人 ------------------------------------------
+
+const RESOLVED_HEADING = /已處理|已修正|已完成/;
+const UNRESOLVED_HEADING = /沒有處理|未處理|需要擁有人|臨床判斷|待確認|擁有人判斷/;
+/** 這些字出現在一行裡，就是在請擁有人看或表示沒動。 */
+const JUDGMENT_WORDS = /沒有改|沒有動|沒有處理|未處理|請擁有人|擁有人(?:決定|判斷|確認|定)|待確認|臨床判斷|審核人|是否|建議|我判斷|請留意|請確認|請決定/;
+/** 在「已處理」的段落裡，只有這些才算還要擁有人看。 */
+const STILL_OPEN_WORDS = /沒有改|沒有動|沒有處理|未處理|請擁有人|待確認|請留意|請確認|請決定/;
+const RESOLVED_WORDS = /已處理|已修正|已改|已完成|已補|已刪|已同步/;
+
+/** 預審報告的「摘要第 N 點」在已處理的段落被處理了，回傳那些 N。 */
+function resolvedSummaryPoints(lines: string[], paths: string[][]): Set<number> {
+  const done = new Set<number>();
+  lines.forEach((text, i) => {
+    const path = paths[i];
+    const inResolved = path.some((h) => RESOLVED_HEADING.test(h)) && !UNRESOLVED_HEADING.test(path[path.length - 1] ?? '');
+    if (!inResolved) return;
+    const heading = /^#{1,6}\s+摘要第\s*(\d+)\s*點/.exec(text);
+    if (heading) done.add(Number(heading[1]));
+    const range = /處理摘要第\s*(\d+)\s*[–\-~至到]\s*(\d+)\s*點/.exec(text);
+    if (range) for (let n = Number(range[1]); n <= Number(range[2]); n++) done.add(n);
+  });
+  return done;
+}
+
 // ---- 預審報告提到的題目 id --------------------------------------------------
 
 /**
@@ -186,6 +277,49 @@ export function parseReportRefs(
   const exists = (slug: string | undefined, id: string) => !!slug && !!idsByModule.get(slug)?.has(id);
   const slugOfId = (id: string) => moduleSlugs.find((s) => id.startsWith(`${s}-`));
 
+  // 先掃一遍：每一行的標題路徑，和摘要裡每一行屬於第幾點。
+  const paths: string[][] = [];
+  const stack: string[] = [];
+  const summaryPoint: (number | undefined)[] = [];
+  let point: number | undefined;
+  lines.forEach((text) => {
+    const h = /^(#{1,6})\s+(.*)$/.exec(text);
+    if (h) {
+      stack.length = h[1].length - 1;
+      stack[h[1].length - 1] = h[2].trim();
+      point = undefined;
+    }
+    paths.push(stack.filter((x) => x !== undefined));
+    const inSummary = stack.some((x) => x && /^摘要/.test(x));
+    const n = /^(\d+)\.\s/.exec(text);
+    if (inSummary && n) point = Number(n[1]);
+    summaryPoint.push(inSummary ? point : undefined);
+  });
+  const handledPoints = resolvedSummaryPoints(lines, paths);
+  const summaryItemText = (p: number, from: number) => {
+    const out: string[] = [];
+    for (let j = from; j >= 0 && summaryPoint[j] === p; j--) out.unshift(lines[j]);
+    for (let j = from + 1; j < lines.length && summaryPoint[j] === p; j++) out.push(lines[j]);
+    return out.join('\n');
+  };
+  const classify = (i: number): RefStatus => {
+    const text = lines[i];
+    const path = paths[i];
+    const nearest = path[path.length - 1] ?? '';
+    const p = summaryPoint[i];
+    if (p !== undefined) {
+      if (handledPoints.has(p)) return 'resolved';
+      const item = summaryItemText(p, i);
+      if (/請擁有人|擁有人(?:決定|判斷|確認|定)|臨床判斷/.test(item) && !/\*\*已處理\*\*/.test(item)) return 'judgment';
+      return RESOLVED_WORDS.test(item) ? 'resolved' : 'judgment';
+    }
+    if (UNRESOLVED_HEADING.test(nearest)) return 'judgment';
+    if (path.some((h) => RESOLVED_HEADING.test(h))) return STILL_OPEN_WORDS.test(text) ? 'judgment' : 'resolved';
+    if (JUDGMENT_WORDS.test(text)) return 'judgment';
+    if (RESOLVED_WORDS.test(text)) return 'resolved';
+    return 'note';
+  };
+
   lines.forEach((text, i) => {
     const line = i + 1;
     const h = /^#{1,6}\s+(.*)$/.exec(text);
@@ -195,7 +329,7 @@ export function parseReportRefs(
       // 標題不是模組標題（例如「摘要」「驗證」）就不繼承上一個模組。
       if (!moduleSlugs.some((s) => heading.includes(`\`${s}\``))) sectionModule = undefined;
     }
-    const ref: ReportRef = { report, line, text: text.trim(), heading };
+    const ref: ReportRef = { report, line, text: text.trim(), heading, status: classify(i) };
 
     // 1. 完整 id
     const full = new Set<string>();
