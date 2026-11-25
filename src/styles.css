@@ -244,3 +244,27 @@ html[lang='en'] .finding-match { quotes: '\201C' '\201D'; }
 .ai-supervisor table { overflow-wrap: normal; word-break: normal; }
 .ai-supervisor th, .ai-supervisor td { min-width: 4.5rem; }
 .ai-supervisor th[scope='row'] { min-width: 5rem; white-space: nowrap; }
+
+/* ---------- supervisor: look at this first, and the how-to guide ---------- */
+.triage { margin: 1rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
+.triage h4 { margin: 1.5rem 0 0.25rem; font-size: 1.05rem; color: var(--pine); }
+.triage h5 { margin: 1rem 0 0.25rem; font-size: 0.95rem; }
+.triage-list { list-style: none; margin: 0.5rem 0; padding: 0; }
+ol.triage-list { counter-reset: tri; }
+.triage-list > li { padding: 0.75rem 0; border-top: 1px solid var(--line); }
+.triage-list > li:last-child { border-bottom: 1px solid var(--line); }
+ol.triage-list > li { counter-increment: tri; padding-left: 2rem; position: relative; }
+ol.triage-list > li::before { content: counter(tri); position: absolute; left: 0; top: 0.75rem; width: 1.4rem; height: 1.4rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.8rem; border: 1.5px solid var(--pine); color: var(--pine); }
+.triage-list p { margin: 0.15rem 0; }
+.triage-criterion { font-weight: 560; }
+.triage-meta { font-size: 0.9rem; }
+.triage-quote { margin: 0.4rem 0; font-size: 1rem; }
+.triage-reason { font-size: 0.92rem; }
+.triage .badge + .badge { margin-left: 0.35rem; }
+.guide-drawer { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 1rem 0; }
+.guide-drawer > summary { cursor: pointer; padding: 0.7rem 1rem; font-weight: 560; color: var(--pine); border-radius: 12px; }
+.guide-drawer[open] > summary { border-bottom: 1px solid var(--line); border-radius: 12px 12px 0 0; }
+.guide-body { padding: 0.25rem 1rem 1rem; }
+.guide-body h2 { font-size: 1.1rem; margin: 1.25rem 0 0.25rem; }
+.guide-body ol { margin: 0.25rem 0; padding-left: 1.4rem; }
+.guide-body li { margin: 0.35rem 0; }

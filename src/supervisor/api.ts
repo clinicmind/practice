@@ -8,6 +8,7 @@ import { toAttempt, toDecision, toReflection } from '../progress/supabaseStore';
 import type { AiDisagreement, AiEvaluation } from './aiSummary';
 import type { AiBudget, UsageRow } from './aiUsage';
 import type { Attempt, Decision, Reflection } from '../progress/types';
+import type { CohortAttempt } from './triage';
 
 export type ModuleProgress = { walkthroughDone: boolean; passed: Level[] };
 export type StudentSummary = {
@@ -15,6 +16,8 @@ export type StudentSummary = {
   displayName: string;
   cohortId: string | null;
   lastActiveAt: string | null;
+  /** When the student's profile was made (joined the cohort). */
+  joinedAt: string | null;
   /** Only modules whose content is available in this build. */
   modules: Record<string, ModuleProgress>;
 };
@@ -110,7 +113,7 @@ export function createSupervisorApi(client: Backend, supervisorId: string) {
     async listStudents(): Promise<StudentSummary[]> {
       const [{ bundles }, profiles, attemptRows, decisionRows, activity] = await Promise.all([
         loadCourse(),
-        all('profiles', 'id, display_name, cohort_id', (q) => ordered(q.eq('role', 'student'), 'id')),
+        all('profiles', 'id, display_name, cohort_id, created_at', (q) => ordered(q.eq('role', 'student'), 'id')),
         all('attempts', '*', (q) => ordered(q, 'created_at', 'id')),
         all('decisions', '*', (q) => ordered(q, 'created_at', 'id')),
         all('student_activity', 'user_id, last_active_at', (q) => ordered(q, 'user_id')),
@@ -124,6 +127,7 @@ export function createSupervisorApi(client: Backend, supervisorId: string) {
           displayName: p.display_name,
           cohortId: p.cohort_id,
           lastActiveAt: seen.get(p.id) ?? null,
+          joinedAt: p.created_at ? new Date(p.created_at).toISOString() : null,
           modules: progressOf(
             (attempts.get(p.id) ?? []).map((x) => x.v),
             (decisions.get(p.id) ?? []).map((x) => x.v),
@@ -131,6 +135,12 @@ export function createSupervisorApi(client: Backend, supervisorId: string) {
           ),
         }))
         .sort((a, b) => a.displayName.localeCompare(b.displayName) || a.id.localeCompare(b.id));
+    },
+
+    /** Every attempt of every student this supervisor can see, for the "what to look at first" blocks. Row level security limits it to their cohorts. */
+    async listCohortAttempts(): Promise<CohortAttempt[]> {
+      const rows = await all('attempts', '*', (q) => ordered(q, 'created_at', 'id'));
+      return rows.map((r: Row): CohortAttempt => ({ ...toAttempt(r), userId: String(r.user_id) }));
     },
 
     /** null when the student does not exist or is not in a cohort this supervisor runs. */

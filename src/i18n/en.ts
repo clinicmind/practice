@@ -223,6 +223,91 @@ const enStrings = {
     needsMigration:
       'Stages cannot be opened yet. The project owner needs to apply the database update 0004 (cohort_stages) in Supabase. The rest of this page works as usual.',
   },
+  supervisorTriage: {
+    heading: 'Look at this first',
+    intro: 'Worked out from the last 7 days of practice. These are prompts for you to look, not verdicts.',
+    loading: 'Working out this week…',
+    loadError: 'Could not work out this week’s summary. The rest of this page works as usual.',
+    hardest: {
+      heading: 'Hardest criteria this week',
+      intro: 'The three criteria that fewest students ticked, over the last 7 days. Good material for next week’s supervision class.',
+      none: 'No criterion has at least 5 answers in the last 7 days yet, so nothing is ranked.',
+      note: 'These are the students’ own ticks. Each student counts once per question, by their latest answer.',
+      tooFew: (n: number, min: number) => `${n} more criteria have fewer than ${min} answers and are not ranked.`,
+      criterionLabel: (n: number) => `Criterion ${n}`,
+      where: (module: string, level: string, number: number) => `${module} · ${level} · question ${number}`,
+      unknownItem: 'Question not in this build',
+      rate: (met: number, answers: number, pct: number) => `${met} of ${answers} ticked (${pct}%)`,
+    },
+    checkIn: {
+      heading: 'Students to check in with',
+      intro: 'Names and a reason only. A quiet week is often just a busy week.',
+      none: 'Nobody to list this week.',
+      termOver: 'The term has ended, so this list is not shown.',
+      inactive: 'No practice in the last 7 days',
+      neverStarted: 'Has not started practising yet',
+      stuck: (module: string, level: string, rounds: number) =>
+        `${module}, ${level}: went through every question ${rounds} times and has not passed the level yet`,
+      reasons: 'Why:',
+    },
+    discuss: {
+      heading: 'Replies worth discussing',
+      intro: 'A small selection to read together. It is only a way to choose material. It is not a ranking, and nobody is scored here.',
+      flaggedHeading: 'Marked by the existing checks',
+      flaggedNote: 'These marks are prompts to read the reply yourself. They do not say anyone did anything wrong.',
+      rotationHeading: 'This week’s turn',
+      rotationNote: 'Each week the turn moves on to the next students on the list, so everyone is picked in time. A reply is chosen for reading together, not because it is good or poor.',
+      noneFlagged: 'No marks this week.',
+      noneRotation: 'No replies to pick from this week.',
+      student: (name: string) => `Open ${name}’s page`,
+      modelsMissing: 'Example responses could not be loaded, so copied replies were not checked.',
+    },
+  },
+  supervisorGuide: {
+    summary: 'How-to guide',
+    intro: 'Short steps for the things you do a few times a term. Only what the site can do today is listed.',
+    sections: [
+      {
+        title: 'Set up a cohort',
+        steps: [
+          'Sign in with your supervisor email. Choose “Supervisor” at the top right, or open /supervisor.',
+          'With no cohort yet, fill in “Create a cohort”. If you already have one, press “Create another cohort” at the bottom of this page.',
+          'Type the cohort name (1 to 80 characters), for example “2027 Spring supervision”.',
+          'Choose the term end date. It must be after today. Students can join until that date.',
+          'Press “Create cohort”. The cohort appears with its invite code.',
+        ],
+      },
+      {
+        title: 'Send the invite code',
+        steps: [
+          'In the cohort, find “Invite code” and press “Copy invite code”. If “Copied.” does not appear, select the code and copy it by hand.',
+          'Send students the site address and the code together. Only you can see the code.',
+          'Tell students: sign in with their email, open the link in the same browser, then paste the code under “Join your cohort” and choose a display name (a pseudonym is fine).',
+          'The code is not case sensitive. Ten wrong tries lock that account for an hour, so ask students to paste it.',
+          'There is no button to reset a code. If it leaks, create a new cohort.',
+        ],
+      },
+      {
+        title: 'Open a stage',
+        steps: [
+          'Foundations is always open to every cohort. You need to do nothing for it.',
+          'When another stage exists, find the “Stages” section inside the cohort and tick the stage. Ticking saves at once; unticking closes it.',
+          'A stage marked “Unreviewed” stays hidden from students even when ticked, until its content is reviewed.',
+          'If “Stages” says an update (0004) is needed, apply that update in Supabase first (see docs/SETUP-class.md, part C4). The rest of this page works meanwhile.',
+          'To open one level for one student, press their name in the progress table, then the “Unlock …” button in their Progress section.',
+        ],
+      },
+      {
+        title: 'At the end of the term',
+        steps: [
+          'Before the term end date, check the progress table to see who has not joined or not started.',
+          'After the date, the cohort shows “Closed to new members”. Students already in it keep working as before.',
+          'For the next term, create a new cohort with a new code. A student’s account stays in the cohort they joined.',
+          'There is no button to delete a cohort or a student, and no export. If you need either, tell the project consultant.',
+        ],
+      },
+    ] as { title: string; steps: string[] }[],
+  },
   notFound: {
     heading: 'Page not found',
     body: 'We could not find that page.',

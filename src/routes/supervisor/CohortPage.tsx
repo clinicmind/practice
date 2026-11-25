@@ -9,6 +9,7 @@ import { isMissingTable } from '../../progress/storeError';
 import { DEFAULT_STAGE } from '../../stages';
 import { loadCourse, type CohortInfo, type Course, type CourseStage, type StudentSummary } from '../../supervisor/api';
 import { useSupervisorApi } from '../../supervisor/SupervisorContext';
+import { GuideDrawer, TriagePanel, useTriageData, type TriageState } from './Triage';
 
 /** Local calendar date as YYYY-MM-DD, comparable as a string with a date input's value. */
 function todayLocal(): string {
@@ -188,7 +189,7 @@ function StagesPanel({ cohort, stages }: { cohort: CohortInfo; stages: CourseSta
   );
 }
 
-function CohortSection({ cohort, students, course }: { cohort: CohortInfo; students: StudentSummary[]; course: Course }) {
+function CohortSection({ cohort, students, course, triage }: { cohort: CohortInfo; students: StudentSummary[]; course: Course; triage: TriageState }) {
   const s = useT();
   const t = s.supervisor;
   const modules = course.stages.flatMap((st) => st.index.modules).filter((m) => m.reviewed);
@@ -197,6 +198,7 @@ function CohortSection({ cohort, students, course }: { cohort: CohortInfo; stude
   return (
     <section aria-labelledby={`cohort-${cohort.id}`} className="card">
       <h2 id={`cohort-${cohort.id}`}>{cohort.name}</h2>
+      {students.length > 0 && <TriagePanel cohort={cohort} students={students} course={course} state={triage} closed={closed} />}
       <InviteCode code={cohort.inviteCode} />
       <p>
         <span>{t.termEnds(cohort.termEnd)}</span>
@@ -248,6 +250,9 @@ export function CohortPage() {
   const [tick, setTick] = useState(0);
   const reload = useCallback(() => setTick((n) => n + 1), []);
 
+  // The "look at this first" blocks load after the page itself and fail on their own.
+  const triage = useTriageData(api, state.status === 'ready' ? state.course : null);
+
   useEffect(() => {
     let live = true;
     setState({ status: 'loading' });
@@ -270,6 +275,7 @@ export function CohortPage() {
   return (
     <div>
       <h1>{t.heading}</h1>
+      <GuideDrawer />
       {reportsOn && (
         <>
           <p><Link to="/supervisor/reports">{s.reportsReview.link}</Link></p>
@@ -285,7 +291,7 @@ export function CohortPage() {
       ) : (
         <>
           {cohorts.map((c) => (
-            <CohortSection key={c.id} cohort={c} course={course} students={students.filter((s) => s.cohortId === c.id)} />
+            <CohortSection key={c.id} cohort={c} course={course} triage={triage} students={students.filter((s) => s.cohortId === c.id)} />
           ))}
           <details>
             <summary>{t.createAnother}</summary>
