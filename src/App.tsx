@@ -1,9 +1,12 @@
+import { Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { AiProvider, type AiFeedbackClient } from './ai/AiContext';
 import { AuthProvider } from './auth/AuthContext';
 import { RequireAuth, RequireSupervisor } from './auth/AuthGate';
 import type { Backend } from './auth/supabase';
 import { Layout } from './components/Layout';
+import { ExtrasProvider, useExtrasEnabled } from './extras/ExtrasContext';
+import { LazyPrepPage, LazyReviewPage } from './extras/lazy';
 import { LocaleProvider } from './i18n';
 import type { ProgressStore } from './progress/types';
 import { AuthCallback } from './routes/AuthCallback';
@@ -40,17 +43,21 @@ function LegacyModuleRedirect() {
  * null/undefined for local mode, where the app behaves exactly as in phase 1.
  * `storage` is the Storage `store` writes to; it is cleared after a successful import.
  */
-export function App({ store, wasReset, backend = null, storage = globalThis.localStorage, reportsEnabled = false, reportsApi, aiEnabled = false, aiClient }: {
+export function App({ store, wasReset, backend = null, storage = globalThis.localStorage, reportsEnabled = false, reportsApi, aiEnabled = false, aiClient, extrasEnabled = false }: {
   store: ProgressStore; wasReset?: boolean; backend?: Backend | null; storage?: Storage;
   /** Reports are hidden unless this is true: no link, and the report routes do not exist. */
   reportsEnabled?: boolean; reportsApi?: Partial<ReportsApi>;
   /** AI feedback is hidden unless this is true and a client is given: nothing renders and nothing is requested. */
   aiEnabled?: boolean; aiClient?: AiFeedbackClient;
+  /** Optional student extras (revise once more, supervision prep sheet, mixed review). Hidden unless true: no UI, no routes, no code loaded. */
+  extrasEnabled?: boolean;
 }) {
   return (
     <ReportsProvider enabled={reportsEnabled} api={reportsApi}>
       <AiProvider enabled={aiEnabled} client={aiClient}>
-        <AppRoutes store={store} wasReset={wasReset} backend={backend} storage={storage} />
+        <ExtrasProvider enabled={extrasEnabled}>
+          <AppRoutes store={store} wasReset={wasReset} backend={backend} storage={storage} />
+        </ExtrasProvider>
       </AiProvider>
     </ReportsProvider>
   );
@@ -60,6 +67,7 @@ function AppRoutes({ store, wasReset, backend, storage }: {
   store: ProgressStore; wasReset?: boolean; backend: Backend | null; storage: Storage;
 }) {
   const reports = useReportsEnabled();
+  const extras = useExtrasEnabled();
   return (
     <LocaleProvider>
     <AuthProvider backend={backend}>
@@ -76,6 +84,8 @@ function AppRoutes({ store, wasReset, backend, storage }: {
             <Route path="/s/:stage/m/:slug/drills/:level" element={<ModuleGate><LevelGate><DrillsPage /></LevelGate></ModuleGate>} />
             <Route path="/s/:stage/m/:slug/reflect" element={<ModuleGate><ReflectPage /></ModuleGate>} />
             <Route path="/m/:slug/*" element={<LegacyModuleRedirect />} />
+            {extras && LazyPrepPage && <Route path="/supervision-prep" element={<Suspense fallback={null}><LazyPrepPage /></Suspense>} />}
+            {extras && LazyReviewPage && <Route path="/review" element={<Suspense fallback={null}><LazyReviewPage /></Suspense>} />}
             {reports && <Route path="/reports" element={<ReportsPage />} />}
             {reports && <Route path="/reports/new" element={<NewReportPage />} />}
             {reports && <Route path="/reports/:id" element={<ReportPage />} />}

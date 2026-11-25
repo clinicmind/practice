@@ -244,3 +244,51 @@ html[lang='en'] .finding-match { quotes: '\201C' '\201D'; }
 .ai-supervisor table { overflow-wrap: normal; word-break: normal; }
 .ai-supervisor th, .ai-supervisor td { min-width: 4.5rem; }
 .ai-supervisor th[scope='row'] { min-width: 5rem; white-space: nowrap; }
+
+/* ---------- phone: the client's words stay at the top while the student types ----------
+   The bar is sticky, so the on-screen keyboard cannot cover the words being answered. The toggle folds it to one line. */
+.client-bar { position: relative; }
+.client-bar-toggle { display: none; }
+@media (max-width: 30rem) {
+  .client-bar {
+    position: sticky; top: 0; z-index: 5; display: flex; align-items: flex-start; gap: 0.6rem;
+    margin: 0 -1.25rem 1rem; padding: 0.55rem 1.25rem; background: var(--card); border-bottom: 1px solid var(--line);
+  }
+  .client-bar .client-line { flex: 1; min-width: 0; margin: 0; font-size: 1.05rem; line-height: 1.35; max-height: 7.5rem; overflow-y: auto; }
+  .client-bar.folded .client-line { max-height: none; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  /* Once the answer is saved the bar has done its job: it scrolls away like any other text. */
+  .client-bar.done { position: static; }
+  .drill textarea, .drill fieldset { scroll-margin-top: 7rem; }
+  .client-bar-toggle {
+    display: block; flex: none; width: 5.2rem; min-height: 44px; padding: 0.2rem 0.4rem; font: inherit; font-size: 0.78rem; line-height: 1.25;
+    border: 1px solid var(--pine); border-radius: 10px; background: transparent; color: var(--pine); cursor: pointer;
+  }
+}
+/* The self-check result is words first; the glyph is only a hint. */
+.self-check { list-style: none; margin: 0.5rem 0 0; padding: 0; font-size: 0.925rem; }
+.self-check li { margin: 0.3rem 0; color: var(--muted); }
+.self-check li.on { color: var(--ink); }
+.compare .model:focus-visible { outline-offset: 6px; }
+
+/* ---------- extras (off unless the build switches them on) ---------- */
+.revise { margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+.revise-pair { display: grid; gap: 0 2rem; margin: 1rem 0; }
+@media (min-width: 46rem) { .revise-pair { grid-template-columns: 1fr 1fr; align-items: start; } }
+.revise-pair h4 { margin-top: 0; }
+.prep-pick { list-style: none; margin: 0; padding: 0; }
+.prep-sheet { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.4rem; margin: 1rem 0; font-family: var(--serif); }
+.prep-sheet h2 { margin-top: 0; font-size: 1.3rem; }
+.prep-sheet h3 { font-family: var(--sans); font-size: 1rem; margin-top: 1.5rem; }
+.prep-entry { margin: 0 0 1rem; }
+.prep-entry blockquote { margin-bottom: 0.4rem; }
+.prep-blank { border: 1px solid #8b9794; border-radius: 6px; min-height: 9rem; margin: 0.4rem 0 1rem; }
+.review-answer { margin: 0.25rem 0 1rem; }
+@media print {
+  @page { margin: 16mm; }
+  body { background: #fff; }
+  .site-header, .site-footer, .skip, .no-print, .notice { display: none !important; }
+  .shell, main { max-width: none; padding: 0; }
+  .prep-sheet { border: 0; padding: 0; margin: 0; }
+  .prep-entry, .prep-blank { break-inside: avoid; }
+  .prep-blank { min-height: 7cm; border-color: #000; }
+}

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useT } from '../i18n';
 import { DEFAULT_STAGE, modulePath } from '../stages';
@@ -5,7 +6,8 @@ import { useStageData } from '../useStageData';
 import { NotFound } from './NotFound';
 import { ErrorBlock, lockedModuleNotice } from './ModuleGate';
 
-export function StagePage() {
+/** `extra` is shown under the heading (the optional student extras use it on the home page). */
+export function StagePage({ extra = null }: { extra?: ReactNode } = {}) {
   const s = useT();
   const state = useStageData();
   const notice = (useLocation().state as { notice?: string } | null)?.notice;
@@ -23,6 +25,7 @@ export function StagePage() {
       {data.stage.stage === DEFAULT_STAGE && <p className="lede">{s.stage.lede}</p>}
       {data.stage.notice && <aside className="stage-note" aria-label={s.eft.noticeLabel}><p>{data.stage.notice}</p></aside>}
       {notice && <p role="status" className="notice">{notice}</p>}
+      {extra}
       {data.visible.length === 0 ? (
         <p>{s.stage.empty}</p>
       ) : (

@@ -1,4 +1,7 @@
+import { Suspense } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useExtrasEnabled } from '../extras/ExtrasContext';
+import { LazyHomeCards } from '../extras/lazy';
 import { useT } from '../i18n';
 import { stagePath } from '../stages';
 import { useStageList } from '../useStageList';
@@ -13,9 +16,11 @@ export function HomePage() {
   const s = useT();
   const state = useStageList();
   const notice = (useLocation().state as { notice?: string } | null)?.notice;
+  const extras = useExtrasEnabled();
+  const cards = extras && LazyHomeCards ? <Suspense fallback={null}><LazyHomeCards /></Suspense> : null;
   if (state.status === 'loading') return <p>{s.common.loading}</p>;
   if (state.status === 'error') return <ErrorBlock message={s.stage.loadError} onRetry={state.reload} />;
-  if (state.entries.length <= 1) return <StagePage />;
+  if (state.entries.length <= 1) return <StagePage extra={cards} />;
 
   const nextUp = [...state.entries].reverse().find((e) => e.open)?.stage;
   return (
@@ -23,6 +28,7 @@ export function HomePage() {
       <h1>{s.stage.listHeading}</h1>
       <p className="lede">{s.stage.listLede}</p>
       {notice && <p role="status" className="notice">{notice}</p>}
+      {cards}
       <ol className="module-list arc">
         {state.entries.map((e, i) => (
           <li key={e.stage} className={!e.open ? 'arc-locked' : e.stage === nextUp ? 'arc-next' : 'arc-open'}>
