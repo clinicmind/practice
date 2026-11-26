@@ -323,3 +323,13 @@
 - `docs/plans/2026-11-15-zh-hant.md` 第 107 行的用語表寫「foot-in-the-door / door-in-the-face … 只在模組 2 簡介出現」。「以退為進」已從簡介刪除，這一列的說明過時了。我沒改這份文件（不在這次任務範圍），請主 session 決定。
 - 預審報告 `2026-11-24-dbt-m1-m3-prereview.md` 提到的「以退為進沒有單獨練習」一點，現在是「已從簡介刪除」。
 - 所有改動都還沒有登記 `content/REVIEW.md`，模組版本號沒動。
+
+---
+
+## 擁有人的登記同意（2026-11-26）
+
+擁有人在主 session（`session_01SLv2v4z24Yeshdzs4oYNaV`）的對話中，看過本文件的「已處理」清單後，親自回覆原文：
+
+> EFT 1–6、DBT 1–3 可以登記上線
+
+依 `CLAUDE.md`「代為登記之前，要有擁有人在對話中的明確同意」，這是登記 `content/REVIEW.md` 的依據。範圍：`eft-attunement`、`eft-emotion-types`、`eft-focusing`、`eft-two-chair`、`eft-empty-chair`、`eft-transformation`、`dbt-validation`、`dbt-commitment`、`dbt-chain`，英文和繁中，版本為本分支 `e165e17` 時的版本。
