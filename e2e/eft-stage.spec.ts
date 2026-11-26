@@ -4,43 +4,37 @@ import { en } from '../src/i18n/en';
 import { zhHant } from '../src/i18n/zh-Hant';
 
 // Both bundles are built from the REAL course content (see e2e/build-variants.sh).
-const REAL = 'http://127.0.0.1:4175'; // normal build: EFT has no reviewed module
+const REAL = 'http://127.0.0.1:4175'; // normal build: the real REVIEW.md
 const EFT = 'http://127.0.0.1:4176'; // test-only review rows register EFT module 1
 
-test.describe('normal build: the EFT stage does not exist yet', () => {
+test.describe('normal build: EFT 1-6 and DBT 1-3 are reviewed (2026-11-26)', () => {
   test.use({ baseURL: REAL });
 
-  test('the shipped files list foundations only, in both languages, and have no EFT files', () => {
+  test('the shipped files list foundations, eft and dbt, in both languages', () => {
     for (const loc of ['en', 'zh-Hant']) {
       const list = JSON.parse(readFileSync(`dist-real/content/${loc}/stages.json`, 'utf8'));
-      expect(list.map((s: { stage: string }) => s.stage)).toEqual(['foundations']);
-      expect(existsSync(`dist-real/content/${loc}/eft`)).toBe(false);
+      expect(list.map((s: { stage: string }) => s.stage)).toEqual(['foundations', 'eft', 'dbt']);
+      expect(existsSync(`dist-real/content/${loc}/eft/eft-attunement`)).toBe(true);
+      expect(existsSync(`dist-real/content/${loc}/dbt/dbt-chain`)).toBe(true);
     }
   });
 
-  test('the home page is the plain foundations page, with no stage list', async ({ page }) => {
+  test('the home page lists the three stages', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { level: 1, name: 'Foundations' })).toBeVisible();
-    await expect(page.getByText(en.stage.listHeading)).toHaveCount(0);
-    await expect(page.getByText(/Emotion-Focused/)).toHaveCount(0);
-    await expect(page.getByText(en.stage.lede)).toBeVisible();
-    await expect(page.getByRole('link', { name: /Intake/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: en.stage.listHeading })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Foundations/ })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Emotion-Focused Therapy/ })).toBeVisible();
   });
 
-  test('the EFT routes are not found, and old bookmarks still work', async ({ page }) => {
-    await page.goto('/s/eft');
-    await expect(page.getByRole('heading', { name: en.notFound.heading })).toBeVisible();
-    await page.goto('/s/eft/m/eft-attunement');
-    await expect(page.getByRole('heading', { name: en.notFound.heading })).toBeVisible();
+  test('old bookmarks still work', async ({ page }) => {
     await page.goto('/m/intake');
     await expect(page).toHaveURL(/\/s\/foundations\/m\/intake$/);
   });
 
-  test('Traditional Chinese is also plain: foundations only', async ({ page }) => {
+  test('Traditional Chinese lists the reviewed Chinese stages', async ({ page }) => {
     await page.addInitScript(() => localStorage.setItem('cm.practice.locale', 'zh-Hant'));
     await page.goto('/');
-    await expect(page.getByRole('heading', { level: 1, name: '基礎' })).toBeVisible();
-    await expect(page.getByText(/情緒聚焦治療/)).toHaveCount(0);
+    await expect(page.getByRole('link', { name: /情緒聚焦治療/ })).toBeVisible();
   });
 });
 

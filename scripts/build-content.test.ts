@@ -503,3 +503,10 @@ describe('stage notice', () => {
     await expect(buildContent({ contentDir: dir, outDir, locale: 'en' })).rejects.toThrow(/notice/);
   });
 });
+
+describe('stage order', () => {
+  test('foundations, then the course order (eft before dbt), then others by name', async () => {
+    const { orderStages } = await import('./build-content');
+    expect(orderStages(['dbt', 'zeta', 'eft', 'foundations', 'alpha'])).toEqual(['foundations', 'eft', 'dbt', 'alpha', 'zeta']);
+  });
+});
