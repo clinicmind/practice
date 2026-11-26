@@ -92,7 +92,7 @@ dbt-chain-h03:
   avoid: "'I'm not blaming you. Why do you feel that way?' The first sentence is a denial, and the 'why' is another demand."
 dbt-chain-h04:
   model_response: "That question may have been too much. We can leave it and go to what you did next, if that's easier."
-  why: "It treats the silence as a response and takes the pressure off. It still moves to the next step of the chain."
+  why: "It treats the silence as a response and takes the pressure off. It still moves to the next step of the chain. In chain questions, if her silence means she feels interrogated or stuck, offering a concrete alternative question eases the pressure more than waiting quietly."
   avoid: "'Take your time. I'll wait.' It keeps the question open and leaves her alone with it."
 dbt-chain-h05:
   model_response: "You already see where it went wrong, and you're tired of going over it. I'm asking for a different reason: to find the step where it could have gone another way. Would you give me ten minutes?"

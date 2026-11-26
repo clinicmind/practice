@@ -173,7 +173,7 @@
 - id: dbt-chain-h06
   level: hard
   skill: link-identification
-  context: "第 6 次會談。J 從電郵直接跳到結果。"
+  context: "第 6 次會談。你們正在分析星期三收到電郵之後，她叫了餐並吃得很快的行為鏈。J 從電郵直接跳到結果。"
   client: "是那封電郵害我的。就這樣。"
   criteria: &li_hard
     - "用 J 自己的話，指出她跳過或混在一起的一個環節或空隙。"

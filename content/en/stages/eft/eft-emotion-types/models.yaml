@@ -23,7 +23,7 @@ eft-emotion-types-e06:
   why: "It stays with the client's words and takes one step toward what may be underneath. It offers the step as a question."
   avoid: "'I wonder if you're really angry about something else.' That is your guess, handed to the client as an answer."
 eft-emotion-types-e07:
-  model_response: "You keep going over it, and the guilt stays with you. When you think of how she looked just then, what do you notice?"
+  model_response: "You keep going over it, and the guilt stays with you. When you go back over it, what do you notice?"
   why: "It stays with the guilt and turns toward the moment that probably holds something truer."
   avoid: "'You shouldn't feel guilty. Everyone snaps sometimes.' That closes the feeling before you have learned what it is about."
 eft-emotion-types-e08:
@@ -31,7 +31,7 @@ eft-emotion-types-e08:
   why: "It uses the client's word and asks for the next thing. Annoyance with oneself is often secondary."
   avoid: "'What got in the way of finishing?' It leads to reasons and plans, and away from the feeling."
 eft-emotion-types-e09:
-  model_response: "Flat, not sad. And it started when the team changed. What is it like, being flat?"
+  model_response: "Flat, not sad. If you stay with that flatness, or go back to when the team changed, is there anything else underneath?"
   why: "It respects the client's 'not sad' and keeps the question open, with no label. The change is the clue to where the feeling might be."
   avoid: "'That sounds like loss.' It tells the client what he feels and it ignores what he said."
 eft-emotion-types-e10:
@@ -71,8 +71,8 @@ eft-emotion-types-m08:
   why: "It reflects the contrast and invites one step. It is easy to say no to."
   avoid: "'What did she say?' It asks for content and skips the feeling."
 eft-emotion-types-m09:
-  model_response: "Part of you doesn't want to cry about this. That's okay. We can go slowly, or I'm happy to hear what makes it feel stupid."
-  why: "It welcomes the reluctance and gives two paths. 'Stupid' is the client's own judgment, and you do not argue with it."
+  model_response: "Part of you doesn't want to cry about this, and that's okay. We can put it down for now, or if you'd like, we can slowly look at what makes it feel stupid."
+  why: "It welcomes the reluctance and gives a real choice: put it down for now, or go on slowly. 'Stupid' is the client's own judgment, and you do not argue with it."
   avoid: "'It's not stupid at all.' You answer the judgment and leave the feeling."
 eft-emotion-types-m10:
   model_response: "Your head says fine, and the rest of you says something else. Would it be all right to listen to the rest of you for a minute?"

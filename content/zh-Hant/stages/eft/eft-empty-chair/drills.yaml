@@ -95,7 +95,7 @@
   level: medium
   skill: evoking-the-other
   context: "個案以對方的身分說話，有些東西轉變了。任務：寫一到兩句話。"
-  client: "（以母親的身分，輕聲）她……她看起來很累。我從來沒有注意到。"
+  client: "（以母親的身分，輕聲）你……你看起來很累。我從來沒有注意到。"
   criteria: *eo_medium
 - id: eft-empty-chair-m05
   level: medium

@@ -202,5 +202,5 @@
   level: hard
   skill: focusing-guidance
   context: "長長的沉默之後。任務：寫一至兩句話。在繼續引導之前，先回應剛剛發生的事。"
-  client: "我不想再做這個了。"
+  client: "我不想再做這個練習了。"
   criteria: *fg_hard

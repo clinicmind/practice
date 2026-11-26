@@ -27,8 +27,8 @@ eft-focusing-e07:
   why: "It uses the client's own image. It leaves her to find what comes."
   avoid: "'What do you think is making it foggy?' It asks for a cause."
 eft-focusing-e08:
-  model_response: "That tightness in your throat. Stay with it for a moment, and notice anything about it."
-  why: "It is short and invites attention. 'Anything about it' is open."
+  model_response: "That tightness in your throat. If you'd like, you could try staying with it, and notice what it's like."
+  why: "It is short and invites attention. 'If you'd like' leaves the choice with him, and 'what it's like' is open."
   avoid: "'Is it fear?' A guess dressed as a question."
 eft-focusing-e09:
   model_response: "A feeling in your chest, when you think of home. Take a moment and see what that place is like."
@@ -51,7 +51,7 @@ eft-focusing-m03:
   why: "Embarrassment can close the felt sense. Easing it comes before the task."
   avoid: "Going straight to 'where do you feel it?' The embarrassment would stay."
 eft-focusing-m04:
-  model_response: "Partly. 'Weird since Tuesday' is a vague sense, but he has also offered three possible causes and has not placed it in the body. First I would reflect that it is hard to say and ask whether he notices it anywhere in his body."
+  model_response: "Not clearly yet. 'Weird since Tuesday' is a vague sense, but he has also offered three possible causes and has not placed it in the body, so he is analysing. First I would reflect that it is hard to say and ask whether he notices it anywhere in his body."
   why: "He is already analysing. A gentle step toward the body tests whether the task will help."
   avoid: "'Let's look at each cause.' That gives him more analysis."
 eft-focusing-m05:
@@ -80,7 +80,7 @@ eft-focusing-m10:
   avoid: "'Who is pressing on you?' It adds a story."
 eft-focusing-h01:
   model_response: "Points toward: 'something' in the chest and 'I don't know what's happening'. Against: she cannot breathe and is asking for help, which looks like overwhelm. I would not offer focusing now. I would steady her first: slow breathing, feet on the floor, my presence."
-  why: "The task needs enough steadiness to attend inwards. Overwhelm comes first."
+  why: "The task needs enough steadiness to attend inwards. Overwhelm comes first. If the discomfort does not ease as she steadies, follow your placement's protocol and tell your supervisor."
   avoid: "'Stay with that place in your chest.' It turns her toward what is overwhelming her."
 eft-focusing-h02:
   model_response: "Points toward: a feeling located in the stomach that he cannot name. Against: he said 'Don't make me look at it'. I would not offer the task. I would accept that and tell him that it is his choice and that I am here if he changes his mind."

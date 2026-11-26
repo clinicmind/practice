@@ -43,11 +43,11 @@ eft-attunement-m01:
   why: "It picks up the weight in 'always like that' and offers one image of it, without pushing him to say more than he has."
   avoid: "'Did that feel lonely?' It asks for a feeling he has not offered, and he can simply say no."
 eft-attunement-m02:
-  model_response: "A small thing, and it still got to you. Part of you seems to be arguing with the upset while it's still here."
+  model_response: "A small thing, and even if it feels ridiculous, it still got to you. Part of you seems to be arguing with the upset while it's still here."
   why: "It does not argue with 'ridiculous'. It uses his word and notes that two things are happening."
   avoid: "'It's not ridiculous at all.' It corrects his word and makes him defend it."
 eft-attunement-m03:
-  model_response: "One part of you is ready to go, and another holds on to the twelve years. Both of them feel real."
+  model_response: "One part of you is ready to go, and another holds on to the twelve years. Both of them sound real to you."
   why: "It keeps both sides and names neither as the right one."
   avoid: "'What would you do if you left?' It starts to solve the dilemma before he has felt it."
 eft-attunement-m04:
@@ -79,23 +79,23 @@ eft-attunement-m10:
   why: "It places what he said as an in-between moment, using only his details: the car, the ten minutes, the door. What fills that space is his."
   avoid: "'You don't want to go home.' It states the meaning of the pause in his place."
 eft-attunement-h01:
-  model_response: "You'd like something you can actually use, and you've waited long enough for it. Tell me what you most want to be different, and we'll start from there."
-  why: "It says yes to the request and notes the pressure under it. It does not argue for feelings, and it keeps the next step practical."
+  model_response: "You'd like something you can actually use, and talking about feelings doesn't feel on target right now. Let's stay with the moment in that argument that matters most to you and look from there. Is that okay?"
+  why: "It says yes to the request and gives back that talk of feelings feels off the mark to him. It does not argue for feelings, and it asks before taking the next step."
   avoid: "'Techniques only work if we understand your feelings first.' It argues with his request and tells him he has misjudged therapy."
 eft-attunement-h02:
   model_response: "You'd rather I didn't, and I won't push. Something came close just now, though, and we can leave it for as long as you like."
   why: "It respects the 'don't', it notes honestly what both of you saw, and it gives him control of when to return."
   avoid: "'It's okay to cry here.' It overrides his 'don't' with permission he has not asked for."
 eft-attunement-h03:
-  model_response: "You've been getting on with things, and nothing feels wrong to you. It's hard to sit here because someone else saw something."
+  model_response: "It sounds like you've been getting on with things, and nothing feels wrong to you. It may not be easy to sit here when someone else saw something."
   why: "It takes him at his word and names the strain of being sent. It does not tell him he is wrong."
   avoid: "'Your wife must be worried about you.' It sides with her and makes him the problem."
 eft-attunement-h04:
-  model_response: "Stress, the ordinary kind that everybody has. That's how you see it, and you wouldn't want it blown up into something bigger."
+  model_response: "It sounds like stress, the ordinary kind that everybody has. That's how you see it, and maybe you wouldn't want it blown up into something bigger."
   why: "It accepts his frame and names his wish, to keep it simple. It does not say that there is more."
   avoid: "'Sometimes stress is a way of covering something deeper.' It argues with his frame."
 eft-attunement-h05:
-  model_response: "(softly) Something came up, and 'nothing' is the word that fits for now. We can stay with the quiet."
+  model_response: "(softly) You stopped for a long while, and 'nothing' is the word that fits for now. We can stay with the quiet."
   why: "It treats the silence as part of the work and makes no demand on him. The word 'nothing' is accepted, not challenged."
   avoid: "'I think there's something there. Can you tell me about it?' It asks him again, and he has just said no."
 eft-attunement-h06:
@@ -107,7 +107,7 @@ eft-attunement-h07:
   why: "It respects his rule and describes only what could be seen. It does not name a feeling or say that he should let it out."
   avoid: "'You don't have to hold it in here.' It overrules 'I don't do crying' with an invitation he did not ask for."
 eft-attunement-h08:
-  model_response: "Strict, solid, no one gets past the door. It sounds as if it keeps you safe in that room."
+  model_response: "Strict, solid, no one gets past the door. It sounds as if that keeps you on firm ground in that room."
   why: "It reflects his pride in the image and offers one tentative guess about what it does for him."
   avoid: "'Does being strict get lonely?' It aims at a feeling behind his pride, and he did not ask for it."
 eft-attunement-h09:
@@ -115,6 +115,6 @@ eft-attunement-h09:
   why: "It stays inside the scene he described, and it follows the little pause on 'quiet' without saying what the pause means."
   avoid: "'Is it a relief to be away from the family?' It adds a family he has not mentioned."
 eft-attunement-h10:
-  model_response: "She looks at you, and you feel seen right through 'just tired'. That's a look you'd rather not have on you."
+  model_response: "She looks at you, and you feel seen right through 'just tired'. You hate that look landing on you."
   why: "It gives back the look and what the look does to him. It takes no side about his wife and does not say what he is hiding."
   avoid: "'She's worried about you.' It defends her, and it leaves him alone with the look."

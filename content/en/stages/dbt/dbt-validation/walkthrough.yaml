@@ -38,14 +38,14 @@ sessions:
             fit: weak
             note: "It defends a therapist you have never met, and it tells J that what she heard was a misunderstanding. She has heard that before."
           - id: b
-            text: "You heard 'too much' after the sixth session, and 'everybody does' tells me you have heard it many times. That's a lot to carry in here today."
+            text: "You heard 'too much' after the sixth session, and 'everybody does' sounds as if you have heard it many times. That's a lot to carry in here today."
             fit: strong
             note: "It takes what she heard as real to her. It does not judge the other therapist, and it does not agree that she is too much. It uses her words, 'everybody does', and offers what they imply."
           - id: c
             text: "That sounds painful. Do you think there's a pattern in how people respond to you?"
             fit: workable
             note: "The first sentence is kind. The question asks her to analyse herself within seconds of being hurt, and she may hear that the pattern is her fault."
-        actual: "You heard 'too much' after the sixth session, and 'everybody does' tells me you have heard it many times. That's a lot to carry in here today."
+        actual: "You heard 'too much' after the sixth session, and 'everybody does' sounds as if you have heard it many times. That's a lot to carry in here today."
         rationale: "This is the first example of validating without agreeing. You do not say that she is too much, and you do not say that she is not. You say that what she heard makes sense of why she is wary."
       - id: dbt-validation-s1-t04
         speaker: client

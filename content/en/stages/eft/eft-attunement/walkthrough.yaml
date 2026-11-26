@@ -53,8 +53,8 @@ sessions:
       - id: eft-attunement-s1-d3
         type: free
         prompt: "R has gone back to asking for techniques, right after a moment of contact. Write one response that keeps both the request and what he just showed you."
-        actual: "You want to catch it before it happens, so that he never has to go quiet like that. We'll work on that together. And I'd like to keep that moment with your son close by, because it seems to matter to you."
-        rationale: "It is not a choice between his request and his experience. You say yes to what he wants, and you do not drop the moment he nearly showed you. You also do not point out that he retreated. That would tell him that he is being watched. Notice that he came to the edge by himself."
+        actual: "You'd like to notice it before the temper flares, and we can look together at what happens in that moment. I'd also like to keep that moment with your son close by."
+        rationale: "It is not a choice between his request and his experience. You say yes to looking at it together, without promising a technique yet, and you do not drop the moment he nearly showed you. You also do not point out that he retreated. That would tell him that he is being watched. Notice that he came to the edge by himself."
       - id: eft-attunement-s1-t05
         speaker: client
         text: "(shrugs) Fine. Sure. What else do you need from me?"
@@ -131,7 +131,7 @@ sessions:
       - id: eft-attunement-s2-d2
         type: free
         prompt: "R has told you what he said to himself, and laughed. Write one empathic response. Stay with what he told you. Do not interpret it, and do not ask what it means."
-        actual: "Midnight, alone in the kitchen, one wrong answer, and that word came out about yourself. And then you laughed."
+        actual: "Midnight, in the kitchen, one wrong answer, and that word came out about yourself. And then you laughed."
         rationale: "It gives back the scene as he gave it, in concrete pieces, and it includes the laugh without saying what the laugh means. It does not label the voice and does not tell him it is harsh. He told you in his own way that it is."
       - id: eft-attunement-s2-t04
         speaker: client
@@ -141,7 +141,7 @@ sessions:
         prompt: "R defends the harsh voice. What do you say?"
         options:
           - id: a
-            text: "That voice does a job for you. It's how things get done."
+            text: "That voice does a job for you. To you, it feels like how things get done."
             fit: strong
             note: "It does not agree that he is useless, and it does not argue with the voice. It says what he just said it does for him, and so it keeps him in the conversation."
           - id: b
@@ -152,7 +152,7 @@ sessions:
             text: "Lots of people are hard on themselves. It's very common."
             fit: workable
             note: "True, and meant kindly. It also closes the subject by turning his own experience into something everybody has."
-        actual: "That voice does a job for you. It's how things get done."
+        actual: "That voice does a job for you. To you, it feels like how things get done."
         rationale: "It is early. Your aim is to understand how this is for him, not to change it. Later in this stage, when a client's self-criticism shows the marker for it, there is a task for it. That is not the work of this session."
       - id: eft-attunement-s2-t05
         speaker: client

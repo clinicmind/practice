@@ -32,7 +32,7 @@ sessions:
       - id: eft-emotion-types-s3-d2
         type: free
         prompt: "R has told you he raised his voice, his son went quiet, and then he felt bad. Write one response that stays with that moment. Do not explain it and do not fix it."
-        actual: "Your voice went up, he went quiet, and something dropped in you when he did."
+        actual: "Your voice went up, he went quiet, and it seems something dropped in you when he did."
         rationale: "The response stays inside the scene and uses R's own order of events. It names the 'drop' as a tentative guess, in few words, so R can correct it. It does not say 'you feel guilty', which would hand him a label, and it does not suggest what he should do next. Notice what he did after he said 'felt bad': he said 'anyway' and cleared his throat. He is signalling that he wants to move on."
       - id: eft-emotion-types-s3-t04
         speaker: client
@@ -50,7 +50,7 @@ sessions:
             fit: strong
             note: "It acknowledges what he said without arguing with 'it's nothing'. It gives him the choice. A client who is not used to talking about feelings needs to know that he is the one deciding how far to go."
           - id: c
-            text: "It doesn't sound like nothing. You stopped in the middle of that sentence."
+            text: "You said it was nothing, but it doesn't sound like nothing to me."
             fit: workable
             note: "You noticed something real. Pointing at it directly, so soon after he waved it away, can feel like being caught. Some clients would like it. R may not."
         actual: "Seeing him go quiet is hard for you. We can stay with that for a moment or leave it. Which would you prefer?"
@@ -97,7 +97,7 @@ sessions:
         text: "Last week you went back to the table. What was that like afterwards?"
       - id: eft-emotion-types-s4-t02
         speaker: client
-        text: "I thought about it on and off. Mostly in the car. (pause) I remembered my report card. Form three. Ninety-five in maths. My father looked at it for a long time."
+        text: "I thought about it on and off. Mostly in the car. (pause) I remembered my report card. Form three. Ninety-five in maths. My father looked at it for a long time. (looks away)"
       - id: eft-emotion-types-s4-t03
         speaker: therapist
         text: "A long time."
@@ -113,15 +113,15 @@ sessions:
             fit: weak
             note: "You join the joke. R will enjoy that, and the moment will pass. He may take it as a sign that you also prefer this story as a funny one."
           - id: b
-            text: "You tell it as a funny story. But you started with the long look."
+            text: "You tell it as a funny story. But the first thing you told me is how long he looked at it."
             fit: strong
-            note: "It reflects both sides, the way he tells it and what he remembered first, without taking a side. It leaves him free to say what the long look was."
+            note: "It reflects both sides, the way he tells it and what he remembered first, without taking a side. It leaves him free to say what that long looking was."
           - id: c
             text: "That sounds like it hurt."
             fit: workable
             note: "It may be true, and you will probably say something like it later. Said now, it names a feeling that R has not said. He may feel found out, and he may joke again."
-        actual: "You tell it as a funny story. But you started with the long look."
-        rationale: "Jokes and clearing the throat are ways R steps back from feeling. They are not enemies. Reflecting the contrast lets him know you saw both the story and the look, and you have not chosen one."
+        actual: "You tell it as a funny story. But the first thing you told me is how long he looked at it."
+        rationale: "Jokes and clearing the throat are ways R steps back from feeling. They are not enemies. Reflecting the contrast lets him know you saw both the story and how long he looked, and you have not chosen one."
       - id: eft-emotion-types-s4-t05
         speaker: client
         text: "(quiet) The long look. Yes. I was waiting. For him to... (clears throat) Well. He wasn't wrong, I suppose. I could have done better on the paper. There were careless mistakes."
@@ -142,7 +142,7 @@ sessions:
             fit: workable
             note: "The need underneath, to be told he did well, is real, and you will reach it. Asked now, it skips the painful part: what it was like to be told the opposite."
         actual: "You were waiting for something, and then you heard about the five. What was it like for the boy, hearing that?"
-        rationale: "In your head you sorted a possible primary maladaptive emotion, shame, beneath the secondary self-defence ('he wasn't wrong'). You held that as a guess. You did not say it. You asked about the experience and let R find the word."
+        rationale: "In your head you sorted a possible primary maladaptive emotion, shame, beneath a defensive rationalising thought ('he wasn't wrong'). You held that as a guess. You did not say it. You asked about the experience and let R find the word."
       - id: eft-emotion-types-s4-t06
         speaker: client
         text: "(long pause, quietly) Like I'd got it wrong. Again. Like there was something wrong with me that I couldn't see. (pause, then brightly) Anyway, I turned out fine, haha. Teacher, mortgage, the lot."
@@ -150,7 +150,7 @@ sessions:
         type: free
         prompt: "R said something painful and then made a joke straight away. Write one response that acknowledges both what he said and the step back, and does not push him back in."
         actual: "That wasn't easy to say, and it makes sense to step back from it. We can go at your pace."
-        rationale: "The response honours the courage in what he said and treats the joke as a reasonable move, not a failure. It makes no demand. It tells R that the pace is his. Next time he comes close, he knows what will happen."
+        rationale: "The response honours the courage in what he said and treats the joke as a reasonable move, not a failure. It makes no demand. It tells R that the pace is his. Next time he comes close, he knows what will happen. By session 4 the alliance is steadier than in session 1, which is why normalising a step back protects his pace here."
       - id: eft-emotion-types-s4-t07
         speaker: client
         text: "(exhales) Yeah. (pause) I haven't said that to anyone. 'Something wrong with me.'"
