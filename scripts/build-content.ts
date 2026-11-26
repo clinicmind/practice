@@ -208,9 +208,14 @@ function stageDirs(contentDir: string, locale: Locale): string[] {
   return readdirSync(root, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name);
 }
 
-/** Foundations first (it is always open), then the others by name. */
-function orderStages(stages: Iterable<string>): string[] {
-  const rest = [...new Set(stages)].filter((s) => s !== DEFAULT_STAGE).sort();
+/** The course order of the stages that have one (design spec: stage 5 EFT, stage 6 DBT). */
+export const COURSE_ORDER = ['eft', 'dbt'];
+
+/** Foundations first (it is always open), then the course order, then any others by name. */
+export function orderStages(stages: Iterable<string>): string[] {
+  const rank = (s: string) => { const i = COURSE_ORDER.indexOf(s); return i === -1 ? COURSE_ORDER.length : i; };
+  const rest = [...new Set(stages)].filter((s) => s !== DEFAULT_STAGE)
+    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
   return [DEFAULT_STAGE, ...rest];
 }
 

@@ -117,7 +117,7 @@ sessions:
         type: free
         prompt: "R has agreed. Write what you say to set up the chairs and invite him to begin as the critic."
         actual: "Let's put two chairs facing each other. Sit in this one. Here you're the voice that says 'useless' and 'lazy'. Look at the other chair, and imagine yourself sitting there. Tell him what you say to him, the way you say it."
-        rationale: "You give one step at a time. You say who he is in this chair and whom he speaks to. 'The way you say it' asks for his words and his tone, and not a description. You leave the content to him."
+        rationale: "You make clear the role in the first position and whom he speaks to, and you do not talk through the chair changes that come later. 'The way you say it' asks for his words and his tone, and not a description. You leave the content to him."
       - id: eft-two-chair-s8-t03
         speaker: client
         text: "(in the first chair, stiffly, looking at the floor) You should... try harder. You need to focus. You're not doing enough."
@@ -240,4 +240,4 @@ sessions:
     notes:
       goals: "No change. R stayed to the end of the ten minutes he set."
       alliance: "Bond: he chose to try, and he told you something he had not told anyone ('I want to lie down'). Tasks: he kept control by setting the time and the stop. Check what it was like at the start of session nine."
-      formulation_update: "The critic is fluent, and its language is exact ('careless', 'can't be trusted'). The criticised part first agreed, then said it wants to lie down and stop trying. The critic's fear: that without pushing, he will become nothing and nobody will respect him. I did not say who the voice sounds like. If R makes that link, follow him."
+      formulation_update: "The critic is fluent, and its language is exact ('careless', 'can't be trusted'). The criticised part first agreed, then said it wants to lie down and stop trying. The critic's fear: that without pushing, he will become nothing and nobody will respect him. I did not say who the voice sounds like. If R makes that link, follow him. This session has not yet reached the criticised part expressing its need or the critic softening. Early two-chair work often takes several sessions, so that is left for later sessions."

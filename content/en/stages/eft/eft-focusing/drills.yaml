@@ -202,5 +202,5 @@
   level: hard
   skill: focusing-guidance
   context: "After a long silence. Task: write one or two sentences. Respond to what just happened before guiding further."
-  client: "I don't want to do this anymore."
+  client: "I don't want to do this exercise anymore."
   criteria: *fg_hard

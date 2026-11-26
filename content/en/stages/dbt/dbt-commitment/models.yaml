@@ -99,16 +99,16 @@ dbt-commitment-h05:
   why: "It agrees with the true thing she said, hands the choice back and asks her to design the step."
   avoid: "'I'm not trying to make you. I'm trying to help you.' It defends you, and it says nothing about what she said."
 dbt-commitment-h06:
-  model_response: "No. I think you can, and I was making the hard case so you could hear yourself answer it. If that didn't help, I'll stop. What's your answer to it?"
-  why: "It says plainly what it was doing and what you believe. It offers to stop, and then it returns the question."
+  model_response: "No. I think you can, and I was making the hard case so you could hear yourself answer it. If that didn't help, I'll stop. Would you like to answer it, or leave it for now?"
+  why: "It says plainly what it was doing and what you believe. It offers to stop, and then it gives her the choice of answering or leaving it."
   avoid: "'I never said you couldn't.' It defends you, and it leaves her feeling that she misheard."
 dbt-commitment-h07:
   model_response: "I'm not trying to talk you out of it. I raised the doubts because I want your yes to be your own. Would you rather I skip that and just listen to your reasons?"
   why: "It says what the doubts were for and offers to stop. Her reaction tells you to be careful, and this respects it."
   avoid: "'That therapist was wrong, and I'm different.' It criticises someone you have never met, and it asks for trust you haven't earned."
 dbt-commitment-h08:
-  model_response: "I'm sorry that came across as 'too much for you'. I don't think that. Would you tell me your reasons for wanting to change?"
-  why: "It names what she heard, apologises and says what is not true. It then asks for her reasons, which are hers to give or not."
+  model_response: "I'm sorry that made you feel I think it's too much for you. I don't think that. Let's stop here, with no hurry to get back to the plan. Did that land on something painful? We'll go back to the plan only when you want to."
+  why: "It names what she heard, apologises and says what is not true. It stays with the repair and does not pull her back to the plan. Going back to it is her choice."
   avoid: "'Of course I don't think that. Let's not read too much into it.' It brushes off what she heard."
 dbt-commitment-h09:
   model_response: "I haven't convinced myself of that, and I don't want you to drop it because I asked a hard question. Do you want to forget it, or go back to what you said you wanted?"

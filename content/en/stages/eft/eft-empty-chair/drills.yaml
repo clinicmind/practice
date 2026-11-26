@@ -95,7 +95,7 @@
   level: medium
   skill: evoking-the-other
   context: "The client is speaking as the other person, and something shifted. Task: write one or two sentences."
-  client: "(as his mother, quietly) She... she looked tired. I never noticed."
+  client: "(as his mother, quietly) You... you look tired. I never noticed."
   criteria: *eo_medium
 - id: eft-empty-chair-m05
   level: medium

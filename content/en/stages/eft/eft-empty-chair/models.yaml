@@ -17,7 +17,7 @@ eft-empty-chair-e04:
 eft-empty-chair-e05:
   model_response: "Take a moment to look at him, then say whatever you'd say first. It doesn't have to be the right thing."
   why: "It sets a slow pace, takes the pressure off the start, and does not suggest words."
-  avoid: "'Tell her you're angry.' It tells her what to feel."
+  avoid: "'Tell him you're angry.' It tells her what to feel."
 eft-empty-chair-e06:
   model_response: "You looked for him every time; tell him what you wanted, when you looked."
   why: "It keeps the 'looked for you' and asks for the want, in words to the father."
@@ -39,9 +39,9 @@ eft-empty-chair-e10:
   why: "The need is already there. You help him say it in full and directly."
   avoid: "'He probably was proud of you.' It reassures and takes the need away."
 eft-empty-chair-m01:
-  model_response: "Would you be willing to sit in her chair for a moment, and be her? It would be your picture of her, not her. You don't have to."
-  why: "It asks, says the words are his imagining, and gives an exit."
-  avoid: "'Switch chairs. Be her.' An order, with no purpose and no choice."
+  model_response: "Would you be willing to sit in his chair for a moment, and be him? It would be your picture of him, not him. You don't have to."
+  why: "It asks, says the words are her imagining, and gives an exit."
+  avoid: "'Switch chairs. Be him.' An order, with no purpose and no choice."
 eft-empty-chair-m02:
   model_response: "Stay as him a moment: how is he sitting, and how is he looking at his son? Say whatever he would say, the way you imagine he would say it, and you can step back at any time."
   why: "It asks for posture, look and voice, so the father becomes more real, and it adds nothing. It reminds him that this is his picture and that he can step back."
@@ -51,7 +51,7 @@ eft-empty-chair-m03:
   why: "It repeats her line, asks for tone and look, and lets the mother be as the client sees her. It reminds her that this is her picture and that she can step back."
   avoid: "'Do you really think she did her best?' It judges the mother and leaves the role."
 eft-empty-chair-m04:
-  model_response: "She looked tired, and you never noticed. Stay as her a moment, as you picture her, and see what else is there."
+  model_response: "'You look tired, and I never noticed.' Stay as her a moment, as you picture her, and see what else is there."
   why: "The mother, in the client's picture, has shifted. You follow it, and you do not decide what it means."
   avoid: "'So she does care.' It decides the meaning."
 eft-empty-chair-m05:
@@ -87,7 +87,7 @@ eft-empty-chair-h02:
   why: "It responds at once and gives control back. It offers three ways out."
   avoid: "'You can do it, look at him.' It pushes."
 eft-empty-chair-h03:
-  model_response: "It feels wrong to speak like this to your father, even now. Take whatever pace you want, and we can stop at any point."
+  model_response: "In your family, you can't speak to your father like this, even now. Take whatever pace you want, and we can stop at any point."
   why: "It reflects what he said and does not discuss the custom. The choice is his."
   avoid: "'Your father would want you to speak openly.' It argues and gives a rule."
 eft-empty-chair-h04:
@@ -96,7 +96,7 @@ eft-empty-chair-h04:
   avoid: "'It's good, it means you got close to her.' It praises what hurt."
 eft-empty-chair-h05:
   model_response: "Okay, we stop. Look around the room and feel your feet on the floor; I'm here, and there's no hurry."
-  why: "It stops at once and steadies him. It adds no question."
+  why: "It stops at once and steadies him. It adds no question. If the discomfort does not ease as he steadies, follow your placement's protocol and tell your supervisor."
   avoid: "'Let it come, it will pass.' It overrides."
 eft-empty-chair-h06:
   model_response: "Part of you feels you should be past this, and we don't have to decide anything about forgiving, now or later. What do you feel as you say that?"

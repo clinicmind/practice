@@ -173,7 +173,7 @@
 - id: dbt-chain-h06
   level: hard
   skill: link-identification
-  context: "Session 6. J has jumped from the email to the result."
+  context: "Session 6. You are analysing the chain for the Wednesday evening, after the email, when she ordered food and ate it fast. J has jumped from the email to the result."
   client: "The email made me do it. That's it."
   criteria: &li_hard
     - "It points out a link or gap that J skipped or ran together, using her own words."
